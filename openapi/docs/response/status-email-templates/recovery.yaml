@@ -1,0 +1,35 @@
+post:
+  description: Recovery response status email template from company settings
+  tags:
+    - vacancy
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'vacancy',
+              'status',
+          ]
+  responses:
+    '200':
+      description: Email template
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/response.yaml#/ResponseStatusEmailTemplate'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      vacancy:
+                        $ref: '../../components/vacancy.yaml#/Vacancy'
+                      status:
+                        $ref: '../../components/response.yaml#/ResponseStatus'

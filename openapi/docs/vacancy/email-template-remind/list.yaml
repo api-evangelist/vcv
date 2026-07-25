@@ -1,0 +1,88 @@
+get:
+  description: Get remind templates list
+  tags:
+    - vacancy
+  parameters:
+    - $ref: '../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../components/parameters.yaml#/pagination_page_size'
+    - $ref: '../../components/parameters.yaml#/sort_order'
+    - $ref: '../../components/parameters.yaml#/filter_id'
+    - $ref: '../../components/parameters.yaml#/filter_vacancy_id'
+  responses:
+    '200':
+      description: list of email templates
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  templates:
+                    type: array
+                    items:
+                      $ref: '../../components/vacancy.yaml#/RemindEmail'
+            type: object
+post:
+  description: Create remind email
+  tags:
+    - vacancy
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            text:
+              type: string
+              description: Email template text. Will be filled with default value if empty
+            header:
+              type: string
+              description: Email template header. Will be filled with default value if empty
+            vacancy_id:
+              type: integer
+            type_id:
+              type: integer
+              enum: [1, 2, 3]
+              description: >
+                Type ids:
+                  * `1` - Interview remind (3 day reminder)
+                  * `2` - Videointerview remind (2 hour reminder)
+                  * `3` - Interview completed notification (Application confirmation)
+            active:
+              type: boolean
+          type: object
+  responses:
+    '200':
+      description: Created email
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/vacancy.yaml#/RemindEmail'

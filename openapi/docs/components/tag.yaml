@@ -1,0 +1,34 @@
+Tag:
+  properties:
+    id:
+      type: integer
+    name:
+      type: string
+    user_id:
+      type: integer
+    sort_order:
+      type: integer
+    color:
+      type: string
+    company_id:
+      type: integer
+    _links:
+      properties:
+        self:
+          type: object
+          properties:
+            href:
+              type: string
+              format: uri
+  type: object
+ResponseTag:
+  properties:
+    id:
+      type: integer
+    user_id:
+      type: integer
+    tag_id:
+      type: integer
+    response_id:
+      type: integer
+  type: object

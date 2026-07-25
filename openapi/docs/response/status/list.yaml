@@ -1,0 +1,131 @@
+get:
+  description: Get response status list
+  tags:
+    - response
+  parameters:
+    - $ref: '../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../components/parameters.yaml#/pagination_page_size'
+    - $ref: '../../components/parameters.yaml#/sort_order'
+    - name: sort[by]
+      in: query
+      description: sort field
+      required: false
+      schema:
+        type: string
+        default: 'id'
+        enum: [
+          'id',
+          'sort_order',
+          'title',
+        ]
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'parent' ]
+  responses:
+    '200':
+      description: list of response statuses
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  statuses:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '../../components/response.yaml#/ResponseStatus'
+                        - type: object
+                          properties:
+                            _embedded:
+                              type: object
+                              properties:
+                                parent:
+                                  $ref: '../../components/response.yaml#/ResponseStatus'
+            type: object
+post:
+  tags:
+    - response
+  description: Create response statuses
+  parameters:
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'parent' ]
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          items:
+            required:
+              - title
+          properties:
+            title:
+              type: string
+            sort_order:
+              type: integer
+              nullable: true
+            color:
+              type: string
+            on_top:
+              type: boolean
+              nullable: true
+          type: object
+  responses:
+    '200':
+      description: list of response statuses
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/response.yaml#/ResponseStatus'
+              - type: object
+                properties:
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri

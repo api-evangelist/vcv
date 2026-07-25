@@ -1,0 +1,108 @@
+get:
+  description: Get vacancy permissions list
+  tags:
+    - vacancy
+  parameters:
+    - $ref: '../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../components/parameters.yaml#/pagination_page_size'
+    - $ref: '../../components/parameters.yaml#/sort_order'
+    - $ref: '../../components/parameters.yaml#/filter_id'
+    - $ref: '../../components/parameters.yaml#/filter_vacancy_id'
+    - $ref: '../../components/parameters.yaml#/filter_user_id'
+    - name: filter[permission]
+      in: query
+      description: Role name filter
+      required: false
+      schema:
+        type: string
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'vacancy', 'user' ]
+  responses:
+    '200':
+      description: list of vacancy permissions
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  permissions:
+                    type: array
+                    items:
+                      $ref: '../../components/vacancy.yaml#/Permission'
+            type: object
+post:
+  description: Create vacancy permission
+  tags:
+    - vacancy
+  parameters:
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'vacancy', 'user' ]
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            vacancy_id:
+              type: integer
+            user_id:
+              type: integer
+            permission:
+              type: string
+              enum: [ 'admin', 'role_edit_scoring', 'role_read' ]
+              description: >
+                Permissions:
+                  * `admin` - Application administration, edit application materials, view all hiring team members’ activities, evaluate applications, communicate with candidates.
+                  * `role_edit_scoring` - Edit application materials, evaluate applications, communicate with candidates.
+                  * `role_read` - Evaluate applications only.
+          type: object
+  responses:
+    '200':
+      description: Created permission
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/vacancy.yaml#/Permission'

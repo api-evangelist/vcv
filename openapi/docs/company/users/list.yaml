@@ -1,0 +1,84 @@
+get:
+  description: Get users list
+  tags:
+    - users
+  parameters:
+    - $ref: '../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../components/parameters.yaml#/pagination_page_size'
+    - name: filter[email]
+      in: query
+      description: User email filter
+      required: false
+      schema:
+        type: string
+    - name: filter[position]
+      in: query
+      description: User position filter
+      required: false
+      schema:
+        type: string
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+            'userName',
+            'roles',
+            'language',
+          ]
+  responses:
+    '200':
+      description: list of users
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '../../components/company.yaml#/User'
+                        - type: object
+                          properties:
+                            language:
+                              $ref: '../../components/common.yaml#/Language'
+                            roles:
+                              type: array
+                              items:
+                                $ref: '../../components/company.yaml#/Role'
+
+            type: object

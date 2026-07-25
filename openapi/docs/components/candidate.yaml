@@ -1,0 +1,36 @@
+CandidateName:
+  properties:
+    candidate_id:
+      type: integer
+    first_name:
+      type: string
+    last_name:
+      type: string
+    second_name:
+      type: string
+      nullable: true
+  type: object
+CandidatePhone:
+  properties:
+    candidate_id:
+      type: integer
+    id:
+      type: integer
+    number:
+      type: string
+  nullable: true
+  type: object
+Candidate:
+  properties:
+    id:
+      type: integer
+    date_created:
+      type: string
+      format: date-time
+    email:
+      type: string
+    bithdate:
+      type: string
+    gender:
+      type: string
+  type: object

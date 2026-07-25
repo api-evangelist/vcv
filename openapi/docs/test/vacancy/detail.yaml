@@ -1,0 +1,220 @@
+get:
+  description: Get vacancy test detail
+  tags:
+    - test
+  parameters:
+    - name: id
+      in: path
+      description: Id
+      required: true
+      schema:
+        type: integer
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'questions', 'questions.answers', 'questions.media', 'questions.variables' ]
+  responses:
+    '200':
+      description: vacancy test
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/test.yaml#/VacancyTest'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      questions:
+                        type: array
+                        items:
+                          allOf:
+                            - $ref: '../../components/test.yaml#/VacancyTestQuestion'
+                            - type: object
+                              properties:
+                                _embedded:
+                                  type: object
+                                  properties:
+                                    answers:
+                                      type: array
+                                      items:
+                                        $ref: '../../components/test.yaml#/VacancyTestAnswer'
+                                    variables:
+                                      type: array
+                                      items:
+                                        $ref: '../../components/test.yaml#/VacancyTestQuestionVariable'
+                                    media:
+                                      $ref: '../../components/test.yaml#/VacancyTestQuestionMedia'
+patch:
+  description: Update vacancy test
+  tags:
+    - test
+  parameters:
+    - name: id
+      in: path
+      description: Id
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            time_limit:
+              type: integer
+              nullable: true
+            time_limit_enabled:
+              type: boolean
+              nullable: true
+            question_shuffle:
+              type: boolean
+              nullable: true
+            answer_shuffle:
+              type: boolean
+              nullable: true
+            calculate_test_status:
+              type: boolean
+              nullable: true
+            is_dropout_enabled:
+              type: boolean
+            is_camera_required:
+              type: boolean
+            required_score:
+              type: integer
+              nullable: true
+            question_limit:
+              type: integer
+            question_page_limit:
+              type: integer
+            rounding_precision:
+              type: integer
+            questions:
+              type: array
+              items:
+                properties:
+                  id:
+                    type: integer
+                    nullable: true
+                  type:
+                    type: string
+                  name:
+                    type: string
+                    nullable: true
+                  body:
+                    type: string
+                  time_limit:
+                    type: integer
+                  time_limit_enabled:
+                    type: boolean
+                    nullable: true
+                  has_valid_answer:
+                    type: boolean
+                    nullable: true
+                  is_graph_enabled:
+                    type: boolean
+                  is_variables_enabled:
+                    type: boolean
+                  sort_order:
+                    type: integer
+                  chart_config:
+                    type: object
+                  variables:
+                    type: array
+                    items:
+                      properties:
+                        id:
+                          type: integer
+                          nullable: true
+                        name:
+                          type: string
+                        formula:
+                          type: string
+                          nullable: true
+                        min:
+                          type: number
+                          nullable: true
+                        max:
+                          type: number
+                          nullable: true
+                        step:
+                          type: number
+                          nullable: true
+                        type:
+                          type: integer
+                          enum: [1,2]
+                          description: |
+                            1 - Integer
+                            2 - Float
+                      type: object
+                  answers:
+                    type: array
+                    items:
+                      properties:
+                        valid:
+                          type: boolean
+                        is_formula:
+                          type: boolean
+                        id:
+                          type: integer
+                          nullable: true
+                        body:
+                          type: string
+                          nullable: true
+                        sort_order:
+                          type: integer
+                          nullable: true
+                      type: object
+                  media:
+                    type: object
+                    nullable: true
+                    properties:
+                      title:
+                        type: string
+                      type:
+                        type: string
+                      url:
+                        type: string
+                      is_separate_page:
+                        type: boolean
+          type: object
+  responses:
+    '200':
+      description: vacancy test
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/test.yaml#/VacancyTest'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      questions:
+                        type: array
+                        items:
+                          allOf:
+                            - $ref: '../../components/test.yaml#/VacancyTestQuestion'
+                            - type: object
+                              properties:
+                                _embedded:
+                                  type: object
+                                  properties:
+                                    answers:
+                                      type: array
+                                      items:
+                                        $ref: '../../components/test.yaml#/VacancyTestAnswer'
+                                    variables:
+                                      type: array
+                                      items:
+                                        $ref: '../../components/test.yaml#/VacancyTestQuestionVariable'
+                                    media:
+                                      $ref: '../../components/test.yaml#/VacancyTestQuestionMedia'

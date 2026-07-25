@@ -1,0 +1,30 @@
+post:
+  description: Finish interview immediately
+  tags:
+    - interview
+  parameters:
+    - $ref: '../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Finished response
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../components/response.yaml#/Response'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      interview:
+                        allOf:
+                          - $ref: '../components/invite.yaml#/Interview'
+                          - type: object
+                            properties:
+                              _embedded:
+                                type: object
+                                properties:
+                                  stage:
+                                    allOf:
+                                      - $ref: '../components/invite.yaml#/InterviewStage'

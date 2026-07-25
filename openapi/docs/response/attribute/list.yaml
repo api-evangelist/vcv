@@ -1,0 +1,102 @@
+get:
+  description: Get response attributes list
+  tags:
+    - integration
+  parameters:
+    - $ref: '../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../components/parameters.yaml#/pagination_page_size'
+    - $ref: '../../components/parameters.yaml#/sort_order'
+    - $ref: '../../components/parameters.yaml#/filter_id'
+    - name: sort[by]
+      in: query
+      description: sort field
+      required: false
+      schema:
+        type: string
+        default: 'id'
+        enum: [
+            'id',
+            'created_at',
+            'sort_order',
+        ]
+    - name: filter[code]
+      in: query
+      description: Attribute code filter
+      required: false
+      schema:
+        type: string
+    - name: filter[type]
+      in: query
+      description: Attribute type filter
+      required: false
+      schema:
+        type: string
+  responses:
+    '200':
+      description: list of response attributes
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  attributes:
+                    type: array
+                    items:
+                      $ref: '../../components/response.yaml#/ResponseAttribute'
+            type: object
+post:
+  description: Create response attribute
+  tags:
+    - integration
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            sort_order:
+              type: integer
+            code:
+              type: string
+            title:
+              type: string
+            type:
+              type: string
+              enum: ['text', 'url', 'html', 'numeric']
+          type: object
+  responses:
+    '200':
+      description: Created response attribute
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/response.yaml#/ResponseAttribute'

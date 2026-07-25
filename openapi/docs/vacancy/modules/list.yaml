@@ -1,0 +1,66 @@
+get:
+  description: Get vacancy modules list
+  tags:
+    - vacancy
+  parameters:
+    - $ref: '../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../components/parameters.yaml#/pagination_page_size'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'vacancy', 'companyModule' ]
+    - $ref: '../../components/parameters.yaml#/filter_id'
+    - $ref: '../../components/parameters.yaml#/filter_vacancy_id'
+    - name: filter[id_module]
+      in: query
+      description: Module id filter
+      required: false
+      schema:
+        type: string
+  responses:
+    '200':
+      description: list of vacancy modules
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  vacancy_modules:
+                    type: array
+                    items:
+                      $ref: '../../components/vacancy.yaml#/VacancyModule'
+            type: object

@@ -1,0 +1,124 @@
+get:
+  description: Get response tags list
+  tags:
+    - tags
+  parameters:
+    - $ref: '../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../components/parameters.yaml#/pagination_page_size'
+    - $ref: '../../components/parameters.yaml#/sort_order'
+    - $ref: '../../components/parameters.yaml#/filter_id'
+    - $ref: '../../components/parameters.yaml#/filter_user_id'
+    - $ref: '../../components/parameters.yaml#/filter_response_id'
+    - name: filter[tag_id]
+      in: query
+      description: tag id filter
+      required: false
+      schema:
+        type: integer
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'user', 'tag', 'response' ]
+  responses:
+    '200':
+      description: list of response tags
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  response_tags:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '../../components/tag.yaml#/ResponseTag'
+                        - type: object
+                          properties:
+                            _embedded:
+                              type: object
+                              properties:
+                                user:
+                                  $ref: '../../components/company.yaml#/User'
+                                tag:
+                                  $ref: '../../components/tag.yaml#/Tag'
+                                response:
+                                  $ref: '../../components/response.yaml#/Response'
+            type: object
+post:
+  description: Create response tag
+  tags:
+    - tags
+  parameters:
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'user', 'tag', 'response' ]
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            tag_id:
+              type: integer
+            response_id:
+              type: integer
+          type: object
+  responses:
+    '200':
+      description: Created tag
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/tag.yaml#/ResponseTag'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      user:
+                        $ref: '../../components/company.yaml#/User'
+                      tag:
+                        $ref: '../../components/tag.yaml#/Tag'
+                      response:
+                        $ref: '../../components/response.yaml#/Response'

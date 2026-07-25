@@ -1,0 +1,62 @@
+get:
+  description: Get enumerations list
+  tags:
+    - enumeration
+  parameters:
+    - $ref: '../components/parameters.yaml#/pagination_page'
+    - $ref: '../components/parameters.yaml#/pagination_page_size'
+    - name: filter[company_id]
+      in: query
+      description: filter field
+      required: true
+  responses:
+    '200':
+      description: Enumerations list for company
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  enumerations:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '../components/pagination.yaml#/PaginationProperties'
+                        - properties:
+                            _embedded:
+                              type: object
+                              properties:
+                                enumerations:
+                                  type: array
+                                  items:
+                                    - $ref: '../components/enumeration.yaml#/Enumeration'
+                        - type: object

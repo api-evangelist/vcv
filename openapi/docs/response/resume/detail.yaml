@@ -1,0 +1,24 @@
+get:
+  description: Get response resume by id
+  tags:
+    - response
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Response resume
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/response.yaml#/ResponseResume'
+              - type: object
+                properties:
+                  is_file:
+                    type: boolean
+                    description: Indicates if resume was uploaded as a file (true) or as an URL (false).
+                  created_at:
+                    type: string
+                    format: date-time
+    '404':
+      description: Resume not found

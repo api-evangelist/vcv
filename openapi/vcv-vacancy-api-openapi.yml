@@ -1,0 +1,2178 @@
+openapi: 3.0.1
+info:
+  title: VCV chatbot vacancy API
+  description: open api
+  version: v3
+servers:
+- url: https://my.vcv.ai
+- url: https://my.vcv.ru
+- url: '{hostname}'
+  variables:
+    hostname:
+      default: http://localhost:8080
+security:
+- bearerAuth: []
+tags:
+- name: vacancy
+paths:
+  /api/v3/vacancies:
+    get:
+      description: Get vacancies list
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - name: sort[by]
+        in: query
+        description: sort field
+        required: false
+        schema:
+          type: string
+          default: id
+          enum:
+          - id
+          - created_at
+          - title
+          - sent_responses_count
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - user
+            - language
+            - permissions
+            - modules
+            - countries
+            - user.userName
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_user_id'
+      - $ref: '#/components/parameters/filter_created_at_from'
+      - $ref: '#/components/parameters/filter_created_at_to'
+      - $ref: '#/components/parameters/filter_active'
+      - name: filter[title]
+        in: query
+        description: vacancy title filter
+        required: false
+        schema:
+          type: string
+      - name: filter[stages]
+        in: query
+        description: vacancy stages filter
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - survey
+            - test
+            - videointerview
+      - name: fields[]
+        in: query
+        description: Fields to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - published
+            - company_id
+            - description
+            - is_private
+            - is_resume_required
+            - video_link
+            - is_disable_record_videointerview
+            - logo_url
+            - social_logo_url
+            - is_video_landing
+            - disable_duplicate_responses
+            - is_demo
+            - is_resume_mandatory
+            - is_permanent_response_link
+            - sent_responses_count
+            - new_responses_count
+            - has_admin_access
+      responses:
+        '200':
+          description: list of vacancies
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      vacancies:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/Vacancy'
+                          - type: object
+                            properties:
+                              language:
+                                $ref: '#/components/schemas/Language'
+                              _embedded:
+                                type: object
+                                properties:
+                                  user:
+                                    $ref: '#/components/schemas/User'
+                                  permissions:
+                                    type: array
+                                    items:
+                                      $ref: '#/components/schemas/Permission'
+                                  modules:
+                                    type: array
+                                    items:
+                                      $ref: '#/components/schemas/VacancyModule'
+                                  countries:
+                                    type: array
+                                    items:
+                                      $ref: '#/components/schemas/Country'
+                                  landingUrlHistory:
+                                    type: array
+                                    items:
+                                      $ref: '#/components/schemas/VacancyUrlHistory'
+                type: object
+    post:
+      description: Create vacancy
+      tags:
+      - vacancy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                description:
+                  type: string
+                title:
+                  type: string
+                countries:
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                  type: array
+                language_id:
+                  type: integer
+                active:
+                  type: boolean
+                published:
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: Created vacancy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vacancy'
+    delete:
+      description: Delete vacancies list
+      tags:
+      - vacancy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                vacancies:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+              type: object
+      responses:
+        '200':
+          description: deleted vacancy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vacancy'
+    patch:
+      description: Update vacancies list
+      tags:
+      - vacancy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                vacancies:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      active:
+                        type: boolean
+                      id:
+                        type: integer
+              type: object
+      responses:
+        '200':
+          description: Updated vacancies
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vacancy'
+  /api/v3/vacancies/{id}:
+    get:
+      description: Get vacancy
+      tags:
+      - vacancy
+      parameters:
+      - name: id
+        in: path
+        description: Id
+        required: true
+        schema:
+          type: integer
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - user
+            - language
+            - permissions
+            - modules
+            - user.userName
+            - countries
+            - landingUrlHistory
+      - name: fields[]
+        in: query
+        description: Fields to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - published
+            - company_id
+            - description
+            - is_private
+            - is_resume_required
+            - video_link
+            - is_disable_record_videointerview
+            - logo_url
+            - social_logo_url
+            - is_video_landing
+            - disable_duplicate_responses
+            - is_demo
+            - is_resume_mandatory
+            - is_permanent_response_link
+            - sent_responses_count
+            - new_responses_count
+            - has_admin_access
+      responses:
+        '200':
+          description: detail vacancy
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Vacancy'
+                - type: object
+                  properties:
+                    language:
+                      $ref: '#/components/schemas/Language'
+                    _embedded:
+                      type: object
+                      properties:
+                        user:
+                          $ref: '#/components/schemas/User'
+                        permissions:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/Permission'
+                        modules:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/VacancyModule'
+                        countries:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/Country'
+                        landingUrlHistory:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/VacancyUrlHistory'
+    delete:
+      description: Delete vacancy
+      tags:
+      - vacancy
+      parameters:
+      - name: id
+        in: path
+        description: Id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: deleted vacancy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vacancy'
+    patch:
+      description: Update vacancy
+      tags:
+      - vacancy
+      parameters:
+      - name: id
+        in: path
+        description: Id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                description:
+                  type: string
+                title:
+                  type: string
+                countries:
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                  type: array
+                active:
+                  type: boolean
+                published:
+                  type: boolean
+                is_resume_required:
+                  type: boolean
+                is_private:
+                  type: boolean
+                is_disable_record_videointerview:
+                  type: boolean
+                is_video_landing:
+                  type: boolean
+                disable_duplicate_responses:
+                  type: boolean
+                is_resume_mandatory:
+                  type: boolean
+                is_permanent_response_link:
+                  type: boolean
+                video_link:
+                  type: string
+                logo_url:
+                  type: string
+                landing_url_path:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: Updated vacancy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vacancy'
+  /api/v3/vacancy-permissions:
+    get:
+      description: Get vacancy permissions list
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_vacancy_id'
+      - $ref: '#/components/parameters/filter_user_id'
+      - name: filter[permission]
+        in: query
+        description: Role name filter
+        required: false
+        schema:
+          type: string
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - user
+      responses:
+        '200':
+          description: list of vacancy permissions
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      permissions:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Permission'
+                type: object
+    post:
+      description: Create vacancy permission
+      tags:
+      - vacancy
+      parameters:
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                vacancy_id:
+                  type: integer
+                user_id:
+                  type: integer
+                permission:
+                  type: string
+                  enum:
+                  - admin
+                  - role_edit_scoring
+                  - role_read
+                  description: "Permissions:\n  * `admin` - Application administration, edit application materials, view all hiring team members’ activities, evaluate applications, communicate with candidates.\n  * `role_edit_scoring` - Edit application materials, evaluate applications, communicate with candidates.\n  * `role_read` - Evaluate applications only.\n"
+              type: object
+      responses:
+        '200':
+          description: Created permission
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permission'
+  /api/v3/vacancy-permissions/{id}:
+    get:
+      description: Get vacancy permission
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - user
+      responses:
+        '200':
+          description: Vacancy permission
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permission'
+    patch:
+      description: Update vacancy permission
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - user
+      tags:
+      - vacancy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                permission:
+                  type: string
+                  enum:
+                  - admin
+                  - role_edit_scoring
+                  - role_read
+                  description: "Permissions:\n  * `admin` - Application administration, edit application materials, view all hiring team members’ activities, evaluate applications, communicate with candidates.\n  * `role_edit_scoring` - Edit application materials, evaluate applications, communicate with candidates.\n  * `role_read` - Evaluate applications only.\n"
+              type: object
+      responses:
+        '200':
+          description: Updated vacancy permission
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permission'
+    delete:
+      description: Delete vacancy permission
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Deleted vacancy permission
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Permission'
+  /api/v3/vacancy-competences:
+    get:
+      description: Get vacancy competences list
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_vacancy_id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - level
+            - view
+      responses:
+        '200':
+          description: list of vacancy competences
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      competences:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/VacancyCompetence'
+                          - type: object
+                            properties:
+                              _embedded:
+                                type: object
+                                properties:
+                                  vacancy:
+                                    $ref: '#/components/schemas/Vacancy'
+                                  level:
+                                    $ref: '#/components/schemas/CompetenceLevel'
+                                  view:
+                                    $ref: '#/components/schemas/CompetenceView'
+                type: object
+    post:
+      description: Create vacancy competence
+      tags:
+      - vacancy
+      parameters:
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - level
+            - view
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                vacancy_id:
+                  type: integer
+                competence_view_id:
+                  type: integer
+                  description: 'See [/api/v3/competence-views](#/vacancy/get_api_v3_competence_levels)
+
+                    '
+                competence_level_id:
+                  type: integer
+                  description: 'See [/api/v3/competence-levels](#/vacancy/get_api_v3_competence_views)
+
+                    '
+                sort_order:
+                  type: integer
+                title:
+                  type: string
+                hint:
+                  type: string
+                  nullable: true
+              type: object
+      responses:
+        '200':
+          description: Created competence
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/VacancyCompetence'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        vacancy:
+                          $ref: '#/components/schemas/Vacancy'
+                        level:
+                          $ref: '#/components/schemas/CompetenceLevel'
+                        view:
+                          $ref: '#/components/schemas/CompetenceView'
+  /api/v3/vacancy-competences/{id}:
+    get:
+      description: Get vacancy competence
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - level
+            - view
+      responses:
+        '200':
+          description: Vacancy competence
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/VacancyCompetence'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        vacancy:
+                          $ref: '#/components/schemas/Vacancy'
+                        level:
+                          $ref: '#/components/schemas/CompetenceLevel'
+                        view:
+                          $ref: '#/components/schemas/CompetenceView'
+    patch:
+      description: Update vacancy competence
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - level
+            - view
+      tags:
+      - vacancy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                competence_view_id:
+                  type: integer
+                  description: 'See [/api/v3/competence-views](#/vacancy/get_api_v3_competence_levels)
+
+                    '
+                competence_level_id:
+                  type: integer
+                  description: 'See [/api/v3/competence-levels](#/vacancy/get_api_v3_competence_views)
+
+                    '
+                sort_order:
+                  type: integer
+                title:
+                  type: string
+                hint:
+                  type: string
+                  nullable: true
+              type: object
+      responses:
+        '200':
+          description: Updated vacancy competence
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/VacancyCompetence'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        vacancy:
+                          $ref: '#/components/schemas/Vacancy'
+                        level:
+                          $ref: '#/components/schemas/CompetenceLevel'
+                        view:
+                          $ref: '#/components/schemas/CompetenceView'
+    delete:
+      description: Delete vacancy competence
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Deleted vacancy competence
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VacancyCompetence'
+  /api/v3/competence-views:
+    get:
+      description: Get competence views
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - $ref: '#/components/parameters/filter_id'
+      responses:
+        '200':
+          description: list of competence views
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      competence_views:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/CompetenceView'
+                type: object
+  /api/v3/competence-views/{id}:
+    get:
+      description: Get competence view
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Competence view
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompetenceView'
+  /api/v3/competence-levels:
+    get:
+      description: Get competence levels
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - $ref: '#/components/parameters/filter_id'
+      responses:
+        '200':
+          description: list of competence views
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      competence_levels:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/CompetenceLevel'
+                type: object
+  /api/v3/competence-levels/{id}:
+    get:
+      description: Get competence level
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Competence level
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompetenceLevel'
+  /api/v3/vacancy-modules:
+    get:
+      description: Get vacancy modules list
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - companyModule
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_vacancy_id'
+      - name: filter[id_module]
+        in: query
+        description: Module id filter
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: list of vacancy modules
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      vacancy_modules:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/VacancyModule'
+                type: object
+  /api/v3/vacancy-modules/{id_module}/{vacancy_id}:
+    get:
+      description: Get vacancy module detail
+      tags:
+      - vacancy
+      parameters:
+      - name: id_module
+        in: path
+        description: Module id
+        required: true
+        schema:
+          type: string
+      - name: vacancy_id
+        in: path
+        description: Vacancy id
+        required: true
+        schema:
+          type: integer
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - companyModule
+      responses:
+        '200':
+          description: vacancy module
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VacancyModule'
+    patch:
+      description: Update vacancy module
+      tags:
+      - vacancy
+      parameters:
+      - name: id_module
+        in: path
+        description: Module id
+        required: true
+        schema:
+          type: string
+      - name: vacancy_id
+        in: path
+        description: Vacancy id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                is_active:
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: Updated vacancy module
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VacancyModule'
+  /api/v3/vacancy-stages:
+    get:
+      description: Get vacancy module stages list
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_vacancy_id'
+      - name: filter[id_module]
+        in: query
+        description: Module id filter
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: list of vacancy module stages
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      vacancy_stages:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/VacancyModuleStage'
+                type: object
+  /api/v3/vacancy-stages/{id_module}/{vacancy_id}:
+    get:
+      description: Get vacancy module stage detail
+      tags:
+      - vacancy
+      parameters:
+      - name: id_module
+        in: path
+        description: Module id
+        required: true
+        schema:
+          type: string
+      - name: vacancy_id
+        in: path
+        description: Vacancy id
+        required: true
+        schema:
+          type: integer
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+      responses:
+        '200':
+          description: vacancy module stage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VacancyModuleStage'
+    patch:
+      description: Update vacancy module stage
+      tags:
+      - vacancy
+      parameters:
+      - name: id_module
+        in: path
+        description: Module id
+        required: true
+        schema:
+          type: string
+      - name: vacancy_id
+        in: path
+        description: Vacancy id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  nullable: true
+                  type: string
+                description:
+                  nullable: true
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: Updated vacancy module stage
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VacancyModuleStage'
+  /api/v3/vacancies/{vacancy_id}/logo:
+    post:
+      description: Update vacancy logo
+      tags:
+      - vacancy
+      parameters:
+      - name: vacancy_id
+        in: path
+        description: Vacancy id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              required:
+              - logo
+              properties:
+                logo:
+                  type: string
+                  format: binary
+              type: object
+      responses:
+        '200':
+          description: vacancy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vacancy'
+    delete:
+      description: Delete vacancy logo
+      tags:
+      - vacancy
+      parameters:
+      - name: vacancy_id
+        in: path
+        description: Vacancy id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Vacancy without logo
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vacancy'
+  /api/v3/vacancy-landing-url-history:
+    get:
+      description: Get vacancy landing url history
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_vacancy_id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+      - name: filter[landing_url_path]
+        in: query
+        description: Landing url path filter
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Vacancy landing url history
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      url_history:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/VacancyUrlHistory'
+                type: object
+  /api/v3/vacancy-landing-url-history/validate:
+    post:
+      description: Validate landing url history
+      tags:
+      - vacancy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                landing_url_path:
+                  type: string
+                vacancy_id:
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: Empty response if valid, error message otherwise
+          content:
+            application/json:
+              schema:
+                type: object
+  /api/v3/vacancy-landing-url-history/{id}:
+    get:
+      description: Get history item
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Vacancy url history item
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VacancyUrlHistory'
+    delete:
+      description: Delete vacancy url path
+      parameters:
+      - $ref: '#/components/parameters/id'
+      tags:
+      - vacancy
+      responses:
+        '200':
+          description: Deleted path
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VacancyUrlHistory'
+  /api/v3/response-status-email-templates:
+    get:
+      description: Get response status email templates list
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_vacancy_id'
+      - $ref: '#/components/parameters/filter_response_status_id'
+      - $ref: '#/components/parameters/filter_active'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - status
+      responses:
+        '200':
+          description: list of email templates
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      templates:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/ResponseStatusEmailTemplate'
+                          - type: object
+                            properties:
+                              _embedded:
+                                type: object
+                                properties:
+                                  vacancy:
+                                    $ref: '#/components/schemas/Vacancy'
+                                  status:
+                                    $ref: '#/components/schemas/ResponseStatus'
+                type: object
+    post:
+      description: Create response status email template
+      parameters:
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - status
+      tags:
+      - vacancy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                template_header:
+                  type: string
+                template_text:
+                  type: string
+                title:
+                  type: string
+                vacancy_id:
+                  type: integer
+                response_status_id:
+                  type: integer
+                manual:
+                  type: boolean
+                active:
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: Created email
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ResponseStatusEmailTemplate'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        vacancy:
+                          $ref: '#/components/schemas/Vacancy'
+                        status:
+                          $ref: '#/components/schemas/ResponseStatus'
+  /api/v3/response-status-email-templates/{id}:
+    get:
+      description: Get response status email template detail
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - status
+      responses:
+        '200':
+          description: Email template
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ResponseStatusEmailTemplate'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        vacancy:
+                          $ref: '#/components/schemas/Vacancy'
+                        status:
+                          $ref: '#/components/schemas/ResponseStatus'
+    delete:
+      description: Delete response status email template
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Email template
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseStatusEmailTemplate'
+    patch:
+      description: Update response status email template
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - status
+      tags:
+      - vacancy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                template_header:
+                  type: string
+                template_text:
+                  type: string
+                title:
+                  type: string
+                manual:
+                  type: boolean
+                active:
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: Updated template
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ResponseStatusEmailTemplate'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        vacancy:
+                          $ref: '#/components/schemas/Vacancy'
+                        status:
+                          $ref: '#/components/schemas/ResponseStatus'
+  /api/v3/response-status-email-templates/{id}/recovery:
+    post:
+      description: Recovery response status email template from company settings
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - status
+      responses:
+        '200':
+          description: Email template
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ResponseStatusEmailTemplate'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        vacancy:
+                          $ref: '#/components/schemas/Vacancy'
+                        status:
+                          $ref: '#/components/schemas/ResponseStatus'
+  /api/v3/vacancy-email-template-remind:
+    get:
+      description: Get remind templates list
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_vacancy_id'
+      responses:
+        '200':
+          description: list of email templates
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      templates:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/RemindEmail'
+                type: object
+    post:
+      description: Create remind email
+      tags:
+      - vacancy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                text:
+                  type: string
+                  description: Email template text. Will be filled with default value if empty
+                header:
+                  type: string
+                  description: Email template header. Will be filled with default value if empty
+                vacancy_id:
+                  type: integer
+                type_id:
+                  type: integer
+                  enum:
+                  - 1
+                  - 2
+                  - 3
+                  description: "Type ids:\n  * `1` - Interview remind (3 day reminder)\n  * `2` - Videointerview remind (2 hour reminder)\n  * `3` - Interview completed notification (Application confirmation)\n"
+                active:
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: Created email
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RemindEmail'
+  /api/v3/vacancy-email-template-remind/{id}:
+    get:
+      description: Get remind email detail
+      tags:
+      - vacancy
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Email template
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RemindEmail'
+    patch:
+      description: Update remind email
+      parameters:
+      - $ref: '#/components/parameters/id'
+      tags:
+      - vacancy
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                text:
+                  type: string
+                header:
+                  type: string
+                active:
+                  type: boolean
+              type: object
+      responses:
+        '200':
+          description: Updated template
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RemindEmail'
+components:
+  schemas:
+    VacancyCompetence:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        hint:
+          type: string
+          nullable: true
+        competence_view_id:
+          type: integer
+          description: 'See [/api/v3/competence-views](#/vacancy/get_api_v3_competence_levels)
+
+            '
+        competence_level_id:
+          type: integer
+          description: 'See [/api/v3/competence-levels](#/vacancy/get_api_v3_competence_views)
+
+            '
+        vacancy_id:
+          type: integer
+        sort_order:
+          type: integer
+      type: object
+    VacancyModuleStage:
+      properties:
+        id:
+          type: integer
+        id_module:
+          type: string
+        name:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        minutes:
+          type: integer
+          nullable: true
+        vacancy_id:
+          type: integer
+      type: object
+    VacancyModule:
+      properties:
+        id:
+          type: integer
+        id_module:
+          type: string
+        is_active:
+          type: boolean
+        vacancy_id:
+          type: integer
+      type: object
+    VacancyUrlHistory:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: string
+        landing_url_path:
+          type: string
+      type: object
+    Permission:
+      properties:
+        id:
+          type: integer
+        permission:
+          type: string
+        user_id:
+          type: integer
+        vacancy_id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+      type: object
+    Country:
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        title_en:
+          type: string
+        title_ru:
+          type: string
+      type: object
+    Vacancy:
+      properties:
+        id:
+          type: integer
+        token:
+          type: string
+        title:
+          type: string
+        active:
+          type: boolean
+        user_id:
+          type: integer
+        language_id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+      type: object
+    ResponseStatus:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        active:
+          type: boolean
+        on_top:
+          type: boolean
+        sort_order:
+          type: integer
+        company_id:
+          type: integer
+          nullable: true
+        parent_id:
+          type: integer
+          nullable: true
+        id_compatibility:
+          type: integer
+        color:
+          type: string
+        is_base:
+          type: boolean
+        is_hidden:
+          type: boolean
+        is_system:
+          type: boolean
+        is_stage:
+          type: boolean
+      type: object
+    User:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        email:
+          type: string
+        position:
+          type: string
+        logo_url:
+          type: string
+          nullable: true
+        geo_id:
+          type: integer
+        lanaguage_id:
+          type: integer
+        company_id:
+          type: integer
+        userName:
+          type: object
+          nullable: true
+          properties:
+            user_id:
+              type: integer
+            first_name:
+              type: string
+            last_name:
+              type: string
+            language_id:
+              type: integer
+            id:
+              type: integer
+      type: object
+    ResponseStatusEmailTemplate:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        template_header:
+          type: string
+        template_text:
+          type: string
+        title:
+          type: string
+        active:
+          type: boolean
+        manual:
+          type: boolean
+        response_status_id:
+          type: integer
+      type: object
+    CompetenceView:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+      type: object
+    Language:
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+        bcp47_tag:
+          type: string
+      type: object
+    CompetenceLevel:
+      properties:
+        id:
+          type: integer
+        min_value:
+          type: integer
+        max_value:
+          type: integer
+        title:
+          type: string
+      type: object
+    RemindEmail:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        text:
+          type: string
+        header:
+          type: string
+        active:
+          type: boolean
+        type_id:
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+          description: "Type ids:\n  * `1` - Interview remind (3 day reminder)\n  * `2` - Videointerview remind (2 hour reminder)\n  * `3` - Interview completed notification (Application confirmation)\n"
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
+  parameters:
+    filter_active:
+      name: filter[active]
+      in: query
+      required: false
+      schema:
+        type: boolean
+    filter_user_id:
+      name: filter[user_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    filter_vacancy_id:
+      name: filter[vacancy_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_response_status_id:
+      name: filter[response_status_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    sort_order:
+      name: sort[order]
+      in: query
+      description: sort order
+      required: false
+      schema:
+        type: string
+        default: desc
+        enum:
+        - asc
+        - desc
+    filter_created_at_to:
+      name: filter[created_at][to]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_created_at_from:
+      name: filter[created_at][from]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: token

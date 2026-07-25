@@ -1,0 +1,584 @@
+openapi: 3.0.1
+info:
+  title: VCV chatbot survey API
+  description: open api
+  version: v3
+servers:
+- url: https://my.vcv.ai
+- url: https://my.vcv.ru
+- url: '{hostname}'
+  variables:
+    hostname:
+      default: http://localhost:8080
+security:
+- bearerAuth: []
+tags:
+- name: survey
+paths:
+  /api/v3/surveys/templates:
+    get:
+      description: Get survey templates list
+      tags:
+      - survey
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - questions
+            - questions.answers
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_vacancy_id'
+      - $ref: '#/components/parameters/filter_created_at_from'
+      - $ref: '#/components/parameters/filter_created_at_to'
+      responses:
+        '200':
+          description: list of survey templates
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      survey_templates:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/SurveyTemplate'
+                          - type: object
+                            properties:
+                              _embedded:
+                                type: object
+                                properties:
+                                  questions:
+                                    type: array
+                                    items:
+                                      allOf:
+                                      - $ref: '#/components/schemas/SurveyTemplateQuestion'
+                                      - type: object
+                                        properties:
+                                          _embedded:
+                                            type: object
+                                            properties:
+                                              answers:
+                                                type: array
+                                                items:
+                                                  $ref: '#/components/schemas/SurveyTemplateAnswer'
+                type: object
+  /api/v3/surveys/templates/{id}:
+    get:
+      description: Get survey template detail
+      tags:
+      - survey
+      parameters:
+      - name: id
+        in: path
+        description: Id
+        required: true
+        schema:
+          type: integer
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - questions
+            - questions.answers
+      responses:
+        '200':
+          description: Detail survey template
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/SurveyTemplate'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        questions:
+                          type: array
+                          items:
+                            allOf:
+                            - $ref: '#/components/schemas/SurveyTemplateQuestion'
+                            - type: object
+                              properties:
+                                _embedded:
+                                  type: object
+                                  properties:
+                                    answers:
+                                      type: array
+                                      items:
+                                        $ref: '#/components/schemas/SurveyTemplateAnswer'
+    patch:
+      description: Update survey template detail
+      tags:
+      - survey
+      parameters:
+      - name: id
+        in: path
+        description: Id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                questions:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        nullable: true
+                      type:
+                        type: string
+                      sort_order:
+                        type: integer
+                      is_indicated_dates:
+                        type: boolean
+                      is_required:
+                        type: boolean
+                      dropout_date_max:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      dropout_date_min:
+                        type: string
+                        format: date-time
+                        nullable: true
+                      answers:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              nullable: true
+                            type:
+                              type: string
+                            content:
+                              type: string
+                            sort_order:
+                              type: integer
+                            is_dropout:
+                              type: boolean
+              type: object
+      responses:
+        '200':
+          description: Detail survey template
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurveyTemplate'
+  /api/v3/surveys:
+    get:
+      description: Get response surveys list
+      tags:
+      - survey
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/filter_vacancy_id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - questions
+            - questions.answers
+            - questions.record
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_response_id'
+      - $ref: '#/components/parameters/filter_created_at_from'
+      - $ref: '#/components/parameters/filter_created_at_to'
+      responses:
+        '200':
+          description: list of response surveys
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      surveys:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/Survey'
+                          - type: object
+                            properties:
+                              _embedded:
+                                type: object
+                                properties:
+                                  questions:
+                                    type: array
+                                    items:
+                                      allOf:
+                                      - $ref: '#/components/schemas/SurveyQuestion'
+                                      - type: object
+                                        properties:
+                                          _embedded:
+                                            type: object
+                                            properties:
+                                              record:
+                                                $ref: '#/components/schemas/SurveyRecord'
+                                              answers:
+                                                type: array
+                                                items:
+                                                  $ref: '#/components/schemas/SurveyAnswer'
+                type: object
+  /api/v3/surveys/{id}:
+    get:
+      description: Get response survey detail
+      tags:
+      - survey
+      parameters:
+      - name: id
+        in: path
+        description: Id
+        required: true
+        schema:
+          type: integer
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - questions
+            - questions.answers
+            - questions.record
+      responses:
+        '200':
+          description: response survey
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Survey'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        questions:
+                          type: array
+                          items:
+                            allOf:
+                            - $ref: '#/components/schemas/SurveyQuestion'
+                            - type: object
+                              properties:
+                                _embedded:
+                                  type: object
+                                  properties:
+                                    record:
+                                      $ref: '#/components/schemas/SurveyRecord'
+                                    answers:
+                                      type: array
+                                      items:
+                                        $ref: '#/components/schemas/SurveyAnswer'
+components:
+  parameters:
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_created_at_to:
+      name: filter[created_at][to]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    filter_created_at_from:
+      name: filter[created_at][from]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_response_id:
+      name: filter[response_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_vacancy_id:
+      name: filter[vacancy_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+  schemas:
+    SurveyQuestion:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        survey_id:
+          type: integer
+        name:
+          type: string
+        type:
+          type: string
+        font_style:
+          type: string
+          nullable: true
+        description:
+          type: string
+        sort_order:
+          type: integer
+        is_indicated_dates:
+          type: boolean
+        is_required:
+          type: boolean
+        dropout_date_min:
+          type: string
+          format: date-time
+          nullable: true
+        dropout_date_max:
+          type: string
+          format: date-time
+          nullable: true
+      type: object
+    SurveyTemplateAnswer:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        question_id:
+          type: integer
+        type:
+          type: string
+        content:
+          type: string
+        sort_order:
+          type: integer
+        is_dropout:
+          type: boolean
+      type: object
+    Survey:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        response_id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        is_finished:
+          type: boolean
+        is_active:
+          type: boolean
+      type: object
+    SurveyAnswer:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        question_id:
+          type: integer
+        type:
+          type: string
+        content:
+          type: string
+        sort_order:
+          type: integer
+        is_dropout:
+          type: boolean
+      type: object
+    SurveyTemplate:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        vacancy_id:
+          type: integer
+      type: object
+    SurveyTemplateQuestion:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        template_id:
+          type: integer
+        name:
+          type: string
+        type:
+          type: string
+        font_style:
+          type: string
+          nullable: true
+        description:
+          type: string
+        sort_order:
+          type: integer
+        is_indicated_dates:
+          type: boolean
+        is_required:
+          type: boolean
+        dropout_date_min:
+          type: string
+          format: date-time
+          nullable: true
+        dropout_date_max:
+          type: string
+          format: date-time
+          nullable: true
+      type: object
+    SurveyRecord:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        survey_id:
+          type: integer
+        question_id:
+          type: integer
+        type:
+          type: string
+        content:
+          type: string
+        sort_order:
+          type: integer
+        is_dropped:
+          type: boolean
+        answer_ids:
+          type: string
+          nullable: true
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: token

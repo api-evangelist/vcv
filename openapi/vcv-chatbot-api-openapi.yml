@@ -1,0 +1,96 @@
+openapi: 3.0.1
+info:
+  title: VCV chatbot API
+  description: open api
+  version: v3
+servers:
+- url: https://my.vcv.ai
+- url: https://my.vcv.ru
+- url: '{hostname}'
+  variables:
+    hostname:
+      default: http://localhost:8080
+security:
+- bearerAuth: []
+tags:
+- name: chatbot
+paths:
+  /api/v3/chatbot/interviews/{interview_id}:
+    post:
+      description: Set chatbot interview property
+      parameters:
+      - $ref: '#/components/parameters/interview_id'
+      tags:
+      - chatbot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                timezone:
+                  type: string
+                variables:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      code:
+                        type: string
+                      value:
+                        type: string
+              type: object
+      responses:
+        '200':
+          description: dialog
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dialog'
+  /api/v3/chatbot/trigger/{interview_id}:
+    post:
+      description: Activate chatbot trigger
+      parameters:
+      - $ref: '#/components/parameters/interview_id'
+      tags:
+      - chatbot
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: empty answer
+components:
+  parameters:
+    interview_id:
+      name: interview_id
+      in: path
+      description: Interview id
+      required: true
+      schema:
+        type: integer
+  schemas:
+    Dialog:
+      properties:
+        id:
+          type: integer
+        scenario_id:
+          type: integer
+        state_id:
+          type: integer
+        status:
+          type: boolean
+        candidate_id:
+          type: boolean
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: token

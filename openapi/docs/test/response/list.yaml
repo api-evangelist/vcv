@@ -1,0 +1,119 @@
+get:
+  description: Get response tests list
+  tags:
+    - test
+  parameters:
+    - $ref: '../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../components/parameters.yaml#/pagination_page_size'
+    - $ref: '../../components/parameters.yaml#/filter_vacancy_id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'questions',
+              'questions.answers',
+              'questions.media',
+              'screenshots',
+              'result',
+              'questions.answers.candidateAnswers'
+          ]
+    - name: fields[]
+      in: query
+      description: Fields to retrieve
+      required: false
+      style: deepObject
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'time_limit',
+              'date_start',
+              'date_end',
+              'question_page_limit',
+              'is_print_screen',
+          ]
+    - $ref: '../../components/parameters.yaml#/filter_id'
+    - $ref: '../../components/parameters.yaml#/filter_response_id'
+    - $ref: '../../components/parameters.yaml#/filter_created_at_from'
+    - $ref: '../../components/parameters.yaml#/filter_created_at_to'
+  responses:
+    '200':
+      description: list of response tests
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  vacancy_videointerviews:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '../../components/test.yaml#/Test'
+                        - type: object
+                          properties:
+                            _embedded:
+                              type: object
+                              properties:
+                                questions:
+                                  type: array
+                                  items:
+                                    allOf:
+                                      - $ref: '../../components/test.yaml#/TestQuestion'
+                                      - type: object
+                                        properties:
+                                          _embedded:
+                                            type: object
+                                            properties:
+                                              answers:
+                                                type: array
+                                                items:
+                                                  allOf:
+                                                    - $ref: '../../components/test.yaml#/TestAnswer'
+                                                    - type: object
+                                                      properties:
+                                                        _embedded:
+                                                          type: object
+                                                          properties:
+                                                            candidate_answers:
+                                                              type: array
+                                                              items:
+                                                                $ref: '../../components/test.yaml#/TestCandidateAnswer'
+                                              media:
+                                                $ref: '../../components/test.yaml#/TestQuestionMedia'
+            type: object

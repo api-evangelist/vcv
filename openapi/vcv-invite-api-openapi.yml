@@ -1,0 +1,660 @@
+openapi: 3.0.1
+info:
+  title: VCV chatbot invite API
+  description: open api
+  version: v3
+servers:
+- url: https://my.vcv.ai
+- url: https://my.vcv.ru
+- url: '{hostname}'
+  variables:
+    hostname:
+      default: http://localhost:8080
+security:
+- bearerAuth: []
+tags:
+- name: invite
+paths:
+  /api/v3/invites:
+    get:
+      description: Get invites list
+      tags:
+      - invite
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - name: sort[by]
+        in: query
+        description: sort field
+        required: false
+        schema:
+          type: string
+          default: id
+          enum:
+          - id
+          - created_at
+          - candidate.name
+          - response.response_status_id
+          - candidate.email
+          - vacancy.title
+          - candidate.phone
+          - user.name
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - candidate
+            - candidate.name
+            - candidate.phone
+            - user
+            - user.userName
+            - response
+            - response.status
+            - status
+            - interview
+            - interviewRefusal
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_vacancy_id'
+      - $ref: '#/components/parameters/filter_user_id'
+      - $ref: '#/components/parameters/filter_response_status_id'
+      - $ref: '#/components/parameters/filter_created_at_from'
+      - $ref: '#/components/parameters/filter_created_at_to'
+      - name: filter[phone]
+        in: query
+        description: candidate phone filter
+        required: false
+        schema:
+          type: string
+      - name: filter[email]
+        in: query
+        description: candidate email filter
+        required: false
+        schema:
+          type: string
+      - name: filter[name]
+        in: query
+        description: candidate name filter
+        required: false
+        schema:
+          type: string
+      - name: filter[invite_status_id]
+        in: query
+        description: invite status id filter
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+      - name: filter[candidate_id]
+        in: query
+        description: Candidate id filter
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+      - name: fields[]
+        in: query
+        description: Fields to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - email_remind_video_interview_incomplete_sent
+            - email_remind_sent
+            - sms_remind_sent
+      responses:
+        '200':
+          description: list of invites
+          content:
+            application/json:
+              schema:
+                properties:
+                  invites:
+                    type: array
+                    items:
+                      allOf:
+                      - $ref: '#/components/schemas/Invite'
+                      - type: object
+                        properties:
+                          candidate:
+                            allOf:
+                            - $ref: '#/components/schemas/Candidate'
+                            - type: object
+                              properties:
+                                name:
+                                  $ref: '#/components/schemas/CandidateName'
+                                phone:
+                                  $ref: '#/components/schemas/CandidatePhone'
+                          _embedded:
+                            type: object
+                            properties:
+                              vacancy:
+                                $ref: '#/components/schemas/Vacancy'
+                              user:
+                                $ref: '#/components/schemas/User'
+                              response:
+                                allOf:
+                                - $ref: '#/components/schemas/Response'
+                                - type: object
+                                  properties:
+                                    _embedded:
+                                      type: object
+                                      properties:
+                                        status:
+                                          $ref: '#/components/schemas/ResponseStatus'
+                              status:
+                                $ref: '#/components/schemas/InviteStatus'
+                              interview:
+                                $ref: '#/components/schemas/Interview'
+                              interviewRefusal:
+                                $ref: '#/components/schemas/InterviewRefusal'
+                type: object
+    post:
+      description: Create invites list
+      tags:
+      - invite
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                invites:
+                  type: array
+                  items:
+                    properties:
+                      candidate_name:
+                        properties:
+                          first_name:
+                            type: string
+                          last_name:
+                            type: string
+                        type: object
+                      candidate:
+                        properties:
+                          email:
+                            type: string
+                        type: object
+                      candidate_phone:
+                        properties:
+                          number:
+                            nullable: true
+                            type: string
+                        type: object
+                      response:
+                        properties:
+                          second_resume_url:
+                            nullable: true
+                            type: string
+                          resume_url:
+                            nullable: true
+                            type: string
+                          external_id:
+                            nullable: true
+                            type: string
+                          social_source:
+                            nullable: true
+                            type: string
+                          utm_source:
+                            nullable: true
+                            type: string
+                          utm_medium:
+                            nullable: true
+                            type: string
+                          utm_campaign:
+                            nullable: true
+                            type: string
+                          utm_content:
+                            nullable: true
+                            type: string
+                          utm_term:
+                            nullable: true
+                            type: string
+                        type: object
+                      vacancy_id:
+                        type: integer
+                    type: object
+              type: object
+      responses:
+        '200':
+          description: list of invites
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      invites:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/Invite'
+                type: object
+  /api/v3/invites/{id}:
+    get:
+      description: Get invites list
+      tags:
+      - invite
+      parameters:
+      - name: id
+        in: path
+        description: Id
+        required: true
+        schema:
+          type: integer
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - candidate
+            - candidate.name
+            - candidate.phone
+            - user
+            - user.userName
+            - response
+            - status
+            - interview
+            - interviewRefusal
+      - name: fields[]
+        in: query
+        description: Fields to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - email_remind_video_interview_incomplete_sent
+            - email_remind_sent
+            - sms_remind_sent
+      responses:
+        '200':
+          description: Invite detail
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Invite'
+                - type: object
+                  properties:
+                    candidate:
+                      allOf:
+                      - $ref: '#/components/schemas/Candidate'
+                      - type: object
+                        properties:
+                          name:
+                            $ref: '#/components/schemas/CandidateName'
+                          phone:
+                            $ref: '#/components/schemas/CandidatePhone'
+                    _embedded:
+                      type: object
+                      properties:
+                        vacancy:
+                          $ref: '#/components/schemas/Vacancy'
+                        user:
+                          $ref: '#/components/schemas/User'
+                        response:
+                          $ref: '#/components/schemas/Response'
+                        status:
+                          $ref: '#/components/schemas/InviteStatus'
+                        interview:
+                          $ref: '#/components/schemas/Interview'
+                        interviewRefusal:
+                          $ref: '#/components/schemas/InterviewRefusal'
+components:
+  schemas:
+    Response:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        candidate_id:
+          type: integer
+        response_status_id:
+          type: integer
+        response_source_id:
+          type: integer
+        interview_id:
+          type: integer
+        external_id:
+          type: string
+        is_hidden_by_candidate:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        agreed_at:
+          type: string
+          format: date-time
+          nullable: true
+        date_sent:
+          type: string
+          format: date-time
+          nullable: true
+        resume_url:
+          type: string
+          nullable: true
+        second_resume_url:
+          type: string
+          nullable: true
+        social_source:
+          type: string
+          nullable: true
+        utm_source:
+          type: string
+          nullable: true
+        utm_medium:
+          type: string
+          nullable: true
+        utm_campaign:
+          type: string
+          nullable: true
+        utm_content:
+          type: string
+          nullable: true
+        utm_term:
+          type: string
+          nullable: true
+        is_paid:
+          type: boolean
+          nullable: true
+      type: object
+    Candidate:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        email:
+          type: string
+        bithdate:
+          type: string
+        gender:
+          type: string
+      type: object
+    InviteStatus:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+      type: object
+    InterviewRefusal:
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        reason:
+          type: integer
+        interview_id:
+          type: integer
+      type: object
+    CandidateName:
+      properties:
+        candidate_id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        second_name:
+          type: string
+          nullable: true
+      type: object
+    Vacancy:
+      properties:
+        id:
+          type: integer
+        token:
+          type: string
+        title:
+          type: string
+        active:
+          type: boolean
+        user_id:
+          type: integer
+        language_id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+      type: object
+    ResponseStatus:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        active:
+          type: boolean
+        on_top:
+          type: boolean
+        sort_order:
+          type: integer
+        company_id:
+          type: integer
+          nullable: true
+        parent_id:
+          type: integer
+          nullable: true
+        id_compatibility:
+          type: integer
+        color:
+          type: string
+        is_base:
+          type: boolean
+        is_hidden:
+          type: boolean
+        is_system:
+          type: boolean
+        is_stage:
+          type: boolean
+      type: object
+    Invite:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        candidate_id:
+          type: integer
+        invite_status_id:
+          type: integer
+        interview_refusal_id:
+          type: integer
+        interview_id:
+          type: integer
+        is_hidden_by_candidate:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+      type: object
+    CandidatePhone:
+      properties:
+        candidate_id:
+          type: integer
+        id:
+          type: integer
+        number:
+          type: string
+      nullable: true
+      type: object
+    Interview:
+      properties:
+        id:
+          type: integer
+        date_create:
+          type: string
+          format: date-time
+        token:
+          type: string
+        interview_stage_id:
+          type: integer
+        candidate_id:
+          type: integer
+      type: object
+    User:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        email:
+          type: string
+        position:
+          type: string
+        logo_url:
+          type: string
+          nullable: true
+        geo_id:
+          type: integer
+        lanaguage_id:
+          type: integer
+        company_id:
+          type: integer
+        userName:
+          type: object
+          nullable: true
+          properties:
+            user_id:
+              type: integer
+            first_name:
+              type: string
+            last_name:
+              type: string
+            language_id:
+              type: integer
+            id:
+              type: integer
+      type: object
+  parameters:
+    filter_user_id:
+      name: filter[user_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    filter_vacancy_id:
+      name: filter[vacancy_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_response_status_id:
+      name: filter[response_status_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    sort_order:
+      name: sort[order]
+      in: query
+      description: sort order
+      required: false
+      schema:
+        type: string
+        default: desc
+        enum:
+        - asc
+        - desc
+    filter_created_at_to:
+      name: filter[created_at][to]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_created_at_from:
+      name: filter[created_at][from]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: token

@@ -1,0 +1,39 @@
+get:
+  description: Get remind email detail
+  tags:
+    - vacancy
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Email template
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/vacancy.yaml#/RemindEmail'
+patch:
+  description: Update remind email
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+  tags:
+    - vacancy
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            text:
+              type: string
+            header:
+              type: string
+            active:
+              type: boolean
+          type: object
+  responses:
+    '200':
+      description: Updated template
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/vacancy.yaml#/RemindEmail'

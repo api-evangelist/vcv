@@ -1,0 +1,51 @@
+get:
+  description: Get competence levels
+  tags:
+    - vacancy
+  parameters:
+    - $ref: '../../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../../components/parameters.yaml#/pagination_page_size'
+    - $ref: '../../../components/parameters.yaml#/sort_order'
+    - $ref: '../../../components/parameters.yaml#/filter_id'
+  responses:
+    '200':
+      description: list of competence views
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  competence_levels:
+                    type: array
+                    items:
+                      $ref: '../../../components/vacancy.yaml#/CompetenceLevel'
+            type: object

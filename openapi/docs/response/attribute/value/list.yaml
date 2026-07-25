@@ -1,0 +1,147 @@
+get:
+  description: Get response attribute values list
+  tags:
+    - integration
+  parameters:
+    - $ref: '../../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../../components/parameters.yaml#/pagination_page_size'
+    - $ref: '../../../components/parameters.yaml#/sort_order'
+    - $ref: '../../../components/parameters.yaml#/filter_id'
+    - $ref: '../../../components/parameters.yaml#/filter_response_id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'response',
+              'attribute'
+          ]
+    - name: sort[by]
+      in: query
+      description: sort field
+      required: false
+      schema:
+        type: string
+        default: 'id'
+        enum: [
+            'id',
+            'created_at',
+            'response_id',
+            'attribute.sort_order',
+        ]
+    - name: filter[response_attribute_id]
+      in: query
+      description: Attribute id filter
+      required: false
+      schema:
+        type: integer
+    - name: filter[response_attribute_code]
+      in: query
+      description: Attribute code filter
+      required: false
+      schema:
+        type: string
+  responses:
+    '200':
+      description: list of response attributes
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  values:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '../../../components/response.yaml#/ResponseAttributeValue'
+                        - type: object
+                          properties:
+                            _embedded:
+                              type: object
+                              properties:
+                                response:
+                                  $ref: '../../../components/response.yaml#/Response'
+                                attribute:
+                                  $ref: '../../../components/response.yaml#/ResponseAttribute'
+            type: object
+post:
+  description: Create response attribute value
+  tags:
+    - integration
+  parameters:
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'response',
+              'attribute'
+          ]
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            response_id:
+              type: integer
+            response_attribute_id:
+              type: integer
+            value:
+              description: value must be numeric if attribute type is 'numeric'
+              type: string
+          type: object
+  responses:
+    '200':
+      description: Created response attribute value
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../../components/response.yaml#/ResponseAttributeValue'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      response:
+                        $ref: '../../../components/response.yaml#/Response'
+                      attribute:
+                        $ref: '../../../components/response.yaml#/ResponseAttribute'

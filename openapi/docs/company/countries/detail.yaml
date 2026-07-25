@@ -1,0 +1,13 @@
+get:
+  description: Get country detail
+  tags:
+    - countries
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Agreement
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/common.yaml#/Country'

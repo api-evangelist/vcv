@@ -1,0 +1,93 @@
+get:
+  description: Get response attribute value detail
+  tags:
+    - integration
+  parameters:
+    - $ref: '../../../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'response',
+              'attribute'
+          ]
+  responses:
+    '200':
+      description: Response atrribute value
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../../components/response.yaml#/ResponseAttributeValue'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      response:
+                        $ref: '../../../components/response.yaml#/Response'
+                      attribute:
+                        $ref: '../../../components/response.yaml#/ResponseAttribute'
+patch:
+  description: Update response attribute value
+  tags:
+    - integration
+  parameters:
+    - $ref: '../../../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'response',
+              'attribute'
+          ]
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            value:
+              description: value must be numeric if attribute type is 'numeric'
+              type: string
+          type: object
+  responses:
+    '200':
+      description: Updated response attribute value
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../../components/response.yaml#/ResponseAttributeValue'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      response:
+                        $ref: '../../../components/response.yaml#/Response'
+                      attribute:
+                        $ref: '../../../components/response.yaml#/ResponseAttribute'
+delete:
+  description: Delete response attribute value
+  tags:
+    - integration
+  parameters:
+    - $ref: '../../../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Deleted response attribute value
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/response.yaml#/ResponseAttributeValue'

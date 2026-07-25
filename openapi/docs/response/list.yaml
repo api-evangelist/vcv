@@ -1,0 +1,220 @@
+get:
+  description: Get responses list
+  tags:
+    - response
+  parameters:
+    - $ref: '../components/parameters.yaml#/pagination_page'
+    - $ref: '../components/parameters.yaml#/pagination_page_size'
+    - $ref: '../components/parameters.yaml#/sort_order'
+    - name: sort[by]
+      in: query
+      description: sort field
+      required: false
+      schema:
+        type: string
+        default: 'id'
+        enum: [
+            'id',
+            'candidate',
+            'email',
+            'phone',
+            'vacancy',
+            'vacancyLanguage',
+            'creator',
+            'date_sent',
+            'created_at',
+            'rating',
+            'response_status_id',
+            'response_source_id',
+            'response_attribute'
+        ]
+    - name: sort[code]
+      in: query
+      description: |
+        Only applicable if sort[by]=response_attribute.
+        Sort by response attribute value, code must be equal to "code" field of response attribute, see [/api/v3/response-attributes](#/integration/get_api_v3_response_attributes).
+        See values: [/api/v3/response-attribute-values](#/integration/get_api_v3_response_attribute_values)
+      required: false
+      schema:
+        type: string
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'vacancy',
+              'vacancy.user',
+              'vacancy.userName',
+              'vacancy.user.userName',
+              'vacancy.language',
+              'vacancy.company',
+              'candidate',
+              'candidate.name',
+              'candidate.phone',
+              'source',
+              'status',
+              'statusHistory',
+              'interview',
+              'interview.interviewRefusal',
+              'comments',
+              'comments.user',
+              'comments.userName',
+              'tags',
+              'attributeValues',
+              'attributeValues.attribute',
+              'invite',
+              'video',
+              'survey',
+              'survey.records',
+              'survey.questions',
+              'talentqCandidate',
+              'resumes',
+          ]
+    - $ref: '../components/parameters.yaml#/filter_id'
+    - $ref: '../components/parameters.yaml#/filter_vacancy_id'
+    - $ref: '../components/parameters.yaml#/filter_response_status_id'
+    - $ref: '../components/parameters.yaml#/filter_created_at_from'
+    - $ref: '../components/parameters.yaml#/filter_created_at_to'
+    - $ref: '../components/parameters.yaml#/filter_vacancy_user_id'
+    - name: filter[candidate_id]
+      in: query
+      description: candidate id filter
+      required: false
+      schema:
+        oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+    - name: filter[external_id]
+      in: query
+      description: External id filter
+      required: false
+      schema:
+        oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+    - name: filter[sent]
+      in: query
+      description: Sent filter
+      required: false
+      schema:
+        type: boolean
+    - name: filter[vacancy][language_id]
+      in: query
+      description: vacancy language id filter
+      required: false
+      schema:
+        oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+    - name: filter[tag_id]
+      in: query
+      description: response tag id filter
+      required: false
+      schema:
+        oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+    - name: filter[date_sent][from]
+      in: query
+      description: date sent filter from
+      required: false
+      schema:
+        type: string
+        format: date-time
+    - name: filter[date_sent][to]
+      in: query
+      description: date sent filter to
+      required: false
+      schema:
+        type: string
+        format: date-time
+    - name: fields[]
+      in: query
+      description: Fields to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'token', 'is_demo', 'agreed_at' ]
+  responses:
+    '200':
+      description: list of responses
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  responses:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '../components/response.yaml#/Response'
+                        - type: object
+                          properties:
+                            candidate:
+                              allOf:
+                                - $ref: '../components/candidate.yaml#/Candidate'
+                                - type: object
+                                  properties:
+                                    name:
+                                      $ref: '../components/candidate.yaml#/CandidateName'
+                                    phone:
+                                      $ref: '../components/candidate.yaml#/CandidatePhone'
+                            source:
+                              $ref: '../components/response.yaml#/ResponseSource'
+                            _embedded:
+                              type: object
+                              properties:
+                                status:
+                                  $ref: '../components/response.yaml#/ResponseStatus'
+                                comments:
+                                  type: array
+                                  items:
+                                    $ref: '../components/response.yaml#/ResponseComment'
+                                vacancy:
+                                  $ref: '../components/vacancy.yaml#/Vacancy'
+                                interview:
+                                  $ref: '../components/invite.yaml#/Interview'
+            type: object

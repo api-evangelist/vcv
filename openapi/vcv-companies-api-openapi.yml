@@ -1,0 +1,250 @@
+openapi: 3.0.1
+info:
+  title: VCV chatbot companies API
+  description: open api
+  version: v3
+servers:
+- url: https://my.vcv.ai
+- url: https://my.vcv.ru
+- url: '{hostname}'
+  variables:
+    hostname:
+      default: http://localhost:8080
+security:
+- bearerAuth: []
+tags:
+- name: companies
+paths:
+  /api/v3/companies/search:
+    get:
+      description: Get companies list with search and pagination
+      tags:
+      - companies
+      parameters:
+      - name: page
+        in: query
+        description: page number
+        required: false
+        schema:
+          type: integer
+          default: 1
+      - name: limit
+        in: query
+        description: page size
+        required: false
+        schema:
+          type: integer
+          default: 20
+      - name: sort[order]
+        in: query
+        description: sort order
+        required: false
+        schema:
+          type: string
+          default: desc
+          enum:
+          - asc
+          - desc
+      - name: sort[by]
+        in: query
+        description: Sort field
+        required: false
+        schema:
+          type: string
+          default: id
+          enum:
+          - id
+          - name
+          - date_created
+          - active
+      - name: filter[id]
+        in: query
+        description: Company ID filter
+        required: false
+        schema:
+          type: integer
+      - name: filter[name]
+        in: query
+        description: Company name filter (partial match)
+        required: false
+        schema:
+          type: string
+      - name: filter[active]
+        in: query
+        description: Company active status filter
+        required: false
+        schema:
+          type: boolean
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - limits
+            - geo
+            - language
+            - responseStatuses
+      responses:
+        '200':
+          description: List of companies
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      companies:
+                        type: array
+                        items:
+                          allOf:
+                          - type: object
+                            properties:
+                              id:
+                                type: integer
+                              date_created:
+                                type: string
+                                format: date-time
+                              active:
+                                type: boolean
+                              name:
+                                type: string
+                              phone:
+                                type: string
+                                nullable: true
+                              geo_id:
+                                type: integer
+                                nullable: true
+                              language_id:
+                                type: integer
+                                nullable: true
+                              company_source_id:
+                                type: integer
+                                nullable: true
+                              time_format:
+                                type: string
+                                nullable: true
+                              domain_prefix:
+                                type: string
+                                nullable: true
+                              domain_prefix_previous:
+                                type: string
+                                nullable: true
+                              logo_url:
+                                type: string
+                                nullable: true
+                              invite_logo_url:
+                                type: string
+                                nullable: true
+                              is_permanent_response_link:
+                                type: boolean
+                              is_test:
+                                type: boolean
+                              is_approval_needed:
+                                type: boolean
+                              is_videoresume:
+                                type: boolean
+                              is_onboarding_enabled:
+                                type: boolean
+                              is_password_expiry:
+                                type: boolean
+                              is_unique_password:
+                                type: boolean
+                              expired_at:
+                                type: string
+                                format: date-time
+                                nullable: true
+                          - type: object
+                            properties:
+                              limits:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                  date_created:
+                                    type: string
+                                    format: date-time
+                                  active:
+                                    type: boolean
+                                  user_id:
+                                    type: integer
+                                  vacancy_limit:
+                                    type: integer
+                                    nullable: true
+                                  response_limit:
+                                    type: integer
+                                    nullable: true
+                                  response_balance:
+                                    type: integer
+                                    nullable: true
+                                  company_id:
+                                    type: integer
+                              geo:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                  name:
+                                    type: string
+                                  code:
+                                    type: string
+                              language:
+                                type: object
+                                properties:
+                                  id:
+                                    type: integer
+                                  name:
+                                    type: string
+                                  code:
+                                    type: string
+                              responseStatuses:
+                                type: array
+                                items:
+                                  type: object
+                                  properties:
+                                    id:
+                                      type: integer
+                                    name:
+                                      type: string
+                                    color:
+                                      type: string
+                                    company_id:
+                                      type: integer
+                type: object
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: token

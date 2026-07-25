@@ -1,0 +1,27 @@
+get:
+  description: Get response event detail
+  tags:
+    - response
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+            'vacancy',
+            'response',
+            'user',
+            'user.userName',
+          ]
+  responses:
+    '200':
+      description: Response event
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/response.yaml#/ResponseEvent'

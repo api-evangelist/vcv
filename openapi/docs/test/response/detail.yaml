@@ -1,0 +1,83 @@
+get:
+  description: Get response tests list
+  tags:
+    - test
+  parameters:
+    - name: id
+      in: path
+      description: Id
+      required: true
+      schema:
+        type: integer
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'questions',
+              'questions.answers',
+              'questions.media',
+              'screenshots',
+              'result',
+              'questions.answers.candidateAnswers'
+          ]
+    - name: fields[]
+      in: query
+      description: Fields to retrieve
+      required: false
+      style: deepObject
+      explode: true
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'time_limit',
+              'date_start',
+              'date_end',
+              'question_page_limit',
+              'is_print_screen',
+          ]
+  responses:
+    '200':
+      description: Response test
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/test.yaml#/Test'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      questions:
+                        type: array
+                        items:
+                          allOf:
+                            - $ref: '../../components/test.yaml#/TestQuestion'
+                            - type: object
+                              properties:
+                                _embedded:
+                                  type: object
+                                  properties:
+                                    answers:
+                                      type: array
+                                      items:
+                                        allOf:
+                                          - $ref: '../../components/test.yaml#/TestAnswer'
+                                          - type: object
+                                            properties:
+                                              _embedded:
+                                                type: object
+                                                properties:
+                                                  candidate_answers:
+                                                    type: array
+                                                    items:
+                                                      $ref: '../../components/test.yaml#/TestCandidateAnswer'
+                                    media:
+                                      $ref: '../../components/test.yaml#/TestQuestionMedia'

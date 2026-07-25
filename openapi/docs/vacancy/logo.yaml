@@ -1,0 +1,48 @@
+post:
+  description: Update vacancy logo
+  tags:
+    - vacancy
+  parameters:
+    - name: vacancy_id
+      in: path
+      description: Vacancy id
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    required: true
+    content:
+      multipart/form-data:
+        schema:
+          required:
+            - logo
+          properties:
+            logo:
+              type: string
+              format: binary
+          type: object
+  responses:
+    '200':
+      description: vacancy
+      content:
+        application/json:
+          schema:
+            $ref: '../components/vacancy.yaml#/Vacancy'
+delete:
+  description: Delete vacancy logo
+  tags:
+    - vacancy
+  parameters:
+    - name: vacancy_id
+      in: path
+      description: Vacancy id
+      required: true
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: Vacancy without logo
+      content:
+        application/json:
+          schema:
+            $ref: '../components/vacancy.yaml#/Vacancy'

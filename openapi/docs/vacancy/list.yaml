@@ -1,0 +1,232 @@
+get:
+  description: Get vacancies list
+  tags:
+    - vacancy
+  parameters:
+    - $ref: '../components/parameters.yaml#/pagination_page'
+    - $ref: '../components/parameters.yaml#/pagination_page_size'
+    - $ref: '../components/parameters.yaml#/sort_order'
+    - name: sort[by]
+      in: query
+      description: sort field
+      required: false
+      schema:
+        type: string
+        default: 'id'
+        enum: [
+            'id',
+            'created_at',
+            'title',
+            'sent_responses_count'
+        ]
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'user', 'language', 'permissions', 'modules', 'countries', 'user.userName' ]
+    - $ref: '../components/parameters.yaml#/filter_id'
+    - $ref: '../components/parameters.yaml#/filter_user_id'
+    - $ref: '../components/parameters.yaml#/filter_created_at_from'
+    - $ref: '../components/parameters.yaml#/filter_created_at_to'
+    - $ref: '../components/parameters.yaml#/filter_active'
+    - name: filter[title]
+      in: query
+      description: vacancy title filter
+      required: false
+      schema:
+        type: string
+    - name: filter[stages]
+      in: query
+      description: vacancy stages filter
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: ['survey', 'test', 'videointerview']
+    - name: fields[]
+      in: query
+      description: Fields to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'published',
+              'company_id',
+              'description',
+              'is_private',
+              'is_resume_required',
+              'video_link',
+              'is_disable_record_videointerview',
+              'logo_url',
+              'social_logo_url',
+              'is_video_landing',
+              'disable_duplicate_responses',
+              'is_demo',
+              'is_resume_mandatory',
+              'is_permanent_response_link',
+              'sent_responses_count',
+              'new_responses_count',
+              'has_admin_access'
+          ]
+  responses:
+    '200':
+      description: list of vacancies
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  vacancies:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '../components/vacancy.yaml#/Vacancy'
+                        - type: object
+                          properties:
+                            language:
+                              $ref: '../components/common.yaml#/Language'
+                            _embedded:
+                              type: object
+                              properties:
+                                user:
+                                  $ref: '../components/company.yaml#/User'
+                                permissions:
+                                  type: array
+                                  items:
+                                    $ref: '../components/vacancy.yaml#/Permission'
+                                modules:
+                                  type: array
+                                  items:
+                                    $ref: '../components/vacancy.yaml#/VacancyModule'
+                                countries:
+                                  type: array
+                                  items:
+                                    $ref: '../components/common.yaml#/Country'
+                                landingUrlHistory:
+                                  type: array
+                                  items:
+                                    $ref: '../components/vacancy.yaml#/VacancyUrlHistory'
+            type: object
+post:
+  description: Create vacancy
+  tags:
+    - vacancy
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            description:
+              type: string
+            title:
+              type: string
+            countries:
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+              type: array
+            language_id:
+              type: integer
+            active:
+              type: boolean
+            published:
+              type: boolean
+          type: object
+  responses:
+    '200':
+      description: Created vacancy
+      content:
+        application/json:
+          schema:
+            $ref: '../components/vacancy.yaml#/Vacancy'
+delete:
+  description: Delete vacancies list
+  tags:
+    - vacancy
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            vacancies:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+          type: object
+  responses:
+    '200':
+      description: deleted vacancy
+      content:
+        application/json:
+          schema:
+            $ref: '../components/vacancy.yaml#/Vacancy'
+patch:
+  description: Update vacancies list
+  tags:
+    - vacancy
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            vacancies:
+              type: array
+              items:
+                type: object
+                properties:
+                  active:
+                    type: boolean
+                  id:
+                    type: integer
+          type: object
+  responses:
+    '200':
+      description: Updated vacancies
+      content:
+        application/json:
+          schema:
+            $ref: '../components/vacancy.yaml#/Vacancy'

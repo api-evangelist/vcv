@@ -1,0 +1,87 @@
+get:
+  description: Get tag
+  tags:
+    - tags
+  parameters:
+    - $ref: '../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'user' ]
+  responses:
+    '200':
+      description: Tag
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../components/tag.yaml#/Tag'
+              - type: object
+            properties:
+              _embedded:
+                type: object
+                properties:
+                  user:
+                    $ref: '../components/company.yaml#/User'
+patch:
+  description: Update tag
+  parameters:
+    - $ref: '../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'user' ]
+  tags:
+    - tags
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            name:
+              type: string
+            sort_order:
+              type: integer
+            color:
+              type: string
+              nullable: true
+          type: object
+  responses:
+    '200':
+      description: Updated tag
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../components/tag.yaml#/Tag'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      user:
+                        $ref: '../components/company.yaml#/User'
+delete:
+  description: Delete tag
+  tags:
+    - tags
+  parameters:
+    - $ref: '../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Deleted tag
+      content:
+        application/json:
+          schema:
+            $ref: '../components/tag.yaml#/Tag'

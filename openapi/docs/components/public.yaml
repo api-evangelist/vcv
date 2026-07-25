@@ -1,0 +1,95 @@
+PublicInterview:
+  properties:
+    id:
+      type: integer
+    date_create:
+      type: string
+      format: date-time
+    token:
+      type: string
+    interview_stage_id:
+      type: integer
+    candidate_id:
+      type: integer
+    candidate:
+      allOf:
+        - $ref: '../components/candidate.yaml#/Candidate'
+        - type: object
+          properties:
+            name:
+              $ref: '../components/candidate.yaml#/CandidateName'
+            phone:
+              $ref: '../components/candidate.yaml#/CandidatePhone'
+    _embedded:
+      type: object
+      properties:
+        publicVacancy:
+          $ref: '#/PublicVacancy'
+        publicResponse:
+          $ref: '#/PublicResponse'
+        stage:
+          $ref: './invite.yaml#/InterviewStage'
+  type: object
+PublicVacancy:
+  properties:
+    id:
+      type: integer
+    token:
+      type: string
+    title:
+      type: string
+    active:
+      type: boolean
+    language_id:
+      type: integer
+    language:
+      $ref: './common.yaml#/Language'
+    _embedded:
+      type: object
+      properties:
+        publicCompany:
+          $ref: '#/PublicCompany'
+  type: object
+PublicCompany:
+  properties:
+    id:
+      type: integer
+    name:
+      type: string
+    domain_prefix:
+      type: string
+    logo_url:
+      type: string
+    language:
+      $ref: './common.yaml#/Language'
+    language_id:
+      type: integer
+  type: object
+PublicResponse:
+  properties:
+    id:
+      type: integer
+    is_hidden_by_candidate:
+      type: boolean
+    interview_id:
+      type: integer
+    agreed_at:
+      type: string
+      format: date-time
+      nullable: true
+    utm_source:
+      type: string
+      nullable: true
+    utm_medium:
+      type: string
+      nullable: true
+    utm_campaign:
+      type: string
+      nullable: true
+    utm_content:
+      type: string
+      nullable: true
+    utm_term:
+      type: string
+      nullable: true
+  type: object

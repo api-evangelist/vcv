@@ -1,0 +1,78 @@
+get:
+  description: Get invites list
+  tags:
+    - invite
+  parameters:
+    - name: id
+      in: path
+      description: Id
+      required: true
+      schema:
+        type: integer
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'vacancy',
+              'candidate',
+              'candidate.name',
+              'candidate.phone',
+              'user',
+              'user.userName',
+              'response',
+              'status',
+              'interview',
+              'interviewRefusal'
+          ]
+    - name: fields[]
+      in: query
+      description: Fields to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'email_remind_video_interview_incomplete_sent',
+              'email_remind_sent',
+              'sms_remind_sent'
+          ]
+  responses:
+    '200':
+      description: Invite detail
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../components/invite.yaml#/Invite'
+              - type: object
+                properties:
+                  candidate:
+                    allOf:
+                     - $ref: '../components/candidate.yaml#/Candidate'
+                     - type: object
+                       properties:
+                         name:
+                           $ref: '../components/candidate.yaml#/CandidateName'
+                         phone:
+                           $ref: '../components/candidate.yaml#/CandidatePhone'
+                  _embedded:
+                    type: object
+                    properties:
+                      vacancy:
+                        $ref: '../components/vacancy.yaml#/Vacancy'
+                      user:
+                        $ref: '../components/company.yaml#/User'
+                      response:
+                        $ref: '../components/response.yaml#/Response'
+                      status:
+                        $ref: '../components/invite.yaml#/InviteStatus'
+                      interview:
+                        $ref: '../components/invite.yaml#/Interview'
+                      interviewRefusal:
+                        $ref: '../components/invite.yaml#/InterviewRefusal'

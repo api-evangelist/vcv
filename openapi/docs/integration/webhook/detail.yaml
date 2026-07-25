@@ -1,0 +1,93 @@
+get:
+  description: Get company webhook detail
+  tags:
+    - webhook
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'user',
+          ]
+  responses:
+    '200':
+      description: Webhook
+      content:
+        application/json:
+          schema:
+            allOf:
+             - $ref: '../../components/integration.yaml#/Webhook'
+             - type: object
+               properties:
+                 _embedded:
+                   type: object
+                   properties:
+                     user:
+                       $ref: '../../components/company.yaml#/User'
+delete:
+  description: Delete webhook
+  tags:
+    - webhook
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Deleted webhook
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/integration.yaml#/Webhook'
+patch:
+  description: Update webhook
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'user',
+          ]
+  tags:
+    - webhook
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            secret:
+              type: string
+            url:
+              type: string
+            name:
+              type: string
+              nullable: true
+            active:
+              type: boolean
+          type: object
+  responses:
+    '200':
+      description: Updated webhook
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/integration.yaml#/Webhook'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      user:
+                        $ref: '../../components/company.yaml#/User'

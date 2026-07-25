@@ -1,0 +1,31 @@
+post:
+  description: Set chatbot interview property
+  parameters:
+    - $ref: '../components/parameters.yaml#/interview_id'
+  tags:
+    - chatbot
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            timezone:
+              type: string
+            variables:
+              type: array
+              items:
+                type: object
+                properties:
+                  code:
+                    type: string
+                  value:
+                    type: string
+          type: object
+  responses:
+    '200':
+      description: dialog
+      content:
+        application/json:
+          schema:
+            $ref: '../components/chatbot.yaml#/Dialog'

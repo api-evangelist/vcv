@@ -1,0 +1,13 @@
+get:
+  description: Get competence view
+  tags:
+    - vacancy
+  parameters:
+    - $ref: '../../../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Competence view
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/vacancy.yaml#/CompetenceView'

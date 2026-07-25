@@ -1,0 +1,39 @@
+Connector:
+  properties:
+    id:
+      type: integer
+    messenger_type:
+      type: integer
+      description: |
+        1 - Telegram
+    username:
+      type: string
+  type: object
+Vacancy:
+  properties:
+    id:
+      type: integer
+    connector_id:
+      type: integer
+    vacancy_id:
+      type: integer
+    survey_enabled:
+      type: boolean
+    registration_enabled:
+      type: boolean
+    description:
+      type: string
+  type: object
+Dialog:
+  properties:
+    id:
+      type: integer
+    scenario_id:
+      type: integer
+    state_id:
+      type: integer
+    status:
+      type: boolean
+    candidate_id:
+      type: boolean
+  type: object

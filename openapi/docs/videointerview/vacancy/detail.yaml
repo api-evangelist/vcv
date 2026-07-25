@@ -1,0 +1,119 @@
+get:
+  description: Get vacancy videointerview
+  tags:
+    - videointerview
+  parameters:
+    - name: id
+      in: path
+      description: Id
+      required: true
+      schema:
+        type: integer
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'questions', 'questions.video' ]
+  responses:
+    '200':
+      description: vacancy videointerview
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/videointerview.yaml#/VacancyVideointerview'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      questions:
+                        type: array
+                        items:
+                          allOf:
+                            - $ref: '../../components/videointerview.yaml#/VideointerviewQuestion'
+                            - type: object
+                              properties:
+                                _embedded:
+                                  type: object
+                                  properties:
+                                    video:
+                                      $ref: '../../components/videointerview.yaml#/Video'
+patch:
+  description: Update vacancy videointerview detail
+  tags:
+    - videointerview
+  parameters:
+    - name: id
+      in: path
+      description: Id
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            is_video_answer_enabled:
+              type: boolean
+            questions:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    nullable: true
+                  body:
+                    type: string
+                  answer_time:
+                    type: integer
+                  preparation_time:
+                    type: integer
+                  required:
+                    type: boolean
+                  sort_order:
+                    type: integer
+                  take_number:
+                    type: integer
+                  is_video_answer_enabled:
+                    type: boolean
+                  video_url:
+                    type: string
+                  video_title:
+                    type: string
+                  video_id:
+                    type: integer
+                    nullable: true
+          type: object
+  responses:
+    '200':
+      description: Detail vacancy videointerview
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/videointerview.yaml#/VacancyVideointerview'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      questions:
+                        type: array
+                        items:
+                          allOf:
+                            - $ref: '../../components/videointerview.yaml#/VideointerviewQuestion'
+                            - type: object
+                              properties:
+                                _embedded:
+                                  type: object
+                                  properties:
+                                    video:
+                                      $ref: '../../components/videointerview.yaml#/Video'

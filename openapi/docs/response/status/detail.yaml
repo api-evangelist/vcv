@@ -1,0 +1,94 @@
+get:
+  description: Get response status detail
+  tags:
+    - response
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'parent' ]
+  responses:
+    '200':
+      description: ResponseStatus
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/response.yaml#/ResponseStatus'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      parent:
+                        $ref: '../../components/response.yaml#/ResponseStatus'
+patch:
+  description: Update response status
+  tags:
+    - response
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'user', 'parent' ]
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            title:
+              type: string
+            active:
+              type: boolean
+            on_top:
+              type: boolean
+            sort_order:
+              type: integer
+            parent_id:
+              type: integer
+            id_compatibility:
+              type: integer
+            color:
+              type: string
+          type: object
+  responses:
+    '200':
+      description: Updated response status
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/response.yaml#/ResponseStatus'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      parent:
+                        $ref: '../../components/response.yaml#/ResponseStatus'
+delete:
+  description: Delete response status
+  tags:
+    - response
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Deleted response status
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/response.yaml#/ResponseStatus'

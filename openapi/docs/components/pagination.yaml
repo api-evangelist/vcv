@@ -1,0 +1,30 @@
+PaginationProperties:
+  type: object
+  properties:
+    _total_items:
+      type: integer
+    _page:
+      type: integer
+    _page_count:
+      type: integer
+    _links:
+      properties:
+        self:
+          type: object
+          properties:
+            href:
+              type: string
+              format: uri
+        next:
+          type: object
+          properties:
+            href:
+              type: string
+              format: uri
+        last:
+          type: object
+          properties:
+            href:
+              type: string
+              format: uri
+      type: object

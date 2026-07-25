@@ -1,0 +1,56 @@
+get:
+  description: Get countries list
+  tags:
+    - countries
+  parameters:
+    - $ref: '../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../components/parameters.yaml#/pagination_page_size'
+    - name: filter[code]
+      in: query
+      description: Country code filter
+      required: false
+      schema:
+        type: string
+  responses:
+    '200':
+      description: list of countries
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  countries:
+                    type: array
+                    items:
+                      $ref: '../../components/common.yaml#/Country'
+
+            type: object

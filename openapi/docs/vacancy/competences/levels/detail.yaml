@@ -1,0 +1,13 @@
+get:
+  description: Get competence level
+  tags:
+    - vacancy
+  parameters:
+    - $ref: '../../../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Competence level
+      content:
+        application/json:
+          schema:
+            $ref: '../../../components/vacancy.yaml#/CompetenceLevel'

@@ -1,0 +1,216 @@
+VideoResponse:
+  nullable: true
+  properties:
+    id:
+      type: integer
+    date_modified:
+      type: string
+      format: date-time
+    name:
+      type: string
+    video_status_id:
+      type: integer
+    video_response_partition_id:
+      type: integer
+    duration:
+      type: integer
+      nullable: true
+    original_extension:
+      type: string
+      nullable: true
+    format_list:
+      type: string
+      nullable: true
+    text:
+      type: string
+      nullable: true
+    hostname:
+      type: string
+    bucket:
+      type: string
+    original_file_size:
+      type: integer
+      nullable: true
+    token:
+      type: string
+    source:
+      type: string
+    preview:
+      type: string
+    has_image_preview:
+      type: string
+    is_visible:
+      type: string
+    is_local_files_cleared:
+      type: string
+    id_upload_status:
+      type: integer
+    stream_recording_name:
+      type: string
+      nullable: true
+  type: object
+Video:
+  nullable: true
+  properties:
+    id:
+      type: integer
+    date_modified:
+      type: string
+      format: date-time
+    name:
+      type: string
+    video_status_id:
+      type: integer
+    duration:
+      type: integer
+      nullable: true
+    original_extension:
+      type: string
+      nullable: true
+    extension:
+      type: string
+      nullable: true
+    hostname:
+      type: string
+    bucket:
+      type: string
+    size:
+      type: integer
+      nullable: true
+    original_size:
+      type: integer
+      nullable: true
+    token:
+      type: string
+    has_image_preview:
+      type: string
+    source:
+      type: string
+    preview:
+      type: string
+  type: object
+Partition:
+  properties:
+    id:
+      type: integer
+    response_id:
+      type: integer
+    max_time:
+      type: integer
+    name:
+      type: string
+    description:
+      type: string
+    sort_order:
+      type: integer
+    read_time:
+      type: integer
+    is_compulsory:
+      type: boolean
+    is_question_seen:
+      type: boolean
+    take_number:
+      type: integer
+    max_take_number:
+      type: integer
+    is_video_answer_enabled:
+      type: boolean
+    is_text_answer_enabled:
+      type: boolean
+    is_question_skipped:
+      type: boolean
+    date_show:
+      type: string
+      format: date-time
+      nullable: true
+    date_start_record:
+      type: string
+      format: date-time
+      nullable: true
+    is_blocked:
+      type: boolean
+    language_code:
+      type: string
+      nullable: true
+    question_video_id:
+      type: integer
+    question_video_title:
+      type: string
+    question_video_url:
+      type: string
+    is_question_media_seen:
+      type: boolean
+  type: object
+VideointerviewQuestion:
+  properties:
+    id:
+      type: integer
+    date_created:
+      type: string
+      format: date-time
+    vacancy_module_videointerview_id:
+      type: integer
+    title:
+      type: string
+    body:
+      type: string
+    answer_time:
+      type: integer
+    preparation_time:
+      type: integer
+    required:
+      type: boolean
+    sort_order:
+      type: integer
+    take_number:
+      type: integer
+    is_video_answer_enabled:
+      type: boolean
+    is_text_answer_enabled:
+      type: boolean
+    language_code:
+      type: string
+      nullable: true
+    video_id:
+      type: integer
+    video_title:
+      type: string
+    video_url:
+      type: string
+  type: object
+VacancyVideointerview:
+  properties:
+    id:
+      type: integer
+    vacancy_id:
+      type: integer
+    is_video_answer_enabled:
+      type: boolean
+    created_at:
+      type: string
+      format: date-time
+  type: object
+ResponseVideointerview:
+  properties:
+    id:
+      type: integer
+    response_id:
+      type: integer
+    is_converted:
+      type: boolean
+    is_finished:
+      type: boolean
+    active:
+      type: boolean
+    description:
+      type: string
+      nullable: true
+    date_start:
+      type: string
+      format: date-time
+      nullable: true
+    date_last_video_recorded:
+      type: string
+      format: date-time
+      nullable: true
+  type: object

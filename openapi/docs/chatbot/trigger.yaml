@@ -1,0 +1,18 @@
+post:
+  description: Activate chatbot trigger
+  parameters:
+    - $ref: '../components/parameters.yaml#/interview_id'
+  tags:
+    - chatbot
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            name:
+              type: string
+          type: object
+  responses:
+    '200':
+      description: empty answer

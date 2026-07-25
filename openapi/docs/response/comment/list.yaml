@@ -1,0 +1,120 @@
+get:
+  description: Get response comments list
+  tags:
+    - response
+  parameters:
+    - $ref: '../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../components/parameters.yaml#/pagination_page_size'
+    - $ref: '../../components/parameters.yaml#/sort_order'
+    - $ref: '../../components/parameters.yaml#/filter_id'
+    - $ref: '../../components/parameters.yaml#/filter_response_id'
+    - $ref: '../../components/parameters.yaml#/filter_user_id'
+    - name: filter[message]
+      in: query
+      description: Message body filter
+      required: false
+      schema:
+        type: string
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'user', 'response' ]
+  responses:
+    '200':
+      description: list of response comments
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  comments:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '../../components/response.yaml#/ResponseComment'
+                        - type: object
+                          properties:
+                            _embedded:
+                              type: object
+                              properties:
+                                user:
+                                  $ref: '../../components/company.yaml#/User'
+                                response:
+                                  $ref: '../../components/response.yaml#/Response'
+            type: object
+post:
+  description: Create response comment
+  tags:
+    - response
+  parameters:
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'response', 'user' ]
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            response_id:
+              type: integer
+            message:
+              type: string
+          type: object
+  responses:
+    '200':
+      description: Created comment
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/response.yaml#/ResponseComment'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      user:
+                        $ref: '../../components/company.yaml#/User'
+                      response:
+                        $ref: '../../components/response.yaml#/Response'

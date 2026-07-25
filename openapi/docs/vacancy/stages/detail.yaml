@@ -1,0 +1,70 @@
+get:
+  description: Get vacancy module stage detail
+  tags:
+    - vacancy
+  parameters:
+    - name: id_module
+      in: path
+      description: Module id
+      required: true
+      schema:
+        type: string
+    - name: vacancy_id
+      in: path
+      description: Vacancy id
+      required: true
+      schema:
+        type: integer
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'vacancy' ]
+  responses:
+    '200':
+      description: vacancy module stage
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/vacancy.yaml#/VacancyModuleStage'
+patch:
+  description: Update vacancy module stage
+  tags:
+    - vacancy
+  parameters:
+    - name: id_module
+      in: path
+      description: Module id
+      required: true
+      schema:
+        type: string
+    - name: vacancy_id
+      in: path
+      description: Vacancy id
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            name:
+              nullable: true
+              type: string
+            description:
+              nullable: true
+              type: string
+          type: object
+  responses:
+    '200':
+      description: Updated vacancy module stage
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/vacancy.yaml#/VacancyModuleStage'

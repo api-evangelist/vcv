@@ -1,0 +1,137 @@
+Vacancy:
+  properties:
+    id:
+      type: integer
+    token:
+      type: string
+    title:
+      type: string
+    active:
+      type: boolean
+    user_id:
+      type: integer
+    language_id:
+      type: integer
+    created_at:
+      type: string
+      format: date-time
+  type: object
+VacancyUrlHistory:
+  properties:
+    id:
+      type: integer
+    vacancy_id:
+      type: string
+    landing_url_path:
+      type: string
+  type: object
+VacancyModule:
+  properties:
+    id:
+      type: integer
+    id_module:
+      type: string
+    is_active:
+      type: boolean
+    vacancy_id:
+      type: integer
+  type: object
+VacancyModuleStage:
+  properties:
+    id:
+      type: integer
+    id_module:
+      type: string
+    name:
+      type: string
+      nullable: true
+    description:
+      type: string
+      nullable: true
+    minutes:
+      type: integer
+      nullable: true
+    vacancy_id:
+      type: integer
+  type: object
+Permission:
+  properties:
+    id:
+      type: integer
+    permission:
+      type: string
+    user_id:
+      type: integer
+    vacancy_id:
+      type: integer
+    date_created:
+      type: string
+      format: date-time
+  type: object
+CompetenceView:
+  properties:
+    id:
+      type: integer
+    title:
+      type: string
+  type: object
+CompetenceLevel:
+  properties:
+    id:
+      type: integer
+    min_value:
+      type: integer
+    max_value:
+      type: integer
+    title:
+      type: string
+  type: object
+VacancyCompetence:
+  properties:
+    id:
+      type: integer
+    title:
+      type: string
+    hint:
+      type: string
+      nullable: true
+    competence_view_id:
+      type: integer
+      description: >
+        See [/api/v3/competence-views](#/vacancy/get_api_v3_competence_levels)
+    competence_level_id:
+      type: integer
+      description: >
+        See [/api/v3/competence-levels](#/vacancy/get_api_v3_competence_views)
+    vacancy_id:
+      type: integer
+    sort_order:
+      type: integer
+  type: object
+RemindEmail:
+  properties:
+    id:
+      type: integer
+    vacancy_id:
+      type: integer
+    text:
+      type: string
+    header:
+      type: string
+    active:
+      type: boolean
+    type_id:
+      type: integer
+      enum: [ 1, 2, 3 ]
+      description: >
+        Type ids:
+          * `1` - Interview remind (3 day reminder)
+          * `2` - Videointerview remind (2 hour reminder)
+          * `3` - Interview completed notification (Application confirmation)
+    created_at:
+      type: string
+      format: date-time
+    updated_at:
+      type: string
+      format: date-time
+  type: object

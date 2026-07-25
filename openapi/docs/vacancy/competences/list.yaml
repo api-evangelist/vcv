@@ -1,0 +1,130 @@
+get:
+  description: Get vacancy competences list
+  tags:
+    - vacancy
+  parameters:
+    - $ref: '../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../components/parameters.yaml#/pagination_page_size'
+    - $ref: '../../components/parameters.yaml#/sort_order'
+    - $ref: '../../components/parameters.yaml#/filter_id'
+    - $ref: '../../components/parameters.yaml#/filter_vacancy_id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'vacancy', 'level', 'view' ]
+  responses:
+    '200':
+      description: list of vacancy competences
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  competences:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '../../components/vacancy.yaml#/VacancyCompetence'
+                        - type: object
+                          properties:
+                            _embedded:
+                              type: object
+                              properties:
+                                vacancy:
+                                  $ref: '../../components/vacancy.yaml#/Vacancy'
+                                level:
+                                  $ref: '../../components/vacancy.yaml#/CompetenceLevel'
+                                view:
+                                  $ref: '../../components/vacancy.yaml#/CompetenceView'
+            type: object
+post:
+  description: Create vacancy competence
+  tags:
+    - vacancy
+  parameters:
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'vacancy', 'level', 'view' ]
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            vacancy_id:
+              type: integer
+            competence_view_id:
+              type: integer
+              description: >
+                See [/api/v3/competence-views](#/vacancy/get_api_v3_competence_levels)
+            competence_level_id:
+              type: integer
+              description: >
+                See [/api/v3/competence-levels](#/vacancy/get_api_v3_competence_views)
+            sort_order:
+              type: integer
+            title:
+              type: string
+            hint:
+              type: string
+              nullable: true
+          type: object
+  responses:
+    '200':
+      description: Created competence
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/vacancy.yaml#/VacancyCompetence'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      vacancy:
+                        $ref: '../../components/vacancy.yaml#/Vacancy'
+                      level:
+                        $ref: '../../components/vacancy.yaml#/CompetenceLevel'
+                      view:
+                        $ref: '../../components/vacancy.yaml#/CompetenceView'

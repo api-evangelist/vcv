@@ -1,0 +1,11 @@
+get:
+  description: Get languages list
+  responses:
+    '200':
+      description: Languages
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties:
+              $ref: '../components/common.yaml#/Language'

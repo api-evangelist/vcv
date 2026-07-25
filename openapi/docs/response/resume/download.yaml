@@ -1,0 +1,50 @@
+get:
+  description: Download response resume file
+  tags:
+    - response
+  parameters:
+    - in: path
+      name: responseId
+      description: Response id
+      required: true
+      schema:
+        type: integer
+    - in: path
+      name: resumeId
+      description: Resume id
+      required: true
+      schema:
+        type: integer
+    - in: query
+      name: token
+      description: User access token
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: PDF file, PNG image, JPG image, etc
+      content:
+        application/pdf:
+          schema:
+            type: string
+            format: binary
+        image/png:
+          schema:
+            type: string
+            format: binary
+        image/jpeg:
+          schema:
+            type: string
+            format: binary
+      headers:
+        Content-Disposition:
+          schema:
+            type: string
+            example: attachment; filename="name.pdf"
+    '403':
+      description: Forbidden
+    '404':
+      description: Response or resume not found, or invalid URL
+
+

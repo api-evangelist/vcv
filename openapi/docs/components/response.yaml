@@ -1,0 +1,209 @@
+ResponseSource:
+  properties:
+    id:
+      type: integer
+    title:
+      type: string
+  type: object
+ResponseStatus:
+  properties:
+    id:
+      type: integer
+    title:
+      type: string
+    active:
+      type: boolean
+    on_top:
+      type: boolean
+    sort_order:
+      type: integer
+    company_id:
+      type: integer
+      nullable: true
+    parent_id:
+      type: integer
+      nullable: true
+    id_compatibility:
+      type: integer
+    color:
+      type: string
+    is_base:
+      type: boolean
+    is_hidden:
+      type: boolean
+    is_system:
+      type: boolean
+    is_stage:
+      type: boolean
+  type: object
+ResponseComment:
+  properties:
+    id:
+      type: integer
+    created_at:
+      type: string
+      format: date-time
+    message:
+      type: string
+    response_id:
+      type: integer
+    user_id:
+      type: integer
+  type: object
+Response:
+  properties:
+    id:
+      type: integer
+    vacancy_id:
+      type: integer
+    candidate_id:
+      type: integer
+    response_status_id:
+      type: integer
+    response_source_id:
+      type: integer
+    interview_id:
+      type: integer
+    external_id:
+      type: string
+    is_hidden_by_candidate:
+      type: boolean
+    created_at:
+      type: string
+      format: date-time
+    agreed_at:
+      type: string
+      format: date-time
+      nullable: true
+    date_sent:
+      type: string
+      format: date-time
+      nullable: true
+    resume_url:
+      type: string
+      nullable: true
+    second_resume_url:
+      type: string
+      nullable: true
+    social_source:
+      type: string
+      nullable: true
+    utm_source:
+      type: string
+      nullable: true
+    utm_medium:
+      type: string
+      nullable: true
+    utm_campaign:
+      type: string
+      nullable: true
+    utm_content:
+      type: string
+      nullable: true
+    utm_term:
+      type: string
+      nullable: true
+    is_paid:
+      type: boolean
+      nullable: true
+  type: object
+ResponseStatusEmailTemplate:
+  properties:
+    id:
+      type: integer
+    vacancy_id:
+      type: integer
+    template_header:
+      type: string
+    template_text:
+      type: string
+    title:
+      type: string
+    active:
+      type: boolean
+    manual:
+      type: boolean
+    response_status_id:
+      type: integer
+  type: object
+ResponseAttributeValue:
+  properties:
+    id:
+      type: integer
+    response_id:
+      type: integer
+    response_attribute_id:
+      type: integer
+    value:
+      type: string
+    created_at:
+      type: string
+      format: date-time
+    updated_at:
+      type: string
+      format: date-time
+  type: object
+ResponseAttribute:
+  properties:
+    id:
+      type: integer
+    sort_order:
+      type: integer
+    type:
+      type: string
+      enum: [ 'text', 'url', 'html', 'numeric' ]
+    title:
+      type: string
+    code:
+      type: string
+    created_at:
+      type: string
+      format: date-time
+    updated_at:
+      type: string
+      format: date-time
+  type: object
+ResponseEvent:
+  properties:
+    id:
+      type: integer
+    sort_order:
+      type: integer
+    type:
+      type: integer
+      enum: [ 1, 2 ]
+      description: >
+        Type ids:
+          * `1` - Response Status Changed
+          * `2` - Email sent
+          * `3` - Agreement signed
+          * `4` - Interview stage started
+          * `5` - Interview stage finished
+    vacancy_id:
+      type: integer
+      nullable: true
+    response_id:
+      type: integer
+      nullable: true
+    company_id:
+      type: integer
+    user_id:
+      type: integer
+      nullable: true
+    meta:
+      type: object
+    created_at:
+      type: string
+      format: date-time
+  type: object
+ResponseResume:
+  properties:
+    id:
+      type: integer
+    response_id:
+      type: integer
+    filename:
+      type: string
+    resume_url:
+      type: string
+  type: object

@@ -1,0 +1,49 @@
+post:
+  description: Upload response resume
+  tags:
+    - response
+  parameters:
+    - in: path
+      name: vacancyToken
+      description: Vacancy public url token
+      required: true
+      schema:
+        type: string
+    - in: path
+      name: responseToken
+      description: Response public url token
+      required: true
+      schema:
+        type: string
+  requestBody:
+    required: true
+    content:
+      multipart/form-data:
+        schema:
+          type: object
+          properties:
+            resume_url:
+              type: string
+              format: uri
+              description: URL of the resume (optional, must start with http or https).
+              pattern: ^https?://([a-z0-9-]+\.)+[a-z]{2,}/(resume|cv|profile|candidate)/[a-z0-9-]+
+            resume:
+              type: string
+              format: binary
+              description: Resume file (optional, PDF, DOC, or DOCX).
+          required: [ ]
+  responses:
+    '200':
+      description: Resume uploaded successfully
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  resume:
+                    $ref: '../../components/response.yaml#/ResponseResume'
+                  response:
+                    $ref: '../../components/response.yaml#/Response'

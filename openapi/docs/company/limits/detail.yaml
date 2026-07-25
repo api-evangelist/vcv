@@ -1,0 +1,119 @@
+get:
+  description: Get company limits
+  tags:
+    - limits
+  parameters:
+    - name: company_id
+      in: path
+      description: Company id
+      required: true
+      schema:
+        type: integer
+    - name: fields[]
+      in: query
+      description: Additional fields
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'vacancyCount', 'userCount' ]
+  responses:
+    '200':
+      description: Limits
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/company.yaml#/CompanyLimits'
+patch:
+  description: Update company limits
+  tags:
+    - limits
+  parameters:
+    - name: company_id
+      in: path
+      description: company id
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            vacancy_limit:
+              type: integer
+              nullable: true
+            response_limit:
+              type: integer
+              nullable: true
+            response_balance:
+              type: integer
+              nullable: true
+            paid_from:
+              nullable: true
+              type: string
+              format: date-time
+            paid_to:
+              nullable: true
+              type: string
+              format: date-time
+            company_id:
+              type: integer
+            sms_balance:
+              type: integer
+            is_sms_unlimited:
+              type: boolean
+            is_sms_enabled:
+              type: boolean
+            action_history:
+              type: boolean
+            analytics:
+              type: boolean
+            api:
+              type: boolean
+            basic_test:
+              type: boolean
+            chatbot:
+              type: boolean
+            competences:
+              type: boolean
+            custom_agreements:
+              type: boolean
+            emotions:
+              type: boolean
+            extended_test:
+              type: boolean
+            fullhd_response_balance:
+              nullable: true
+              type: integer
+            hd_response_balance:
+              nullable: true
+              type: integer
+            integration:
+              type: boolean
+            extra_response_balance:
+              type: integer
+            password_policy:
+              type: boolean
+            personal_manager:
+              type: boolean
+            responses_lifetime:
+              type: integer
+            survey:
+              type: boolean
+            survey_screening:
+              type: boolean
+            vacancy_permissions:
+              type: boolean
+            videointerview:
+              type: boolean
+          type: object
+  responses:
+    '200':
+      description: Updated company limits
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/company.yaml#/CompanyLimits'

@@ -1,0 +1,49 @@
+get:
+  description: Get response survey detail
+  tags:
+    - survey
+  parameters:
+    - name: id
+      in: path
+      description: Id
+      required: true
+      schema:
+        type: integer
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'questions', 'questions.answers', 'questions.record' ]
+  responses:
+    '200':
+      description: response survey
+      content:
+        application/json:
+          schema:
+            allOf:
+             - $ref: '../components/survey.yaml#/Survey'
+             - type: object
+               properties:
+                 _embedded:
+                   type: object
+                   properties:
+                     questions:
+                       type: array
+                       items:
+                         allOf:
+                          - $ref: '../components/survey.yaml#/SurveyQuestion'
+                          - type: object
+                            properties:
+                              _embedded:
+                                type: object
+                                properties:
+                                  record:
+                                    $ref: '../components/survey.yaml#/SurveyRecord'
+                                  answers:
+                                    type: array
+                                    items:
+                                      $ref: '../components/survey.yaml#/SurveyAnswer'

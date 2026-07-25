@@ -1,0 +1,55 @@
+get:
+  description: Get response attribute detail
+  tags:
+    - integration
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Response atrribute
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/response.yaml#/ResponseAttribute'
+patch:
+  description: Update response attribute
+  tags:
+    - integration
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            sort_order:
+              type: integer
+            code:
+              type: string
+            title:
+              type: string
+            type:
+              type: string
+              enum: [ 'text', 'url', 'html', 'numeric' ]
+          type: object
+  responses:
+    '200':
+      description: Updated response attribute
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/response.yaml#/ResponseAttribute'
+delete:
+  description: Delete response attribute
+  tags:
+    - integration
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Deleted response attribute
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/response.yaml#/ResponseAttribute'

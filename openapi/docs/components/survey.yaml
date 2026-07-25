@@ -1,0 +1,153 @@
+SurveyTemplateAnswer:
+  properties:
+    id:
+      type: integer
+    date_created:
+      type: string
+      format: date-time
+    question_id:
+      type: integer
+    type:
+      type: string
+    content:
+      type: string
+    sort_order:
+      type: integer
+    is_dropout:
+      type: boolean
+  type: object
+SurveyTemplateQuestion:
+  properties:
+    id:
+      type: integer
+    date_created:
+      type: string
+      format: date-time
+    template_id:
+      type: integer
+    name:
+      type: string
+    type:
+      type: string
+    font_style:
+      type: string
+      nullable: true
+    description:
+      type: string
+    sort_order:
+      type: integer
+    is_indicated_dates:
+      type: boolean
+    is_required:
+      type: boolean
+    dropout_date_min:
+      type: string
+      format: date-time
+      nullable: true
+    dropout_date_max:
+      type: string
+      format: date-time
+      nullable: true
+  type: object
+SurveyAnswer:
+  properties:
+    id:
+      type: integer
+    date_created:
+      type: string
+      format: date-time
+    question_id:
+      type: integer
+    type:
+      type: string
+    content:
+      type: string
+    sort_order:
+      type: integer
+    is_dropout:
+      type: boolean
+  type: object
+SurveyRecord:
+  properties:
+    id:
+      type: integer
+    date_created:
+      type: string
+      format: date-time
+    survey_id:
+      type: integer
+    question_id:
+      type: integer
+    type:
+      type: string
+    content:
+      type: string
+    sort_order:
+      type: integer
+    is_dropped:
+      type: boolean
+    answer_ids:
+      type: string
+      nullable: true
+  type: object
+SurveyTemplate:
+  properties:
+    id:
+      type: integer
+    created_at:
+      type: string
+      format: date-time
+    vacancy_id:
+      type: integer
+  type: object
+SurveyQuestion:
+  properties:
+    id:
+      type: integer
+    date_created:
+      type: string
+      format: date-time
+    survey_id:
+      type: integer
+    name:
+      type: string
+    type:
+      type: string
+    font_style:
+      type: string
+      nullable: true
+    description:
+      type: string
+    sort_order:
+      type: integer
+    is_indicated_dates:
+      type: boolean
+    is_required:
+      type: boolean
+    dropout_date_min:
+      type: string
+      format: date-time
+      nullable: true
+    dropout_date_max:
+      type: string
+      format: date-time
+      nullable: true
+  type: object
+Survey:
+  properties:
+    id:
+      type: integer
+    created_at:
+      type: string
+      format: date-time
+    response_id:
+      type: integer
+    name:
+      type: string
+    description:
+      type: string
+    is_finished:
+      type: boolean
+    is_active:
+      type: boolean
+  type: object

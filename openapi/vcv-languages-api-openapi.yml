@@ -1,0 +1,49 @@
+openapi: 3.0.1
+info:
+  title: VCV chatbot Languages API
+  description: open api
+  version: v3
+servers:
+- url: https://my.vcv.ai
+- url: https://my.vcv.ru
+- url: '{hostname}'
+  variables:
+    hostname:
+      default: http://localhost:8080
+security:
+- bearerAuth: []
+tags:
+- name: Languages
+paths:
+  /api/v3/languages:
+    get:
+      description: Get languages list
+      responses:
+        '200':
+          description: Languages
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  $ref: '#/components/schemas/Language'
+      tags:
+      - Languages
+components:
+  schemas:
+    Language:
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+        bcp47_tag:
+          type: string
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: token

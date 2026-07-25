@@ -1,0 +1,254 @@
+get:
+  description: Get company webhooks list
+  tags:
+    - webhook
+  parameters:
+    - $ref: '../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../components/parameters.yaml#/pagination_page_size'
+    - $ref: '../../components/parameters.yaml#/sort_order'
+    - $ref: '../../components/parameters.yaml#/filter_id'
+    - $ref: '../../components/parameters.yaml#/filter_active'
+    - name: filter[event]
+      in: query
+      description: event type filter
+      required: false
+      schema:
+        type: string
+    - name: filter[name]
+      in: query
+      description: webhook name filter
+      required: false
+      schema:
+        type: string
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'user',
+          ]
+  responses:
+    '200':
+      description: list of company webhooks
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  webhooks:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '../../components/integration.yaml#/Webhook'
+                        - type: object
+                          properties:
+                            _embedded:
+                              type: object
+                              properties:
+                                user:
+                                  $ref: '../../components/company.yaml#/User'
+            type: object
+post:
+  description: Create company webhook
+  parameters:
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'user',
+          ]
+  tags:
+    - webhook
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            secret:
+              type: string
+            url:
+              type: string
+            name:
+              type: string
+              nullable: true
+            event:
+              type: string
+              enum: [
+                'response_status_changed',
+                'response_created',
+                'candidate_refused',
+                'response_comment_created',
+                'vacancy_created'
+              ]
+            active:
+              type: boolean
+          type: object
+  callbacks:
+    response_status_changed:
+      '{$request.body#/url}':
+        post:
+          parameters:
+            - in: header
+              name: Vcv-Signature
+              description: HMAC-SHA256 signature of the request body, using your webhook secret as the signing key
+              schema:
+                type: string
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    vacancy_id:
+                      type: integer
+                    response_id:
+                      type: integer
+                    old_status_id:
+                      type: integer
+                    new_status_id:
+                      type: integer
+          responses:
+            '200':
+              description: Returns this code if accept the callback
+    vacancy_created:
+      '{$request.body#/url}':
+        post:
+          parameters:
+            - in: header
+              name: Vcv-Signature
+              description: HMAC-SHA256 signature of the request body, using your webhook secret as the signing key
+              schema:
+                type: string
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: '../../components/vacancy.yaml#/Vacancy'
+          responses:
+            '200':
+              description: Returns this code if accept the callback
+    response_comment_created:
+      '{$request.body#/url}':
+        post:
+          parameters:
+            - in: header
+              name: Vcv-Signature
+              description: HMAC-SHA256 signature of the request body, using your webhook secret as the signing key
+              schema:
+                type: string
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  $ref: '../../components/response.yaml#/ResponseComment'
+          responses:
+            '200':
+              description: Returns this code if accept the callback
+    response_created:
+      '{$request.body#/url}':
+        post:
+          parameters:
+            - in: header
+              name: Vcv-Signature
+              description: HMAC-SHA256 signature of the request body, using your webhook secret as the signing key
+              schema:
+                type: string
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  allOf:
+                    - $ref: '../../components/response.yaml#/Response'
+          responses:
+            '200':
+              description: Returns this code if accept the callback
+    candidate_refused:
+      '{$request.body#/url}':
+        post:
+          parameters:
+            - in: header
+              name: Vcv-Signature
+              description: HMAC-SHA256 signature of the request body, using your webhook secret as the signing key
+              schema:
+                type: string
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    response_id:
+                      type: integer
+                    refusal:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        interview_id:
+                          type: integer
+                        reason:
+                          type: string
+                        description:
+                          type: string
+          responses:
+            '200':
+              description: Returns this code if accept the callback
+  responses:
+    '200':
+      description: Created webhook
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/integration.yaml#/Webhook'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      user:
+                        $ref: '../../components/company.yaml#/User'

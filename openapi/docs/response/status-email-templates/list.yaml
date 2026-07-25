@@ -1,0 +1,131 @@
+get:
+  description: Get response status email templates list
+  tags:
+    - vacancy
+  parameters:
+    - $ref: '../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../components/parameters.yaml#/pagination_page_size'
+    - $ref: '../../components/parameters.yaml#/sort_order'
+    - $ref: '../../components/parameters.yaml#/filter_id'
+    - $ref: '../../components/parameters.yaml#/filter_vacancy_id'
+    - $ref: '../../components/parameters.yaml#/filter_response_status_id'
+    - $ref: '../../components/parameters.yaml#/filter_active'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'vacancy',
+              'status',
+          ]
+  responses:
+    '200':
+      description: list of email templates
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  templates:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '../../components/response.yaml#/ResponseStatusEmailTemplate'
+                        - type: object
+                          properties:
+                            _embedded:
+                              type: object
+                              properties:
+                                vacancy:
+                                  $ref: '../../components/vacancy.yaml#/Vacancy'
+                                status:
+                                  $ref: '../../components/response.yaml#/ResponseStatus'
+            type: object
+post:
+  description: Create response status email template
+  parameters:
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'vacancy',
+              'status',
+          ]
+  tags:
+    - vacancy
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            template_header:
+              type: string
+            template_text:
+              type: string
+            title:
+              type: string
+            vacancy_id:
+              type: integer
+            response_status_id:
+              type: integer
+            manual:
+              type: boolean
+            active:
+              type: boolean
+          type: object
+  responses:
+    '200':
+      description: Created email
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/response.yaml#/ResponseStatusEmailTemplate'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      vacancy:
+                        $ref: '../../components/vacancy.yaml#/Vacancy'
+                      status:
+                        $ref: '../../components/response.yaml#/ResponseStatus'

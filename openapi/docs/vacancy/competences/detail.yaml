@@ -1,0 +1,103 @@
+get:
+  description: Get vacancy competence
+  tags:
+    - vacancy
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'vacancy', 'level', 'view' ]
+  responses:
+    '200':
+      description: Vacancy competence
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/vacancy.yaml#/VacancyCompetence'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      vacancy:
+                        $ref: '../../components/vacancy.yaml#/Vacancy'
+                      level:
+                        $ref: '../../components/vacancy.yaml#/CompetenceLevel'
+                      view:
+                        $ref: '../../components/vacancy.yaml#/CompetenceView'
+patch:
+  description: Update vacancy competence
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'vacancy', 'level', 'view' ]
+  tags:
+    - vacancy
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            competence_view_id:
+              type: integer
+              description: >
+                See [/api/v3/competence-views](#/vacancy/get_api_v3_competence_levels)
+            competence_level_id:
+              type: integer
+              description: >
+                See [/api/v3/competence-levels](#/vacancy/get_api_v3_competence_views)
+            sort_order:
+              type: integer
+            title:
+              type: string
+            hint:
+              type: string
+              nullable: true
+          type: object
+  responses:
+    '200':
+      description: Updated vacancy competence
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/vacancy.yaml#/VacancyCompetence'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      vacancy:
+                        $ref: '../../components/vacancy.yaml#/Vacancy'
+                      level:
+                        $ref: '../../components/vacancy.yaml#/CompetenceLevel'
+                      view:
+                        $ref: '../../components/vacancy.yaml#/CompetenceView'
+delete:
+  description: Delete vacancy competence
+  tags:
+    - vacancy
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Deleted vacancy competence
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/vacancy.yaml#/VacancyCompetence'

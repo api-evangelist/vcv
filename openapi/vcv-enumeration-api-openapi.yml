@@ -1,0 +1,277 @@
+openapi: 3.0.1
+info:
+  title: VCV chatbot enumeration API
+  description: open api
+  version: v3
+servers:
+- url: https://my.vcv.ai
+- url: https://my.vcv.ru
+- url: '{hostname}'
+  variables:
+    hostname:
+      default: http://localhost:8080
+security:
+- bearerAuth: []
+tags:
+- name: enumeration
+paths:
+  /api/v3/enumerations/:
+    get:
+      description: Get enumerations list
+      tags:
+      - enumeration
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - name: filter[company_id]
+        in: query
+        description: filter field
+        required: true
+      responses:
+        '200':
+          description: Enumerations list for company
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      enumerations:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/PaginationProperties'
+                          - properties:
+                              _embedded:
+                                type: object
+                                properties:
+                                  enumerations:
+                                    type: array
+                                    items:
+                                    - $ref: '#/components/schemas/Enumeration'
+                          - type: object
+  /api/v3/enumerations/{id}:
+    get:
+      description: Get enumeration details
+      tags:
+      - enumeration
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Enumeration detail
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Enumeration'
+    patch:
+      description: Update enumeration
+      tags:
+      - enumeration
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                title:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: Enumeration updated
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Enumeration'
+  /api/v3/enumerations/{id}/items:
+    get:
+      description: Get enumerations list
+      tags:
+      - enumeration
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - name: filter[company_id]
+        in: query
+        description: filter field
+        required: true
+      responses:
+        '200':
+          description: Enumerations list for company
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      enumeration_items:
+                        type: array
+                        items:
+                        - $ref: '#/components/schemas/EnumerationItem'
+components:
+  schemas:
+    EnumerationItem:
+      properties:
+        id:
+          type: integer
+        enumeration_id:
+          type: integer
+        value:
+          type: string
+        sort_order:
+          type: integer
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
+    PaginationProperties:
+      type: object
+      properties:
+        _total_items:
+          type: integer
+        _page:
+          type: integer
+        _page_count:
+          type: integer
+        _links:
+          properties:
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  format: uri
+            next:
+              type: object
+              properties:
+                href:
+                  type: string
+                  format: uri
+            last:
+              type: object
+              properties:
+                href:
+                  type: string
+                  format: uri
+          type: object
+    Enumeration:
+      properties:
+        id:
+          type: integer
+        company_id:
+          type: integer
+        title:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
+  parameters:
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
+    sort_order:
+      name: sort[order]
+      in: query
+      description: sort order
+      required: false
+      schema:
+        type: string
+        default: desc
+        enum:
+        - asc
+        - desc
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: token

@@ -1,0 +1,47 @@
+get:
+  description: Get response tag
+  tags:
+    - tags
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'user', 'tag', 'response' ]
+  responses:
+    '200':
+      description: Response tag
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/tag.yaml#/ResponseTag'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      user:
+                        $ref: '../../components/company.yaml#/User'
+                      tag:
+                        $ref: '../../components/tag.yaml#/Tag'
+                      response:
+                        $ref: '../../components/response.yaml#/Response'
+delete:
+  description: Delete response tag
+  tags:
+    - tags
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Deleted tag
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/tag.yaml#/ResponseTag'

@@ -1,0 +1,65 @@
+InviteStatus:
+  properties:
+    id:
+      type: integer
+    title:
+      type: string
+  type: object
+Interview:
+  properties:
+    id:
+      type: integer
+    date_create:
+      type: string
+      format: date-time
+    token:
+      type: string
+    interview_stage_id:
+      type: integer
+    candidate_id:
+      type: integer
+  type: object
+InterviewRefusal:
+  properties:
+    id:
+      type: integer
+    description:
+      type: string
+    reason:
+      type: integer
+    interview_id:
+      type: integer
+  type: object
+Invite:
+  properties:
+    id:
+      type: integer
+    vacancy_id:
+      type: integer
+    candidate_id:
+      type: integer
+    invite_status_id:
+      type: integer
+    interview_refusal_id:
+      type: integer
+    interview_id:
+      type: integer
+    is_hidden_by_candidate:
+      type: boolean
+    created_at:
+      type: string
+      format: date-time
+    updated_at:
+      type: string
+      format: date-time
+      nullable: true
+  type: object
+InterviewStage:
+  properties:
+    id:
+      type: integer
+    key:
+      type: string
+    title:
+      type: string
+  type: object

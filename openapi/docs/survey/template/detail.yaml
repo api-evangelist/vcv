@@ -1,0 +1,116 @@
+get:
+  description: Get survey template detail
+  tags:
+    - survey
+  parameters:
+    - name: id
+      in: path
+      description: Id
+      required: true
+      schema:
+        type: integer
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'questions', 'questions.answers' ]
+  responses:
+    '200':
+      description: Detail survey template
+      content:
+        application/json:
+          schema:
+            allOf:
+             - $ref: '../../components/survey.yaml#/SurveyTemplate'
+             - type: object
+               properties:
+                 _embedded:
+                   type: object
+                   properties:
+                     questions:
+                       type: array
+                       items:
+                         allOf:
+                          - $ref: '../../components/survey.yaml#/SurveyTemplateQuestion'
+                          - type: object
+                            properties:
+                              _embedded:
+                                type: object
+                                properties:
+                                  answers:
+                                    type: array
+                                    items:
+                                      $ref: '../../components/survey.yaml#/SurveyTemplateAnswer'
+patch:
+  description: Update survey template detail
+  tags:
+    - survey
+  parameters:
+    - name: id
+      in: path
+      description: Id
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            name:
+              type: string
+            description:
+              type: string
+            questions:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    nullable: true
+                  type:
+                    type: string
+                  sort_order:
+                    type: integer
+                  is_indicated_dates:
+                    type: boolean
+                  is_required:
+                    type: boolean
+                  dropout_date_max:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  dropout_date_min:
+                    type: string
+                    format: date-time
+                    nullable: true
+                  answers:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          nullable: true
+                        type:
+                          type: string
+                        content:
+                          type: string
+                        sort_order:
+                          type: integer
+                        is_dropout:
+                          type: boolean
+          type: object
+  responses:
+    '200':
+      description: Detail survey template
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/survey.yaml#/SurveyTemplate'

@@ -1,0 +1,77 @@
+get:
+  description: Get list of resumes attached to responses
+  tags:
+    - response
+  parameters:
+    - $ref: '../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../components/parameters.yaml#/pagination_page_size'
+    - $ref: '../../components/parameters.yaml#/sort_order'
+    - name: sort[by]
+      in: query
+      description: Sort field
+      required: false
+      schema:
+        type: string
+        default: 'created_at'
+        enum: [ 'id', 'response_id', 'created_at' ]
+    - $ref: '../../components/parameters.yaml#/filter_id'
+    - $ref: '../../components/parameters.yaml#/filter_response_id'
+    - $ref: '../../components/parameters.yaml#/filter_created_at_from'
+    - $ref: '../../components/parameters.yaml#/filter_created_at_to'
+    - $ref: '../../components/parameters.yaml#/filter_is_file'
+  responses:
+    '200':
+      description: List of response resumes
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                type: object
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+              _embedded:
+                type: object
+                properties:
+                  response_resumes:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '../../components/response.yaml#/ResponseResume'
+                        - type: object
+                          properties:
+                            is_file:
+                              type: boolean
+                            created_at:
+                              type: string
+                              format: date-time
+                            responseResumeUrl:
+                              type: string
+                              nullable: true
+                            responseSecondResumeUrl:
+                              type: string
+                              nullable: true

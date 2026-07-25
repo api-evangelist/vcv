@@ -1,0 +1,1520 @@
+openapi: 3.0.1
+info:
+  title: VCV chatbot response API
+  description: open api
+  version: v3
+servers:
+- url: https://my.vcv.ai
+- url: https://my.vcv.ru
+- url: '{hostname}'
+  variables:
+    hostname:
+      default: http://localhost:8080
+security:
+- bearerAuth: []
+tags:
+- name: response
+paths:
+  /api/v3/responses:
+    get:
+      description: Get responses list
+      tags:
+      - response
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - name: sort[by]
+        in: query
+        description: sort field
+        required: false
+        schema:
+          type: string
+          default: id
+          enum:
+          - id
+          - candidate
+          - email
+          - phone
+          - vacancy
+          - vacancyLanguage
+          - creator
+          - date_sent
+          - created_at
+          - rating
+          - response_status_id
+          - response_source_id
+          - response_attribute
+      - name: sort[code]
+        in: query
+        description: 'Only applicable if sort[by]=response_attribute.
+
+          Sort by response attribute value, code must be equal to "code" field of response attribute, see [/api/v3/response-attributes](#/integration/get_api_v3_response_attributes).
+
+          See values: [/api/v3/response-attribute-values](#/integration/get_api_v3_response_attribute_values)
+
+          '
+        required: false
+        schema:
+          type: string
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - vacancy.user
+            - vacancy.userName
+            - vacancy.user.userName
+            - vacancy.language
+            - vacancy.company
+            - candidate
+            - candidate.name
+            - candidate.phone
+            - source
+            - status
+            - statusHistory
+            - interview
+            - interview.interviewRefusal
+            - comments
+            - comments.user
+            - comments.userName
+            - tags
+            - attributeValues
+            - attributeValues.attribute
+            - invite
+            - video
+            - survey
+            - survey.records
+            - survey.questions
+            - talentqCandidate
+            - resumes
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_vacancy_id'
+      - $ref: '#/components/parameters/filter_response_status_id'
+      - $ref: '#/components/parameters/filter_created_at_from'
+      - $ref: '#/components/parameters/filter_created_at_to'
+      - $ref: '#/components/parameters/filter_vacancy_user_id'
+      - name: filter[candidate_id]
+        in: query
+        description: candidate id filter
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+      - name: filter[external_id]
+        in: query
+        description: External id filter
+        required: false
+        schema:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+      - name: filter[sent]
+        in: query
+        description: Sent filter
+        required: false
+        schema:
+          type: boolean
+      - name: filter[vacancy][language_id]
+        in: query
+        description: vacancy language id filter
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+      - name: filter[tag_id]
+        in: query
+        description: response tag id filter
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+      - name: filter[date_sent][from]
+        in: query
+        description: date sent filter from
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: filter[date_sent][to]
+        in: query
+        description: date sent filter to
+        required: false
+        schema:
+          type: string
+          format: date-time
+      - name: fields[]
+        in: query
+        description: Fields to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - token
+            - is_demo
+            - agreed_at
+      responses:
+        '200':
+          description: list of responses
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      responses:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/Response'
+                          - type: object
+                            properties:
+                              candidate:
+                                allOf:
+                                - $ref: '#/components/schemas/Candidate'
+                                - type: object
+                                  properties:
+                                    name:
+                                      $ref: '#/components/schemas/CandidateName'
+                                    phone:
+                                      $ref: '#/components/schemas/CandidatePhone'
+                              source:
+                                $ref: '#/components/schemas/ResponseSource'
+                              _embedded:
+                                type: object
+                                properties:
+                                  status:
+                                    $ref: '#/components/schemas/ResponseStatus'
+                                  comments:
+                                    type: array
+                                    items:
+                                      $ref: '#/components/schemas/ResponseComment'
+                                  vacancy:
+                                    $ref: '#/components/schemas/Vacancy'
+                                  interview:
+                                    $ref: '#/components/schemas/Interview'
+                type: object
+  /api/v3/responses/{id}:
+    get:
+      description: Get response detail
+      tags:
+      - response
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - vacancy.user
+            - vacancy.userName
+            - vacancy.user.userName
+            - vacancy.language
+            - vacancy.company
+            - candidate
+            - candidate.name
+            - candidate.phone
+            - source
+            - status
+            - statusHistory
+            - interview
+            - interview.interviewRefusal
+            - comments
+            - comments.user
+            - comments.userName
+            - tags
+            - attributeValues
+            - attributeValues.attribute
+            - invite
+            - video
+            - survey
+            - survey.records
+            - survey.questions
+            - talentqCandidate
+            - resumes
+      - name: fields[]
+        in: query
+        description: Fields to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - token
+            - is_demo
+            - agreed_at
+      responses:
+        '200':
+          description: Response detail
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - type: object
+                  properties:
+                    candidate:
+                      allOf:
+                      - $ref: '#/components/schemas/Candidate'
+                      - type: object
+                        properties:
+                          name:
+                            $ref: '#/components/schemas/CandidateName'
+                          phone:
+                            $ref: '#/components/schemas/CandidatePhone'
+                    source:
+                      $ref: '#/components/schemas/ResponseSource'
+                    _embedded:
+                      type: object
+                      properties:
+                        status:
+                          $ref: '#/components/schemas/ResponseStatus'
+                        comments:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/ResponseComment'
+                        vacancy:
+                          $ref: '#/components/schemas/Vacancy'
+                        interview:
+                          $ref: '#/components/schemas/Interview'
+                        invite:
+                          $ref: '#/components/schemas/Invite'
+    patch:
+      description: Update response
+      tags:
+      - response
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                response_status_id:
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: Updated response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+  /api/v3/response-comments:
+    get:
+      description: Get response comments list
+      tags:
+      - response
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_response_id'
+      - $ref: '#/components/parameters/filter_user_id'
+      - name: filter[message]
+        in: query
+        description: Message body filter
+        required: false
+        schema:
+          type: string
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - user
+            - response
+      responses:
+        '200':
+          description: list of response comments
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      comments:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/ResponseComment'
+                          - type: object
+                            properties:
+                              _embedded:
+                                type: object
+                                properties:
+                                  user:
+                                    $ref: '#/components/schemas/User'
+                                  response:
+                                    $ref: '#/components/schemas/Response'
+                type: object
+    post:
+      description: Create response comment
+      tags:
+      - response
+      parameters:
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - response
+            - user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                response_id:
+                  type: integer
+                message:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: Created comment
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ResponseComment'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        user:
+                          $ref: '#/components/schemas/User'
+                        response:
+                          $ref: '#/components/schemas/Response'
+  /api/v3/response-comments/{id}:
+    get:
+      description: Get comment
+      tags:
+      - response
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - response
+            - user
+      responses:
+        '200':
+          description: Comment
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ResponseComment'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        user:
+                          $ref: '#/components/schemas/User'
+                        response:
+                          $ref: '#/components/schemas/Response'
+    patch:
+      description: Update comment
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - user
+            - response
+      tags:
+      - response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                message:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: Updated comment
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ResponseComment'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        user:
+                          $ref: '#/components/schemas/User'
+                        response:
+                          $ref: '#/components/schemas/Response'
+    delete:
+      description: Delete comment
+      tags:
+      - response
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Deleted comment
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseComment'
+  /api/v3/response-statuses:
+    get:
+      description: Get response status list
+      tags:
+      - response
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - name: sort[by]
+        in: query
+        description: sort field
+        required: false
+        schema:
+          type: string
+          default: id
+          enum:
+          - id
+          - sort_order
+          - title
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - parent
+      responses:
+        '200':
+          description: list of response statuses
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      statuses:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/ResponseStatus'
+                          - type: object
+                            properties:
+                              _embedded:
+                                type: object
+                                properties:
+                                  parent:
+                                    $ref: '#/components/schemas/ResponseStatus'
+                type: object
+    post:
+      tags:
+      - response
+      description: Create response statuses
+      parameters:
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - parent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              items:
+                required:
+                - title
+              properties:
+                title:
+                  type: string
+                sort_order:
+                  type: integer
+                  nullable: true
+                color:
+                  type: string
+                on_top:
+                  type: boolean
+                  nullable: true
+              type: object
+      responses:
+        '200':
+          description: list of response statuses
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ResponseStatus'
+                - type: object
+                  properties:
+                    _links:
+                      properties:
+                        self:
+                          type: object
+                          properties:
+                            href:
+                              type: string
+                              format: uri
+  /api/v3/response-statuses/{id}:
+    get:
+      description: Get response status detail
+      tags:
+      - response
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - parent
+      responses:
+        '200':
+          description: ResponseStatus
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ResponseStatus'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        parent:
+                          $ref: '#/components/schemas/ResponseStatus'
+    patch:
+      description: Update response status
+      tags:
+      - response
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - user
+            - parent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                title:
+                  type: string
+                active:
+                  type: boolean
+                on_top:
+                  type: boolean
+                sort_order:
+                  type: integer
+                parent_id:
+                  type: integer
+                id_compatibility:
+                  type: integer
+                color:
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: Updated response status
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ResponseStatus'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        parent:
+                          $ref: '#/components/schemas/ResponseStatus'
+    delete:
+      description: Delete response status
+      tags:
+      - response
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Deleted response status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseStatus'
+  /api/v3/responses/{responseId}/resumes/{resumeId}/download:
+    get:
+      description: Download response resume file
+      tags:
+      - response
+      parameters:
+      - in: path
+        name: responseId
+        description: Response id
+        required: true
+        schema:
+          type: integer
+      - in: path
+        name: resumeId
+        description: Resume id
+        required: true
+        schema:
+          type: integer
+      - in: query
+        name: token
+        description: User access token
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: PDF file, PNG image, JPG image, etc
+          content:
+            application/pdf:
+              schema:
+                type: string
+                format: binary
+            image/png:
+              schema:
+                type: string
+                format: binary
+            image/jpeg:
+              schema:
+                type: string
+                format: binary
+          headers:
+            Content-Disposition:
+              schema:
+                type: string
+                example: attachment; filename="name.pdf"
+        '403':
+          description: Forbidden
+        '404':
+          description: Response or resume not found, or invalid URL
+  /api/v3/response-resumes:
+    get:
+      description: Get list of resumes attached to responses
+      tags:
+      - response
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - name: sort[by]
+        in: query
+        description: Sort field
+        required: false
+        schema:
+          type: string
+          default: created_at
+          enum:
+          - id
+          - response_id
+          - created_at
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_response_id'
+      - $ref: '#/components/parameters/filter_created_at_from'
+      - $ref: '#/components/parameters/filter_created_at_to'
+      - $ref: '#/components/parameters/filter_is_file'
+      responses:
+        '200':
+          description: List of response resumes
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    type: object
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                  _embedded:
+                    type: object
+                    properties:
+                      response_resumes:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/ResponseResume'
+                          - type: object
+                            properties:
+                              is_file:
+                                type: boolean
+                              created_at:
+                                type: string
+                                format: date-time
+                              responseResumeUrl:
+                                type: string
+                                nullable: true
+                              responseSecondResumeUrl:
+                                type: string
+                                nullable: true
+  /api/v3/response-resume/{id}:
+    get:
+      description: Get response resume by id
+      tags:
+      - response
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Response resume
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ResponseResume'
+                - type: object
+                  properties:
+                    is_file:
+                      type: boolean
+                      description: Indicates if resume was uploaded as a file (true) or as an URL (false).
+                    created_at:
+                      type: string
+                      format: date-time
+        '404':
+          description: Resume not found
+  /api/v3/public/vacancy/{vacancyToken}/response-resume/{responseToken}:
+    post:
+      description: Upload response resume
+      tags:
+      - response
+      parameters:
+      - in: path
+        name: vacancyToken
+        description: Vacancy public url token
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: responseToken
+        description: Response public url token
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                resume_url:
+                  type: string
+                  format: uri
+                  description: URL of the resume (optional, must start with http or https).
+                  pattern: ^https?://([a-z0-9-]+\.)+[a-z]{2,}/(resume|cv|profile|candidate)/[a-z0-9-]+
+                resume:
+                  type: string
+                  format: binary
+                  description: Resume file (optional, PDF, DOC, or DOCX).
+              required: []
+      responses:
+        '200':
+          description: Resume uploaded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      resume:
+                        $ref: '#/components/schemas/ResponseResume'
+                      response:
+                        $ref: '#/components/schemas/Response'
+  /api/v3/response-events:
+    get:
+      description: Get response events list
+      tags:
+      - response
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_response_id'
+      - $ref: '#/components/parameters/filter_vacancy_id'
+      - name: filter[type]
+        in: query
+        description: Event type filter
+        required: false
+        schema:
+          type: integer
+          enum:
+          - 1
+          - 2
+          description: "Type ids:\n  * `1` - Response Status Changed\n  * `2` - Email sent\n"
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - response
+            - user
+            - user.userName
+      responses:
+        '200':
+          description: list of response events
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/ResponseEvent'
+                          - type: object
+                            properties:
+                              _embedded:
+                                type: object
+                                properties:
+                                  response:
+                                    $ref: '#/components/schemas/Response'
+                                  vacancy:
+                                    $ref: '#/components/schemas/Vacancy'
+                type: object
+  /api/v3/response-events/{id}:
+    get:
+      description: Get response event detail
+      tags:
+      - response
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - vacancy
+            - response
+            - user
+            - user.userName
+      responses:
+        '200':
+          description: Response event
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseEvent'
+components:
+  schemas:
+    Response:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        candidate_id:
+          type: integer
+        response_status_id:
+          type: integer
+        response_source_id:
+          type: integer
+        interview_id:
+          type: integer
+        external_id:
+          type: string
+        is_hidden_by_candidate:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        agreed_at:
+          type: string
+          format: date-time
+          nullable: true
+        date_sent:
+          type: string
+          format: date-time
+          nullable: true
+        resume_url:
+          type: string
+          nullable: true
+        second_resume_url:
+          type: string
+          nullable: true
+        social_source:
+          type: string
+          nullable: true
+        utm_source:
+          type: string
+          nullable: true
+        utm_medium:
+          type: string
+          nullable: true
+        utm_campaign:
+          type: string
+          nullable: true
+        utm_content:
+          type: string
+          nullable: true
+        utm_term:
+          type: string
+          nullable: true
+        is_paid:
+          type: boolean
+          nullable: true
+      type: object
+    Candidate:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        email:
+          type: string
+        bithdate:
+          type: string
+        gender:
+          type: string
+      type: object
+    ResponseEvent:
+      properties:
+        id:
+          type: integer
+        sort_order:
+          type: integer
+        type:
+          type: integer
+          enum:
+          - 1
+          - 2
+          description: "Type ids:\n  * `1` - Response Status Changed\n  * `2` - Email sent\n  * `3` - Agreement signed\n  * `4` - Interview stage started\n  * `5` - Interview stage finished\n"
+        vacancy_id:
+          type: integer
+          nullable: true
+        response_id:
+          type: integer
+          nullable: true
+        company_id:
+          type: integer
+        user_id:
+          type: integer
+          nullable: true
+        meta:
+          type: object
+        created_at:
+          type: string
+          format: date-time
+      type: object
+    CandidateName:
+      properties:
+        candidate_id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        second_name:
+          type: string
+          nullable: true
+      type: object
+    Vacancy:
+      properties:
+        id:
+          type: integer
+        token:
+          type: string
+        title:
+          type: string
+        active:
+          type: boolean
+        user_id:
+          type: integer
+        language_id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+      type: object
+    ResponseStatus:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        active:
+          type: boolean
+        on_top:
+          type: boolean
+        sort_order:
+          type: integer
+        company_id:
+          type: integer
+          nullable: true
+        parent_id:
+          type: integer
+          nullable: true
+        id_compatibility:
+          type: integer
+        color:
+          type: string
+        is_base:
+          type: boolean
+        is_hidden:
+          type: boolean
+        is_system:
+          type: boolean
+        is_stage:
+          type: boolean
+      type: object
+    ResponseComment:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        message:
+          type: string
+        response_id:
+          type: integer
+        user_id:
+          type: integer
+      type: object
+    Invite:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        candidate_id:
+          type: integer
+        invite_status_id:
+          type: integer
+        interview_refusal_id:
+          type: integer
+        interview_id:
+          type: integer
+        is_hidden_by_candidate:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+          nullable: true
+      type: object
+    ResponseResume:
+      properties:
+        id:
+          type: integer
+        response_id:
+          type: integer
+        filename:
+          type: string
+        resume_url:
+          type: string
+      type: object
+    CandidatePhone:
+      properties:
+        candidate_id:
+          type: integer
+        id:
+          type: integer
+        number:
+          type: string
+      nullable: true
+      type: object
+    Interview:
+      properties:
+        id:
+          type: integer
+        date_create:
+          type: string
+          format: date-time
+        token:
+          type: string
+        interview_stage_id:
+          type: integer
+        candidate_id:
+          type: integer
+      type: object
+    User:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        email:
+          type: string
+        position:
+          type: string
+        logo_url:
+          type: string
+          nullable: true
+        geo_id:
+          type: integer
+        lanaguage_id:
+          type: integer
+        company_id:
+          type: integer
+        userName:
+          type: object
+          nullable: true
+          properties:
+            user_id:
+              type: integer
+            first_name:
+              type: string
+            last_name:
+              type: string
+            language_id:
+              type: integer
+            id:
+              type: integer
+      type: object
+    ResponseSource:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+      type: object
+  parameters:
+    filter_user_id:
+      name: filter[user_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    filter_response_id:
+      name: filter[response_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_vacancy_id:
+      name: filter[vacancy_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_is_file:
+      name: filter[is_file]
+      in: query
+      description: Filter by resumes uploaded as files
+      required: false
+      schema:
+        type: boolean
+    filter_response_status_id:
+      name: filter[response_status_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    sort_order:
+      name: sort[order]
+      in: query
+      description: sort order
+      required: false
+      schema:
+        type: string
+        default: desc
+        enum:
+        - asc
+        - desc
+    filter_created_at_to:
+      name: filter[created_at][to]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_created_at_from:
+      name: filter[created_at][from]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_vacancy_user_id:
+      name: filter[vacancy][user_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: token

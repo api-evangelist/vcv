@@ -1,0 +1,246 @@
+get:
+  description: Get invites list
+  tags:
+    - invite
+  parameters:
+    - $ref: '../components/parameters.yaml#/pagination_page'
+    - $ref: '../components/parameters.yaml#/pagination_page_size'
+    - $ref: '../components/parameters.yaml#/sort_order'
+    - name: sort[by]
+      in: query
+      description: sort field
+      required: false
+      schema:
+        type: string
+        default: 'id'
+        enum: [
+            'id',
+            'created_at',
+            'candidate.name',
+            'response.response_status_id',
+            'candidate.email',
+            'vacancy.title',
+            'candidate.phone',
+            'user.name'
+        ]
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'vacancy',
+              'candidate',
+              'candidate.name',
+              'candidate.phone',
+              'user',
+              'user.userName',
+              'response',
+              'response.status',
+              'status',
+              'interview',
+              'interviewRefusal'
+          ]
+    - $ref: '../components/parameters.yaml#/filter_id'
+    - $ref: '../components/parameters.yaml#/filter_vacancy_id'
+    - $ref: '../components/parameters.yaml#/filter_user_id'
+    - $ref: '../components/parameters.yaml#/filter_response_status_id'
+    - $ref: '../components/parameters.yaml#/filter_created_at_from'
+    - $ref: '../components/parameters.yaml#/filter_created_at_to'
+    - name: filter[phone]
+      in: query
+      description: candidate phone filter
+      required: false
+      schema:
+        type: string
+    - name: filter[email]
+      in: query
+      description: candidate email filter
+      required: false
+      schema:
+        type: string
+    - name: filter[name]
+      in: query
+      description: candidate name filter
+      required: false
+      schema:
+        type: string
+    - name: filter[invite_status_id]
+      in: query
+      description: invite status id filter
+      required: false
+      schema:
+        oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+    - name: filter[candidate_id]
+      in: query
+      description: Candidate id filter
+      required: false
+      schema:
+        oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+    - name: fields[]
+      in: query
+      description: Fields to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'email_remind_video_interview_incomplete_sent',
+              'email_remind_sent',
+              'sms_remind_sent'
+          ]
+  responses:
+    '200':
+      description: list of invites
+      content:
+        application/json:
+          schema:
+            properties:
+              invites:
+                type: array
+                items:
+                  allOf:
+                    - $ref: '../components/invite.yaml#/Invite'
+                    - type: object
+                      properties:
+                        candidate:
+                          allOf:
+                            - $ref: '../components/candidate.yaml#/Candidate'
+                            - type: object
+                              properties:
+                                name:
+                                  $ref: '../components/candidate.yaml#/CandidateName'
+                                phone:
+                                  $ref: '../components/candidate.yaml#/CandidatePhone'
+                        _embedded:
+                          type: object
+                          properties:
+                            vacancy:
+                              $ref: '../components/vacancy.yaml#/Vacancy'
+                            user:
+                              $ref: '../components/company.yaml#/User'
+                            response:
+                              allOf:
+                                - $ref: '../components/response.yaml#/Response'
+                                - type: object
+                                  properties:
+                                    _embedded:
+                                      type: object
+                                      properties:
+                                        status:
+                                          $ref: '../components/response.yaml#/ResponseStatus'
+                            status:
+                              $ref: '../components/invite.yaml#/InviteStatus'
+                            interview:
+                              $ref: '../components/invite.yaml#/Interview'
+                            interviewRefusal:
+                              $ref: '../components/invite.yaml#/InterviewRefusal'
+            type: object
+post:
+  description: Create invites list
+  tags:
+    - invite
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            invites:
+              type: array
+              items:
+                properties:
+                  candidate_name:
+                    properties:
+                      first_name:
+                        type: string
+                      last_name:
+                        type: string
+                    type: object
+                  candidate:
+                    properties:
+                      email:
+                        type: string
+                    type: object
+                  candidate_phone:
+                    properties:
+                      number:
+                        nullable: true
+                        type: string
+                    type: object
+                  response:
+                    properties:
+                      second_resume_url:
+                        nullable: true
+                        type: string
+                      resume_url:
+                        nullable: true
+                        type: string
+                      external_id:
+                        nullable: true
+                        type: string
+                      social_source:
+                        nullable: true
+                        type: string
+                      utm_source:
+                        nullable: true
+                        type: string
+                      utm_medium:
+                        nullable: true
+                        type: string
+                      utm_campaign:
+                        nullable: true
+                        type: string
+                      utm_content:
+                        nullable: true
+                        type: string
+                      utm_term:
+                        nullable: true
+                        type: string
+                    type: object
+                  vacancy_id:
+                    type: integer
+                type: object
+          type: object
+  responses:
+    '200':
+      description: list of invites
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  invites:
+                    type: array
+                    items:
+                      $ref: '../components/invite.yaml#/Invite'
+            type: object

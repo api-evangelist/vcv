@@ -1,0 +1,19 @@
+post:
+  tags:
+    - interview
+  description: Mark public interview response as agreed
+  parameters:
+    - $ref: '../../components/parameters.yaml#/token'
+  responses:
+    '200':
+      description: Response agreement updated
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              response_id:
+                type: integer
+              agreed_at:
+                type: string
+                format: date-time

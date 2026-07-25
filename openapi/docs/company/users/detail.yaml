@@ -1,0 +1,35 @@
+get:
+  description: Get user detail
+  tags:
+    - users
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+            'userName',
+            'roles',
+            'language',
+          ]
+  responses:
+    '200':
+      description: User
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/company.yaml#/User'
+              - type: object
+                properties:
+                  language:
+                    $ref: '../../components/common.yaml#/Language'
+                  roles:
+                    type: array
+                    items:
+                      $ref: '../../components/company.yaml#/Role'

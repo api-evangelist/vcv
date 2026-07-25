@@ -1,0 +1,22 @@
+post:
+  description: Validate landing url history
+  tags:
+    - vacancy
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            landing_url_path:
+              type: string
+            vacancy_id:
+              type: integer
+          type: object
+  responses:
+    '200':
+      description: Empty response if valid, error message otherwise
+      content:
+        application/json:
+          schema:
+            type: object

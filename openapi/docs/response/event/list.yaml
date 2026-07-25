@@ -1,0 +1,88 @@
+get:
+  description: Get response events list
+  tags:
+    - response
+  parameters:
+    - $ref: '../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../components/parameters.yaml#/pagination_page_size'
+    - $ref: '../../components/parameters.yaml#/sort_order'
+    - $ref: '../../components/parameters.yaml#/filter_id'
+    - $ref: '../../components/parameters.yaml#/filter_response_id'
+    - $ref: '../../components/parameters.yaml#/filter_vacancy_id'
+    - name: filter[type]
+      in: query
+      description: Event type filter
+      required: false
+      schema:
+        type: integer
+        enum: [ 1, 2 ]
+        description: >
+          Type ids:
+            * `1` - Response Status Changed
+            * `2` - Email sent
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+            'vacancy',
+            'response',
+            'user',
+            'user.userName',
+          ]
+  responses:
+    '200':
+      description: list of response events
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  attributes:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '../../components/response.yaml#/ResponseEvent'
+                        - type: object
+                          properties:
+                            _embedded:
+                              type: object
+                              properties:
+                                response:
+                                  $ref: '../../components/response.yaml#/Response'
+                                vacancy:
+                                  $ref: '../../components/vacancy.yaml#/Vacancy'
+            type: object

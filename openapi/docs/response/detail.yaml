@@ -1,0 +1,110 @@
+get:
+  description: Get response detail
+  tags:
+    - response
+  parameters:
+    - $ref: '../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'vacancy',
+              'vacancy.user',
+              'vacancy.userName',
+              'vacancy.user.userName',
+              'vacancy.language',
+              'vacancy.company',
+              'candidate',
+              'candidate.name',
+              'candidate.phone',
+              'source',
+              'status',
+              'statusHistory',
+              'interview',
+              'interview.interviewRefusal',
+              'comments',
+              'comments.user',
+              'comments.userName',
+              'tags',
+              'attributeValues',
+              'attributeValues.attribute',
+              'invite',
+              'video',
+              'survey',
+              'survey.records',
+              'survey.questions',
+              'talentqCandidate',
+              'resumes',
+          ]
+    - name: fields[]
+      in: query
+      description: Fields to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'token', 'is_demo', 'agreed_at' ]
+  responses:
+    '200':
+      description: Response detail
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../components/response.yaml#/Response'
+              - type: object
+                properties:
+                  candidate:
+                    allOf:
+                      - $ref: '../components/candidate.yaml#/Candidate'
+                      - type: object
+                        properties:
+                          name:
+                            $ref: '../components/candidate.yaml#/CandidateName'
+                          phone:
+                            $ref: '../components/candidate.yaml#/CandidatePhone'
+                  source:
+                    $ref: '../components/response.yaml#/ResponseSource'
+                  _embedded:
+                    type: object
+                    properties:
+                      status:
+                        $ref: '../components/response.yaml#/ResponseStatus'
+                      comments:
+                        type: array
+                        items:
+                          $ref: '../components/response.yaml#/ResponseComment'
+                      vacancy:
+                        $ref: '../components/vacancy.yaml#/Vacancy'
+                      interview:
+                        $ref: '../components/invite.yaml#/Interview'
+                      invite:
+                        $ref: '../components/invite.yaml#/Invite'
+patch:
+  description: Update response
+  tags:
+    - response
+  parameters:
+    - $ref: '../components/parameters.yaml#/id'
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            response_status_id:
+              type: integer
+          type: object
+  responses:
+    '200':
+      description: Updated response
+      content:
+        application/json:
+          schema:
+            $ref: '../components/response.yaml#/Response'

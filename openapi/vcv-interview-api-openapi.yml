@@ -1,0 +1,311 @@
+openapi: 3.0.1
+info:
+  title: VCV chatbot interview API
+  description: open api
+  version: v3
+servers:
+- url: https://my.vcv.ai
+- url: https://my.vcv.ru
+- url: '{hostname}'
+  variables:
+    hostname:
+      default: http://localhost:8080
+security:
+- bearerAuth: []
+tags:
+- name: interview
+paths:
+  /api/v3/public/interviews/{token}:
+    get:
+      tags:
+      - interview
+      description: Get public interview
+      parameters:
+      - $ref: '#/components/parameters/token'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - candidate
+            - publicResponse
+            - publicVacancy
+            - publicVacancy.language
+            - publicVacancy.publicCompany
+            - publicVacancy.publicCompany.language
+            - stage
+            - candidate.name
+            - candidate.phone
+      responses:
+        '200':
+          description: Interview
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PublicInterview'
+    patch:
+      tags:
+      - interview
+      description: Update public interview response state and save first UTM payload
+      parameters:
+      - $ref: '#/components/parameters/token'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                utm_source:
+                  type: string
+                  maxLength: 512
+                utm_medium:
+                  type: string
+                  maxLength: 512
+                utm_campaign:
+                  type: string
+                  maxLength: 512
+                utm_content:
+                  type: string
+                  maxLength: 512
+                utm_term:
+                  type: string
+                  maxLength: 512
+      responses:
+        '200':
+          description: Public interview response updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response_id:
+                    type: integer
+                  agreed_at:
+                    type: string
+                    format: date-time
+  /api/v3/public/interviews/{token}/agreed:
+    post:
+      tags:
+      - interview
+      description: Mark public interview response as agreed
+      parameters:
+      - $ref: '#/components/parameters/token'
+      responses:
+        '200':
+          description: Response agreement updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  response_id:
+                    type: integer
+                  agreed_at:
+                    type: string
+                    format: date-time
+  /api/v3/responses/{id}/finish:
+    post:
+      description: Finish interview immediately
+      tags:
+      - interview
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Finished response
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Response'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        interview:
+                          allOf:
+                          - $ref: '#/components/schemas/Interview'
+                          - type: object
+                            properties:
+                              _embedded:
+                                type: object
+                                properties:
+                                  stage:
+                                    allOf:
+                                    - $ref: '#/components/schemas/InterviewStage'
+components:
+  schemas:
+    Response:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        candidate_id:
+          type: integer
+        response_status_id:
+          type: integer
+        response_source_id:
+          type: integer
+        interview_id:
+          type: integer
+        external_id:
+          type: string
+        is_hidden_by_candidate:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        agreed_at:
+          type: string
+          format: date-time
+          nullable: true
+        date_sent:
+          type: string
+          format: date-time
+          nullable: true
+        resume_url:
+          type: string
+          nullable: true
+        second_resume_url:
+          type: string
+          nullable: true
+        social_source:
+          type: string
+          nullable: true
+        utm_source:
+          type: string
+          nullable: true
+        utm_medium:
+          type: string
+          nullable: true
+        utm_campaign:
+          type: string
+          nullable: true
+        utm_content:
+          type: string
+          nullable: true
+        utm_term:
+          type: string
+          nullable: true
+        is_paid:
+          type: boolean
+          nullable: true
+      type: object
+    Candidate:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        email:
+          type: string
+        bithdate:
+          type: string
+        gender:
+          type: string
+      type: object
+    PublicInterview:
+      properties:
+        id:
+          type: integer
+        date_create:
+          type: string
+          format: date-time
+        token:
+          type: string
+        interview_stage_id:
+          type: integer
+        candidate_id:
+          type: integer
+        candidate:
+          allOf:
+          - $ref: '#/components/schemas/Candidate'
+          - type: object
+            properties:
+              name:
+                $ref: '#/components/schemas/CandidateName'
+              phone:
+                $ref: '#/components/schemas/CandidatePhone'
+        _embedded:
+          type: object
+          properties:
+            publicVacancy:
+              $ref: '#/PublicVacancy'
+            publicResponse:
+              $ref: '#/PublicResponse'
+            stage:
+              $ref: '#/components/schemas/InterviewStage'
+      type: object
+    CandidateName:
+      properties:
+        candidate_id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        second_name:
+          type: string
+          nullable: true
+      type: object
+    InterviewStage:
+      properties:
+        id:
+          type: integer
+        key:
+          type: string
+        title:
+          type: string
+      type: object
+    CandidatePhone:
+      properties:
+        candidate_id:
+          type: integer
+        id:
+          type: integer
+        number:
+          type: string
+      nullable: true
+      type: object
+    Interview:
+      properties:
+        id:
+          type: integer
+        date_create:
+          type: string
+          format: date-time
+        token:
+          type: string
+        interview_stage_id:
+          type: integer
+        candidate_id:
+          type: integer
+      type: object
+  parameters:
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
+    token:
+      name: token
+      in: path
+      description: token
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: token

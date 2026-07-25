@@ -1,0 +1,100 @@
+get:
+  tags:
+    - videointerview
+  description: Get response videointerviews list
+  parameters:
+    - $ref: '../../components/parameters.yaml#/pagination_page'
+    - $ref: '../../components/parameters.yaml#/pagination_page_size'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'response',
+              'partitions',
+              'partitions.videoResponse',
+              'partitions.questionVideo'
+          ]
+    - $ref: '../../components/parameters.yaml#/filter_id'
+    - $ref: '../../components/parameters.yaml#/filter_response_id'
+    - $ref: '../../components/parameters.yaml#/filter_vacancy_id'
+    - name: filter[date_start][from]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    - name: filter[date_start][to]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+  responses:
+    '200':
+      description: list of response videointerviews
+      content:
+        application/json:
+          schema:
+            properties:
+              _total_items:
+                type: integer
+              _page:
+                type: integer
+              _page_count:
+                type: integer
+              _links:
+                properties:
+                  self:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  next:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                  last:
+                    type: object
+                    properties:
+                      href:
+                        type: string
+                        format: uri
+                type: object
+              _embedded:
+                type: object
+                properties:
+                  response_videointerviews:
+                    type: array
+                    items:
+                      allOf:
+                        - $ref: '../../components/videointerview.yaml#/ResponseVideointerview'
+                        - type: object
+                          properties:
+                            _embedded:
+                              type: object
+                              properties:
+                                response:
+                                  $ref: '../../components/response.yaml#/Response'
+                                partitions:
+                                  type: array
+                                  items:
+                                    allOf:
+                                      - $ref: '../../components/videointerview.yaml#/Partition'
+                                      - type: object
+                                        properties:
+                                          _embedded:
+                                            type: object
+                                            properties:
+                                              video_response:
+                                                $ref: '../../components/videointerview.yaml#/VideoResponse'
+                                              question_video:
+                                                $ref: '../../components/videointerview.yaml#/Video'
+            type: object

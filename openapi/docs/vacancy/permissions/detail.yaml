@@ -1,0 +1,72 @@
+get:
+  description: Get vacancy permission
+  tags:
+    - vacancy
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'vacancy', 'user' ]
+  responses:
+    '200':
+      description: Vacancy permission
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/vacancy.yaml#/Permission'
+patch:
+  description: Update vacancy permission
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'vacancy', 'user' ]
+  tags:
+    - vacancy
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            permission:
+              type: string
+              enum: [ 'admin', 'role_edit_scoring', 'role_read' ]
+              description: >
+                Permissions:
+                  * `admin` - Application administration, edit application materials, view all hiring team members’ activities, evaluate applications, communicate with candidates.
+                  * `role_edit_scoring` - Edit application materials, evaluate applications, communicate with candidates.
+                  * `role_read` - Evaluate applications only.
+          type: object
+  responses:
+    '200':
+      description: Updated vacancy permission
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/vacancy.yaml#/Permission'
+delete:
+  description: Delete vacancy permission
+  tags:
+    - vacancy
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Deleted vacancy permission
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/vacancy.yaml#/Permission'

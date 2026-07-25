@@ -1,0 +1,26 @@
+get:
+  description: Get history item
+  tags:
+    - vacancy
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Vacancy url history item
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/vacancy.yaml#/VacancyUrlHistory'
+delete:
+  description: Delete vacancy url path
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+  tags:
+    - vacancy
+  responses:
+    '200':
+      description: Deleted path
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/vacancy.yaml#/VacancyUrlHistory'

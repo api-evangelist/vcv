@@ -1,0 +1,43 @@
+VacancyIntegration:
+  properties:
+    id:
+      type: integer
+    vacancy_id:
+      type: integer
+    url:
+      type: array
+      items:
+        type: string
+    created_at:
+      type: string
+      format: date-time
+    updated_at:
+      type: string
+      format: date-time
+  type: object
+Webhook:
+  properties:
+    id:
+      type: integer
+    user_id:
+      type: integer
+    company_id:
+      type: integer
+    active:
+      type: boolean
+    event:
+      type: string
+    secret:
+      type: string
+    url:
+      type: string
+    name:
+      type: string
+      nullable: true
+    created_at:
+      type: string
+      format: date-time
+    updated_at:
+      type: string
+      format: date-time
+  type: object

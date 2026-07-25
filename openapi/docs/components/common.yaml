@@ -1,0 +1,39 @@
+Language:
+  properties:
+    id:
+      type: integer
+    code:
+      type: string
+    name:
+      type: string
+    bcp47_tag:
+      type: string
+  type: object
+Country:
+  properties:
+    id:
+      type: integer
+    code:
+      type: string
+    title_en:
+      type: string
+    title_ru:
+      type: string
+  type: object
+DropoutEmail:
+  properties:
+    id:
+      type: integer
+    vacancy_id:
+      type: integer
+    text:
+      type: string
+    header:
+      type: string
+    created_at:
+      type: string
+      format: date-time
+    updated_at:
+      type: string
+      format: date-time
+  type: object

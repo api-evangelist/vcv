@@ -1,0 +1,64 @@
+get:
+  tags:
+    - videointerview
+  description: Get response videointerview
+  parameters:
+    - name: id
+      in: path
+      description: Id
+      required: true
+      schema:
+        type: integer
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'response',
+              'partitions',
+              'partitions.videoResponse',
+              'partitions.questionVideo'
+          ]
+    - name: id_field
+      in: query
+      description: Model to retrieve id from
+      required: true
+      schema:
+        type: string
+        enum: [
+          'videointerview',
+          'response'
+        ]
+  responses:
+    '200':
+      description: response videointerview
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/videointerview.yaml#/ResponseVideointerview'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      response:
+                        $ref: '../../components/response.yaml#/Response'
+                      partitions:
+                        type: array
+                        items:
+                          allOf:
+                            - $ref: '../../components/videointerview.yaml#/Partition'
+                            - type: object
+                              properties:
+                                _embedded:
+                                  type: object
+                                  properties:
+                                    video_response:
+                                      $ref: '../../components/videointerview.yaml#/VideoResponse'
+                                    question_video:
+                                      $ref: '../../components/videointerview.yaml#/Video'

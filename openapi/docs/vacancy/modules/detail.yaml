@@ -1,0 +1,66 @@
+get:
+  description: Get vacancy module detail
+  tags:
+    - vacancy
+  parameters:
+    - name: id_module
+      in: path
+      description: Module id
+      required: true
+      schema:
+        type: string
+    - name: vacancy_id
+      in: path
+      description: Vacancy id
+      required: true
+      schema:
+        type: integer
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'vacancy', 'companyModule' ]
+  responses:
+    '200':
+      description: vacancy module
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/vacancy.yaml#/VacancyModule'
+patch:
+  description: Update vacancy module
+  tags:
+    - vacancy
+  parameters:
+    - name: id_module
+      in: path
+      description: Module id
+      required: true
+      schema:
+        type: string
+    - name: vacancy_id
+      in: path
+      description: Vacancy id
+      required: true
+      schema:
+        type: integer
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            is_active:
+              type: boolean
+          type: object
+  responses:
+    '200':
+      description: Updated vacancy module
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/vacancy.yaml#/VacancyModule'

@@ -1,0 +1,38 @@
+get:
+  description: Get vacancy integration detail
+  tags:
+    - integration
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Vacancy integration
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/integration.yaml#/VacancyIntegration'
+patch:
+  description: Update vacancy integration
+  tags:
+    - integration
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            url:
+              type: array
+              items:
+                type: string
+                description: Url of external system, will be "src" for iframe on interview stage
+          type: object
+  responses:
+    '200':
+      description: Updated vacancy integration
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/integration.yaml#/VacancyIntegration'

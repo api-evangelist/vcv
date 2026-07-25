@@ -1,0 +1,221 @@
+openapi: 3.0.1
+info:
+  title: VCV chatbot users API
+  description: open api
+  version: v3
+servers:
+- url: https://my.vcv.ai
+- url: https://my.vcv.ru
+- url: '{hostname}'
+  variables:
+    hostname:
+      default: http://localhost:8080
+security:
+- bearerAuth: []
+tags:
+- name: users
+paths:
+  /api/v3/users:
+    get:
+      description: Get users list
+      tags:
+      - users
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - name: filter[email]
+        in: query
+        description: User email filter
+        required: false
+        schema:
+          type: string
+      - name: filter[position]
+        in: query
+        description: User position filter
+        required: false
+        schema:
+          type: string
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - userName
+            - roles
+            - language
+      responses:
+        '200':
+          description: list of users
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      users:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/User'
+                          - type: object
+                            properties:
+                              language:
+                                $ref: '#/components/schemas/Language'
+                              roles:
+                                type: array
+                                items:
+                                  $ref: '#/components/schemas/Role'
+                type: object
+  /api/v3/users/{id}:
+    get:
+      description: Get user detail
+      tags:
+      - users
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - userName
+            - roles
+            - language
+      responses:
+        '200':
+          description: User
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/User'
+                - type: object
+                  properties:
+                    language:
+                      $ref: '#/components/schemas/Language'
+                    roles:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Role'
+components:
+  schemas:
+    User:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        email:
+          type: string
+        position:
+          type: string
+        logo_url:
+          type: string
+          nullable: true
+        geo_id:
+          type: integer
+        lanaguage_id:
+          type: integer
+        company_id:
+          type: integer
+        userName:
+          type: object
+          nullable: true
+          properties:
+            user_id:
+              type: integer
+            first_name:
+              type: string
+            last_name:
+              type: string
+            language_id:
+              type: integer
+            id:
+              type: integer
+      type: object
+    Role:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        role:
+          type: string
+      type: object
+    Language:
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+        bcp47_tag:
+          type: string
+      type: object
+  parameters:
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: token

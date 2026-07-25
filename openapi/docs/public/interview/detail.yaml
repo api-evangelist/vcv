@@ -1,0 +1,73 @@
+get:
+  tags:
+    - interview
+  description: Get public interview
+  parameters:
+    - $ref: '../../components/parameters.yaml#/token'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [
+              'candidate',
+              'publicResponse',
+              'publicVacancy',
+              'publicVacancy.language',
+              'publicVacancy.publicCompany',
+              'publicVacancy.publicCompany.language',
+              'stage',
+              'candidate.name',
+              'candidate.phone'
+          ]
+  responses:
+    '200':
+      description: Interview
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/public.yaml#/PublicInterview'
+patch:
+  tags:
+    - interview
+  description: Update public interview response state and save first UTM payload
+  parameters:
+    - $ref: '../../components/parameters.yaml#/token'
+  requestBody:
+    required: false
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            utm_source:
+              type: string
+              maxLength: 512
+            utm_medium:
+              type: string
+              maxLength: 512
+            utm_campaign:
+              type: string
+              maxLength: 512
+            utm_content:
+              type: string
+              maxLength: 512
+            utm_term:
+              type: string
+              maxLength: 512
+  responses:
+    '200':
+      description: Public interview response updated
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              response_id:
+                type: integer
+              agreed_at:
+                type: string
+                format: date-time

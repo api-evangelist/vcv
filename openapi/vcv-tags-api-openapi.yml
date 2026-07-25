@@ -1,0 +1,608 @@
+openapi: 3.0.1
+info:
+  title: VCV chatbot tags API
+  description: open api
+  version: v3
+servers:
+- url: https://my.vcv.ai
+- url: https://my.vcv.ru
+- url: '{hostname}'
+  variables:
+    hostname:
+      default: http://localhost:8080
+security:
+- bearerAuth: []
+tags:
+- name: tags
+paths:
+  /api/v3/tags:
+    get:
+      description: Get tags list
+      tags:
+      - tags
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_user_id'
+      - name: filter[name]
+        in: query
+        description: tag name filter
+        required: false
+        schema:
+          type: string
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - user
+      responses:
+        '200':
+          description: list of tags
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      tags:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/Tag'
+                          - type: object
+                            properties:
+                              _embedded:
+                                type: object
+                                properties:
+                                  user:
+                                    $ref: '#/components/schemas/User'
+                type: object
+    post:
+      description: Create tag
+      tags:
+      - tags
+      parameters:
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                sort_order:
+                  type: integer
+                color:
+                  type: string
+                  nullable: true
+              type: object
+      responses:
+        '200':
+          description: Created tag
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Tag'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        user:
+                          $ref: '#/components/schemas/User'
+  /api/v3/tags/{id}:
+    get:
+      description: Get tag
+      tags:
+      - tags
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - user
+      responses:
+        '200':
+          description: Tag
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Tag'
+                - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      user:
+                        $ref: '#/components/schemas/User'
+    patch:
+      description: Update tag
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - user
+      tags:
+      - tags
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                name:
+                  type: string
+                sort_order:
+                  type: integer
+                color:
+                  type: string
+                  nullable: true
+              type: object
+      responses:
+        '200':
+          description: Updated tag
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/Tag'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        user:
+                          $ref: '#/components/schemas/User'
+    delete:
+      description: Delete tag
+      tags:
+      - tags
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Deleted tag
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Tag'
+  /api/v3/response-tags:
+    get:
+      description: Get response tags list
+      tags:
+      - tags
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_user_id'
+      - $ref: '#/components/parameters/filter_response_id'
+      - name: filter[tag_id]
+        in: query
+        description: tag id filter
+        required: false
+        schema:
+          type: integer
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - user
+            - tag
+            - response
+      responses:
+        '200':
+          description: list of response tags
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      response_tags:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/ResponseTag'
+                          - type: object
+                            properties:
+                              _embedded:
+                                type: object
+                                properties:
+                                  user:
+                                    $ref: '#/components/schemas/User'
+                                  tag:
+                                    $ref: '#/components/schemas/Tag'
+                                  response:
+                                    $ref: '#/components/schemas/Response'
+                type: object
+    post:
+      description: Create response tag
+      tags:
+      - tags
+      parameters:
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - user
+            - tag
+            - response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                tag_id:
+                  type: integer
+                response_id:
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: Created tag
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ResponseTag'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        user:
+                          $ref: '#/components/schemas/User'
+                        tag:
+                          $ref: '#/components/schemas/Tag'
+                        response:
+                          $ref: '#/components/schemas/Response'
+  /api/v3/response-tags/{id}:
+    get:
+      description: Get response tag
+      tags:
+      - tags
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - user
+            - tag
+            - response
+      responses:
+        '200':
+          description: Response tag
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ResponseTag'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        user:
+                          $ref: '#/components/schemas/User'
+                        tag:
+                          $ref: '#/components/schemas/Tag'
+                        response:
+                          $ref: '#/components/schemas/Response'
+    delete:
+      description: Delete response tag
+      tags:
+      - tags
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Deleted tag
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseTag'
+components:
+  schemas:
+    User:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        email:
+          type: string
+        position:
+          type: string
+        logo_url:
+          type: string
+          nullable: true
+        geo_id:
+          type: integer
+        lanaguage_id:
+          type: integer
+        company_id:
+          type: integer
+        userName:
+          type: object
+          nullable: true
+          properties:
+            user_id:
+              type: integer
+            first_name:
+              type: string
+            last_name:
+              type: string
+            language_id:
+              type: integer
+            id:
+              type: integer
+      type: object
+    Response:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        candidate_id:
+          type: integer
+        response_status_id:
+          type: integer
+        response_source_id:
+          type: integer
+        interview_id:
+          type: integer
+        external_id:
+          type: string
+        is_hidden_by_candidate:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        agreed_at:
+          type: string
+          format: date-time
+          nullable: true
+        date_sent:
+          type: string
+          format: date-time
+          nullable: true
+        resume_url:
+          type: string
+          nullable: true
+        second_resume_url:
+          type: string
+          nullable: true
+        social_source:
+          type: string
+          nullable: true
+        utm_source:
+          type: string
+          nullable: true
+        utm_medium:
+          type: string
+          nullable: true
+        utm_campaign:
+          type: string
+          nullable: true
+        utm_content:
+          type: string
+          nullable: true
+        utm_term:
+          type: string
+          nullable: true
+        is_paid:
+          type: boolean
+          nullable: true
+      type: object
+    ResponseTag:
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+        tag_id:
+          type: integer
+        response_id:
+          type: integer
+      type: object
+    Tag:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        user_id:
+          type: integer
+        sort_order:
+          type: integer
+        color:
+          type: string
+        company_id:
+          type: integer
+        _links:
+          properties:
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  format: uri
+      type: object
+  parameters:
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
+    sort_order:
+      name: sort[order]
+      in: query
+      description: sort order
+      required: false
+      schema:
+        type: string
+        default: desc
+        enum:
+        - asc
+        - desc
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    filter_user_id:
+      name: filter[user_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_response_id:
+      name: filter[response_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: token

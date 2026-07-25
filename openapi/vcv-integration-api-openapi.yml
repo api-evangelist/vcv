@@ -1,0 +1,825 @@
+openapi: 3.0.1
+info:
+  title: VCV chatbot integration API
+  description: open api
+  version: v3
+servers:
+- url: https://my.vcv.ai
+- url: https://my.vcv.ru
+- url: '{hostname}'
+  variables:
+    hostname:
+      default: http://localhost:8080
+security:
+- bearerAuth: []
+tags:
+- name: integration
+paths:
+  /api/v3/integration/vacancy:
+    get:
+      description: Get vacancy integration module list
+      tags:
+      - integration
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_vacancy_id'
+      responses:
+        '200':
+          description: list of vacancy integrations
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      emails:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/VacancyIntegration'
+                type: object
+    post:
+      description: Create vacancy integration
+      tags:
+      - integration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                url:
+                  type: array
+                  items:
+                    type: string
+                  description: Url of external system, will be "src" for iframe on interview stage
+                vacancy_id:
+                  type: integer
+              type: object
+      responses:
+        '200':
+          description: Created integration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VacancyIntegration'
+  /api/v3/integration/vacancy/{id}:
+    get:
+      description: Get vacancy integration detail
+      tags:
+      - integration
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Vacancy integration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VacancyIntegration'
+    patch:
+      description: Update vacancy integration
+      tags:
+      - integration
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                url:
+                  type: array
+                  items:
+                    type: string
+                    description: Url of external system, will be "src" for iframe on interview stage
+              type: object
+      responses:
+        '200':
+          description: Updated vacancy integration
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VacancyIntegration'
+  /api/v3/response-attributes:
+    get:
+      description: Get response attributes list
+      tags:
+      - integration
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - $ref: '#/components/parameters/filter_id'
+      - name: sort[by]
+        in: query
+        description: sort field
+        required: false
+        schema:
+          type: string
+          default: id
+          enum:
+          - id
+          - created_at
+          - sort_order
+      - name: filter[code]
+        in: query
+        description: Attribute code filter
+        required: false
+        schema:
+          type: string
+      - name: filter[type]
+        in: query
+        description: Attribute type filter
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: list of response attributes
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      attributes:
+                        type: array
+                        items:
+                          $ref: '#/components/schemas/ResponseAttribute'
+                type: object
+    post:
+      description: Create response attribute
+      tags:
+      - integration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                sort_order:
+                  type: integer
+                code:
+                  type: string
+                title:
+                  type: string
+                type:
+                  type: string
+                  enum:
+                  - text
+                  - url
+                  - html
+                  - numeric
+              type: object
+      responses:
+        '200':
+          description: Created response attribute
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAttribute'
+  /api/v3/response-attributes/{id}:
+    get:
+      description: Get response attribute detail
+      tags:
+      - integration
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Response atrribute
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAttribute'
+    patch:
+      description: Update response attribute
+      tags:
+      - integration
+      parameters:
+      - $ref: '#/components/parameters/id'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                sort_order:
+                  type: integer
+                code:
+                  type: string
+                title:
+                  type: string
+                type:
+                  type: string
+                  enum:
+                  - text
+                  - url
+                  - html
+                  - numeric
+              type: object
+      responses:
+        '200':
+          description: Updated response attribute
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAttribute'
+    delete:
+      description: Delete response attribute
+      tags:
+      - integration
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Deleted response attribute
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAttribute'
+  /api/v3/public/response-attribute-values/{token}:
+    get:
+      description: Get response attribute values list
+      tags:
+      - integration
+      parameters:
+      - $ref: '#/components/parameters/token'
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - $ref: '#/components/parameters/filter_id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - attribute
+      - name: sort[by]
+        in: query
+        description: sort field
+        required: false
+        schema:
+          type: string
+          default: id
+          enum:
+          - id
+          - created_at
+          - attribute.sort_order
+      - name: filter[response_attribute_id]
+        in: query
+        description: Attribute id filter
+        required: false
+        schema:
+          type: integer
+      - name: filter[response_attribute_code]
+        in: query
+        description: Attribute code filter
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: list of response attributes
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      values:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/ResponseAttributeValue'
+                          - type: object
+                            properties:
+                              _embedded:
+                                type: object
+                                properties:
+                                  attribute:
+                                    $ref: '#/components/schemas/ResponseAttribute'
+                type: object
+  /api/v3/response-attribute-values:
+    get:
+      description: Get response attribute values list
+      tags:
+      - integration
+      parameters:
+      - $ref: '#/components/parameters/pagination_page'
+      - $ref: '#/components/parameters/pagination_page_size'
+      - $ref: '#/components/parameters/sort_order'
+      - $ref: '#/components/parameters/filter_id'
+      - $ref: '#/components/parameters/filter_response_id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - response
+            - attribute
+      - name: sort[by]
+        in: query
+        description: sort field
+        required: false
+        schema:
+          type: string
+          default: id
+          enum:
+          - id
+          - created_at
+          - response_id
+          - attribute.sort_order
+      - name: filter[response_attribute_id]
+        in: query
+        description: Attribute id filter
+        required: false
+        schema:
+          type: integer
+      - name: filter[response_attribute_code]
+        in: query
+        description: Attribute code filter
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: list of response attributes
+          content:
+            application/json:
+              schema:
+                properties:
+                  _total_items:
+                    type: integer
+                  _page:
+                    type: integer
+                  _page_count:
+                    type: integer
+                  _links:
+                    properties:
+                      self:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      next:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                      last:
+                        type: object
+                        properties:
+                          href:
+                            type: string
+                            format: uri
+                    type: object
+                  _embedded:
+                    type: object
+                    properties:
+                      values:
+                        type: array
+                        items:
+                          allOf:
+                          - $ref: '#/components/schemas/ResponseAttributeValue'
+                          - type: object
+                            properties:
+                              _embedded:
+                                type: object
+                                properties:
+                                  response:
+                                    $ref: '#/components/schemas/Response'
+                                  attribute:
+                                    $ref: '#/components/schemas/ResponseAttribute'
+                type: object
+    post:
+      description: Create response attribute value
+      tags:
+      - integration
+      parameters:
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - response
+            - attribute
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                response_id:
+                  type: integer
+                response_attribute_id:
+                  type: integer
+                value:
+                  description: value must be numeric if attribute type is 'numeric'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: Created response attribute value
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ResponseAttributeValue'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        response:
+                          $ref: '#/components/schemas/Response'
+                        attribute:
+                          $ref: '#/components/schemas/ResponseAttribute'
+  /api/v3/response-attribute-values/{id}:
+    get:
+      description: Get response attribute value detail
+      tags:
+      - integration
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - response
+            - attribute
+      responses:
+        '200':
+          description: Response atrribute value
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ResponseAttributeValue'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        response:
+                          $ref: '#/components/schemas/Response'
+                        attribute:
+                          $ref: '#/components/schemas/ResponseAttribute'
+    patch:
+      description: Update response attribute value
+      tags:
+      - integration
+      parameters:
+      - $ref: '#/components/parameters/id'
+      - name: with[]
+        in: query
+        description: Relations to retrieve
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - response
+            - attribute
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              properties:
+                value:
+                  description: value must be numeric if attribute type is 'numeric'
+                  type: string
+              type: object
+      responses:
+        '200':
+          description: Updated response attribute value
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/ResponseAttributeValue'
+                - type: object
+                  properties:
+                    _embedded:
+                      type: object
+                      properties:
+                        response:
+                          $ref: '#/components/schemas/Response'
+                        attribute:
+                          $ref: '#/components/schemas/ResponseAttribute'
+    delete:
+      description: Delete response attribute value
+      tags:
+      - integration
+      parameters:
+      - $ref: '#/components/parameters/id'
+      responses:
+        '200':
+          description: Deleted response attribute value
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseAttributeValue'
+components:
+  parameters:
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
+    sort_order:
+      name: sort[order]
+      in: query
+      description: sort order
+      required: false
+      schema:
+        type: string
+        default: desc
+        enum:
+        - asc
+        - desc
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    token:
+      name: token
+      in: path
+      description: token
+      required: true
+      schema:
+        type: string
+    filter_response_id:
+      name: filter[response_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_vacancy_id:
+      name: filter[vacancy_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+  schemas:
+    Response:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        candidate_id:
+          type: integer
+        response_status_id:
+          type: integer
+        response_source_id:
+          type: integer
+        interview_id:
+          type: integer
+        external_id:
+          type: string
+        is_hidden_by_candidate:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        agreed_at:
+          type: string
+          format: date-time
+          nullable: true
+        date_sent:
+          type: string
+          format: date-time
+          nullable: true
+        resume_url:
+          type: string
+          nullable: true
+        second_resume_url:
+          type: string
+          nullable: true
+        social_source:
+          type: string
+          nullable: true
+        utm_source:
+          type: string
+          nullable: true
+        utm_medium:
+          type: string
+          nullable: true
+        utm_campaign:
+          type: string
+          nullable: true
+        utm_content:
+          type: string
+          nullable: true
+        utm_term:
+          type: string
+          nullable: true
+        is_paid:
+          type: boolean
+          nullable: true
+      type: object
+    ResponseAttribute:
+      properties:
+        id:
+          type: integer
+        sort_order:
+          type: integer
+        type:
+          type: string
+          enum:
+          - text
+          - url
+          - html
+          - numeric
+        title:
+          type: string
+        code:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
+    VacancyIntegration:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        url:
+          type: array
+          items:
+            type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
+    ResponseAttributeValue:
+      properties:
+        id:
+          type: integer
+        response_id:
+          type: integer
+        response_attribute_id:
+          type: integer
+        value:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: token

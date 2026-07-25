@@ -1,0 +1,86 @@
+get:
+  description: Get comment
+  tags:
+    - response
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'response', 'user' ]
+  responses:
+    '200':
+      description: Comment
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/response.yaml#/ResponseComment'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      user:
+                        $ref: '../../components/company.yaml#/User'
+                      response:
+                        $ref: '../../components/response.yaml#/Response'
+patch:
+  description: Update comment
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+    - name: with[]
+      in: query
+      description: Relations to retrieve
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum: [ 'user', 'response' ]
+  tags:
+    - response
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          properties:
+            message:
+              type: string
+          type: object
+  responses:
+    '200':
+      description: Updated comment
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: '../../components/response.yaml#/ResponseComment'
+              - type: object
+                properties:
+                  _embedded:
+                    type: object
+                    properties:
+                      user:
+                        $ref: '../../components/company.yaml#/User'
+                      response:
+                        $ref: '../../components/response.yaml#/Response'
+delete:
+  description: Delete comment
+  tags:
+    - response
+  parameters:
+    - $ref: '../../components/parameters.yaml#/id'
+  responses:
+    '200':
+      description: Deleted comment
+      content:
+        application/json:
+          schema:
+            $ref: '../../components/response.yaml#/ResponseComment'
