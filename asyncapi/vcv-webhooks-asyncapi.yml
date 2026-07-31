@@ -1,0 +1,96 @@
+# generated: 2026-07-21  method: derived
+# source: openapi/vcv-openapi.yml — event surface derived from the company-webhooks
+# subscription API (POST /api/v3/company-webhooks event enum + Webhook schema).
+# VCV publishes no AsyncAPI and no webhook payload documentation; channels below are
+# the five real event types the subscription API enumerates, with payloads marked
+# undocumented rather than invented.
+asyncapi: 2.6.0
+info:
+  title: VCV Webhooks
+  version: v3
+  description: >-
+    VCV delivers outbound webhooks for recruitment events. Subscriptions are
+    managed via the Open API v3 company-webhooks endpoints (create/list/get/
+    update/delete), each carrying a target url, an event type, an active flag,
+    and a per-subscription secret. Event payload schemas are not published;
+    only the event catalog and subscription surface are documented.
+  contact:
+    name: VCV
+    url: https://vcv.ai/api
+    email: hey@vcv.ai
+externalDocs:
+  description: VCV Open API v3 reference (Swagger UI)
+  url: https://developer.vcv.ru/
+servers:
+  production:
+    url: https://my.vcv.ai
+    protocol: https
+    description: Webhook subscriptions are registered via POST /api/v3/company-webhooks.
+defaultContentType: application/json
+channels:
+  response_created:
+    description: A candidate response (application) was created.
+    subscribe:
+      operationId: onResponseCreated
+      message:
+        $ref: '#/components/messages/UndocumentedEvent'
+  response_status_changed:
+    description: A candidate response moved to a different status in the hiring funnel.
+    subscribe:
+      operationId: onResponseStatusChanged
+      message:
+        $ref: '#/components/messages/UndocumentedEvent'
+  response_comment_created:
+    description: A comment was added to a candidate response.
+    subscribe:
+      operationId: onResponseCommentCreated
+      message:
+        $ref: '#/components/messages/UndocumentedEvent'
+  candidate_refused:
+    description: A candidate refused / withdrew from the process.
+    subscribe:
+      operationId: onCandidateRefused
+      message:
+        $ref: '#/components/messages/UndocumentedEvent'
+  vacancy_created:
+    description: A vacancy was created.
+    subscribe:
+      operationId: onVacancyCreated
+      message:
+        $ref: '#/components/messages/UndocumentedEvent'
+components:
+  messages:
+    UndocumentedEvent:
+      name: UndocumentedEvent
+      title: Undocumented event payload
+      summary: VCV does not publish webhook payload schemas; do not assume a shape.
+      payload:
+        type: object
+        description: Payload schema not published by the provider.
+  schemas:
+    WebhookSubscription:
+      type: object
+      description: The subscription object managed at /api/v3/company-webhooks (from the Open API v3 Webhook schema).
+      properties:
+        id: {type: integer}
+        company_id: {type: integer}
+        user_id: {type: integer}
+        name: {type: string, nullable: true}
+        event:
+          type: string
+          enum: [response_status_changed, response_created, candidate_refused, response_comment_created, vacancy_created]
+        url: {type: string}
+        secret: {type: string, description: per-subscription signing/shared secret}
+        active: {type: boolean}
+        created_at: {type: string, format: date-time}
+        updated_at: {type: string, format: date-time}
+
+# --- API Evangelist provenance -------------------------------------------
+x-superseded-by:
+  reason: >-
+    Provider publishes this event surface themselves in as-published OpenAPI; this document was authored by API Evangelist before that source was harvested.
+  published_spec: all/vcv/openapi/_original/vcv-openapi.yml
+  published_event_object: callbacks
+  published_events: 5
+  status: superseded
+  reviewed: '2026-07-31'
