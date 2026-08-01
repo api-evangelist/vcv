@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vcv-openapi.yml + site probes (2026-07-21); no published compliance program or certifications found
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: single securityScheme is http bearer (bearerFormat token); no oauth2 flows declared and no OAuth docs published
+  - id: oidc
+    conforms: false
+    evidence: /.well-known/openid-configuration returns 404 on all hosts
+  - id: hal
+    conforms: true
+    evidence: list responses use HAL-style envelopes — _embedded resources, _links (self/next/last href objects), _total_items/_page/_page_count
+  - id: pagination
+    conforms: true
+    evidence: uniform page + limit query parameters across all list operations (components.parameters pagination_page / pagination_page_size)
+  - id: filtering
+    conforms: true
+    evidence: uniform filter[field] query-parameter convention (filter[id], filter[vacancy_id], filter[active], filter[created_at][from/to], ...)
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: no application/problem+json content; only three 4xx responses documented, with no error schema
+  - id: idempotency
+    conforms: false
+    evidence: no Idempotency-Key header or idempotency contract anywhere in the spec or docs
+  - id: json:api
+    conforms: false
+    evidence: envelopes are HAL-style, not JSON:API
+  - id: scim
+    conforms: false
+    evidence: /api/v3/users is a proprietary user resource, not SCIM 2.0 paths/schemas
+  - id: odata
+    conforms: false
+    evidence: no OData conventions present
+  - id: webhooks
+    conforms: true
+    evidence: company-webhooks CRUD API with per-subscription secret and five enumerated event types

@@ -1,0 +1,49 @@
+{
+  "provider": "vcv",
+  "sources": [
+    "vcv-chatbot-api-openapi.yml",
+    "vcv-companies-api-openapi.yml",
+    "vcv-countries-api-openapi.yml",
+    "vcv-enumeration-api-openapi.yml",
+    "vcv-integration-api-openapi.yml",
+    "vcv-interview-api-openapi.yml",
+    "vcv-invite-api-openapi.yml",
+    "vcv-languages-api-openapi.yml",
+    "vcv-limits-api-openapi.yml",
+    "vcv-response-api-openapi.yml",
+    "vcv-survey-api-openapi.yml",
+    "vcv-tags-api-openapi.yml",
+    "vcv-test-api-openapi.yml",
+    "vcv-users-api-openapi.yml",
+    "vcv-vacancy-api-openapi.yml",
+    "vcv-videointerview-api-openapi.yml",
+    "vcv-webhook-api-openapi.yml"
+  ],
+  "outputs": [
+    "vcv-chatbot-api-openapi.yml",
+    "vcv-companies-api-openapi.yml",
+    "vcv-countries-api-openapi.yml",
+    "vcv-enumeration-api-openapi.yml",
+    "vcv-integration-api-openapi.yml",
+    "vcv-interview-api-openapi.yml",
+    "vcv-invite-api-openapi.yml",
+    "vcv-languages-api-openapi.yml",
+    "vcv-limits-api-openapi.yml",
+    "vcv-response-api-openapi.yml",
+    "vcv-survey-api-openapi.yml",
+    "vcv-tags-api-openapi.yml",
+    "vcv-test-api-openapi.yml",
+    "vcv-users-api-openapi.yml",
+    "vcv-vacancy-api-openapi.yml",
+    "vcv-videointerview-api-openapi.yml",
+    "vcv-webhook-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [
+    "vcv-interview-api-openapi.yml: dangling $ref: #/PublicResponse",
+    "vcv-interview-api-openapi.yml: dangling $ref: #/PublicVacancy"
+  ],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

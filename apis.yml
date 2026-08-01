@@ -1,8 +1,26 @@
 aid: vcv
 name: VCV
-description: VCV is a company surfaced as a portfolio company of 500-global and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  VCV is a recruitment-automation platform offering video interviews, candidate
+  screening, assessments, and chatbot pre-screening for high-volume, graduate,
+  and professional hiring, used by enterprises like PwC, PepsiCo, and Danone.
+  Its VCV Open API v3 is a bearer-token REST API covering vacancies, candidate
+  responses, video interviews, tests, surveys, invites, tags, users, and
+  company webhooks, documented via Swagger UI at developer.vcv.ru.
 url: https://raw.githubusercontent.com/api-evangelist/vcv/refs/heads/main/apis.yml
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://static.tildacdn.net/tild3164-3465-4133-a335-363938393334/vcv_badge.png
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
@@ -11,10 +29,220 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
-apis: []
+- Recruiting
+- Human Resources
+- Video Interviews
+- Talent Acquisition
+- Hiring
+- Assessments
+apis:
+- aid: vcv:vcv-chatbot-api
+  name: VCV chatbot API
+  description: The chatbot API from VCV — 2 operation(s) for chatbot.
+  humanURL: https://developer.vcv.ru
+  baseURL: https://my.vcv.ai
+  tags:
+  - chatbot
+  properties:
+  - type: OpenAPI
+    url: openapi/vcv-chatbot-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vcv.ru/
+- aid: vcv:vcv-companies-api
+  name: VCV companies API
+  description: The companies API from VCV — 1 operation(s) for companies.
+  humanURL: https://developer.vcv.ru
+  baseURL: https://my.vcv.ai
+  tags:
+  - companies
+  properties:
+  - type: OpenAPI
+    url: openapi/vcv-companies-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vcv.ru/
+- aid: vcv:vcv-countries-api
+  name: VCV countries API
+  description: The countries API from VCV — 2 operation(s) for countries.
+  humanURL: https://developer.vcv.ru
+  baseURL: https://my.vcv.ai
+  tags:
+  - countries
+  properties:
+  - type: OpenAPI
+    url: openapi/vcv-countries-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vcv.ru/
+- aid: vcv:vcv-enumeration-api
+  name: VCV enumeration API
+  description: The enumeration API from VCV — 3 operation(s) for enumeration.
+  humanURL: https://developer.vcv.ru
+  baseURL: https://my.vcv.ai
+  tags:
+  - enumeration
+  properties:
+  - type: OpenAPI
+    url: openapi/vcv-enumeration-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vcv.ru/
+- aid: vcv:vcv-integration-api
+  name: VCV integration API
+  description: The integration API from VCV — 7 operation(s) for integration.
+  humanURL: https://developer.vcv.ru
+  baseURL: https://my.vcv.ai
+  tags:
+  - integration
+  properties:
+  - type: OpenAPI
+    url: openapi/vcv-integration-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vcv.ru/
+- aid: vcv:vcv-interview-api
+  name: VCV interview API
+  description: The interview API from VCV — 3 operation(s) for interview.
+  humanURL: https://developer.vcv.ru
+  baseURL: https://my.vcv.ai
+  tags:
+  - interview
+  properties:
+  - type: OpenAPI
+    url: openapi/vcv-interview-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vcv.ru/
+- aid: vcv:vcv-invite-api
+  name: VCV invite API
+  description: The invite API from VCV — 2 operation(s) for invite.
+  humanURL: https://developer.vcv.ru
+  baseURL: https://my.vcv.ai
+  tags:
+  - invite
+  properties:
+  - type: OpenAPI
+    url: openapi/vcv-invite-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vcv.ru/
+- aid: vcv:vcv-languages-api
+  name: VCV Languages API
+  description: The Languages API from VCV — 1 operation(s) for languages.
+  humanURL: https://developer.vcv.ru
+  baseURL: https://my.vcv.ai
+  tags:
+  - Languages
+  properties:
+  - type: OpenAPI
+    url: openapi/vcv-languages-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vcv.ru/
+- aid: vcv:vcv-limits-api
+  name: VCV limits API
+  description: The limits API from VCV — 1 operation(s) for limits.
+  humanURL: https://developer.vcv.ru
+  baseURL: https://my.vcv.ai
+  tags:
+  - limits
+  properties:
+  - type: OpenAPI
+    url: openapi/vcv-limits-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vcv.ru/
+- aid: vcv:vcv-response-api
+  name: VCV response API
+  description: The response API from VCV — 12 operation(s) for response.
+  humanURL: https://developer.vcv.ru
+  baseURL: https://my.vcv.ai
+  tags:
+  - response
+  properties:
+  - type: OpenAPI
+    url: openapi/vcv-response-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vcv.ru/
+- aid: vcv:vcv-survey-api
+  name: VCV survey API
+  description: The survey API from VCV — 4 operation(s) for survey.
+  humanURL: https://developer.vcv.ru
+  baseURL: https://my.vcv.ai
+  tags:
+  - survey
+  properties:
+  - type: OpenAPI
+    url: openapi/vcv-survey-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vcv.ru/
+- aid: vcv:vcv-tags-api
+  name: VCV tags API
+  description: The tags API from VCV — 4 operation(s) for tags.
+  humanURL: https://developer.vcv.ru
+  baseURL: https://my.vcv.ai
+  tags:
+  - tags
+  properties:
+  - type: OpenAPI
+    url: openapi/vcv-tags-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vcv.ru/
+- aid: vcv:vcv-test-api
+  name: VCV test API
+  description: The test API from VCV — 4 operation(s) for test.
+  humanURL: https://developer.vcv.ru
+  baseURL: https://my.vcv.ai
+  tags:
+  - test
+  properties:
+  - type: OpenAPI
+    url: openapi/vcv-test-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vcv.ru/
+- aid: vcv:vcv-users-api
+  name: VCV users API
+  description: The users API from VCV — 2 operation(s) for users.
+  humanURL: https://developer.vcv.ru
+  baseURL: https://my.vcv.ai
+  tags:
+  - users
+  properties:
+  - type: OpenAPI
+    url: openapi/vcv-users-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vcv.ru/
+- aid: vcv:vcv-vacancy-api
+  name: VCV vacancy API
+  description: The vacancy API from VCV — 23 operation(s) for vacancy.
+  humanURL: https://developer.vcv.ru
+  baseURL: https://my.vcv.ai
+  tags:
+  - vacancy
+  properties:
+  - type: OpenAPI
+    url: openapi/vcv-vacancy-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vcv.ru/
+- aid: vcv:vcv-videointerview-api
+  name: VCV videointerview API
+  description: The videointerview API from VCV — 4 operation(s) for videointerview.
+  humanURL: https://developer.vcv.ru
+  baseURL: https://my.vcv.ai
+  tags:
+  - videointerview
+  properties:
+  - type: OpenAPI
+    url: openapi/vcv-videointerview-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vcv.ru/
+- aid: vcv:vcv-webhook-api
+  name: VCV webhook API
+  description: The webhook API from VCV — 2 operation(s) for webhook.
+  humanURL: https://developer.vcv.ru
+  baseURL: https://my.vcv.ai
+  tags:
+  - webhook
+  properties:
+  - type: OpenAPI
+    url: openapi/vcv-webhook-api-openapi.yml
+  - type: Documentation
+    url: https://developer.vcv.ru/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +251,58 @@ maintainers:
 common:
 - type: Website
   url: https://vcv.ai
+- type: Documentation
+  url: https://developer.vcv.ru/
+- type: APIReference
+  url: https://developer.vcv.ru/
+- type: Pricing
+  url: https://vcv.ai/pricing
+- type: Blog
+  url: https://vcv.ai/blog
+- type: SignUp
+  url: https://my.vcv.ai/registration/en
+- type: Login
+  url: https://my.vcv.ai/login
+- type: TermsOfService
+  url: https://vcv.ai/pages/user-agreement
+- type: PrivacyPolicy
+  url: https://vcv.ai/pages/privacy-policy
+- type: Support
+  url: https://vcv.ai/contact
+- type: Twitter
+  url: https://twitter.com/vcvpages
+- type: LinkedIn
+  url: https://www.linkedin.com/company/vcv-ai/
+- type: Authentication
+  url: authentication/vcv-authentication.yml
+- type: DomainSecurity
+  url: security/vcv-domain-security.yml
+- type: Conventions
+  url: conventions/vcv-conventions.yml
+- type: ErrorCatalog
+  url: errors/vcv-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/vcv-lifecycle.yml
+- type: Conformance
+  url: conformance/vcv-conformance.yml
+- type: DataModel
+  url: data-model/vcv-data-model.yml
+- type: AsyncAPI
+  url: asyncapi/vcv-webhooks-asyncapi.yml
+- type: Webhooks
+  url: asyncapi/vcv-webhooks-asyncapi.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: MCPServer
+  url: mcp/vcv-mcp.yml
+- type: LLMsTxt
+  url: llms/vcv-llms.txt
+- type: Overlay
+  url: overlays/vcv-openapi-overlay.yaml
+- type: Packages
+  url: packages/vcv-packages.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 18
+  pass: local-v1

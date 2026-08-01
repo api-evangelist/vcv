@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: searched
+source: npm registry search, PyPI, GitHub org lookup (2026-07-21)
+notes: >-
+  No first-party VCV client libraries were found. npm search for "vcv" returns only
+  unrelated packages (a Vue SFC REPL component and VCV Rack synthesizer tooling);
+  the PyPI package "vcv" is an unrelated computer-vision library by a third party;
+  no VCV GitHub organization exists (vcv, vcv-ai, vcvai all 404). VCV's integration
+  surface is the raw REST Open API v3 documented at https://developer.vcv.ru.
+registries_probed:
+  - registry: npm
+    query: https://registry.npmjs.org/-/v1/search?text=vcv
+    result: no first-party packages
+  - registry: pypi
+    query: https://pypi.org/pypi/vcv/json
+    result: name taken by an unrelated third-party computer-vision package
+  - registry: github
+    query: https://api.github.com/orgs/vcv | vcv-ai | vcvai
+    result: no organization found
+packages: []

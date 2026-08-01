@@ -1,0 +1,22 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vcv-openapi.yml (developer.vcv.ru swagger.yml)
+format: undocumented
+notes: >-
+  The VCV Open API v3 spec documents only three 4xx responses across its 127
+  operations, and publishes no error schema, no error-code registry, and no
+  application/problem+json content. This catalog records exactly what the spec
+  declares; the real runtime error envelope is undocumented.
+problems:
+  - status: 403
+    title: Forbidden
+    source_operation: 'openapi/vcv-openapi.yml#GET /api/v3/responses/{responseId}/resumes/{resumeId}/download'
+  - status: 404
+    title: Response or resume not found, or invalid URL
+    source_operation: 'openapi/vcv-openapi.yml#GET /api/v3/responses/{responseId}/resumes/{resumeId}/download'
+  - status: 404
+    title: Resume not found
+    source_operation: 'openapi/vcv-openapi.yml#GET /api/v3/response-resume/{id}'
+gaps:
+  - no 401/422/429/5xx responses documented despite bearer auth, validation, and pagination surfaces
+  - no machine-readable error envelope published

@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: generated
+source: >-
+  Packaged Agent Skills generated from the VCV Open API v3 (openapi/vcv-openapi.yml)
+  plus conventions/, errors/, authentication/ and asyncapi/. The spec declares no
+  operationIds, so every step is anchored by METHOD + path verified verbatim in the
+  bundled spec. No provider-published skills or AGENTS.md were found.
+skills:
+  - file: vcv-screen-and-advance-candidates.md
+    name: Screen candidate responses and advance them through the funnel
+    api: openapi/vcv-openapi.yml
+    operations:
+      - 'GET /api/v3/vacancies'
+      - 'GET /api/v3/responses'
+      - 'GET /api/v3/responses/{id}'
+      - 'GET /api/v3/videointerviews/response'
+      - 'GET /api/v3/response-statuses'
+      - 'PATCH /api/v3/responses/{id}'
+      - 'POST /api/v3/response-comments'
+  - file: vcv-manage-webhook-subscriptions.md
+    name: Subscribe to VCV recruitment events via webhooks
+    api: openapi/vcv-openapi.yml
+    operations:
+      - 'POST /api/v3/company-webhooks'
+      - 'GET /api/v3/company-webhooks'
+      - 'GET /api/v3/company-webhooks/{id}'
+      - 'PATCH /api/v3/company-webhooks/{id}'
+      - 'DELETE /api/v3/company-webhooks/{id}'

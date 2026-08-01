@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vcv-openapi.yml + live probes of status/docs hosts (2026-07-21)
+versioning:
+  scheme: uri-path
+  current: v3
+  evidence: all paths are prefixed /api/v3/; info.version is "v3"
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: no deprecation policy, Sunset/Deprecation header support, or deprecated operations published
+sla:
+  url: null
+  notes: no SLA published
+status_page: null
+status_page_probes:
+  - {url: 'https://status.vcv.ai', result: '301 redirect to https://my.vcv.ru/ (app catch-all, not a status page)'}
+  - {url: 'https://status.vcv.ru', result: '200 but serves the my.vcv.ru app shell, not a status page'}
+  - {url: 'https://vcv.statuspage.io', result: '302 to www.statuspage.io (no page exists)'}
+deprecated_operations: []

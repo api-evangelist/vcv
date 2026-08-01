@@ -1,0 +1,175 @@
+openapi: 3.0.1
+security:
+  - bearerAuth: [ ]
+info:
+  title: VCV
+  description: open api
+  version: v3
+servers:
+  - url: 'https://my.vcv.ai'
+  - url: 'https://my.vcv.ru'
+  - url: '{hostname}'
+    variables:
+      hostname:
+        default: 'http://localhost:8080'
+paths:
+  /api/v3/vacancies:
+    $ref: './docs/vacancy/list.yaml'
+  /api/v3/vacancies/{id}:
+    $ref: './docs/vacancy/detail.yaml'
+  /api/v3/vacancy-permissions:
+    $ref: './docs/vacancy/permissions/list.yaml'
+  /api/v3/vacancy-permissions/{id}:
+    $ref: './docs/vacancy/permissions/detail.yaml'
+  /api/v3/vacancy-competences:
+    $ref: './docs/vacancy/competences/list.yaml'
+  /api/v3/vacancy-competences/{id}:
+    $ref: './docs/vacancy/competences/detail.yaml'
+  /api/v3/competence-views:
+    $ref: './docs/vacancy/competences/views/list.yaml'
+  /api/v3/competence-views/{id}:
+    $ref: './docs/vacancy/competences/views/detail.yaml'
+  /api/v3/competence-levels:
+    $ref: './docs/vacancy/competences/levels/list.yaml'
+  /api/v3/competence-levels/{id}:
+    $ref: './docs/vacancy/competences/levels/detail.yaml'
+  /api/v3/vacancy-modules:
+    $ref: './docs/vacancy/modules/list.yaml'
+  /api/v3/vacancy-modules/{id_module}/{vacancy_id}:
+    $ref: './docs/vacancy/modules/detail.yaml'
+  /api/v3/vacancy-stages:
+    $ref: './docs/vacancy/stages/list.yaml'
+  /api/v3/vacancy-stages/{id_module}/{vacancy_id}:
+    $ref: './docs/vacancy/stages/detail.yaml'
+  /api/v3/vacancies/{vacancy_id}/logo:
+    $ref: './docs/vacancy/logo.yaml'
+  /api/v3/vacancy-landing-url-history:
+    $ref: './docs/vacancy/landing-url-history/list.yaml'
+  /api/v3/vacancy-landing-url-history/validate:
+    $ref: './docs/vacancy/landing-url-history/validate.yaml'
+  /api/v3/vacancy-landing-url-history/{id}:
+    $ref: './docs/vacancy/landing-url-history/detail.yaml'
+  /api/v3/response-status-email-templates:
+    $ref: './docs/response/status-email-templates/list.yaml'
+  /api/v3/response-status-email-templates/{id}:
+    $ref: './docs/response/status-email-templates/detail.yaml'
+  /api/v3/response-status-email-templates/{id}/recovery:
+    $ref: './docs/response/status-email-templates/recovery.yaml'
+  /api/v3/vacancy-email-template-remind:
+    $ref: './docs/vacancy/email-template-remind/list.yaml'
+  /api/v3/vacancy-email-template-remind/{id}:
+    $ref: './docs/vacancy/email-template-remind/detail.yaml'
+  /api/v3/responses:
+    $ref: './docs/response/list.yaml'
+  /api/v3/responses/{id}:
+    $ref: './docs/response/detail.yaml'
+  /api/v3/videointerviews/response:
+    $ref: './docs/videointerview/response/list.yaml'
+  /api/v3/videointerviews/response/{id}:
+    $ref: './docs/videointerview/response/detail.yaml'
+  /api/v3/surveys/templates:
+    $ref: './docs/survey/template/list.yaml'
+  /api/v3/surveys/templates/{id}:
+    $ref: './docs/survey/template/detail.yaml'
+  /api/v3/videointerviews/vacancy:
+    $ref: './docs/videointerview/vacancy/list.yaml'
+  /api/v3/videointerviews/vacancy/{id}:
+    $ref: './docs/videointerview/vacancy/detail.yaml'
+  /api/v3/surveys:
+    $ref: './docs/survey/list.yaml'
+  /api/v3/surveys/{id}:
+    $ref: './docs/survey/detail.yaml'
+  /api/v3/invites:
+    $ref: './docs/invite/list.yaml'
+  /api/v3/invites/{id}:
+    $ref: './docs/invite/detail.yaml'
+  /api/v3/tests/vacancy:
+    $ref: './docs/test/vacancy/list.yaml'
+  /api/v3/tests/vacancy/{id}:
+    $ref: './docs/test/vacancy/detail.yaml'
+  /api/v3/integration/vacancy:
+    $ref: './docs/integration/vacancy/list.yaml'
+  /api/v3/integration/vacancy/{id}:
+    $ref: './docs/integration/vacancy/detail.yaml'
+  /api/v3/response-attributes:
+    $ref: './docs/response/attribute/list.yaml'
+  /api/v3/response-attributes/{id}:
+    $ref: './docs/response/attribute/detail.yaml'
+  /api/v3/public/response-attribute-values/{token}:
+    $ref: './docs/public/response-attribute-value/list.yaml'
+  /api/v3/response-attribute-values:
+    $ref: './docs/response/attribute/value/list.yaml'
+  /api/v3/response-attribute-values/{id}:
+    $ref: './docs/response/attribute/value/detail.yaml'
+  /api/v3/tests/response:
+    $ref: './docs/test/response/list.yaml'
+  /api/v3/tests/response/{id}:
+    $ref: './docs/test/response/detail.yaml'
+  /api/v3/company-limits:
+    $ref: './docs/company/limits/detail.yaml'
+  /api/v3/companies/search:
+    $ref: './docs/company/search-list.yaml'
+  /api/v3/company-webhooks:
+    $ref: './docs/integration/webhook/list.yaml'
+  /api/v3/company-webhooks/{id}:
+    $ref: './docs/integration/webhook/detail.yaml'
+  /api/v3/public/interviews/{token}:
+    $ref: './docs/public/interview/detail.yaml'
+  /api/v3/public/interviews/{token}/agreed:
+    $ref: './docs/public/interview/agreed.yaml'
+  /api/v3/responses/{id}/finish:
+    $ref: './docs/interview/finish.yaml'
+  /api/v3/response-comments:
+    $ref: './docs/response/comment/list.yaml'
+  /api/v3/response-comments/{id}:
+    $ref: './docs/response/comment/detail.yaml'
+  /api/v3/tags:
+    $ref: './docs/tag/list.yaml'
+  /api/v3/tags/{id}:
+    $ref: './docs/tag/detail.yaml'
+  /api/v3/response-tags:
+    $ref: './docs/response/tag/list.yaml'
+  /api/v3/response-tags/{id}:
+    $ref: './docs/response/tag/detail.yaml'
+  /api/v3/response-statuses:
+    $ref: './docs/response/status/list.yaml'
+  /api/v3/response-statuses/{id}:
+    $ref: './docs/response/status/detail.yaml'
+  /api/v3/responses/{responseId}/resumes/{resumeId}/download:
+    $ref: './docs/response/resume/download.yaml'
+  /api/v3/response-resumes:
+    $ref: './docs/response/resume/list-resumes.yaml'
+  /api/v3/response-resume/{id}:
+    $ref: './docs/response/resume/detail.yaml'
+  /api/v3/public/vacancy/{vacancyToken}/response-resume/{responseToken}:
+    $ref: './docs/response/resume/list.yaml'
+  /api/v3/countries:
+    $ref: './docs/company/countries/list.yaml'
+  /api/v3/countries/{id}:
+    $ref: './docs/company/countries/detail.yaml'
+  /api/v3/users:
+    $ref: './docs/company/users/list.yaml'
+  /api/v3/users/{id}:
+    $ref: './docs/company/users/detail.yaml'
+  /api/v3/languages:
+    $ref: './docs/company/languages.yaml'
+  /api/v3/enumerations/:
+    $ref: './docs/enumeration/list.yaml'
+  /api/v3/enumerations/{id}:
+    $ref: './docs/enumeration/detail.yaml'
+  /api/v3/enumerations/{id}/items:
+    $ref: './docs/enumeration/items.yaml'
+  /api/v3/chatbot/interviews/{interview_id}:
+    $ref: './docs/chatbot/interview.yaml'
+  /api/v3/chatbot/trigger/{interview_id}:
+    $ref: './docs/chatbot/trigger.yaml'
+  /api/v3/response-events:
+    $ref: './docs/response/event/list.yaml'
+  /api/v3/response-events/{id}:
+    $ref: './docs/response/event/detail.yaml'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: token

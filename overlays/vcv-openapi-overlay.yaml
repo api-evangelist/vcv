@@ -1,0 +1,43 @@
+# generated: 2026-07-21  method: generated  source: API Evangelist enrichment of openapi/vcv-openapi-original.yml
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the VCV Open API
+  version: 1.0.0
+extends: openapi/vcv-openapi-original.yml
+actions:
+  - target: $.info
+    update:
+      description: >-
+        VCV Open API v3 — REST API for the VCV recruitment-automation platform:
+        vacancies, candidate responses, video interviews, tests, surveys, invites,
+        tags, users, enumerations, chatbot interviews, and company webhooks.
+        Bearer-token authenticated; HAL-style list envelopes (_embedded, _links,
+        _total_items) with page/limit pagination and filter[...] query parameters.
+      contact:
+        name: VCV
+        url: https://vcv.ai/api
+        email: hey@vcv.ai
+      x-apievangelist:
+        provider: vcv
+        harvested: '2026-07-21'
+        source: https://developer.vcv.ru/swagger.yml
+        conventions: conventions/vcv-conventions.yml
+        authentication: authentication/vcv-authentication.yml
+        webhooks: asyncapi/vcv-webhooks-asyncapi.yml
+  - target: $.servers
+    description: The spec's third server entry defaults to http://localhost:8080; production hosts are my.vcv.ai and my.vcv.ru.
+    update: []
+  - target: $.paths['/api/v3/company-webhooks'].post
+    update:
+      x-apievangelist-note: >-
+        Webhook subscription endpoint — the five supported event types
+        (response_status_changed, response_created, candidate_refused,
+        response_comment_created, vacancy_created) are enumerated in the request
+        body and captured as an event surface in asyncapi/vcv-webhooks-asyncapi.yml.
+  - target: $.components
+    update:
+      x-apievangelist-gaps:
+        - operations declare no operationIds
+        - operations declare no summaries (descriptions only)
+        - only three 4xx responses are documented across 127 operations; no error schema is published
+        - no examples are included in the spec

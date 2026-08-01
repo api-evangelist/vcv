@@ -1,0 +1,71 @@
+generated: '2026-07-21'
+method: derived
+source: >-
+  openapi/vcv-openapi.yml (developer.vcv.ru swagger.yml) — cross-cutting
+  request/response semantics derived from the shared components.parameters and
+  the uniform HAL-style list envelopes. VCV publishes no prose conventions docs.
+description: >-
+  How the VCV Open API v3 behaves across every operation: bearer-token
+  authentication, page/limit pagination with HAL envelopes, filter[...] query
+  filtering, with[] relation expansion, uri-path versioning, and an undocumented
+  error envelope. No idempotency contract is published.
+
+base_url: https://my.vcv.ai (also https://my.vcv.ru); all paths prefixed /api/v3
+api_style: REST over HTTPS, JSON requests and responses
+
+authentication:
+  scheme: HTTP bearer token (bearerFormat token)
+  docs: https://developer.vcv.ru/
+  detail: authentication/vcv-authentication.yml
+
+idempotency:
+  supported: false
+  notes: no Idempotency-Key header or retry contract documented anywhere in the spec
+
+pagination:
+  style: page-based
+  request_params:
+    page: page number
+    limit: page size
+  response_fields:
+    _total_items: total result count
+    _page: current page
+    _page_count: total pages
+    _links: HAL links object (self/next/last, each with href)
+    _embedded: object keyed by resource name containing the result array
+  detail: uniform across all list operations via shared components.parameters
+
+filtering_and_sorting:
+  filter_style: 'filter[field] query parameters (filter[id], filter[vacancy_id], filter[active], filter[user_id], filter[response_status_id], filter[created_at][from], filter[created_at][to], ...)'
+  sort_style: 'sort[order] query parameter'
+
+field_expansion:
+  supported: true
+  mechanism: 'with[] query parameter — array of relation names to embed (e.g. with[]=user on company-webhooks; candidate, vacancy, interview relations on responses)'
+
+metadata:
+  supported: false
+  notes: no free-form metadata fields on resources
+
+request_tracing:
+  supported: false
+  notes: no request-id header documented
+
+versioning:
+  scheme: uri-path (/api/v3/)
+  detail: lifecycle/vcv-lifecycle.yml
+
+error_envelope:
+  documented: false
+  detail: errors/vcv-problem-types.yml — only three 4xx responses documented, no error schema
+
+rate_limits:
+  signaling: none documented
+  notes: >-
+    no rate-limit headers or limits documented in the spec; the platform exposes a
+    /api/v3/company-limits endpoint reporting per-company product usage limits
+    (a commercial quota surface, not HTTP rate limiting)
+
+webhooks:
+  supported: true
+  detail: asyncapi/vcv-webhooks-asyncapi.yml — company-webhooks CRUD with per-subscription secret and five event types

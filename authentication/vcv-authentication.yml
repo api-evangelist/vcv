@@ -1,0 +1,14 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/vcv-openapi-original.yml, openapi/vcv-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  bearerFormat: token
+  sources:
+  - openapi/vcv-openapi-original.yml
+  - openapi/vcv-openapi.yml

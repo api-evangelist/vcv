@@ -1,0 +1,392 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/vcv-openapi.yml (developer.vcv.ru swagger.yml) — no official MCP server found; npm, PyPI
+  and the official MCP registry (registry.modelcontextprotocol.io) searched 2026-07-21 with no VCV entry
+server:
+  name: vcv
+  transport: http
+notes: Candidate tool list derived one tool per OpenAPI operation. The VCV Open API v3 spec declares no
+  operationIds, so source_operation uses 'METHOD /path' anchors into the bundled spec.
+tools:
+- name: list_vacancies
+  description: Get vacancies list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/vacancies
+- name: create_vacancies
+  description: Create vacancy
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/vacancies
+- name: delete_vacancies
+  description: Delete vacancies list
+  source_operation: openapi/vcv-openapi.yml#DELETE /api/v3/vacancies
+- name: update_vacancies
+  description: Update vacancies list
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/vacancies
+- name: get_vacancies
+  description: Get vacancy
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/vacancies/{id}
+- name: delete_vacancies_2
+  description: Delete vacancy
+  source_operation: openapi/vcv-openapi.yml#DELETE /api/v3/vacancies/{id}
+- name: update_vacancies_2
+  description: Update vacancy
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/vacancies/{id}
+- name: list_vacancy_permissions
+  description: Get vacancy permissions list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/vacancy-permissions
+- name: create_vacancy_permissions
+  description: Create vacancy permission
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/vacancy-permissions
+- name: get_vacancy_permissions
+  description: Get vacancy permission
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/vacancy-permissions/{id}
+- name: update_vacancy_permissions
+  description: Update vacancy permission
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/vacancy-permissions/{id}
+- name: delete_vacancy_permissions
+  description: Delete vacancy permission
+  source_operation: openapi/vcv-openapi.yml#DELETE /api/v3/vacancy-permissions/{id}
+- name: list_vacancy_competences
+  description: Get vacancy competences list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/vacancy-competences
+- name: create_vacancy_competences
+  description: Create vacancy competence
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/vacancy-competences
+- name: get_vacancy_competences
+  description: Get vacancy competence
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/vacancy-competences/{id}
+- name: update_vacancy_competences
+  description: Update vacancy competence
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/vacancy-competences/{id}
+- name: delete_vacancy_competences
+  description: Delete vacancy competence
+  source_operation: openapi/vcv-openapi.yml#DELETE /api/v3/vacancy-competences/{id}
+- name: list_competence_views
+  description: Get competence views
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/competence-views
+- name: get_competence_views
+  description: Get competence view
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/competence-views/{id}
+- name: list_competence_levels
+  description: Get competence levels
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/competence-levels
+- name: get_competence_levels
+  description: Get competence level
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/competence-levels/{id}
+- name: list_vacancy_modules
+  description: Get vacancy modules list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/vacancy-modules
+- name: get_vacancy_modules
+  description: Get vacancy module detail
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/vacancy-modules/{id_module}/{vacancy_id}
+- name: update_vacancy_modules
+  description: Update vacancy module
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/vacancy-modules/{id_module}/{vacancy_id}
+- name: list_vacancy_stages
+  description: Get vacancy module stages list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/vacancy-stages
+- name: get_vacancy_stages
+  description: Get vacancy module stage detail
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/vacancy-stages/{id_module}/{vacancy_id}
+- name: update_vacancy_stages
+  description: Update vacancy module stage
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/vacancy-stages/{id_module}/{vacancy_id}
+- name: create_vacancies_logo
+  description: Update vacancy logo
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/vacancies/{vacancy_id}/logo
+- name: delete_vacancies_logo
+  description: Delete vacancy logo
+  source_operation: openapi/vcv-openapi.yml#DELETE /api/v3/vacancies/{vacancy_id}/logo
+- name: list_vacancy_landing_url_history
+  description: Get vacancy landing url history
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/vacancy-landing-url-history
+- name: create_vacancy_landing_url_history_validate
+  description: Validate landing url history
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/vacancy-landing-url-history/validate
+- name: get_vacancy_landing_url_history
+  description: Get history item
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/vacancy-landing-url-history/{id}
+- name: delete_vacancy_landing_url_history
+  description: Delete vacancy url path
+  source_operation: openapi/vcv-openapi.yml#DELETE /api/v3/vacancy-landing-url-history/{id}
+- name: list_response_status_email_templates
+  description: Get response status email templates list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/response-status-email-templates
+- name: create_response_status_email_templates
+  description: Create response status email template
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/response-status-email-templates
+- name: get_response_status_email_templates
+  description: Get response status email template detail
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/response-status-email-templates/{id}
+- name: delete_response_status_email_templates
+  description: Delete response status email template
+  source_operation: openapi/vcv-openapi.yml#DELETE /api/v3/response-status-email-templates/{id}
+- name: update_response_status_email_templates
+  description: Update response status email template
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/response-status-email-templates/{id}
+- name: create_response_status_email_templates_recovery
+  description: Recovery response status email template from company settings
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/response-status-email-templates/{id}/recovery
+- name: list_vacancy_email_template_remind
+  description: Get remind templates list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/vacancy-email-template-remind
+- name: create_vacancy_email_template_remind
+  description: Create remind email
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/vacancy-email-template-remind
+- name: get_vacancy_email_template_remind
+  description: Get remind email detail
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/vacancy-email-template-remind/{id}
+- name: update_vacancy_email_template_remind
+  description: Update remind email
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/vacancy-email-template-remind/{id}
+- name: list_responses
+  description: Get responses list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/responses
+- name: get_responses
+  description: Get response detail
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/responses/{id}
+- name: update_responses
+  description: Update response
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/responses/{id}
+- name: list_videointerviews_response
+  description: Get response videointerviews list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/videointerviews/response
+- name: get_videointerviews_response
+  description: Get response videointerview
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/videointerviews/response/{id}
+- name: list_surveys_templates
+  description: Get survey templates list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/surveys/templates
+- name: get_surveys_templates
+  description: Get survey template detail
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/surveys/templates/{id}
+- name: update_surveys_templates
+  description: Update survey template detail
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/surveys/templates/{id}
+- name: list_videointerviews_vacancy
+  description: Get vacancy videointerviews list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/videointerviews/vacancy
+- name: get_videointerviews_vacancy
+  description: Get vacancy videointerview
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/videointerviews/vacancy/{id}
+- name: update_videointerviews_vacancy
+  description: Update vacancy videointerview detail
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/videointerviews/vacancy/{id}
+- name: list_surveys
+  description: Get response surveys list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/surveys
+- name: get_surveys
+  description: Get response survey detail
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/surveys/{id}
+- name: list_invites
+  description: Get invites list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/invites
+- name: create_invites
+  description: Create invites list
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/invites
+- name: get_invites
+  description: Get invites list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/invites/{id}
+- name: list_tests_vacancy
+  description: Get vacancy tests list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/tests/vacancy
+- name: get_tests_vacancy
+  description: Get vacancy test detail
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/tests/vacancy/{id}
+- name: update_tests_vacancy
+  description: Update vacancy test
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/tests/vacancy/{id}
+- name: list_integration_vacancy
+  description: Get vacancy integration module list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/integration/vacancy
+- name: create_integration_vacancy
+  description: Create vacancy integration
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/integration/vacancy
+- name: get_integration_vacancy
+  description: Get vacancy integration detail
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/integration/vacancy/{id}
+- name: update_integration_vacancy
+  description: Update vacancy integration
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/integration/vacancy/{id}
+- name: list_response_attributes
+  description: Get response attributes list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/response-attributes
+- name: create_response_attributes
+  description: Create response attribute
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/response-attributes
+- name: get_response_attributes
+  description: Get response attribute detail
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/response-attributes/{id}
+- name: update_response_attributes
+  description: Update response attribute
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/response-attributes/{id}
+- name: delete_response_attributes
+  description: Delete response attribute
+  source_operation: openapi/vcv-openapi.yml#DELETE /api/v3/response-attributes/{id}
+- name: get_public_response_attribute_values
+  description: Get response attribute values list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/public/response-attribute-values/{token}
+- name: list_response_attribute_values
+  description: Get response attribute values list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/response-attribute-values
+- name: create_response_attribute_values
+  description: Create response attribute value
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/response-attribute-values
+- name: get_response_attribute_values
+  description: Get response attribute value detail
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/response-attribute-values/{id}
+- name: update_response_attribute_values
+  description: Update response attribute value
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/response-attribute-values/{id}
+- name: delete_response_attribute_values
+  description: Delete response attribute value
+  source_operation: openapi/vcv-openapi.yml#DELETE /api/v3/response-attribute-values/{id}
+- name: list_tests_response
+  description: Get response tests list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/tests/response
+- name: get_tests_response
+  description: Get response tests list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/tests/response/{id}
+- name: list_company_limits
+  description: Get company limits
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/company-limits
+- name: update_company_limits
+  description: Update company limits
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/company-limits
+- name: list_companies_search
+  description: Get companies list with search and pagination
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/companies/search
+- name: list_company_webhooks
+  description: Get company webhooks list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/company-webhooks
+- name: create_company_webhooks
+  description: Create company webhook
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/company-webhooks
+- name: get_company_webhooks
+  description: Get company webhook detail
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/company-webhooks/{id}
+- name: delete_company_webhooks
+  description: Delete webhook
+  source_operation: openapi/vcv-openapi.yml#DELETE /api/v3/company-webhooks/{id}
+- name: update_company_webhooks
+  description: Update webhook
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/company-webhooks/{id}
+- name: get_public_interviews
+  description: Get public interview
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/public/interviews/{token}
+- name: update_public_interviews
+  description: Update public interview response state and save first UTM payload
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/public/interviews/{token}
+- name: create_public_interviews_agreed
+  description: Mark public interview response as agreed
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/public/interviews/{token}/agreed
+- name: create_responses_finish
+  description: Finish interview immediately
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/responses/{id}/finish
+- name: list_response_comments
+  description: Get response comments list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/response-comments
+- name: create_response_comments
+  description: Create response comment
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/response-comments
+- name: get_response_comments
+  description: Get comment
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/response-comments/{id}
+- name: update_response_comments
+  description: Update comment
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/response-comments/{id}
+- name: delete_response_comments
+  description: Delete comment
+  source_operation: openapi/vcv-openapi.yml#DELETE /api/v3/response-comments/{id}
+- name: list_tags
+  description: Get tags list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/tags
+- name: create_tags
+  description: Create tag
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/tags
+- name: get_tags
+  description: Get tag
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/tags/{id}
+- name: update_tags
+  description: Update tag
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/tags/{id}
+- name: delete_tags
+  description: Delete tag
+  source_operation: openapi/vcv-openapi.yml#DELETE /api/v3/tags/{id}
+- name: list_response_tags
+  description: Get response tags list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/response-tags
+- name: create_response_tags
+  description: Create response tag
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/response-tags
+- name: get_response_tags
+  description: Get response tag
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/response-tags/{id}
+- name: delete_response_tags
+  description: Delete response tag
+  source_operation: openapi/vcv-openapi.yml#DELETE /api/v3/response-tags/{id}
+- name: list_response_statuses
+  description: Get response status list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/response-statuses
+- name: create_response_statuses
+  description: Create response statuses
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/response-statuses
+- name: get_response_statuses
+  description: Get response status detail
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/response-statuses/{id}
+- name: update_response_statuses
+  description: Update response status
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/response-statuses/{id}
+- name: delete_response_statuses
+  description: Delete response status
+  source_operation: openapi/vcv-openapi.yml#DELETE /api/v3/response-statuses/{id}
+- name: list_responses_resumes_download
+  description: Download response resume file
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/responses/{responseId}/resumes/{resumeId}/download
+- name: list_response_resumes
+  description: Get list of resumes attached to responses
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/response-resumes
+- name: get_response_resume
+  description: Get response resume by id
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/response-resume/{id}
+- name: create_public_vacancy_response_resume
+  description: Upload response resume
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/public/vacancy/{vacancyToken}/response-resume/{responseToken}
+- name: list_countries
+  description: Get countries list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/countries
+- name: get_countries
+  description: Get country detail
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/countries/{id}
+- name: list_users
+  description: Get users list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/users
+- name: get_users
+  description: Get user detail
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/users/{id}
+- name: list_languages
+  description: Get languages list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/languages
+- name: list_enumerations
+  description: Get enumerations list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/enumerations/
+- name: get_enumerations
+  description: Get enumeration details
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/enumerations/{id}
+- name: update_enumerations
+  description: Update enumeration
+  source_operation: openapi/vcv-openapi.yml#PATCH /api/v3/enumerations/{id}
+- name: list_enumerations_items
+  description: Get enumerations list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/enumerations/{id}/items
+- name: create_chatbot_interviews
+  description: Set chatbot interview property
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/chatbot/interviews/{interview_id}
+- name: create_chatbot_trigger
+  description: Activate chatbot trigger
+  source_operation: openapi/vcv-openapi.yml#POST /api/v3/chatbot/trigger/{interview_id}
+- name: list_response_events
+  description: Get response events list
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/response-events
+- name: get_response_events
+  description: Get response event detail
+  source_operation: openapi/vcv-openapi.yml#GET /api/v3/response-events/{id}

@@ -1,0 +1,38 @@
+# VCV
+
+> VCV is a recruitment-automation platform (video interviews, candidate screening, assessments, chatbot pre-screening) used for high-volume, graduate, and professional hiring. Its VCV Open API v3 is a bearer-token REST API over https://my.vcv.ai (and https://my.vcv.ru) covering vacancies, candidate responses, video interviews, tests, surveys, invites, tags, users, and company webhooks.
+
+VCV was backed by 500 Global. The developer surface is a Swagger UI at developer.vcv.ru serving the multi-file OpenAPI 3.0.1 spec; there is no separate prose developer portal, no published SDKs, and no OAuth — authentication is an HTTP bearer token. Responses use HAL-style envelopes (_embedded, _links, _total_items) with page/limit pagination and filter[...] query parameters. Outbound webhooks can be registered per company for five events: response_created, response_status_changed, response_comment_created, candidate_refused, vacancy_created.
+
+<!-- generated: 2026-07-21  method: generated  source: apis.yml + repo artifacts (no /llms.txt published on vcv.ai, vcv.ru, or developer.vcv.ru — probed 404 on 2026-07-21) -->
+
+## APIs
+
+- [VCV Open API v3 (Swagger UI)](https://developer.vcv.ru/): interactive reference for all 77 paths / 127 operations
+- [OpenAPI root spec](https://developer.vcv.ru/swagger.yml): multi-file OpenAPI 3.0.1 source of truth
+- Base URLs: https://my.vcv.ai and https://my.vcv.ru (path prefix /api/v3)
+
+## Specs
+
+- [Harvested multi-file original](https://raw.githubusercontent.com/api-evangelist/vcv/refs/heads/main/openapi/vcv-openapi-original.yml)
+- [Bundled single-file resolution](https://raw.githubusercontent.com/api-evangelist/vcv/refs/heads/main/openapi/vcv-openapi.yml)
+- [Webhook event surface (AsyncAPI, derived)](https://raw.githubusercontent.com/api-evangelist/vcv/refs/heads/main/asyncapi/vcv-webhooks-asyncapi.yml)
+
+## Docs
+
+- [Website](https://vcv.ai)
+- [Integrations / API marketing page](https://vcv.ai/api)
+- [Pricing](https://vcv.ai/pricing)
+- [Blog](https://vcv.ai/blog)
+- [Sign up](https://my.vcv.ai/registration/en)
+- [Privacy policy](https://vcv.ai/pages/privacy-policy)
+- [Terms of service](https://vcv.ai/pages/user-agreement)
+
+## Artifacts (API Evangelist enrichment)
+
+- [Authentication profile](https://raw.githubusercontent.com/api-evangelist/vcv/refs/heads/main/authentication/vcv-authentication.yml)
+- [API conventions](https://raw.githubusercontent.com/api-evangelist/vcv/refs/heads/main/conventions/vcv-conventions.yml)
+- [Error catalog](https://raw.githubusercontent.com/api-evangelist/vcv/refs/heads/main/errors/vcv-problem-types.yml)
+- [Data model](https://raw.githubusercontent.com/api-evangelist/vcv/refs/heads/main/data-model/vcv-data-model.yml)
+- [Lifecycle](https://raw.githubusercontent.com/api-evangelist/vcv/refs/heads/main/lifecycle/vcv-lifecycle.yml)
+- [MCP candidate manifest](https://raw.githubusercontent.com/api-evangelist/vcv/refs/heads/main/mcp/vcv-mcp.yml)

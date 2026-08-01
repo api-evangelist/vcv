@@ -1,0 +1,43 @@
+generated: '2026-07-21'
+method: searched
+source: live probes of /.well-known/ on all vcv hosts (2026-07-21)
+notes: >-
+  No /.well-known/ discovery documents are published on any VCV host. my.vcv.ai
+  301-redirects everything to https://my.vcv.ru/, which returns 404 for all
+  well-known paths. Empty result recorded as valid data.
+hosts:
+  - host: https://vcv.ai
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://vcv.ru
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://my.vcv.ai
+    documents:
+      - {path: /.well-known/security.txt, status: 301, note: redirects to https://my.vcv.ru/}
+      - {path: /.well-known/openid-configuration, status: 301, note: redirects to https://my.vcv.ru/}
+      - {path: /.well-known/oauth-authorization-server, status: 301, note: redirects to https://my.vcv.ru/}
+      - {path: /.well-known/api-catalog, status: 301, note: redirects to https://my.vcv.ru/}
+      - {path: /.well-known/ai-plugin.json, status: 301, note: redirects to https://my.vcv.ru/}
+  - host: https://my.vcv.ru
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://developer.vcv.ru
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
