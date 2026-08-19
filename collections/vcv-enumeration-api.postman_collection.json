@@ -1,0 +1,510 @@
+{
+  "item": [
+    {
+      "id": "74ef5992-dee3-4dd8-8d00-fa755f7d7b74",
+      "name": "enumeration",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e7c04696-99b6-4e20-afdc-2e785fcf1e4a",
+          "name": "Get enumerations list",
+          "request": {
+            "name": "Get enumerations list",
+            "description": {
+              "content": "Get enumerations list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "enumerations",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "description": {
+                    "content": "(Required) filter field",
+                    "type": "text/plain"
+                  },
+                  "key": "filter[company_id]",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e5661993-5615-4647-a241-81558b3d527d",
+              "name": "Enumerations list for company",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "enumerations",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "filter[company_id]",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 7168,\n  \"_page\": 9883,\n  \"_page_count\": 2642,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"https://RLeVvIfMmZJwaCrNcEtgL.iqmtnI-SyFHxgivyqR7QRingXBjZlGTqxrat4RxR0UpzfDm3osvv1pGnMjlQZO8\"\n    },\n    \"next\": {\n      \"href\": \"https://CkDDH.dbDuLSjrrLnwg7ken6vaSizTqcYrQOi+XZAIqQdLc3Y,ks6VUPZvy\"\n    },\n    \"last\": {\n      \"href\": \"http://thEVqNXyQcLFtB.zejdy6xgHBU8DwHYzmC,kszEDqhwwKEbJk\"\n    }\n  },\n  \"_embedded\": {\n    \"enumerations\": [\n      {\n        \"_total_items\": 6753,\n        \"_page\": 4587,\n        \"_page_count\": 3334,\n        \"_links\": {\n          \"self\": {\n            \"href\": \"http://VPx.meo-.F+LtKh4ykBuaD5B0adtTuPgKhmnOINW2BwMxTNy-6VJK2p\"\n          },\n          \"next\": {\n            \"href\": \"http://IKbrfw.sxitXNi0kxwN3nbxYwQydGXozEE\"\n          },\n          \"last\": {\n            \"href\": \"http://sWcVzUivVNhOmHODOkg.wfdodOIHbCToNnjUKiN3QTtSrk8jRUTQlLerSOTzrgYHhgtjZn7sVlP4qomZwft\"\n          }\n        },\n        \"_embedded\": {}\n      },\n      {\n        \"_total_items\": 2878,\n        \"_page\": 3327,\n        \"_page_count\": 1974,\n        \"_links\": {\n          \"self\": {\n            \"href\": \"https://rahcxfLBCfpggFOatKG.mdtlsxfO.FKmush3rmlfYm-i6MiHsozmnkE6pVdIlo9N.+PSmzXaCnUwv.a,Cc,\"\n          },\n          \"next\": {\n            \"href\": \"https://jfbfqRQpTdnOmNEuItOmB.ofugVb0M+o8titaPQZ-ys6pEOxecUpN+ULfqINFqn4jBPFyFPCyolna09fAvKHmMLSs\"\n          },\n          \"last\": {\n            \"href\": \"https://UtgBEpqZjQvpqVnVNJCvnygmhbYSqL.hcvPEwhRB\"\n          }\n        },\n        \"_embedded\": {}\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0f595c2f-1bbe-430e-978c-b81d2986cc28",
+          "name": "Get enumeration details",
+          "request": {
+            "name": "Get enumeration details",
+            "description": {
+              "content": "Get enumeration details",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "enumerations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "501ab4aa-775c-45ee-b563-d9078fd2f104",
+              "name": "Enumeration detail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "enumerations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 7325,\n  \"company_id\": 9878,\n  \"title\": \"string\",\n  \"created_at\": \"1974-07-19T06:31:52.950Z\",\n  \"updated_at\": \"1979-01-28T14:49:41.717Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51f14d41-9de9-4417-a3e7-ed1b4feceddd",
+          "name": "Update enumeration",
+          "request": {
+            "name": "Update enumeration",
+            "description": {
+              "content": "Update enumeration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "enumerations",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e6640621-1c42-4e82-859c-13585f6c626b",
+              "name": "Enumeration updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "enumerations",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 7325,\n  \"company_id\": 9878,\n  \"title\": \"string\",\n  \"created_at\": \"1974-07-19T06:31:52.950Z\",\n  \"updated_at\": \"1979-01-28T14:49:41.717Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49d6eb4e-d5f2-4409-95a9-cf32b7b30146",
+          "name": "Get enumerations list",
+          "request": {
+            "name": "Get enumerations list",
+            "description": {
+              "content": "Get enumerations list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "enumerations",
+                ":id",
+                "items"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[order]",
+                  "value": "desc",
+                  "description": "sort order"
+                },
+                {
+                  "description": {
+                    "content": "(Required) filter field",
+                    "type": "text/plain"
+                  },
+                  "key": "filter[company_id]",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a5f9db7-0fcd-4e87-b501-566b8baa5feb",
+              "name": "Enumerations list for company",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "enumerations",
+                    ":id",
+                    "items"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort[order]",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "filter[company_id]",
+                      "value": ""
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 5908,\n  \"_page\": 1416,\n  \"_page_count\": 5984,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"https://dcSbsYokeUJyJCCqJSdylEnInNBf.rnhMtAgyUxPduh-pPQOOuYeT8GavDSj4l4F+FnR-ykAadFjGwlBhDT,q17tclhjLHvKwrRE\"\n    },\n    \"next\": {\n      \"href\": \"https://ITMizY.cakmkGK1q\"\n    },\n    \"last\": {\n      \"href\": \"https://ApDlJiea.lnudJSs,bhWh15HgqHwbZ74OYT-IHgN2bzgwOR+BTv9gQF\"\n    }\n  },\n  \"_embedded\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://my.vcv.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b3472f61-2ae6-4532-a8a6-5ecca03b4932",
+    "name": "VCV chatbot enumeration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "open api",
+      "type": "text/plain"
+    }
+  }
+}

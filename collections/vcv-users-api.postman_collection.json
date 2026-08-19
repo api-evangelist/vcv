@@ -1,0 +1,307 @@
+{
+  "item": [
+    {
+      "id": "73e49b71-e632-4398-a27f-ede9da853d43",
+      "name": "users",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a568683e-85ae-494b-8361-d46389095de5",
+          "name": "Get users list",
+          "request": {
+            "name": "Get users list",
+            "description": {
+              "content": "Get users list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[email]",
+                  "value": "<string>",
+                  "description": "User email filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[position]",
+                  "value": "<string>",
+                  "description": "User position filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8133c092-4757-493c-92e0-c5c267ef15cb",
+              "name": "list of users",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "filter[email]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[position]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 5957,\n  \"_page\": 348,\n  \"_page_count\": 5266,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"https://dGAwmKtjAURzATSLFiMKLP.hjEbPzWc2FQxFonp+wq71wgcWKZgkWU,mxtM6+C3BEKSaiK44D0kiGYpZT7FaZCzDOj24V7\"\n    },\n    \"next\": {\n      \"href\": \"http://nntvsUmmNdbQYwlhqQPqcvz.fidY++\"\n    },\n    \"last\": {\n      \"href\": \"http://AfJYcEaGcOZUSvLRIebgxpo.cyzzydlMSl7IvbzU8+FGD1DpoZy3EbcofTf+9oOIkGnJ3VhEKDB6V0drr,ud7JMPuP8+6km6KaqtU\"\n    }\n  },\n  \"_embedded\": {\n    \"users\": [\n      {\n        \"id\": 8603,\n        \"created_at\": \"1963-05-28T07:03:48.467Z\",\n        \"email\": \"string\",\n        \"position\": \"string\",\n        \"logo_url\": \"string\",\n        \"geo_id\": 6303,\n        \"lanaguage_id\": 2604,\n        \"company_id\": 6384,\n        \"userName\": {\n          \"user_id\": 981,\n          \"first_name\": \"string\",\n          \"last_name\": \"string\",\n          \"language_id\": 5131,\n          \"id\": 8452\n        },\n        \"language\": {\n          \"id\": 736,\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"bcp47_tag\": \"string\"\n        },\n        \"roles\": [\n          {\n            \"id\": 2582,\n            \"name\": \"string\",\n            \"role\": \"string\"\n          },\n          {\n            \"id\": 8018,\n            \"name\": \"string\",\n            \"role\": \"string\"\n          }\n        ]\n      },\n      {\n        \"id\": 6230,\n        \"created_at\": \"1996-11-28T05:57:59.314Z\",\n        \"email\": \"string\",\n        \"position\": \"string\",\n        \"logo_url\": \"string\",\n        \"geo_id\": 3914,\n        \"lanaguage_id\": 4900,\n        \"company_id\": 1341,\n        \"userName\": {\n          \"user_id\": 8849,\n          \"first_name\": \"string\",\n          \"last_name\": \"string\",\n          \"language_id\": 752,\n          \"id\": 7869\n        },\n        \"language\": {\n          \"id\": 226,\n          \"code\": \"string\",\n          \"name\": \"string\",\n          \"bcp47_tag\": \"string\"\n        },\n        \"roles\": [\n          {\n            \"id\": 3474,\n            \"name\": \"string\",\n            \"role\": \"string\"\n          },\n          {\n            \"id\": 7830,\n            \"name\": \"string\",\n            \"role\": \"string\"\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "987f0e90-7385-4424-860c-3ac487449ad8",
+          "name": "Get user detail",
+          "request": {
+            "name": "Get user detail",
+            "description": {
+              "content": "Get user detail",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "users",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "228ceea9-6f13-4e03-8861-7a1ad6193e1e",
+              "name": "User",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "users",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1457,\n  \"created_at\": \"1993-11-16T23:27:56.146Z\",\n  \"email\": \"string\",\n  \"position\": \"string\",\n  \"logo_url\": \"string\",\n  \"geo_id\": 4208,\n  \"lanaguage_id\": 1930,\n  \"company_id\": 3778,\n  \"userName\": {\n    \"user_id\": 5436,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"language_id\": 2818,\n    \"id\": 5776\n  },\n  \"language\": {\n    \"id\": 4798,\n    \"code\": \"string\",\n    \"name\": \"string\",\n    \"bcp47_tag\": \"string\"\n  },\n  \"roles\": [\n    {\n      \"id\": 5566,\n      \"name\": \"string\",\n      \"role\": \"string\"\n    },\n    {\n      \"id\": 3352,\n      \"name\": \"string\",\n      \"role\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://my.vcv.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e946d00e-18cd-48ae-bab0-b6a090c73d1e",
+    "name": "VCV chatbot users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "open api",
+      "type": "text/plain"
+    }
+  }
+}

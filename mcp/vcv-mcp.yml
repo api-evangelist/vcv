@@ -390,3 +390,9 @@ tools:
 - name: get_response_events
   description: Get response event detail
   source_operation: openapi/vcv-openapi.yml#GET /api/v3/response-events/{id}
+deployment:
+  mode: none
+  verified: derived
+  tools: 127
+  checked: '2026-08-12'
+  source: catalog MCP census

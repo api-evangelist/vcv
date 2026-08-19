@@ -1,0 +1,280 @@
+{
+  "item": [
+    {
+      "id": "95db420b-0518-431d-8751-8bd4b79fcb03",
+      "name": "limits",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8c6e0f3c-2aa0-4d0d-9950-405ad202d0f7",
+          "name": "Get company limits",
+          "request": {
+            "name": "Get company limits",
+            "description": {
+              "content": "Get company limits",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "company-limits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "fields[]",
+                  "value": "<string>",
+                  "description": "Additional fields"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[]",
+                  "value": "<string>",
+                  "description": "Additional fields"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "company_id",
+                  "description": "(Required) Company id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4536ab09-4612-4ca6-85a5-1332c06c528c",
+              "name": "Limits",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "company-limits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "company_id",
+                      "description": "(Required) Company id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5491,\n  \"date_created\": \"2025-12-27T15:19:54.340Z\",\n  \"active\": true,\n  \"user_id\": 7861,\n  \"vacancy_limit\": 3785,\n  \"response_limit\": 595,\n  \"response_balance\": 3194,\n  \"paid_from\": \"1974-12-29T12:15:42.177Z\",\n  \"paid_to\": \"1971-02-06T13:29:10.114Z\",\n  \"company_id\": 9723,\n  \"save_no_paid_responses\": false,\n  \"paid_at\": \"1966-08-24T12:54:57.495Z\",\n  \"sms_balance\": 9738,\n  \"is_sms_unlimited\": true,\n  \"is_sms_enabled\": true,\n  \"userCount\": 1155,\n  \"vacancyCount\": 9458,\n  \"latestLog\": {\n    \"id\": 1518,\n    \"company_limits_id\": 2702,\n    \"date_create\": \"string\",\n    \"response_paid_count\": 41,\n    \"response_limit\": 1865,\n    \"active\": true\n  },\n  \"action_history\": true,\n  \"analytics\": true,\n  \"api\": false,\n  \"basic_test\": false,\n  \"chatbot\": false,\n  \"competences\": false,\n  \"custom_agreements\": true,\n  \"emotions\": false,\n  \"extended_test\": true,\n  \"fullhd_response_balance\": 9838,\n  \"hd_response_balance\": 5679,\n  \"integration\": false,\n  \"extra_response_balance\": 7036,\n  \"password_policy\": true,\n  \"personal_manager\": false,\n  \"responses_lifetime\": 9531,\n  \"survey\": true,\n  \"survey_screening\": false,\n  \"vacancy_permissions\": true,\n  \"videointerview\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1cc64696-1e6e-4739-bdfa-3ce292ebebab",
+          "name": "Update company limits",
+          "request": {
+            "name": "Update company limits",
+            "description": {
+              "content": "Update company limits",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "company-limits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "company_id",
+                  "description": "(Required) company id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vacancy_limit\": \"<integer>\",\n  \"response_limit\": \"<integer>\",\n  \"response_balance\": \"<integer>\",\n  \"paid_from\": \"<dateTime>\",\n  \"paid_to\": \"<dateTime>\",\n  \"company_id\": \"<integer>\",\n  \"sms_balance\": \"<integer>\",\n  \"is_sms_unlimited\": \"<boolean>\",\n  \"is_sms_enabled\": \"<boolean>\",\n  \"action_history\": \"<boolean>\",\n  \"analytics\": \"<boolean>\",\n  \"api\": \"<boolean>\",\n  \"basic_test\": \"<boolean>\",\n  \"chatbot\": \"<boolean>\",\n  \"competences\": \"<boolean>\",\n  \"custom_agreements\": \"<boolean>\",\n  \"emotions\": \"<boolean>\",\n  \"extended_test\": \"<boolean>\",\n  \"fullhd_response_balance\": \"<integer>\",\n  \"hd_response_balance\": \"<integer>\",\n  \"integration\": \"<boolean>\",\n  \"extra_response_balance\": \"<integer>\",\n  \"password_policy\": \"<boolean>\",\n  \"personal_manager\": \"<boolean>\",\n  \"responses_lifetime\": \"<integer>\",\n  \"survey\": \"<boolean>\",\n  \"survey_screening\": \"<boolean>\",\n  \"vacancy_permissions\": \"<boolean>\",\n  \"videointerview\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e94cf792-bf4a-45fc-b40d-bd6c68d96495",
+              "name": "Updated company limits",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "company-limits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "company_id",
+                      "description": "(Required) company id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vacancy_limit\": \"<integer>\",\n  \"response_limit\": \"<integer>\",\n  \"response_balance\": \"<integer>\",\n  \"paid_from\": \"<dateTime>\",\n  \"paid_to\": \"<dateTime>\",\n  \"company_id\": \"<integer>\",\n  \"sms_balance\": \"<integer>\",\n  \"is_sms_unlimited\": \"<boolean>\",\n  \"is_sms_enabled\": \"<boolean>\",\n  \"action_history\": \"<boolean>\",\n  \"analytics\": \"<boolean>\",\n  \"api\": \"<boolean>\",\n  \"basic_test\": \"<boolean>\",\n  \"chatbot\": \"<boolean>\",\n  \"competences\": \"<boolean>\",\n  \"custom_agreements\": \"<boolean>\",\n  \"emotions\": \"<boolean>\",\n  \"extended_test\": \"<boolean>\",\n  \"fullhd_response_balance\": \"<integer>\",\n  \"hd_response_balance\": \"<integer>\",\n  \"integration\": \"<boolean>\",\n  \"extra_response_balance\": \"<integer>\",\n  \"password_policy\": \"<boolean>\",\n  \"personal_manager\": \"<boolean>\",\n  \"responses_lifetime\": \"<integer>\",\n  \"survey\": \"<boolean>\",\n  \"survey_screening\": \"<boolean>\",\n  \"vacancy_permissions\": \"<boolean>\",\n  \"videointerview\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5491,\n  \"date_created\": \"2025-12-27T15:19:54.340Z\",\n  \"active\": true,\n  \"user_id\": 7861,\n  \"vacancy_limit\": 3785,\n  \"response_limit\": 595,\n  \"response_balance\": 3194,\n  \"paid_from\": \"1974-12-29T12:15:42.177Z\",\n  \"paid_to\": \"1971-02-06T13:29:10.114Z\",\n  \"company_id\": 9723,\n  \"save_no_paid_responses\": false,\n  \"paid_at\": \"1966-08-24T12:54:57.495Z\",\n  \"sms_balance\": 9738,\n  \"is_sms_unlimited\": true,\n  \"is_sms_enabled\": true,\n  \"userCount\": 1155,\n  \"vacancyCount\": 9458,\n  \"latestLog\": {\n    \"id\": 1518,\n    \"company_limits_id\": 2702,\n    \"date_create\": \"string\",\n    \"response_paid_count\": 41,\n    \"response_limit\": 1865,\n    \"active\": true\n  },\n  \"action_history\": true,\n  \"analytics\": true,\n  \"api\": false,\n  \"basic_test\": false,\n  \"chatbot\": false,\n  \"competences\": false,\n  \"custom_agreements\": true,\n  \"emotions\": false,\n  \"extended_test\": true,\n  \"fullhd_response_balance\": 9838,\n  \"hd_response_balance\": 5679,\n  \"integration\": false,\n  \"extra_response_balance\": 7036,\n  \"password_policy\": true,\n  \"personal_manager\": false,\n  \"responses_lifetime\": 9531,\n  \"survey\": true,\n  \"survey_screening\": false,\n  \"vacancy_permissions\": true,\n  \"videointerview\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://my.vcv.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a687bf50-e9ec-4403-b516-12911b72857d",
+    "name": "VCV chatbot limits API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "open api",
+      "type": "text/plain"
+    }
+  }
+}

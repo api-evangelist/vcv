@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VCV chatbot API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "chatbot",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "POST /api/v3/chatbot/interviews/{interview_id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://my.vcv.ai/api/v3/chatbot/interviews/:interview_id",
+            "params": [
+              {
+                "name": "interview_id",
+                "value": "",
+                "type": "path",
+                "description": "Interview id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set chatbot interview property"
+        },
+        {
+          "info": {
+            "name": "POST /api/v3/chatbot/trigger/{interview_id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://my.vcv.ai/api/v3/chatbot/trigger/:interview_id",
+            "params": [
+              {
+                "name": "interview_id",
+                "value": "",
+                "type": "path",
+                "description": "Interview id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Activate chatbot trigger"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

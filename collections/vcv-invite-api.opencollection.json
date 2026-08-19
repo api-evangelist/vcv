@@ -1,0 +1,179 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VCV chatbot invite API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "invite",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /api/v3/invites",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/invites",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort[order]",
+                "value": "",
+                "type": "query",
+                "description": "sort order"
+              },
+              {
+                "name": "sort[by]",
+                "value": "",
+                "type": "query",
+                "description": "sort field"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[vacancy_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[user_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[response_status_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[created_at][from]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[created_at][to]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[phone]",
+                "value": "",
+                "type": "query",
+                "description": "candidate phone filter"
+              },
+              {
+                "name": "filter[email]",
+                "value": "",
+                "type": "query",
+                "description": "candidate email filter"
+              },
+              {
+                "name": "filter[name]",
+                "value": "",
+                "type": "query",
+                "description": "candidate name filter"
+              },
+              {
+                "name": "filter[invite_status_id]",
+                "value": "",
+                "type": "query",
+                "description": "invite status id filter"
+              },
+              {
+                "name": "filter[candidate_id]",
+                "value": "",
+                "type": "query",
+                "description": "Candidate id filter"
+              },
+              {
+                "name": "fields[]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to retrieve"
+              }
+            ]
+          },
+          "docs": "Get invites list"
+        },
+        {
+          "info": {
+            "name": "POST /api/v3/invites",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://my.vcv.ai/api/v3/invites",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create invites list"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/invites/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/invites/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              },
+              {
+                "name": "fields[]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to retrieve"
+              }
+            ]
+          },
+          "docs": "Get invites list"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,554 @@
+{
+  "item": [
+    {
+      "id": "e1b84910-3294-4943-95d8-ba3b68fef583",
+      "name": "invite",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ef903b82-73c0-49ef-b069-578706e0f113",
+          "name": "Get invites list",
+          "request": {
+            "name": "Get invites list",
+            "description": {
+              "content": "Get invites list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "invites"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[order]",
+                  "value": "desc",
+                  "description": "sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[by]",
+                  "value": "id",
+                  "description": "sort field"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[vacancy_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[user_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[response_status_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[created_at][from]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[created_at][to]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[phone]",
+                  "value": "<string>",
+                  "description": "candidate phone filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[email]",
+                  "value": "<string>",
+                  "description": "candidate email filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[name]",
+                  "value": "<string>",
+                  "description": "candidate name filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[invite_status_id]",
+                  "value": "<integer>",
+                  "description": "invite status id filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[candidate_id]",
+                  "value": "<integer>",
+                  "description": "Candidate id filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[]",
+                  "value": "<string>",
+                  "description": "Fields to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[]",
+                  "value": "<string>",
+                  "description": "Fields to retrieve"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4fc844c4-d024-4896-bdd0-3f98fee14211",
+              "name": "list of invites",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "invites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort[order]",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "sort[by]",
+                      "value": "id"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[vacancy_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[user_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[response_status_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[created_at][from]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter[created_at][to]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter[phone]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[email]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[invite_status_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[candidate_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invites\": [\n    {\n      \"id\": 5591,\n      \"vacancy_id\": 155,\n      \"candidate_id\": 7036,\n      \"invite_status_id\": 9336,\n      \"interview_refusal_id\": 5322,\n      \"interview_id\": 5283,\n      \"is_hidden_by_candidate\": true,\n      \"created_at\": \"1966-05-23T01:21:55.684Z\",\n      \"updated_at\": \"2021-06-07T14:02:24.598Z\",\n      \"candidate\": {\n        \"id\": 4457,\n        \"date_created\": \"2000-04-20T14:53:13.765Z\",\n        \"email\": \"string\",\n        \"bithdate\": \"string\",\n        \"gender\": \"string\",\n        \"name\": {\n          \"candidate_id\": 5039,\n          \"first_name\": \"string\",\n          \"last_name\": \"string\",\n          \"second_name\": \"string\"\n        },\n        \"phone\": {\n          \"candidate_id\": 8821,\n          \"id\": 4006,\n          \"number\": \"string\"\n        }\n      },\n      \"_embedded\": {\n        \"vacancy\": {\n          \"id\": 7920,\n          \"token\": \"string\",\n          \"title\": \"string\",\n          \"active\": true,\n          \"user_id\": 3309,\n          \"language_id\": 5979,\n          \"created_at\": \"2017-09-04T10:14:31.323Z\"\n        },\n        \"user\": {\n          \"id\": 2988,\n          \"created_at\": \"1977-06-22T22:49:43.750Z\",\n          \"email\": \"string\",\n          \"position\": \"string\",\n          \"logo_url\": \"string\",\n          \"geo_id\": 43,\n          \"lanaguage_id\": 7948,\n          \"company_id\": 1782,\n          \"userName\": {\n            \"user_id\": 961,\n            \"first_name\": \"string\",\n            \"last_name\": \"string\",\n            \"language_id\": 8297,\n            \"id\": 4408\n          }\n        },\n        \"response\": {\n          \"id\": 8030,\n          \"vacancy_id\": 3044,\n          \"candidate_id\": 5668,\n          \"response_status_id\": 791,\n          \"response_source_id\": 3088,\n          \"interview_id\": 7619,\n          \"external_id\": \"string\",\n          \"is_hidden_by_candidate\": true,\n          \"created_at\": \"1978-01-29T10:31:21.748Z\",\n          \"agreed_at\": \"1989-06-21T14:29:45.757Z\",\n          \"date_sent\": \"2005-12-11T07:43:29.532Z\",\n          \"resume_url\": \"string\",\n          \"second_resume_url\": \"string\",\n          \"social_source\": \"string\",\n          \"utm_source\": \"string\",\n          \"utm_medium\": \"string\",\n          \"utm_campaign\": \"string\",\n          \"utm_content\": \"string\",\n          \"utm_term\": \"string\",\n          \"is_paid\": false,\n          \"_embedded\": {\n            \"status\": {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"on_top\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"company_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parent_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id_compatibility\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_base\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_hidden\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_system\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_stage\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        },\n        \"status\": {\n          \"id\": 9155,\n          \"title\": \"string\"\n        },\n        \"interview\": {\n          \"id\": 5724,\n          \"date_create\": \"1950-06-11T13:07:26.940Z\",\n          \"token\": \"string\",\n          \"interview_stage_id\": 6583,\n          \"candidate_id\": 1422\n        },\n        \"interviewRefusal\": {\n          \"id\": 4952,\n          \"description\": \"string\",\n          \"reason\": 3925,\n          \"interview_id\": 154\n        }\n      }\n    },\n    {\n      \"id\": 3165,\n      \"vacancy_id\": 6368,\n      \"candidate_id\": 5410,\n      \"invite_status_id\": 874,\n      \"interview_refusal_id\": 3346,\n      \"interview_id\": 3421,\n      \"is_hidden_by_candidate\": false,\n      \"created_at\": \"1967-04-06T06:50:39.374Z\",\n      \"updated_at\": \"1984-03-23T15:57:12.857Z\",\n      \"candidate\": {\n        \"id\": 8418,\n        \"date_created\": \"1979-03-26T18:40:19.452Z\",\n        \"email\": \"string\",\n        \"bithdate\": \"string\",\n        \"gender\": \"string\",\n        \"name\": {\n          \"candidate_id\": 8336,\n          \"first_name\": \"string\",\n          \"last_name\": \"string\",\n          \"second_name\": \"string\"\n        },\n        \"phone\": {\n          \"candidate_id\": 1018,\n          \"id\": 5972,\n          \"number\": \"string\"\n        }\n      },\n      \"_embedded\": {\n        \"vacancy\": {\n          \"id\": 9965,\n          \"token\": \"string\",\n          \"title\": \"string\",\n          \"active\": true,\n          \"user_id\": 8403,\n          \"language_id\": 963,\n          \"created_at\": \"1977-05-23T08:18:48.486Z\"\n        },\n        \"user\": {\n          \"id\": 6117,\n          \"created_at\": \"1974-07-01T06:59:57.363Z\",\n          \"email\": \"string\",\n          \"position\": \"string\",\n          \"logo_url\": \"string\",\n          \"geo_id\": 7747,\n          \"lanaguage_id\": 7568,\n          \"company_id\": 317,\n          \"userName\": {\n            \"user_id\": 9685,\n            \"first_name\": \"string\",\n            \"last_name\": \"string\",\n            \"language_id\": 3407,\n            \"id\": 236\n          }\n        },\n        \"response\": {\n          \"id\": 7351,\n          \"vacancy_id\": 1671,\n          \"candidate_id\": 3392,\n          \"response_status_id\": 5365,\n          \"response_source_id\": 3189,\n          \"interview_id\": 3437,\n          \"external_id\": \"string\",\n          \"is_hidden_by_candidate\": false,\n          \"created_at\": \"2020-10-29T15:12:47.237Z\",\n          \"agreed_at\": \"1999-01-15T10:50:52.527Z\",\n          \"date_sent\": \"1973-07-21T13:45:15.030Z\",\n          \"resume_url\": \"string\",\n          \"second_resume_url\": \"string\",\n          \"social_source\": \"string\",\n          \"utm_source\": \"string\",\n          \"utm_medium\": \"string\",\n          \"utm_campaign\": \"string\",\n          \"utm_content\": \"string\",\n          \"utm_term\": \"string\",\n          \"is_paid\": true,\n          \"_embedded\": {\n            \"status\": {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"on_top\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"company_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"parent_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id_compatibility\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"color\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_base\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_hidden\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_system\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_stage\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        },\n        \"status\": {\n          \"id\": 5258,\n          \"title\": \"string\"\n        },\n        \"interview\": {\n          \"id\": 5186,\n          \"date_create\": \"1957-01-19T19:50:29.211Z\",\n          \"token\": \"string\",\n          \"interview_stage_id\": 9630,\n          \"candidate_id\": 1794\n        },\n        \"interviewRefusal\": {\n          \"id\": 2399,\n          \"description\": \"string\",\n          \"reason\": 6547,\n          \"interview_id\": 258\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07e77484-5427-4142-9330-794376c316be",
+          "name": "Create invites list",
+          "request": {
+            "name": "Create invites list",
+            "description": {
+              "content": "Create invites list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "invites"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"invites\": [\n    {\n      \"candidate_name\": {\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\"\n      },\n      \"candidate\": {\n        \"email\": \"<string>\"\n      },\n      \"candidate_phone\": {\n        \"number\": \"<string>\"\n      },\n      \"response\": {\n        \"second_resume_url\": \"<string>\",\n        \"resume_url\": \"<string>\",\n        \"external_id\": \"<string>\",\n        \"social_source\": \"<string>\",\n        \"utm_source\": \"<string>\",\n        \"utm_medium\": \"<string>\",\n        \"utm_campaign\": \"<string>\",\n        \"utm_content\": \"<string>\",\n        \"utm_term\": \"<string>\"\n      },\n      \"vacancy_id\": \"<integer>\"\n    },\n    {\n      \"candidate_name\": {\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\"\n      },\n      \"candidate\": {\n        \"email\": \"<string>\"\n      },\n      \"candidate_phone\": {\n        \"number\": \"<string>\"\n      },\n      \"response\": {\n        \"second_resume_url\": \"<string>\",\n        \"resume_url\": \"<string>\",\n        \"external_id\": \"<string>\",\n        \"social_source\": \"<string>\",\n        \"utm_source\": \"<string>\",\n        \"utm_medium\": \"<string>\",\n        \"utm_campaign\": \"<string>\",\n        \"utm_content\": \"<string>\",\n        \"utm_term\": \"<string>\"\n      },\n      \"vacancy_id\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf9c97b5-1b13-4dee-9ee2-43f6280bee8d",
+              "name": "list of invites",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "invites"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"invites\": [\n    {\n      \"candidate_name\": {\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\"\n      },\n      \"candidate\": {\n        \"email\": \"<string>\"\n      },\n      \"candidate_phone\": {\n        \"number\": \"<string>\"\n      },\n      \"response\": {\n        \"second_resume_url\": \"<string>\",\n        \"resume_url\": \"<string>\",\n        \"external_id\": \"<string>\",\n        \"social_source\": \"<string>\",\n        \"utm_source\": \"<string>\",\n        \"utm_medium\": \"<string>\",\n        \"utm_campaign\": \"<string>\",\n        \"utm_content\": \"<string>\",\n        \"utm_term\": \"<string>\"\n      },\n      \"vacancy_id\": \"<integer>\"\n    },\n    {\n      \"candidate_name\": {\n        \"first_name\": \"<string>\",\n        \"last_name\": \"<string>\"\n      },\n      \"candidate\": {\n        \"email\": \"<string>\"\n      },\n      \"candidate_phone\": {\n        \"number\": \"<string>\"\n      },\n      \"response\": {\n        \"second_resume_url\": \"<string>\",\n        \"resume_url\": \"<string>\",\n        \"external_id\": \"<string>\",\n        \"social_source\": \"<string>\",\n        \"utm_source\": \"<string>\",\n        \"utm_medium\": \"<string>\",\n        \"utm_campaign\": \"<string>\",\n        \"utm_content\": \"<string>\",\n        \"utm_term\": \"<string>\"\n      },\n      \"vacancy_id\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 5767,\n  \"_page\": 2184,\n  \"_page_count\": 7624,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"http://KzeCZpKkkAeGEObOcwboMTQZY.fypgHEx-tczL.cvxLkD,zqyW+IXHX6OMNEr2NojJOD8,.i+,\"\n    }\n  },\n  \"_embedded\": {\n    \"invites\": [\n      {\n        \"id\": 1209,\n        \"vacancy_id\": 4052,\n        \"candidate_id\": 1635,\n        \"invite_status_id\": 5961,\n        \"interview_refusal_id\": 5477,\n        \"interview_id\": 572,\n        \"is_hidden_by_candidate\": true,\n        \"created_at\": \"2018-10-25T17:16:31.954Z\",\n        \"updated_at\": \"2023-08-17T11:51:37.337Z\"\n      },\n      {\n        \"id\": 4049,\n        \"vacancy_id\": 4325,\n        \"candidate_id\": 1963,\n        \"invite_status_id\": 2900,\n        \"interview_refusal_id\": 115,\n        \"interview_id\": 9501,\n        \"is_hidden_by_candidate\": true,\n        \"created_at\": \"1955-06-04T23:17:31.260Z\",\n        \"updated_at\": \"1999-10-03T16:52:35.029Z\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b9dc666a-d29d-4f20-86d2-fa2d3e5cf937",
+          "name": "Get invites list",
+          "request": {
+            "name": "Get invites list",
+            "description": {
+              "content": "Get invites list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "invites",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[]",
+                  "value": "<string>",
+                  "description": "Fields to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[]",
+                  "value": "<string>",
+                  "description": "Fields to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd60633c-2c6e-4289-bc78-eed7ad65f022",
+              "name": "Invite detail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "invites",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6783,\n  \"vacancy_id\": 1981,\n  \"candidate_id\": 7322,\n  \"invite_status_id\": 1897,\n  \"interview_refusal_id\": 6926,\n  \"interview_id\": 8859,\n  \"is_hidden_by_candidate\": false,\n  \"created_at\": \"1980-10-16T23:47:10.148Z\",\n  \"updated_at\": \"1993-09-11T07:17:07.529Z\",\n  \"candidate\": {\n    \"id\": 2327,\n    \"date_created\": \"1998-07-14T05:20:52.354Z\",\n    \"email\": \"string\",\n    \"bithdate\": \"string\",\n    \"gender\": \"string\",\n    \"name\": {\n      \"candidate_id\": 6556,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"second_name\": \"string\"\n    },\n    \"phone\": {\n      \"candidate_id\": 8619,\n      \"id\": 102,\n      \"number\": \"string\"\n    }\n  },\n  \"_embedded\": {\n    \"vacancy\": {\n      \"id\": 4917,\n      \"token\": \"string\",\n      \"title\": \"string\",\n      \"active\": true,\n      \"user_id\": 7190,\n      \"language_id\": 9850,\n      \"created_at\": \"1969-05-05T07:38:40.254Z\"\n    },\n    \"user\": {\n      \"id\": 2937,\n      \"created_at\": \"2019-11-21T09:12:04.377Z\",\n      \"email\": \"string\",\n      \"position\": \"string\",\n      \"logo_url\": \"string\",\n      \"geo_id\": 5422,\n      \"lanaguage_id\": 3743,\n      \"company_id\": 5910,\n      \"userName\": {\n        \"user_id\": 6880,\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"language_id\": 6732,\n        \"id\": 3945\n      }\n    },\n    \"response\": {\n      \"id\": 3240,\n      \"vacancy_id\": 4902,\n      \"candidate_id\": 790,\n      \"response_status_id\": 1981,\n      \"response_source_id\": 9242,\n      \"interview_id\": 4007,\n      \"external_id\": \"string\",\n      \"is_hidden_by_candidate\": true,\n      \"created_at\": \"1973-07-07T06:53:55.790Z\",\n      \"agreed_at\": \"2006-04-15T10:44:18.177Z\",\n      \"date_sent\": \"2021-11-19T14:11:12.461Z\",\n      \"resume_url\": \"string\",\n      \"second_resume_url\": \"string\",\n      \"social_source\": \"string\",\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_content\": \"string\",\n      \"utm_term\": \"string\",\n      \"is_paid\": false\n    },\n    \"status\": {\n      \"id\": 7748,\n      \"title\": \"string\"\n    },\n    \"interview\": {\n      \"id\": 8128,\n      \"date_create\": \"2025-04-03T10:36:33.097Z\",\n      \"token\": \"string\",\n      \"interview_stage_id\": 7080,\n      \"candidate_id\": 794\n    },\n    \"interviewRefusal\": {\n      \"id\": 5001,\n      \"description\": \"string\",\n      \"reason\": 3980,\n      \"interview_id\": 204\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://my.vcv.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "315941a1-dba3-4bc8-8eb2-9587ab5aa36d",
+    "name": "VCV chatbot invite API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "open api",
+      "type": "text/plain"
+    }
+  }
+}

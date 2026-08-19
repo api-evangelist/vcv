@@ -1,0 +1,298 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VCV chatbot tags API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /api/v3/tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/tags",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort[order]",
+                "value": "",
+                "type": "query",
+                "description": "sort order"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[user_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[name]",
+                "value": "",
+                "type": "query",
+                "description": "tag name filter"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get tags list"
+        },
+        {
+          "info": {
+            "name": "POST /api/v3/tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://my.vcv.ai/api/v3/tags",
+            "params": [
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create tag"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/tags/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/tags/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get tag"
+        },
+        {
+          "info": {
+            "name": "PATCH /api/v3/tags/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://my.vcv.ai/api/v3/tags/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update tag"
+        },
+        {
+          "info": {
+            "name": "DELETE /api/v3/tags/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://my.vcv.ai/api/v3/tags/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              }
+            ]
+          },
+          "docs": "Delete tag"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/response-tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/response-tags",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort[order]",
+                "value": "",
+                "type": "query",
+                "description": "sort order"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[user_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[response_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[tag_id]",
+                "value": "",
+                "type": "query",
+                "description": "tag id filter"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get response tags list"
+        },
+        {
+          "info": {
+            "name": "POST /api/v3/response-tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://my.vcv.ai/api/v3/response-tags",
+            "params": [
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create response tag"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/response-tags/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/response-tags/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get response tag"
+        },
+        {
+          "info": {
+            "name": "DELETE /api/v3/response-tags/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://my.vcv.ai/api/v3/response-tags/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              }
+            ]
+          },
+          "docs": "Delete response tag"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

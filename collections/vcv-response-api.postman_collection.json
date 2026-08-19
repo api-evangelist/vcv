@@ -1,0 +1,2940 @@
+{
+  "item": [
+    {
+      "id": "f0495756-ff94-4668-bfc3-d5987c3060d6",
+      "name": "response",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "80368f25-c4ac-4924-8c4b-76609d2a43ab",
+          "name": "Get responses list",
+          "request": {
+            "name": "Get responses list",
+            "description": {
+              "content": "Get responses list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "responses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[order]",
+                  "value": "desc",
+                  "description": "sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[by]",
+                  "value": "id",
+                  "description": "sort field"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[code]",
+                  "value": "<string>",
+                  "description": "Only applicable if sort[by]=response_attribute.\nSort by response attribute value, code must be equal to \"code\" field of response attribute, see [/api/v3/response-attributes](#/integration/get_api_v3_response_attributes).\nSee values: [/api/v3/response-attribute-values](#/integration/get_api_v3_response_attribute_values)\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[vacancy_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[response_status_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[created_at][from]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[created_at][to]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[vacancy][user_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[candidate_id]",
+                  "value": "<integer>",
+                  "description": "candidate id filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[external_id]",
+                  "value": "<string>",
+                  "description": "External id filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[sent]",
+                  "value": "<boolean>",
+                  "description": "Sent filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[vacancy][language_id]",
+                  "value": "<integer>",
+                  "description": "vacancy language id filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[tag_id]",
+                  "value": "<integer>",
+                  "description": "response tag id filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[date_sent][from]",
+                  "value": "<dateTime>",
+                  "description": "date sent filter from"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[date_sent][to]",
+                  "value": "<dateTime>",
+                  "description": "date sent filter to"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[]",
+                  "value": "<string>",
+                  "description": "Fields to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[]",
+                  "value": "<string>",
+                  "description": "Fields to retrieve"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6dbd91fe-60c6-46bb-8eeb-a654f9c38aca",
+              "name": "list of responses",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort[order]",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "sort[by]",
+                      "value": "id"
+                    },
+                    {
+                      "key": "sort[code]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[vacancy_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[response_status_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[created_at][from]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter[created_at][to]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter[vacancy][user_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[candidate_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[external_id]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[sent]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "filter[vacancy][language_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[tag_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[date_sent][from]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter[date_sent][to]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 1503,\n  \"_page\": 8107,\n  \"_page_count\": 9615,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"http://nLPqpJeEtkp.rnK42fuOlso\"\n    },\n    \"next\": {\n      \"href\": \"https://YfRAXbazmpqeXvL.rvrewft2SaGuw0M-HfBj7b8p2IbnrxOwE\"\n    },\n    \"last\": {\n      \"href\": \"http://fQrLKIlywA.drxlvzkLoj0dvGQqsAtx9mx3bl2OuJ1lCDSL\"\n    }\n  },\n  \"_embedded\": {\n    \"responses\": [\n      {\n        \"id\": 5978,\n        \"vacancy_id\": 4349,\n        \"candidate_id\": 3774,\n        \"response_status_id\": 8203,\n        \"response_source_id\": 1764,\n        \"interview_id\": 3563,\n        \"external_id\": \"string\",\n        \"is_hidden_by_candidate\": false,\n        \"created_at\": \"1949-03-13T09:18:08.243Z\",\n        \"agreed_at\": \"2002-06-27T17:37:04.191Z\",\n        \"date_sent\": \"1975-06-02T23:22:56.852Z\",\n        \"resume_url\": \"string\",\n        \"second_resume_url\": \"string\",\n        \"social_source\": \"string\",\n        \"utm_source\": \"string\",\n        \"utm_medium\": \"string\",\n        \"utm_campaign\": \"string\",\n        \"utm_content\": \"string\",\n        \"utm_term\": \"string\",\n        \"is_paid\": false,\n        \"candidate\": {\n          \"id\": 7665,\n          \"date_created\": \"1987-01-23T16:28:50.248Z\",\n          \"email\": \"string\",\n          \"bithdate\": \"string\",\n          \"gender\": \"string\",\n          \"name\": {\n            \"candidate_id\": 587,\n            \"first_name\": \"string\",\n            \"last_name\": \"string\",\n            \"second_name\": \"string\"\n          },\n          \"phone\": {\n            \"candidate_id\": 8075,\n            \"id\": 3257,\n            \"number\": \"string\"\n          }\n        },\n        \"source\": {\n          \"id\": 2435,\n          \"title\": \"string\"\n        },\n        \"_embedded\": {\n          \"status\": {\n            \"id\": 7112,\n            \"title\": \"string\",\n            \"active\": true,\n            \"on_top\": true,\n            \"sort_order\": 2378,\n            \"company_id\": 103,\n            \"parent_id\": 403,\n            \"id_compatibility\": 6537,\n            \"color\": \"string\",\n            \"is_base\": false,\n            \"is_hidden\": false,\n            \"is_system\": true,\n            \"is_stage\": true\n          },\n          \"comments\": [\n            {\n              \"id\": 2653,\n              \"created_at\": \"2005-03-28T18:46:03.517Z\",\n              \"message\": \"string\",\n              \"response_id\": 6708,\n              \"user_id\": 3225\n            },\n            {\n              \"id\": 4386,\n              \"created_at\": \"1998-08-18T12:35:44.952Z\",\n              \"message\": \"string\",\n              \"response_id\": 2873,\n              \"user_id\": 9203\n            }\n          ],\n          \"vacancy\": {\n            \"id\": 7957,\n            \"token\": \"string\",\n            \"title\": \"string\",\n            \"active\": true,\n            \"user_id\": 4084,\n            \"language_id\": 8125,\n            \"created_at\": \"2005-11-06T07:21:06.796Z\"\n          },\n          \"interview\": {\n            \"id\": 6814,\n            \"date_create\": \"2017-10-07T18:54:47.196Z\",\n            \"token\": \"string\",\n            \"interview_stage_id\": 7031,\n            \"candidate_id\": 2458\n          }\n        }\n      },\n      {\n        \"id\": 4576,\n        \"vacancy_id\": 8626,\n        \"candidate_id\": 7290,\n        \"response_status_id\": 8371,\n        \"response_source_id\": 4458,\n        \"interview_id\": 2005,\n        \"external_id\": \"string\",\n        \"is_hidden_by_candidate\": true,\n        \"created_at\": \"1946-10-20T12:28:43.655Z\",\n        \"agreed_at\": \"1974-11-07T07:39:02.107Z\",\n        \"date_sent\": \"1963-05-22T19:18:13.225Z\",\n        \"resume_url\": \"string\",\n        \"second_resume_url\": \"string\",\n        \"social_source\": \"string\",\n        \"utm_source\": \"string\",\n        \"utm_medium\": \"string\",\n        \"utm_campaign\": \"string\",\n        \"utm_content\": \"string\",\n        \"utm_term\": \"string\",\n        \"is_paid\": true,\n        \"candidate\": {\n          \"id\": 5062,\n          \"date_created\": \"2010-04-14T21:42:13.169Z\",\n          \"email\": \"string\",\n          \"bithdate\": \"string\",\n          \"gender\": \"string\",\n          \"name\": {\n            \"candidate_id\": 7577,\n            \"first_name\": \"string\",\n            \"last_name\": \"string\",\n            \"second_name\": \"string\"\n          },\n          \"phone\": {\n            \"candidate_id\": 2300,\n            \"id\": 9644,\n            \"number\": \"string\"\n          }\n        },\n        \"source\": {\n          \"id\": 94,\n          \"title\": \"string\"\n        },\n        \"_embedded\": {\n          \"status\": {\n            \"id\": 8318,\n            \"title\": \"string\",\n            \"active\": true,\n            \"on_top\": true,\n            \"sort_order\": 3896,\n            \"company_id\": 6918,\n            \"parent_id\": 9869,\n            \"id_compatibility\": 8657,\n            \"color\": \"string\",\n            \"is_base\": false,\n            \"is_hidden\": false,\n            \"is_system\": false,\n            \"is_stage\": false\n          },\n          \"comments\": [\n            {\n              \"id\": 5664,\n              \"created_at\": \"2024-02-06T08:27:10.101Z\",\n              \"message\": \"string\",\n              \"response_id\": 6910,\n              \"user_id\": 2061\n            },\n            {\n              \"id\": 3460,\n              \"created_at\": \"2025-03-22T19:20:13.925Z\",\n              \"message\": \"string\",\n              \"response_id\": 5117,\n              \"user_id\": 1874\n            }\n          ],\n          \"vacancy\": {\n            \"id\": 5331,\n            \"token\": \"string\",\n            \"title\": \"string\",\n            \"active\": true,\n            \"user_id\": 9032,\n            \"language_id\": 4569,\n            \"created_at\": \"2004-08-01T05:09:47.024Z\"\n          },\n          \"interview\": {\n            \"id\": 2613,\n            \"date_create\": \"1970-01-19T15:12:52.012Z\",\n            \"token\": \"string\",\n            \"interview_stage_id\": 1996,\n            \"candidate_id\": 6131\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a0371e8-a0c1-47a7-b025-dcc686a72efb",
+          "name": "Get response detail",
+          "request": {
+            "name": "Get response detail",
+            "description": {
+              "content": "Get response detail",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "responses",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[]",
+                  "value": "<string>",
+                  "description": "Fields to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[]",
+                  "value": "<string>",
+                  "description": "Fields to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7aa68b7b-5198-4b0b-9039-ba3424549bc2",
+              "name": "Response detail",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "responses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4140,\n  \"vacancy_id\": 4231,\n  \"candidate_id\": 6443,\n  \"response_status_id\": 5453,\n  \"response_source_id\": 8820,\n  \"interview_id\": 5759,\n  \"external_id\": \"string\",\n  \"is_hidden_by_candidate\": true,\n  \"created_at\": \"2025-02-12T05:55:45.503Z\",\n  \"agreed_at\": \"1964-09-08T01:01:00.555Z\",\n  \"date_sent\": \"2020-07-29T02:48:32.366Z\",\n  \"resume_url\": \"string\",\n  \"second_resume_url\": \"string\",\n  \"social_source\": \"string\",\n  \"utm_source\": \"string\",\n  \"utm_medium\": \"string\",\n  \"utm_campaign\": \"string\",\n  \"utm_content\": \"string\",\n  \"utm_term\": \"string\",\n  \"is_paid\": true,\n  \"candidate\": {\n    \"id\": 5947,\n    \"date_created\": \"1979-11-04T08:29:49.192Z\",\n    \"email\": \"string\",\n    \"bithdate\": \"string\",\n    \"gender\": \"string\",\n    \"name\": {\n      \"candidate_id\": 4259,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"second_name\": \"string\"\n    },\n    \"phone\": {\n      \"candidate_id\": 5473,\n      \"id\": 7586,\n      \"number\": \"string\"\n    }\n  },\n  \"source\": {\n    \"id\": 2664,\n    \"title\": \"string\"\n  },\n  \"_embedded\": {\n    \"status\": {\n      \"id\": 3206,\n      \"title\": \"string\",\n      \"active\": true,\n      \"on_top\": false,\n      \"sort_order\": 7058,\n      \"company_id\": 3905,\n      \"parent_id\": 810,\n      \"id_compatibility\": 8155,\n      \"color\": \"string\",\n      \"is_base\": false,\n      \"is_hidden\": false,\n      \"is_system\": false,\n      \"is_stage\": false\n    },\n    \"comments\": [\n      {\n        \"id\": 1811,\n        \"created_at\": \"2007-03-24T23:55:48.757Z\",\n        \"message\": \"string\",\n        \"response_id\": 9119,\n        \"user_id\": 6807\n      },\n      {\n        \"id\": 8191,\n        \"created_at\": \"1948-07-24T00:14:14.872Z\",\n        \"message\": \"string\",\n        \"response_id\": 5093,\n        \"user_id\": 1898\n      }\n    ],\n    \"vacancy\": {\n      \"id\": 1432,\n      \"token\": \"string\",\n      \"title\": \"string\",\n      \"active\": false,\n      \"user_id\": 5590,\n      \"language_id\": 5148,\n      \"created_at\": \"1949-12-27T23:53:18.680Z\"\n    },\n    \"interview\": {\n      \"id\": 8945,\n      \"date_create\": \"1957-12-03T10:06:16.949Z\",\n      \"token\": \"string\",\n      \"interview_stage_id\": 1392,\n      \"candidate_id\": 5625\n    },\n    \"invite\": {\n      \"id\": 1688,\n      \"vacancy_id\": 9730,\n      \"candidate_id\": 8199,\n      \"invite_status_id\": 8058,\n      \"interview_refusal_id\": 6405,\n      \"interview_id\": 5272,\n      \"is_hidden_by_candidate\": true,\n      \"created_at\": \"1966-03-12T09:56:48.177Z\",\n      \"updated_at\": \"1949-08-02T00:33:52.768Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e53d418d-158e-490f-8aca-ae0f798c8768",
+          "name": "Update response",
+          "request": {
+            "name": "Update response",
+            "description": {
+              "content": "Update response",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "responses",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"response_status_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e66c8f48-acb7-4046-9355-a954745ad4e5",
+              "name": "Updated response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "responses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"response_status_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 7429,\n  \"vacancy_id\": 7311,\n  \"candidate_id\": 8123,\n  \"response_status_id\": 6183,\n  \"response_source_id\": 4246,\n  \"interview_id\": 2612,\n  \"external_id\": \"string\",\n  \"is_hidden_by_candidate\": true,\n  \"created_at\": \"1972-02-13T13:12:44.107Z\",\n  \"agreed_at\": \"1985-04-07T19:56:47.020Z\",\n  \"date_sent\": \"1979-08-18T17:22:39.383Z\",\n  \"resume_url\": \"string\",\n  \"second_resume_url\": \"string\",\n  \"social_source\": \"string\",\n  \"utm_source\": \"string\",\n  \"utm_medium\": \"string\",\n  \"utm_campaign\": \"string\",\n  \"utm_content\": \"string\",\n  \"utm_term\": \"string\",\n  \"is_paid\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a278b254-7ef4-45bf-946d-09fc77adb421",
+          "name": "Get response comments list",
+          "request": {
+            "name": "Get response comments list",
+            "description": {
+              "content": "Get response comments list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[order]",
+                  "value": "desc",
+                  "description": "sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[response_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[user_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[message]",
+                  "value": "<string>",
+                  "description": "Message body filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c5542ec1-0f4a-40f5-9d5c-7d6c9ffb5dab",
+              "name": "list of response comments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort[order]",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[response_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[user_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[message]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 9617,\n  \"_page\": 4940,\n  \"_page_count\": 2523,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"https://fuD.ruicVFHl3Ck5wEBRU8a4aFN4qDDKg+k0pP\"\n    },\n    \"next\": {\n      \"href\": \"http://qHHLUXreeKsMRLFeuSMFawMNvXmyNUSQL.ynafcyxeTUDKBdAz,cD8.SZA.feUgPLIyqoj,CyiboMFMZsbmAjREUkt8jyF\"\n    },\n    \"last\": {\n      \"href\": \"http://WJQ.ldasrtqKz5ZNJRYxUx\"\n    }\n  },\n  \"_embedded\": {\n    \"comments\": [\n      {\n        \"id\": 6273,\n        \"created_at\": \"1986-12-23T06:49:50.190Z\",\n        \"message\": \"string\",\n        \"response_id\": 2232,\n        \"user_id\": 2888,\n        \"_embedded\": {\n          \"user\": {\n            \"id\": 3779,\n            \"created_at\": \"1972-06-21T00:13:44.614Z\",\n            \"email\": \"string\",\n            \"position\": \"string\",\n            \"logo_url\": \"string\",\n            \"geo_id\": 8747,\n            \"lanaguage_id\": 1884,\n            \"company_id\": 1778,\n            \"userName\": {\n              \"user_id\": 5679,\n              \"first_name\": \"string\",\n              \"last_name\": \"string\",\n              \"language_id\": 8590,\n              \"id\": 1398\n            }\n          },\n          \"response\": {\n            \"id\": 9258,\n            \"vacancy_id\": 935,\n            \"candidate_id\": 4201,\n            \"response_status_id\": 6870,\n            \"response_source_id\": 585,\n            \"interview_id\": 2744,\n            \"external_id\": \"string\",\n            \"is_hidden_by_candidate\": false,\n            \"created_at\": \"1956-11-10T03:03:05.346Z\",\n            \"agreed_at\": \"2024-02-05T18:12:15.976Z\",\n            \"date_sent\": \"1974-08-08T12:08:43.844Z\",\n            \"resume_url\": \"string\",\n            \"second_resume_url\": \"string\",\n            \"social_source\": \"string\",\n            \"utm_source\": \"string\",\n            \"utm_medium\": \"string\",\n            \"utm_campaign\": \"string\",\n            \"utm_content\": \"string\",\n            \"utm_term\": \"string\",\n            \"is_paid\": true\n          }\n        }\n      },\n      {\n        \"id\": 801,\n        \"created_at\": \"2012-08-30T14:12:27.383Z\",\n        \"message\": \"string\",\n        \"response_id\": 1036,\n        \"user_id\": 9212,\n        \"_embedded\": {\n          \"user\": {\n            \"id\": 7462,\n            \"created_at\": \"1967-04-29T03:24:26.207Z\",\n            \"email\": \"string\",\n            \"position\": \"string\",\n            \"logo_url\": \"string\",\n            \"geo_id\": 7417,\n            \"lanaguage_id\": 4728,\n            \"company_id\": 4081,\n            \"userName\": {\n              \"user_id\": 994,\n              \"first_name\": \"string\",\n              \"last_name\": \"string\",\n              \"language_id\": 1376,\n              \"id\": 8058\n            }\n          },\n          \"response\": {\n            \"id\": 19,\n            \"vacancy_id\": 6498,\n            \"candidate_id\": 4841,\n            \"response_status_id\": 613,\n            \"response_source_id\": 1996,\n            \"interview_id\": 5660,\n            \"external_id\": \"string\",\n            \"is_hidden_by_candidate\": false,\n            \"created_at\": \"1983-10-06T02:49:00.848Z\",\n            \"agreed_at\": \"1990-01-04T07:10:24.787Z\",\n            \"date_sent\": \"2020-12-17T09:21:34.166Z\",\n            \"resume_url\": \"string\",\n            \"second_resume_url\": \"string\",\n            \"social_source\": \"string\",\n            \"utm_source\": \"string\",\n            \"utm_medium\": \"string\",\n            \"utm_campaign\": \"string\",\n            \"utm_content\": \"string\",\n            \"utm_term\": \"string\",\n            \"is_paid\": true\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "359da015-ce5e-4101-8b75-fcd52ebe7a43",
+          "name": "Create response comment",
+          "request": {
+            "name": "Create response comment",
+            "description": {
+              "content": "Create response comment",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-comments"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"response_id\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1b4c3bbd-72f0-4e73-8440-a1cc15268aac",
+              "name": "Created comment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-comments"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"response_id\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8054,\n  \"created_at\": \"1976-02-28T23:50:58.001Z\",\n  \"message\": \"string\",\n  \"response_id\": 6879,\n  \"user_id\": 9673,\n  \"_embedded\": {\n    \"user\": {\n      \"id\": 8075,\n      \"created_at\": \"1972-06-23T05:07:12.427Z\",\n      \"email\": \"string\",\n      \"position\": \"string\",\n      \"logo_url\": \"string\",\n      \"geo_id\": 6872,\n      \"lanaguage_id\": 9503,\n      \"company_id\": 1376,\n      \"userName\": {\n        \"user_id\": 9860,\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"language_id\": 1497,\n        \"id\": 2605\n      }\n    },\n    \"response\": {\n      \"id\": 2371,\n      \"vacancy_id\": 3837,\n      \"candidate_id\": 8409,\n      \"response_status_id\": 4693,\n      \"response_source_id\": 2211,\n      \"interview_id\": 5763,\n      \"external_id\": \"string\",\n      \"is_hidden_by_candidate\": true,\n      \"created_at\": \"2008-05-22T17:33:14.689Z\",\n      \"agreed_at\": \"1993-03-14T16:09:19.058Z\",\n      \"date_sent\": \"2001-08-19T09:16:36.060Z\",\n      \"resume_url\": \"string\",\n      \"second_resume_url\": \"string\",\n      \"social_source\": \"string\",\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_content\": \"string\",\n      \"utm_term\": \"string\",\n      \"is_paid\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ca99f12-ccc6-4086-bbf1-db56ce7b52c9",
+          "name": "Get comment",
+          "request": {
+            "name": "Get comment",
+            "description": {
+              "content": "Get comment",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-comments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "381442ae-6cbc-4d76-b357-9ca4f996e482",
+              "name": "Comment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-comments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8054,\n  \"created_at\": \"1976-02-28T23:50:58.001Z\",\n  \"message\": \"string\",\n  \"response_id\": 6879,\n  \"user_id\": 9673,\n  \"_embedded\": {\n    \"user\": {\n      \"id\": 8075,\n      \"created_at\": \"1972-06-23T05:07:12.427Z\",\n      \"email\": \"string\",\n      \"position\": \"string\",\n      \"logo_url\": \"string\",\n      \"geo_id\": 6872,\n      \"lanaguage_id\": 9503,\n      \"company_id\": 1376,\n      \"userName\": {\n        \"user_id\": 9860,\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"language_id\": 1497,\n        \"id\": 2605\n      }\n    },\n    \"response\": {\n      \"id\": 2371,\n      \"vacancy_id\": 3837,\n      \"candidate_id\": 8409,\n      \"response_status_id\": 4693,\n      \"response_source_id\": 2211,\n      \"interview_id\": 5763,\n      \"external_id\": \"string\",\n      \"is_hidden_by_candidate\": true,\n      \"created_at\": \"2008-05-22T17:33:14.689Z\",\n      \"agreed_at\": \"1993-03-14T16:09:19.058Z\",\n      \"date_sent\": \"2001-08-19T09:16:36.060Z\",\n      \"resume_url\": \"string\",\n      \"second_resume_url\": \"string\",\n      \"social_source\": \"string\",\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_content\": \"string\",\n      \"utm_term\": \"string\",\n      \"is_paid\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90f01474-b76f-4370-b7d3-415f1c75c2a5",
+          "name": "Update comment",
+          "request": {
+            "name": "Update comment",
+            "description": {
+              "content": "Update comment",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-comments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91653b97-6f18-402e-a108-236ec87f3f71",
+              "name": "Updated comment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-comments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8054,\n  \"created_at\": \"1976-02-28T23:50:58.001Z\",\n  \"message\": \"string\",\n  \"response_id\": 6879,\n  \"user_id\": 9673,\n  \"_embedded\": {\n    \"user\": {\n      \"id\": 8075,\n      \"created_at\": \"1972-06-23T05:07:12.427Z\",\n      \"email\": \"string\",\n      \"position\": \"string\",\n      \"logo_url\": \"string\",\n      \"geo_id\": 6872,\n      \"lanaguage_id\": 9503,\n      \"company_id\": 1376,\n      \"userName\": {\n        \"user_id\": 9860,\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"language_id\": 1497,\n        \"id\": 2605\n      }\n    },\n    \"response\": {\n      \"id\": 2371,\n      \"vacancy_id\": 3837,\n      \"candidate_id\": 8409,\n      \"response_status_id\": 4693,\n      \"response_source_id\": 2211,\n      \"interview_id\": 5763,\n      \"external_id\": \"string\",\n      \"is_hidden_by_candidate\": true,\n      \"created_at\": \"2008-05-22T17:33:14.689Z\",\n      \"agreed_at\": \"1993-03-14T16:09:19.058Z\",\n      \"date_sent\": \"2001-08-19T09:16:36.060Z\",\n      \"resume_url\": \"string\",\n      \"second_resume_url\": \"string\",\n      \"social_source\": \"string\",\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_content\": \"string\",\n      \"utm_term\": \"string\",\n      \"is_paid\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2715ed8d-1b13-4fba-a83c-bc0ec6cc9cc8",
+          "name": "Delete comment",
+          "request": {
+            "name": "Delete comment",
+            "description": {
+              "content": "Delete comment",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-comments",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "50722436-ace2-4518-90de-d20e70d7ae54",
+              "name": "Deleted comment",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-comments",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 9570,\n  \"created_at\": \"1951-03-29T09:36:21.823Z\",\n  \"message\": \"string\",\n  \"response_id\": 9313,\n  \"user_id\": 3235\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6d025f2e-946a-44e4-9862-80982200e3b7",
+          "name": "Get response status list",
+          "request": {
+            "name": "Get response status list",
+            "description": {
+              "content": "Get response status list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-statuses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[order]",
+                  "value": "desc",
+                  "description": "sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[by]",
+                  "value": "id",
+                  "description": "sort field"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "075dde15-5a5d-411f-b751-8d4d13ccf313",
+              "name": "list of response statuses",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort[order]",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "sort[by]",
+                      "value": "id"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 5345,\n  \"_page\": 4981,\n  \"_page_count\": 4629,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"https://yXfKglftpA.wnCtfsesoIhNkmM+geegMRPi3wdHjp0dU0A5ekgXc8W0g6FSZZdD7RQ8yBoBQ7Gvr1sS\"\n    },\n    \"next\": {\n      \"href\": \"https://pN.vmmfI2p7BhcxL0hWNaaHxqK+RZ3d,e9rMpUAH1FTItf\"\n    },\n    \"last\": {\n      \"href\": \"http://lBWmrbL.xusDajb71nPZka,DvpqNSWcD-xwLU-jOqZh,CkWW2\"\n    }\n  },\n  \"_embedded\": {\n    \"statuses\": [\n      {\n        \"id\": 6630,\n        \"title\": \"string\",\n        \"active\": true,\n        \"on_top\": false,\n        \"sort_order\": 5344,\n        \"company_id\": 4145,\n        \"parent_id\": 8865,\n        \"id_compatibility\": 5840,\n        \"color\": \"string\",\n        \"is_base\": false,\n        \"is_hidden\": false,\n        \"is_system\": true,\n        \"is_stage\": false,\n        \"_embedded\": {\n          \"parent\": {\n            \"id\": 3328,\n            \"title\": \"string\",\n            \"active\": true,\n            \"on_top\": true,\n            \"sort_order\": 5611,\n            \"company_id\": 5415,\n            \"parent_id\": 4658,\n            \"id_compatibility\": 9345,\n            \"color\": \"string\",\n            \"is_base\": false,\n            \"is_hidden\": true,\n            \"is_system\": false,\n            \"is_stage\": false\n          }\n        }\n      },\n      {\n        \"id\": 226,\n        \"title\": \"string\",\n        \"active\": false,\n        \"on_top\": false,\n        \"sort_order\": 9777,\n        \"company_id\": 7405,\n        \"parent_id\": 576,\n        \"id_compatibility\": 2139,\n        \"color\": \"string\",\n        \"is_base\": true,\n        \"is_hidden\": false,\n        \"is_system\": true,\n        \"is_stage\": true,\n        \"_embedded\": {\n          \"parent\": {\n            \"id\": 4544,\n            \"title\": \"string\",\n            \"active\": false,\n            \"on_top\": true,\n            \"sort_order\": 1878,\n            \"company_id\": 2934,\n            \"parent_id\": 9029,\n            \"id_compatibility\": 3455,\n            \"color\": \"string\",\n            \"is_base\": true,\n            \"is_hidden\": true,\n            \"is_system\": true,\n            \"is_stage\": true\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87553617-e9e5-49c7-9375-34b80ec16a28",
+          "name": "Create response statuses",
+          "request": {
+            "name": "Create response statuses",
+            "description": {
+              "content": "Create response statuses",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-statuses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"sort_order\": \"<integer>\",\n  \"color\": \"<string>\",\n  \"on_top\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8adfc01e-991e-4ba7-b19d-eb39bb37098c",
+              "name": "list of response statuses",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"sort_order\": \"<integer>\",\n  \"color\": \"<string>\",\n  \"on_top\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 713,\n  \"title\": \"string\",\n  \"active\": false,\n  \"on_top\": true,\n  \"sort_order\": 9326,\n  \"company_id\": 1648,\n  \"parent_id\": 7239,\n  \"id_compatibility\": 6469,\n  \"color\": \"string\",\n  \"is_base\": true,\n  \"is_hidden\": false,\n  \"is_system\": true,\n  \"is_stage\": true,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"http://INOuvzKQVj.gvoLYuhyQk+VTxzFWmHkrhM+6y3vUBU-,z1rOFIrWzorJ,oXbXGoodX+wOlXxI+RBBp\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3491267a-cda0-47f4-ae7b-9c4982fd460c",
+          "name": "Get response status detail",
+          "request": {
+            "name": "Get response status detail",
+            "description": {
+              "content": "Get response status detail",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-statuses",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df4c1c0c-92f8-42ce-9e3a-51aa1c32cbe1",
+              "name": "ResponseStatus",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-statuses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 9522,\n  \"title\": \"string\",\n  \"active\": true,\n  \"on_top\": false,\n  \"sort_order\": 5838,\n  \"company_id\": 4169,\n  \"parent_id\": 6204,\n  \"id_compatibility\": 8783,\n  \"color\": \"string\",\n  \"is_base\": false,\n  \"is_hidden\": false,\n  \"is_system\": true,\n  \"is_stage\": false,\n  \"_embedded\": {\n    \"parent\": {\n      \"id\": 9226,\n      \"title\": \"string\",\n      \"active\": false,\n      \"on_top\": true,\n      \"sort_order\": 9788,\n      \"company_id\": 596,\n      \"parent_id\": 5821,\n      \"id_compatibility\": 1885,\n      \"color\": \"string\",\n      \"is_base\": false,\n      \"is_hidden\": false,\n      \"is_system\": true,\n      \"is_stage\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a47e9600-0b85-44c6-bcd5-fbd9d79f3b97",
+          "name": "Update response status",
+          "request": {
+            "name": "Update response status",
+            "description": {
+              "content": "Update response status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-statuses",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"on_top\": \"<boolean>\",\n  \"sort_order\": \"<integer>\",\n  \"parent_id\": \"<integer>\",\n  \"id_compatibility\": \"<integer>\",\n  \"color\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "40d587be-2ee9-40b9-9bd1-2dab4a49ab30",
+              "name": "Updated response status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-statuses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"active\": \"<boolean>\",\n  \"on_top\": \"<boolean>\",\n  \"sort_order\": \"<integer>\",\n  \"parent_id\": \"<integer>\",\n  \"id_compatibility\": \"<integer>\",\n  \"color\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 9522,\n  \"title\": \"string\",\n  \"active\": true,\n  \"on_top\": false,\n  \"sort_order\": 5838,\n  \"company_id\": 4169,\n  \"parent_id\": 6204,\n  \"id_compatibility\": 8783,\n  \"color\": \"string\",\n  \"is_base\": false,\n  \"is_hidden\": false,\n  \"is_system\": true,\n  \"is_stage\": false,\n  \"_embedded\": {\n    \"parent\": {\n      \"id\": 9226,\n      \"title\": \"string\",\n      \"active\": false,\n      \"on_top\": true,\n      \"sort_order\": 9788,\n      \"company_id\": 596,\n      \"parent_id\": 5821,\n      \"id_compatibility\": 1885,\n      \"color\": \"string\",\n      \"is_base\": false,\n      \"is_hidden\": false,\n      \"is_system\": true,\n      \"is_stage\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29837982-dd81-49bb-9269-4f2372fa9975",
+          "name": "Delete response status",
+          "request": {
+            "name": "Delete response status",
+            "description": {
+              "content": "Delete response status",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-statuses",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe3989d0-c8af-4017-a200-25ea402a84b4",
+              "name": "Deleted response status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-statuses",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 848,\n  \"title\": \"string\",\n  \"active\": true,\n  \"on_top\": true,\n  \"sort_order\": 1577,\n  \"company_id\": 4143,\n  \"parent_id\": 1555,\n  \"id_compatibility\": 8803,\n  \"color\": \"string\",\n  \"is_base\": false,\n  \"is_hidden\": true,\n  \"is_system\": false,\n  \"is_stage\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a920c531-0428-431f-9fbf-f7a039408386",
+          "name": "Download response resume file",
+          "request": {
+            "name": "Download response resume file",
+            "description": {
+              "content": "Download response resume file",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "responses",
+                ":responseId",
+                "resumes",
+                ":resumeId",
+                "download"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) User access token"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "responseId",
+                  "description": "(Required) Response id"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "resumeId",
+                  "description": "(Required) Resume id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "580ba883-72ac-4b59-a06b-3ea0e9ff54ce",
+              "name": "PDF file, PNG image, JPG image, etc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "responses",
+                    ":responseId",
+                    "resumes",
+                    ":resumeId",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "responseId",
+                      "description": "(Required) Response id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "resumeId",
+                      "description": "(Required) Resume id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "key": "Content-Disposition",
+                  "value": "attachment; filename=\"name.pdf\"",
+                  "description": ""
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "18d96405-62ed-46dd-8063-f8c960723fc5",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "responses",
+                    ":responseId",
+                    "resumes",
+                    ":resumeId",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "responseId",
+                      "description": "(Required) Response id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "resumeId",
+                      "description": "(Required) Resume id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b9fa3159-9ec1-4805-9f99-d8f865f770ad",
+              "name": "Response or resume not found, or invalid URL",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "responses",
+                    ":responseId",
+                    "resumes",
+                    ":resumeId",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "responseId",
+                      "description": "(Required) Response id"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "resumeId",
+                      "description": "(Required) Resume id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66dc299d-832d-4e76-abd2-bb87fe4b57ec",
+          "name": "Get list of resumes attached to responses",
+          "request": {
+            "name": "Get list of resumes attached to responses",
+            "description": {
+              "content": "Get list of resumes attached to responses",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-resumes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[order]",
+                  "value": "desc",
+                  "description": "sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[by]",
+                  "value": "created_at",
+                  "description": "Sort field"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[response_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[created_at][from]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[created_at][to]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[is_file]",
+                  "value": "<boolean>",
+                  "description": "Filter by resumes uploaded as files"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1f3bad24-5b52-4bb7-b2a4-5c55e8dd5739",
+              "name": "List of response resumes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-resumes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort[order]",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "sort[by]",
+                      "value": "created_at"
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[response_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[created_at][from]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter[created_at][to]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter[is_file]",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 6686,\n  \"_page\": 7238,\n  \"_page_count\": 5710,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"http://eIAygPtdRNtoUOwZC.flnMEFtWMO-Jqb4-AfQDN66R-4wqSMIkxchn4\"\n    },\n    \"next\": {\n      \"href\": \"http://RlrmeGuYHwgTG.nxlqOWFG6AQKWiz.PkxY\"\n    },\n    \"last\": {\n      \"href\": \"https://cOhoTkqJinTdKyqTVWSGWXaQTnFHzZogp.pfjHPYHTh86mR+keQPQtf4-XSCbwErV+V1OPhX\"\n    }\n  },\n  \"_embedded\": {\n    \"response_resumes\": [\n      {\n        \"id\": 8612,\n        \"response_id\": 9904,\n        \"filename\": \"string\",\n        \"resume_url\": \"string\",\n        \"is_file\": true,\n        \"created_at\": \"1977-11-22T01:53:30.892Z\",\n        \"responseResumeUrl\": \"string\",\n        \"responseSecondResumeUrl\": \"string\"\n      },\n      {\n        \"id\": 9642,\n        \"response_id\": 5932,\n        \"filename\": \"string\",\n        \"resume_url\": \"string\",\n        \"is_file\": false,\n        \"created_at\": \"1955-11-12T23:50:09.975Z\",\n        \"responseResumeUrl\": \"string\",\n        \"responseSecondResumeUrl\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffc1518c-2a9b-45bd-90cf-51b28534544c",
+          "name": "Get response resume by id",
+          "request": {
+            "name": "Get response resume by id",
+            "description": {
+              "content": "Get response resume by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-resume",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6266daa-d607-4168-9a48-4c97eb2f7fb4",
+              "name": "Response resume",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-resume",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6001,\n  \"response_id\": 7597,\n  \"filename\": \"string\",\n  \"resume_url\": \"string\",\n  \"is_file\": true,\n  \"created_at\": \"1966-07-13T01:27:25.163Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85fb9516-6bca-4367-a22a-f6663bb0bbf3",
+              "name": "Resume not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-resume",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "24d1c04d-2327-407c-9edb-248be35a4d79",
+          "name": "Upload response resume",
+          "request": {
+            "name": "Upload response resume",
+            "description": {
+              "content": "Upload response resume",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "public",
+                "vacancy",
+                ":vacancyToken",
+                "response-resume",
+                ":responseToken"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "vacancyToken",
+                  "description": "(Required) Vacancy public url token"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "responseToken",
+                  "description": "(Required) Response public url token"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "resume_url",
+                  "value": "<uri>",
+                  "type": "text",
+                  "description": "URL of the resume (optional, must start with http or https)."
+                },
+                {
+                  "key": "resume",
+                  "type": "file",
+                  "description": "Resume file (optional, PDF, DOC, or DOCX)."
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9a638bd9-1de5-4d88-92e0-c44a5a877845",
+              "name": "Resume uploaded successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "public",
+                    "vacancy",
+                    ":vacancyToken",
+                    "response-resume",
+                    ":responseToken"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "vacancyToken",
+                      "description": "(Required) Vacancy public url token"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "responseToken",
+                      "description": "(Required) Response public url token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "URL of the resume (optional, must start with http or https).",
+                        "type": "text/plain"
+                      },
+                      "key": "resume_url",
+                      "value": "<uri>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Resume file (optional, PDF, DOC, or DOCX).",
+                        "type": "text/plain"
+                      },
+                      "key": "resume",
+                      "value": "<binary>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"resume\": {\n      \"id\": 5648,\n      \"response_id\": 4524,\n      \"filename\": \"string\",\n      \"resume_url\": \"string\"\n    },\n    \"response\": {\n      \"id\": 6243,\n      \"vacancy_id\": 8717,\n      \"candidate_id\": 599,\n      \"response_status_id\": 5498,\n      \"response_source_id\": 3564,\n      \"interview_id\": 4085,\n      \"external_id\": \"string\",\n      \"is_hidden_by_candidate\": false,\n      \"created_at\": \"1985-05-22T08:19:36.097Z\",\n      \"agreed_at\": \"2021-01-08T06:09:52.042Z\",\n      \"date_sent\": \"1965-12-23T02:56:49.552Z\",\n      \"resume_url\": \"string\",\n      \"second_resume_url\": \"string\",\n      \"social_source\": \"string\",\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_content\": \"string\",\n      \"utm_term\": \"string\",\n      \"is_paid\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2eadd386-cc7e-4ce2-bf4f-59e7d7419e11",
+          "name": "Get response events list",
+          "request": {
+            "name": "Get response events list",
+            "description": {
+              "content": "Get response events list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[order]",
+                  "value": "desc",
+                  "description": "sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[response_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[vacancy_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[type]",
+                  "value": "<integer>",
+                  "description": "Event type filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86156f4f-7dd2-431c-a1ce-34b649f096c8",
+              "name": "list of response events",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort[order]",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[response_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[vacancy_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[type]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 5838,\n  \"_page\": 1961,\n  \"_page_count\": 6726,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"http://wnZKsWUUyzYItErAhxWVg.abdgVTTPm,CIISTm4oWND-6ehCd3IYMv1Log\"\n    },\n    \"next\": {\n      \"href\": \"http://ItuJzHRnQkgJILlOxqZl.ewwDmYbDTLgpvCVPobPL\"\n    },\n    \"last\": {\n      \"href\": \"https://iFoFukhzfHaTKVaMUdyXIUMZzNKyzHH.kotu7\"\n    }\n  },\n  \"_embedded\": {\n    \"attributes\": [\n      {\n        \"id\": 9407,\n        \"sort_order\": 3520,\n        \"type\": 2,\n        \"vacancy_id\": 2926,\n        \"response_id\": 3763,\n        \"company_id\": 1429,\n        \"user_id\": 3086,\n        \"meta\": {},\n        \"created_at\": \"1988-02-25T12:41:56.218Z\",\n        \"_embedded\": {\n          \"response\": {\n            \"id\": 8440,\n            \"vacancy_id\": 9154,\n            \"candidate_id\": 8256,\n            \"response_status_id\": 7883,\n            \"response_source_id\": 4141,\n            \"interview_id\": 5916,\n            \"external_id\": \"string\",\n            \"is_hidden_by_candidate\": false,\n            \"created_at\": \"1997-05-08T19:38:45.801Z\",\n            \"agreed_at\": \"2010-08-23T02:11:01.103Z\",\n            \"date_sent\": \"1965-10-27T19:08:54.271Z\",\n            \"resume_url\": \"string\",\n            \"second_resume_url\": \"string\",\n            \"social_source\": \"string\",\n            \"utm_source\": \"string\",\n            \"utm_medium\": \"string\",\n            \"utm_campaign\": \"string\",\n            \"utm_content\": \"string\",\n            \"utm_term\": \"string\",\n            \"is_paid\": true\n          },\n          \"vacancy\": {\n            \"id\": 9812,\n            \"token\": \"string\",\n            \"title\": \"string\",\n            \"active\": false,\n            \"user_id\": 1193,\n            \"language_id\": 8746,\n            \"created_at\": \"1956-01-16T09:15:02.710Z\"\n          }\n        }\n      },\n      {\n        \"id\": 6895,\n        \"sort_order\": 1931,\n        \"type\": 1,\n        \"vacancy_id\": 8309,\n        \"response_id\": 6646,\n        \"company_id\": 1587,\n        \"user_id\": 7567,\n        \"meta\": {},\n        \"created_at\": \"1960-04-20T00:35:10.151Z\",\n        \"_embedded\": {\n          \"response\": {\n            \"id\": 893,\n            \"vacancy_id\": 8178,\n            \"candidate_id\": 4946,\n            \"response_status_id\": 4867,\n            \"response_source_id\": 3960,\n            \"interview_id\": 3823,\n            \"external_id\": \"string\",\n            \"is_hidden_by_candidate\": true,\n            \"created_at\": \"2002-09-26T05:38:01.973Z\",\n            \"agreed_at\": \"2018-08-24T16:05:32.372Z\",\n            \"date_sent\": \"2005-03-18T08:54:53.970Z\",\n            \"resume_url\": \"string\",\n            \"second_resume_url\": \"string\",\n            \"social_source\": \"string\",\n            \"utm_source\": \"string\",\n            \"utm_medium\": \"string\",\n            \"utm_campaign\": \"string\",\n            \"utm_content\": \"string\",\n            \"utm_term\": \"string\",\n            \"is_paid\": true\n          },\n          \"vacancy\": {\n            \"id\": 7119,\n            \"token\": \"string\",\n            \"title\": \"string\",\n            \"active\": true,\n            \"user_id\": 9839,\n            \"language_id\": 9230,\n            \"created_at\": \"1990-05-28T08:31:00.628Z\"\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91a2f1e6-f22b-4511-b446-5e1825cd23ff",
+          "name": "Get response event detail",
+          "request": {
+            "name": "Get response event detail",
+            "description": {
+              "content": "Get response event detail",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-events",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aafeb53a-0fff-4c80-b55f-828b839b93fe",
+              "name": "Response event",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-events",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4345,\n  \"sort_order\": 3625,\n  \"type\": 1,\n  \"vacancy_id\": 1535,\n  \"response_id\": 7068,\n  \"company_id\": 8989,\n  \"user_id\": 9778,\n  \"meta\": {},\n  \"created_at\": \"1968-06-21T10:20:27.460Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://my.vcv.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0bc804cb-fff9-47c8-bd16-1fb65058a9dc",
+    "name": "VCV chatbot response API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "open api",
+      "type": "text/plain"
+    }
+  }
+}

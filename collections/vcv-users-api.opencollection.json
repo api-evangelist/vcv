@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VCV chatbot users API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /api/v3/users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/users",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "filter[email]",
+                "value": "",
+                "type": "query",
+                "description": "User email filter"
+              },
+              {
+                "name": "filter[position]",
+                "value": "",
+                "type": "query",
+                "description": "User position filter"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get users list"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/users/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/users/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get user detail"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

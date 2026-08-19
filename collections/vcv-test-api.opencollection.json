@@ -1,0 +1,216 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VCV chatbot test API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "test",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /api/v3/tests/vacancy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/tests/vacancy",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[vacancy_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[created_at][from]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[created_at][to]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get vacancy tests list"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/tests/vacancy/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/tests/vacancy/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get vacancy test detail"
+        },
+        {
+          "info": {
+            "name": "PATCH /api/v3/tests/vacancy/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://my.vcv.ai/api/v3/tests/vacancy/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update vacancy test"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/tests/response",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/tests/response",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "filter[vacancy_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              },
+              {
+                "name": "fields[]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to retrieve"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[response_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[created_at][from]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[created_at][to]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get response tests list"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/tests/response/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/tests/response/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              },
+              {
+                "name": "fields[]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to retrieve"
+              }
+            ]
+          },
+          "docs": "Get response tests list"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

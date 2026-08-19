@@ -1,0 +1,255 @@
+{
+  "item": [
+    {
+      "id": "ddb1e072-09f2-4a67-b1ae-6df059eae02b",
+      "name": "countries",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8d910b9d-cae0-4fec-9727-1a6e196c4fe9",
+          "name": "Get countries list",
+          "request": {
+            "name": "Get countries list",
+            "description": {
+              "content": "Get countries list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "countries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[code]",
+                  "value": "<string>",
+                  "description": "Country code filter"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c010b11-ee3c-44bd-b900-d846a238e654",
+              "name": "list of countries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "countries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "filter[code]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 2473,\n  \"_page\": 2239,\n  \"_page_count\": 8174,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"https://nw.mglz.PqcMDlYLilyaVT9x7MmkYecjG+nEfLUqa2bQejfV8af+srOkQM74\"\n    },\n    \"next\": {\n      \"href\": \"http://vGhPKPiGlzYXFUNpGeOesvr.blPOmYXw6tn\"\n    },\n    \"last\": {\n      \"href\": \"https://djKuXqrQkzpzYthHWCSXAj.fwbr1,MFSPtz3x1r-Le,aIt97L8HO5t7aVgaLLEqvv+13VlCW3\"\n    }\n  },\n  \"_embedded\": {\n    \"countries\": [\n      {\n        \"id\": 9542,\n        \"code\": \"string\",\n        \"title_en\": \"string\",\n        \"title_ru\": \"string\"\n      },\n      {\n        \"id\": 5103,\n        \"code\": \"string\",\n        \"title_en\": \"string\",\n        \"title_ru\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a570bc83-9c04-441f-a0f7-1c205ff9ee64",
+          "name": "Get country detail",
+          "request": {
+            "name": "Get country detail",
+            "description": {
+              "content": "Get country detail",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "countries",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0a4ccc42-a4dd-4607-a3dd-3817f226283b",
+              "name": "Agreement",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "countries",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8635,\n  \"code\": \"string\",\n  \"title_en\": \"string\",\n  \"title_ru\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://my.vcv.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9fabcc5d-a854-4dd1-a739-1d6863ef8b54",
+    "name": "VCV chatbot countries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "open api",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VCV chatbot enumeration API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "enumeration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /api/v3/enumerations/",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/enumerations/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "filter[company_id]",
+                "value": "",
+                "type": "query",
+                "description": "filter field"
+              }
+            ]
+          },
+          "docs": "Get enumerations list"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/enumerations/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/enumerations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              }
+            ]
+          },
+          "docs": "Get enumeration details"
+        },
+        {
+          "info": {
+            "name": "PATCH /api/v3/enumerations/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://my.vcv.ai/api/v3/enumerations/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update enumeration"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/enumerations/{id}/items",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/enumerations/:id/items",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort[order]",
+                "value": "",
+                "type": "query",
+                "description": "sort order"
+              },
+              {
+                "name": "filter[company_id]",
+                "value": "",
+                "type": "query",
+                "description": "filter field"
+              }
+            ]
+          },
+          "docs": "Get enumerations list"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

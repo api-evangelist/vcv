@@ -1,0 +1,1279 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VCV chatbot vacancy API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "vacancy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /api/v3/vacancies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/vacancies",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort[order]",
+                "value": "",
+                "type": "query",
+                "description": "sort order"
+              },
+              {
+                "name": "sort[by]",
+                "value": "",
+                "type": "query",
+                "description": "sort field"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[user_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[created_at][from]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[created_at][to]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[active]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[title]",
+                "value": "",
+                "type": "query",
+                "description": "vacancy title filter"
+              },
+              {
+                "name": "filter[stages]",
+                "value": "",
+                "type": "query",
+                "description": "vacancy stages filter"
+              },
+              {
+                "name": "fields[]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to retrieve"
+              }
+            ]
+          },
+          "docs": "Get vacancies list"
+        },
+        {
+          "info": {
+            "name": "POST /api/v3/vacancies",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://my.vcv.ai/api/v3/vacancies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create vacancy"
+        },
+        {
+          "info": {
+            "name": "PATCH /api/v3/vacancies",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://my.vcv.ai/api/v3/vacancies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update vacancies list"
+        },
+        {
+          "info": {
+            "name": "DELETE /api/v3/vacancies",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://my.vcv.ai/api/v3/vacancies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete vacancies list"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/vacancies/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/vacancies/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              },
+              {
+                "name": "fields[]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to retrieve"
+              }
+            ]
+          },
+          "docs": "Get vacancy"
+        },
+        {
+          "info": {
+            "name": "PATCH /api/v3/vacancies/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://my.vcv.ai/api/v3/vacancies/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update vacancy"
+        },
+        {
+          "info": {
+            "name": "DELETE /api/v3/vacancies/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://my.vcv.ai/api/v3/vacancies/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id"
+              }
+            ]
+          },
+          "docs": "Delete vacancy"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/vacancy-permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/vacancy-permissions",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort[order]",
+                "value": "",
+                "type": "query",
+                "description": "sort order"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[vacancy_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[user_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[permission]",
+                "value": "",
+                "type": "query",
+                "description": "Role name filter"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get vacancy permissions list"
+        },
+        {
+          "info": {
+            "name": "POST /api/v3/vacancy-permissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://my.vcv.ai/api/v3/vacancy-permissions",
+            "params": [
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create vacancy permission"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/vacancy-permissions/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/vacancy-permissions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get vacancy permission"
+        },
+        {
+          "info": {
+            "name": "PATCH /api/v3/vacancy-permissions/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://my.vcv.ai/api/v3/vacancy-permissions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update vacancy permission"
+        },
+        {
+          "info": {
+            "name": "DELETE /api/v3/vacancy-permissions/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://my.vcv.ai/api/v3/vacancy-permissions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              }
+            ]
+          },
+          "docs": "Delete vacancy permission"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/vacancy-competences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/vacancy-competences",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort[order]",
+                "value": "",
+                "type": "query",
+                "description": "sort order"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[vacancy_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get vacancy competences list"
+        },
+        {
+          "info": {
+            "name": "POST /api/v3/vacancy-competences",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://my.vcv.ai/api/v3/vacancy-competences",
+            "params": [
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create vacancy competence"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/vacancy-competences/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/vacancy-competences/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get vacancy competence"
+        },
+        {
+          "info": {
+            "name": "PATCH /api/v3/vacancy-competences/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://my.vcv.ai/api/v3/vacancy-competences/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update vacancy competence"
+        },
+        {
+          "info": {
+            "name": "DELETE /api/v3/vacancy-competences/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://my.vcv.ai/api/v3/vacancy-competences/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              }
+            ]
+          },
+          "docs": "Delete vacancy competence"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/competence-views",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/competence-views",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort[order]",
+                "value": "",
+                "type": "query",
+                "description": "sort order"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get competence views"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/competence-views/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/competence-views/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              }
+            ]
+          },
+          "docs": "Get competence view"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/competence-levels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/competence-levels",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort[order]",
+                "value": "",
+                "type": "query",
+                "description": "sort order"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get competence levels"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/competence-levels/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/competence-levels/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              }
+            ]
+          },
+          "docs": "Get competence level"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/vacancy-modules",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/vacancy-modules",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[vacancy_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[id_module]",
+                "value": "",
+                "type": "query",
+                "description": "Module id filter"
+              }
+            ]
+          },
+          "docs": "Get vacancy modules list"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/vacancy-modules/{id_module}/{vacancy_id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/vacancy-modules/:id_module/:vacancy_id",
+            "params": [
+              {
+                "name": "id_module",
+                "value": "",
+                "type": "path",
+                "description": "Module id"
+              },
+              {
+                "name": "vacancy_id",
+                "value": "",
+                "type": "path",
+                "description": "Vacancy id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get vacancy module detail"
+        },
+        {
+          "info": {
+            "name": "PATCH /api/v3/vacancy-modules/{id_module}/{vacancy_id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://my.vcv.ai/api/v3/vacancy-modules/:id_module/:vacancy_id",
+            "params": [
+              {
+                "name": "id_module",
+                "value": "",
+                "type": "path",
+                "description": "Module id"
+              },
+              {
+                "name": "vacancy_id",
+                "value": "",
+                "type": "path",
+                "description": "Vacancy id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update vacancy module"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/vacancy-stages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/vacancy-stages",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[vacancy_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[id_module]",
+                "value": "",
+                "type": "query",
+                "description": "Module id filter"
+              }
+            ]
+          },
+          "docs": "Get vacancy module stages list"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/vacancy-stages/{id_module}/{vacancy_id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/vacancy-stages/:id_module/:vacancy_id",
+            "params": [
+              {
+                "name": "id_module",
+                "value": "",
+                "type": "path",
+                "description": "Module id"
+              },
+              {
+                "name": "vacancy_id",
+                "value": "",
+                "type": "path",
+                "description": "Vacancy id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get vacancy module stage detail"
+        },
+        {
+          "info": {
+            "name": "PATCH /api/v3/vacancy-stages/{id_module}/{vacancy_id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://my.vcv.ai/api/v3/vacancy-stages/:id_module/:vacancy_id",
+            "params": [
+              {
+                "name": "id_module",
+                "value": "",
+                "type": "path",
+                "description": "Module id"
+              },
+              {
+                "name": "vacancy_id",
+                "value": "",
+                "type": "path",
+                "description": "Vacancy id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update vacancy module stage"
+        },
+        {
+          "info": {
+            "name": "POST /api/v3/vacancies/{vacancy_id}/logo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://my.vcv.ai/api/v3/vacancies/:vacancy_id/logo",
+            "params": [
+              {
+                "name": "vacancy_id",
+                "value": "",
+                "type": "path",
+                "description": "Vacancy id"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "logo",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Update vacancy logo"
+        },
+        {
+          "info": {
+            "name": "DELETE /api/v3/vacancies/{vacancy_id}/logo",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://my.vcv.ai/api/v3/vacancies/:vacancy_id/logo",
+            "params": [
+              {
+                "name": "vacancy_id",
+                "value": "",
+                "type": "path",
+                "description": "Vacancy id"
+              }
+            ]
+          },
+          "docs": "Delete vacancy logo"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/vacancy-landing-url-history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/vacancy-landing-url-history",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort[order]",
+                "value": "",
+                "type": "query",
+                "description": "sort order"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[vacancy_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              },
+              {
+                "name": "filter[landing_url_path]",
+                "value": "",
+                "type": "query",
+                "description": "Landing url path filter"
+              }
+            ]
+          },
+          "docs": "Get vacancy landing url history"
+        },
+        {
+          "info": {
+            "name": "POST /api/v3/vacancy-landing-url-history/validate",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://my.vcv.ai/api/v3/vacancy-landing-url-history/validate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate landing url history"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/vacancy-landing-url-history/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/vacancy-landing-url-history/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              }
+            ]
+          },
+          "docs": "Get history item"
+        },
+        {
+          "info": {
+            "name": "DELETE /api/v3/vacancy-landing-url-history/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://my.vcv.ai/api/v3/vacancy-landing-url-history/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              }
+            ]
+          },
+          "docs": "Delete vacancy url path"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/response-status-email-templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/response-status-email-templates",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort[order]",
+                "value": "",
+                "type": "query",
+                "description": "sort order"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[vacancy_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[response_status_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[active]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get response status email templates list"
+        },
+        {
+          "info": {
+            "name": "POST /api/v3/response-status-email-templates",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://my.vcv.ai/api/v3/response-status-email-templates",
+            "params": [
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create response status email template"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/response-status-email-templates/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/response-status-email-templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get response status email template detail"
+        },
+        {
+          "info": {
+            "name": "PATCH /api/v3/response-status-email-templates/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://my.vcv.ai/api/v3/response-status-email-templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update response status email template"
+        },
+        {
+          "info": {
+            "name": "DELETE /api/v3/response-status-email-templates/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://my.vcv.ai/api/v3/response-status-email-templates/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              }
+            ]
+          },
+          "docs": "Delete response status email template"
+        },
+        {
+          "info": {
+            "name": "POST /api/v3/response-status-email-templates/{id}/recovery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://my.vcv.ai/api/v3/response-status-email-templates/:id/recovery",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Recovery response status email template from company settings"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/vacancy-email-template-remind",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/vacancy-email-template-remind",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort[order]",
+                "value": "",
+                "type": "query",
+                "description": "sort order"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[vacancy_id]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get remind templates list"
+        },
+        {
+          "info": {
+            "name": "POST /api/v3/vacancy-email-template-remind",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://my.vcv.ai/api/v3/vacancy-email-template-remind",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create remind email"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/vacancy-email-template-remind/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/vacancy-email-template-remind/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              }
+            ]
+          },
+          "docs": "Get remind email detail"
+        },
+        {
+          "info": {
+            "name": "PATCH /api/v3/vacancy-email-template-remind/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://my.vcv.ai/api/v3/vacancy-email-template-remind/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update remind email"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

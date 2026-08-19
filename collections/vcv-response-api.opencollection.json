@@ -1,0 +1,734 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VCV chatbot response API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "response",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /api/v3/responses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/responses",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort[order]",
+                "value": "",
+                "type": "query",
+                "description": "sort order"
+              },
+              {
+                "name": "sort[by]",
+                "value": "",
+                "type": "query",
+                "description": "sort field"
+              },
+              {
+                "name": "sort[code]",
+                "value": "",
+                "type": "query",
+                "description": "Only applicable if sort[by]=response_attribute.\nSort by response attribute value, code must be equal to \"code\" field of response attribute, see [/api/v3/response-attributes](#/integration/get_api_v3_response_attributes).\nSee values: [/api/v3/response-attribute-values](#/integration/get_api_v3_response_attribute_values)\n"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[vacancy_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[response_status_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[created_at][from]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[created_at][to]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[vacancy][user_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[candidate_id]",
+                "value": "",
+                "type": "query",
+                "description": "candidate id filter"
+              },
+              {
+                "name": "filter[external_id]",
+                "value": "",
+                "type": "query",
+                "description": "External id filter"
+              },
+              {
+                "name": "filter[sent]",
+                "value": "",
+                "type": "query",
+                "description": "Sent filter"
+              },
+              {
+                "name": "filter[vacancy][language_id]",
+                "value": "",
+                "type": "query",
+                "description": "vacancy language id filter"
+              },
+              {
+                "name": "filter[tag_id]",
+                "value": "",
+                "type": "query",
+                "description": "response tag id filter"
+              },
+              {
+                "name": "filter[date_sent][from]",
+                "value": "",
+                "type": "query",
+                "description": "date sent filter from"
+              },
+              {
+                "name": "filter[date_sent][to]",
+                "value": "",
+                "type": "query",
+                "description": "date sent filter to"
+              },
+              {
+                "name": "fields[]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to retrieve"
+              }
+            ]
+          },
+          "docs": "Get responses list"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/responses/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/responses/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              },
+              {
+                "name": "fields[]",
+                "value": "",
+                "type": "query",
+                "description": "Fields to retrieve"
+              }
+            ]
+          },
+          "docs": "Get response detail"
+        },
+        {
+          "info": {
+            "name": "PATCH /api/v3/responses/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://my.vcv.ai/api/v3/responses/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update response"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/response-comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/response-comments",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort[order]",
+                "value": "",
+                "type": "query",
+                "description": "sort order"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[response_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[user_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[message]",
+                "value": "",
+                "type": "query",
+                "description": "Message body filter"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get response comments list"
+        },
+        {
+          "info": {
+            "name": "POST /api/v3/response-comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://my.vcv.ai/api/v3/response-comments",
+            "params": [
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create response comment"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/response-comments/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/response-comments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get comment"
+        },
+        {
+          "info": {
+            "name": "PATCH /api/v3/response-comments/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://my.vcv.ai/api/v3/response-comments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update comment"
+        },
+        {
+          "info": {
+            "name": "DELETE /api/v3/response-comments/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://my.vcv.ai/api/v3/response-comments/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              }
+            ]
+          },
+          "docs": "Delete comment"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/response-statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/response-statuses",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort[order]",
+                "value": "",
+                "type": "query",
+                "description": "sort order"
+              },
+              {
+                "name": "sort[by]",
+                "value": "",
+                "type": "query",
+                "description": "sort field"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get response status list"
+        },
+        {
+          "info": {
+            "name": "POST /api/v3/response-statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://my.vcv.ai/api/v3/response-statuses",
+            "params": [
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create response statuses"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/response-statuses/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/response-statuses/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get response status detail"
+        },
+        {
+          "info": {
+            "name": "PATCH /api/v3/response-statuses/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://my.vcv.ai/api/v3/response-statuses/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update response status"
+        },
+        {
+          "info": {
+            "name": "DELETE /api/v3/response-statuses/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://my.vcv.ai/api/v3/response-statuses/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              }
+            ]
+          },
+          "docs": "Delete response status"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/responses/{responseId}/resumes/{resumeId}/download",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/responses/:responseId/resumes/:resumeId/download",
+            "params": [
+              {
+                "name": "responseId",
+                "value": "",
+                "type": "path",
+                "description": "Response id"
+              },
+              {
+                "name": "resumeId",
+                "value": "",
+                "type": "path",
+                "description": "Resume id"
+              },
+              {
+                "name": "token",
+                "value": "",
+                "type": "query",
+                "description": "User access token"
+              }
+            ]
+          },
+          "docs": "Download response resume file"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/response-resumes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/response-resumes",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort[order]",
+                "value": "",
+                "type": "query",
+                "description": "sort order"
+              },
+              {
+                "name": "sort[by]",
+                "value": "",
+                "type": "query",
+                "description": "Sort field"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[response_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[created_at][from]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[created_at][to]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[is_file]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by resumes uploaded as files"
+              }
+            ]
+          },
+          "docs": "Get list of resumes attached to responses"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/response-resume/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/response-resume/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              }
+            ]
+          },
+          "docs": "Get response resume by id"
+        },
+        {
+          "info": {
+            "name": "POST /api/v3/public/vacancy/{vacancyToken}/response-resume/{responseToken}",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://my.vcv.ai/api/v3/public/vacancy/:vacancyToken/response-resume/:responseToken",
+            "params": [
+              {
+                "name": "vacancyToken",
+                "value": "",
+                "type": "path",
+                "description": "Vacancy public url token"
+              },
+              {
+                "name": "responseToken",
+                "value": "",
+                "type": "path",
+                "description": "Response public url token"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "resume_url",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "resume",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Upload response resume"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/response-events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/response-events",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "sort[order]",
+                "value": "",
+                "type": "query",
+                "description": "sort order"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[response_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[vacancy_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[type]",
+                "value": "",
+                "type": "query",
+                "description": "Event type filter"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get response events list"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/response-events/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/response-events/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "entity id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get response event detail"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

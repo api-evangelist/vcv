@@ -1,0 +1,1211 @@
+{
+  "item": [
+    {
+      "id": "061c3d6c-d009-4548-987f-fcc1fb2e92da",
+      "name": "tags",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6b2e928b-7059-49b7-8b50-94df99cecdc2",
+          "name": "Get tags list",
+          "request": {
+            "name": "Get tags list",
+            "description": {
+              "content": "Get tags list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[order]",
+                  "value": "desc",
+                  "description": "sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[user_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[name]",
+                  "value": "<string>",
+                  "description": "tag name filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "831f1e69-7d06-4a91-b786-7e0cceb81cf7",
+              "name": "list of tags",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort[order]",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[user_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 3660,\n  \"_page\": 2081,\n  \"_page_count\": 130,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"https://hkrhkycfauylvOlMwhYe.svJSE\"\n    },\n    \"next\": {\n      \"href\": \"http://vcGpYNyI.onvvg5ESeNeisgkWjzV3v3Rpc1FUv8Sl3,p2pRAJRDd+KWzyCTE9It.Pac69TkoOYnIiSOF,X6cgomFC9PW4\"\n    },\n    \"last\": {\n      \"href\": \"http://RHxbGftQ.mploBva085Zm7GHWFqWfbUh.QfwvleG07OOoRMZ+XlSa0c\"\n    }\n  },\n  \"_embedded\": {\n    \"tags\": [\n      {\n        \"id\": 6406,\n        \"name\": \"string\",\n        \"user_id\": 8977,\n        \"sort_order\": 7986,\n        \"color\": \"string\",\n        \"company_id\": 2132,\n        \"_links\": {\n          \"self\": {\n            \"href\": \"https://iYHMhBjMwvBoHSOQaAsD.qddnGQuJt8kUAgd\"\n          }\n        },\n        \"_embedded\": {\n          \"user\": {\n            \"id\": 2681,\n            \"created_at\": \"1991-04-06T10:32:45.963Z\",\n            \"email\": \"string\",\n            \"position\": \"string\",\n            \"logo_url\": \"string\",\n            \"geo_id\": 249,\n            \"lanaguage_id\": 519,\n            \"company_id\": 2,\n            \"userName\": {\n              \"user_id\": 9017,\n              \"first_name\": \"string\",\n              \"last_name\": \"string\",\n              \"language_id\": 7395,\n              \"id\": 3195\n            }\n          }\n        }\n      },\n      {\n        \"id\": 1869,\n        \"name\": \"string\",\n        \"user_id\": 8493,\n        \"sort_order\": 1381,\n        \"color\": \"string\",\n        \"company_id\": 6657,\n        \"_links\": {\n          \"self\": {\n            \"href\": \"https://EuQAfHBnSZAwLlWn.byTzGYqmHrmphVwFiIFW0aQstmSIWlYgOYJI1wmS-yr\"\n          }\n        },\n        \"_embedded\": {\n          \"user\": {\n            \"id\": 137,\n            \"created_at\": \"1995-03-20T05:46:02.253Z\",\n            \"email\": \"string\",\n            \"position\": \"string\",\n            \"logo_url\": \"string\",\n            \"geo_id\": 6113,\n            \"lanaguage_id\": 2620,\n            \"company_id\": 2268,\n            \"userName\": {\n              \"user_id\": 3104,\n              \"first_name\": \"string\",\n              \"last_name\": \"string\",\n              \"language_id\": 6510,\n              \"id\": 9952\n            }\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6a3f3fd5-a045-424f-9cea-75757aa68c15",
+          "name": "Create tag",
+          "request": {
+            "name": "Create tag",
+            "description": {
+              "content": "Create tag",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"sort_order\": \"<integer>\",\n  \"color\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bf76e227-05e7-4d50-b189-acdf28efc50a",
+              "name": "Created tag",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"sort_order\": \"<integer>\",\n  \"color\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3746,\n  \"name\": \"string\",\n  \"user_id\": 8159,\n  \"sort_order\": 1809,\n  \"color\": \"string\",\n  \"company_id\": 9150,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"http://gKBYwoVPCmXNvySMgaBrkY.ehUzs2\"\n    }\n  },\n  \"_embedded\": {\n    \"user\": {\n      \"id\": 4920,\n      \"created_at\": \"1978-03-29T21:41:16.833Z\",\n      \"email\": \"string\",\n      \"position\": \"string\",\n      \"logo_url\": \"string\",\n      \"geo_id\": 6508,\n      \"lanaguage_id\": 9390,\n      \"company_id\": 1948,\n      \"userName\": {\n        \"user_id\": 7094,\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"language_id\": 9652,\n        \"id\": 5403\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fb986222-ad7c-42cd-b858-482bdb1731a4",
+          "name": "Get tag",
+          "request": {
+            "name": "Get tag",
+            "description": {
+              "content": "Get tag",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "tags",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85d1f2bd-f30c-44eb-a32d-d768b175b3c9",
+              "name": "Tag",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "tags",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"user\": {\n      \"id\": 4235,\n      \"created_at\": \"2025-02-10T18:14:57.464Z\",\n      \"email\": \"string\",\n      \"position\": \"string\",\n      \"logo_url\": \"string\",\n      \"geo_id\": 8930,\n      \"lanaguage_id\": 3804,\n      \"company_id\": 2784,\n      \"userName\": {\n        \"user_id\": 9472,\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"language_id\": 8883,\n        \"id\": 7345\n      }\n    }\n  },\n  \"id\": 733,\n  \"name\": \"string\",\n  \"user_id\": 3702,\n  \"sort_order\": 7066,\n  \"color\": \"string\",\n  \"company_id\": 803,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"http://iEaiJT.iqmsH25CbX9JeuUxgoSgA0lhjzpS\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8d7bf5a-e79c-4303-8e7c-fea902e9acb1",
+          "name": "Update tag",
+          "request": {
+            "name": "Update tag",
+            "description": {
+              "content": "Update tag",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "tags",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"sort_order\": \"<integer>\",\n  \"color\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "efea9beb-2770-4385-9033-5d3505de7724",
+              "name": "Updated tag",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "tags",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"sort_order\": \"<integer>\",\n  \"color\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3746,\n  \"name\": \"string\",\n  \"user_id\": 8159,\n  \"sort_order\": 1809,\n  \"color\": \"string\",\n  \"company_id\": 9150,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"http://gKBYwoVPCmXNvySMgaBrkY.ehUzs2\"\n    }\n  },\n  \"_embedded\": {\n    \"user\": {\n      \"id\": 4920,\n      \"created_at\": \"1978-03-29T21:41:16.833Z\",\n      \"email\": \"string\",\n      \"position\": \"string\",\n      \"logo_url\": \"string\",\n      \"geo_id\": 6508,\n      \"lanaguage_id\": 9390,\n      \"company_id\": 1948,\n      \"userName\": {\n        \"user_id\": 7094,\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"language_id\": 9652,\n        \"id\": 5403\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ee1724f-aa8a-4d5d-8915-41fcf8f6d680",
+          "name": "Delete tag",
+          "request": {
+            "name": "Delete tag",
+            "description": {
+              "content": "Delete tag",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "tags",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "41c13d78-4323-4751-aabb-6cc0114bf207",
+              "name": "Deleted tag",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "tags",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6495,\n  \"name\": \"string\",\n  \"user_id\": 7722,\n  \"sort_order\": 8577,\n  \"color\": \"string\",\n  \"company_id\": 2097,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"https://QydNMbwgsvGNgjJZayEQsKFJQ.ytKwmSYuKNuk5\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b2a23238-17fe-4f7d-bfe3-c7680960daaa",
+          "name": "Get response tags list",
+          "request": {
+            "name": "Get response tags list",
+            "description": {
+              "content": "Get response tags list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[order]",
+                  "value": "desc",
+                  "description": "sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[user_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[response_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[tag_id]",
+                  "value": "<integer>",
+                  "description": "tag id filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e2dfabc2-ecab-4264-85ed-e70cbbf9f239",
+              "name": "list of response tags",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort[order]",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[user_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[response_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[tag_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 9651,\n  \"_page\": 4245,\n  \"_page_count\": 3419,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"https://DWTMhzaJuyBSFkHxAdsuUeJQ.njjFo,GEOHP1cO,HGNw6NMK1GwqFOWdR\"\n    },\n    \"next\": {\n      \"href\": \"http://xMbsOWiESzLiA.txg1bx8JwLlXp5aejNEBZ4Xyl19C1zD,yf8XiPyS2m\"\n    },\n    \"last\": {\n      \"href\": \"http://mcxlfOWBDFNSNj.mvprjKcfCcFHbgtexGMLzCpS\"\n    }\n  },\n  \"_embedded\": {\n    \"response_tags\": [\n      {\n        \"id\": 8367,\n        \"user_id\": 6911,\n        \"tag_id\": 5190,\n        \"response_id\": 51,\n        \"_embedded\": {\n          \"user\": {\n            \"id\": 4489,\n            \"created_at\": \"1984-10-06T07:40:37.390Z\",\n            \"email\": \"string\",\n            \"position\": \"string\",\n            \"logo_url\": \"string\",\n            \"geo_id\": 9619,\n            \"lanaguage_id\": 8264,\n            \"company_id\": 8162,\n            \"userName\": {\n              \"user_id\": 2116,\n              \"first_name\": \"string\",\n              \"last_name\": \"string\",\n              \"language_id\": 7036,\n              \"id\": 7153\n            }\n          },\n          \"tag\": {\n            \"id\": 908,\n            \"name\": \"string\",\n            \"user_id\": 9793,\n            \"sort_order\": 6815,\n            \"color\": \"string\",\n            \"company_id\": 7472,\n            \"_links\": {\n              \"self\": {\n                \"href\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          },\n          \"response\": {\n            \"id\": 9726,\n            \"vacancy_id\": 6103,\n            \"candidate_id\": 827,\n            \"response_status_id\": 496,\n            \"response_source_id\": 4863,\n            \"interview_id\": 9942,\n            \"external_id\": \"string\",\n            \"is_hidden_by_candidate\": false,\n            \"created_at\": \"1961-10-12T06:47:08.991Z\",\n            \"agreed_at\": \"2008-10-13T03:58:42.111Z\",\n            \"date_sent\": \"2026-03-07T07:29:17.181Z\",\n            \"resume_url\": \"string\",\n            \"second_resume_url\": \"string\",\n            \"social_source\": \"string\",\n            \"utm_source\": \"string\",\n            \"utm_medium\": \"string\",\n            \"utm_campaign\": \"string\",\n            \"utm_content\": \"string\",\n            \"utm_term\": \"string\",\n            \"is_paid\": true\n          }\n        }\n      },\n      {\n        \"id\": 2664,\n        \"user_id\": 8771,\n        \"tag_id\": 5315,\n        \"response_id\": 1572,\n        \"_embedded\": {\n          \"user\": {\n            \"id\": 9154,\n            \"created_at\": \"1948-10-28T21:12:43.935Z\",\n            \"email\": \"string\",\n            \"position\": \"string\",\n            \"logo_url\": \"string\",\n            \"geo_id\": 6200,\n            \"lanaguage_id\": 7740,\n            \"company_id\": 9017,\n            \"userName\": {\n              \"user_id\": 8535,\n              \"first_name\": \"string\",\n              \"last_name\": \"string\",\n              \"language_id\": 4840,\n              \"id\": 8656\n            }\n          },\n          \"tag\": {\n            \"id\": 6339,\n            \"name\": \"string\",\n            \"user_id\": 1522,\n            \"sort_order\": 1258,\n            \"color\": \"string\",\n            \"company_id\": 2320,\n            \"_links\": {\n              \"self\": {\n                \"href\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          },\n          \"response\": {\n            \"id\": 6361,\n            \"vacancy_id\": 8418,\n            \"candidate_id\": 2937,\n            \"response_status_id\": 5455,\n            \"response_source_id\": 2155,\n            \"interview_id\": 4906,\n            \"external_id\": \"string\",\n            \"is_hidden_by_candidate\": true,\n            \"created_at\": \"1994-11-08T16:20:59.452Z\",\n            \"agreed_at\": \"1952-10-09T19:50:50.160Z\",\n            \"date_sent\": \"1957-11-11T14:29:45.445Z\",\n            \"resume_url\": \"string\",\n            \"second_resume_url\": \"string\",\n            \"social_source\": \"string\",\n            \"utm_source\": \"string\",\n            \"utm_medium\": \"string\",\n            \"utm_campaign\": \"string\",\n            \"utm_content\": \"string\",\n            \"utm_term\": \"string\",\n            \"is_paid\": true\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d2ec6f7c-9f8e-4377-8b27-94a9f3a2e9bd",
+          "name": "Create response tag",
+          "request": {
+            "name": "Create response tag",
+            "description": {
+              "content": "Create response tag",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-tags"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tag_id\": \"<integer>\",\n  \"response_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "affbdfa1-6b05-4cec-8b95-3a8dcdb9794e",
+              "name": "Created tag",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-tags"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tag_id\": \"<integer>\",\n  \"response_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8939,\n  \"user_id\": 9959,\n  \"tag_id\": 8383,\n  \"response_id\": 6305,\n  \"_embedded\": {\n    \"user\": {\n      \"id\": 2028,\n      \"created_at\": \"1953-07-16T06:13:27.838Z\",\n      \"email\": \"string\",\n      \"position\": \"string\",\n      \"logo_url\": \"string\",\n      \"geo_id\": 956,\n      \"lanaguage_id\": 2771,\n      \"company_id\": 8407,\n      \"userName\": {\n        \"user_id\": 2329,\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"language_id\": 5037,\n        \"id\": 2117\n      }\n    },\n    \"tag\": {\n      \"id\": 6825,\n      \"name\": \"string\",\n      \"user_id\": 8168,\n      \"sort_order\": 6897,\n      \"color\": \"string\",\n      \"company_id\": 2084,\n      \"_links\": {\n        \"self\": {\n          \"href\": \"http://tSOwLjsVBQIFjiyNmScR.yvrzlaY\"\n        }\n      }\n    },\n    \"response\": {\n      \"id\": 7250,\n      \"vacancy_id\": 5946,\n      \"candidate_id\": 6849,\n      \"response_status_id\": 7726,\n      \"response_source_id\": 7856,\n      \"interview_id\": 8991,\n      \"external_id\": \"string\",\n      \"is_hidden_by_candidate\": true,\n      \"created_at\": \"1988-03-31T00:48:25.782Z\",\n      \"agreed_at\": \"1958-11-27T23:10:13.889Z\",\n      \"date_sent\": \"2023-04-04T08:08:08.630Z\",\n      \"resume_url\": \"string\",\n      \"second_resume_url\": \"string\",\n      \"social_source\": \"string\",\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_content\": \"string\",\n      \"utm_term\": \"string\",\n      \"is_paid\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7a39961-5410-4fda-ba3d-7f2b27bbf6ad",
+          "name": "Get response tag",
+          "request": {
+            "name": "Get response tag",
+            "description": {
+              "content": "Get response tag",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-tags",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca0413ea-1133-4f57-84ae-de7d1633e2bf",
+              "name": "Response tag",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-tags",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8939,\n  \"user_id\": 9959,\n  \"tag_id\": 8383,\n  \"response_id\": 6305,\n  \"_embedded\": {\n    \"user\": {\n      \"id\": 2028,\n      \"created_at\": \"1953-07-16T06:13:27.838Z\",\n      \"email\": \"string\",\n      \"position\": \"string\",\n      \"logo_url\": \"string\",\n      \"geo_id\": 956,\n      \"lanaguage_id\": 2771,\n      \"company_id\": 8407,\n      \"userName\": {\n        \"user_id\": 2329,\n        \"first_name\": \"string\",\n        \"last_name\": \"string\",\n        \"language_id\": 5037,\n        \"id\": 2117\n      }\n    },\n    \"tag\": {\n      \"id\": 6825,\n      \"name\": \"string\",\n      \"user_id\": 8168,\n      \"sort_order\": 6897,\n      \"color\": \"string\",\n      \"company_id\": 2084,\n      \"_links\": {\n        \"self\": {\n          \"href\": \"http://tSOwLjsVBQIFjiyNmScR.yvrzlaY\"\n        }\n      }\n    },\n    \"response\": {\n      \"id\": 7250,\n      \"vacancy_id\": 5946,\n      \"candidate_id\": 6849,\n      \"response_status_id\": 7726,\n      \"response_source_id\": 7856,\n      \"interview_id\": 8991,\n      \"external_id\": \"string\",\n      \"is_hidden_by_candidate\": true,\n      \"created_at\": \"1988-03-31T00:48:25.782Z\",\n      \"agreed_at\": \"1958-11-27T23:10:13.889Z\",\n      \"date_sent\": \"2023-04-04T08:08:08.630Z\",\n      \"resume_url\": \"string\",\n      \"second_resume_url\": \"string\",\n      \"social_source\": \"string\",\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_content\": \"string\",\n      \"utm_term\": \"string\",\n      \"is_paid\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1dac3503-fcbb-446d-8661-518e2bcb4c8a",
+          "name": "Delete response tag",
+          "request": {
+            "name": "Delete response tag",
+            "description": {
+              "content": "Delete response tag",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-tags",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7430a910-7df9-481d-8040-165fbfb8d15c",
+              "name": "Deleted tag",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-tags",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 3103,\n  \"user_id\": 6210,\n  \"tag_id\": 7347,\n  \"response_id\": 664\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://my.vcv.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "722ae0d0-2099-4ad5-a918-adca9efc92dd",
+    "name": "VCV chatbot tags API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "open api",
+      "type": "text/plain"
+    }
+  }
+}

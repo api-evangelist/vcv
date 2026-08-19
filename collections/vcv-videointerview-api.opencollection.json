@@ -1,0 +1,210 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "VCV chatbot videointerview API",
+    "version": "v3"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "videointerview",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "GET /api/v3/videointerviews/response",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/videointerviews/response",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[response_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[vacancy_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[date_start][from]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[date_start][to]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get response videointerviews list"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/videointerviews/response/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/videointerviews/response/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              },
+              {
+                "name": "id_field",
+                "value": "",
+                "type": "query",
+                "description": "Model to retrieve id from"
+              }
+            ]
+          },
+          "docs": "Get response videointerview"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/videointerviews/vacancy",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/videointerviews/vacancy",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "page number"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "page size"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              },
+              {
+                "name": "filter[id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[vacancy_id]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[created_at][from]",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "filter[created_at][to]",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get vacancy videointerviews list"
+        },
+        {
+          "info": {
+            "name": "GET /api/v3/videointerviews/vacancy/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://my.vcv.ai/api/v3/videointerviews/vacancy/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id"
+              },
+              {
+                "name": "with[]",
+                "value": "",
+                "type": "query",
+                "description": "Relations to retrieve"
+              }
+            ]
+          },
+          "docs": "Get vacancy videointerview"
+        },
+        {
+          "info": {
+            "name": "PATCH /api/v3/videointerviews/vacancy/{id}",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://my.vcv.ai/api/v3/videointerviews/vacancy/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update vacancy videointerview detail"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

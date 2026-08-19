@@ -1,0 +1,217 @@
+{
+  "item": [
+    {
+      "id": "a239da88-ca8d-4fdd-bb60-1d89b1e4881f",
+      "name": "companies",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6344a782-12cb-4e53-97bf-470be9a55c91",
+          "name": "Get companies list with search and pagination",
+          "request": {
+            "name": "Get companies list with search and pagination",
+            "description": {
+              "content": "Get companies list with search and pagination",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "companies",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[order]",
+                  "value": "desc",
+                  "description": "sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[by]",
+                  "value": "id",
+                  "description": "Sort field"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<integer>",
+                  "description": "Company ID filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[name]",
+                  "value": "<string>",
+                  "description": "Company name filter (partial match)"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[active]",
+                  "value": "<boolean>",
+                  "description": "Company active status filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7b05fa39-6ac5-4e81-acbe-1b42c48c7f66",
+              "name": "List of companies",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "companies",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort[order]",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "sort[by]",
+                      "value": "id"
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[name]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[active]",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 7075,\n  \"_page\": 6884,\n  \"_page_count\": 3078,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"https://rRlKysuFBhgUqfxGg.zsxc76xpWVc2L-i7VK+Vs3MteWTZaJ035BFMIO7lpAAlM\"\n    },\n    \"next\": {\n      \"href\": \"http://dibqqXzquZPVhbgfAKFEAgiZXfdLJZ.mjcHvsNXa8h5DSlw3nPtegejH2VEzhiO8ihxSK102xum.sZXAdZEttWikQ3tovNxUz\"\n    },\n    \"last\": {\n      \"href\": \"http://sToPQuEisGgCpyeEKqniZDoX.qpcQo1ecy-N0M3bRSzC0Sh3rro\"\n    }\n  },\n  \"_embedded\": {\n    \"companies\": [\n      {\n        \"id\": 7862,\n        \"date_created\": \"1987-12-05T15:19:55.453Z\",\n        \"active\": false,\n        \"name\": \"string\",\n        \"phone\": \"string\",\n        \"geo_id\": 2877,\n        \"language_id\": 6427,\n        \"company_source_id\": 4632,\n        \"time_format\": \"string\",\n        \"domain_prefix\": \"string\",\n        \"domain_prefix_previous\": \"string\",\n        \"logo_url\": \"string\",\n        \"invite_logo_url\": \"string\",\n        \"is_permanent_response_link\": true,\n        \"is_test\": true,\n        \"is_approval_needed\": false,\n        \"is_videoresume\": false,\n        \"is_onboarding_enabled\": true,\n        \"is_password_expiry\": true,\n        \"is_unique_password\": false,\n        \"expired_at\": \"2011-06-28T13:18:55.461Z\",\n        \"limits\": {\n          \"id\": 1473,\n          \"date_created\": \"2011-12-18T01:50:02.849Z\",\n          \"active\": false,\n          \"user_id\": 2200,\n          \"vacancy_limit\": 4348,\n          \"response_limit\": 4868,\n          \"response_balance\": 6808,\n          \"company_id\": 5532\n        },\n        \"geo\": {\n          \"id\": 2878,\n          \"name\": \"string\",\n          \"code\": \"string\"\n        },\n        \"language\": {\n          \"id\": 1536,\n          \"name\": \"string\",\n          \"code\": \"string\"\n        },\n        \"responseStatuses\": [\n          {\n            \"id\": 648,\n            \"name\": \"string\",\n            \"color\": \"string\",\n            \"company_id\": 8885\n          },\n          {\n            \"id\": 4244,\n            \"name\": \"string\",\n            \"color\": \"string\",\n            \"company_id\": 5108\n          }\n        ]\n      },\n      {\n        \"id\": 1870,\n        \"date_created\": \"1976-11-15T10:43:22.855Z\",\n        \"active\": false,\n        \"name\": \"string\",\n        \"phone\": \"string\",\n        \"geo_id\": 5171,\n        \"language_id\": 8051,\n        \"company_source_id\": 4002,\n        \"time_format\": \"string\",\n        \"domain_prefix\": \"string\",\n        \"domain_prefix_previous\": \"string\",\n        \"logo_url\": \"string\",\n        \"invite_logo_url\": \"string\",\n        \"is_permanent_response_link\": true,\n        \"is_test\": false,\n        \"is_approval_needed\": false,\n        \"is_videoresume\": true,\n        \"is_onboarding_enabled\": false,\n        \"is_password_expiry\": false,\n        \"is_unique_password\": true,\n        \"expired_at\": \"1951-06-03T20:20:07.222Z\",\n        \"limits\": {\n          \"id\": 1293,\n          \"date_created\": \"1978-06-28T01:41:46.873Z\",\n          \"active\": false,\n          \"user_id\": 3832,\n          \"vacancy_limit\": 4742,\n          \"response_limit\": 3624,\n          \"response_balance\": 714,\n          \"company_id\": 2767\n        },\n        \"geo\": {\n          \"id\": 1240,\n          \"name\": \"string\",\n          \"code\": \"string\"\n        },\n        \"language\": {\n          \"id\": 8718,\n          \"name\": \"string\",\n          \"code\": \"string\"\n        },\n        \"responseStatuses\": [\n          {\n            \"id\": 6684,\n            \"name\": \"string\",\n            \"color\": \"string\",\n            \"company_id\": 6082\n          },\n          {\n            \"id\": 5375,\n            \"name\": \"string\",\n            \"color\": \"string\",\n            \"company_id\": 78\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://my.vcv.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9ef106a4-a572-4e1b-9f8b-f63742c73b7a",
+    "name": "VCV chatbot companies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "open api",
+      "type": "text/plain"
+    }
+  }
+}

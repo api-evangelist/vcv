@@ -1,0 +1,755 @@
+{
+  "item": [
+    {
+      "id": "757e1f3f-8041-4f49-9100-1c121775de2f",
+      "name": "videointerview",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e7af142d-c2d0-4136-aebd-72f752eedac9",
+          "name": "Get response videointerviews list",
+          "request": {
+            "name": "Get response videointerviews list",
+            "description": {
+              "content": "Get response videointerviews list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "videointerviews",
+                "response"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[response_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[vacancy_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[date_start][from]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[date_start][to]",
+                  "value": "<dateTime>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8f03b390-249b-4fc9-9678-cca72c4fae78",
+              "name": "list of response videointerviews",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "videointerviews",
+                    "response"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[response_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[vacancy_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[date_start][from]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter[date_start][to]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 6453,\n  \"_page\": 2967,\n  \"_page_count\": 9823,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"https://TXkcvfieetQCgwg.jeD0fDkpYRJjyadWOLg6uc-,Xhy42SYWJGkDx\"\n    },\n    \"next\": {\n      \"href\": \"https://mGdAeTrCnSFDvXaBUKJxIzucNJ.qcSTkGY7DdFsyapV,B4xm\"\n    },\n    \"last\": {\n      \"href\": \"https://doEeJDW.zzaaxmiFjnZZL3,X7b2i\"\n    }\n  },\n  \"_embedded\": {\n    \"response_videointerviews\": [\n      {\n        \"id\": 9992,\n        \"response_id\": 4248,\n        \"is_converted\": false,\n        \"is_finished\": false,\n        \"active\": true,\n        \"description\": \"string\",\n        \"date_start\": \"2020-06-15T07:15:38.532Z\",\n        \"date_last_video_recorded\": \"2014-12-10T17:11:13.123Z\",\n        \"_embedded\": {\n          \"response\": {\n            \"id\": 9367,\n            \"vacancy_id\": 5159,\n            \"candidate_id\": 4666,\n            \"response_status_id\": 7620,\n            \"response_source_id\": 3236,\n            \"interview_id\": 4283,\n            \"external_id\": \"string\",\n            \"is_hidden_by_candidate\": true,\n            \"created_at\": \"2005-06-02T00:42:55.800Z\",\n            \"agreed_at\": \"2003-09-28T09:28:03.164Z\",\n            \"date_sent\": \"1969-08-02T09:34:54.733Z\",\n            \"resume_url\": \"string\",\n            \"second_resume_url\": \"string\",\n            \"social_source\": \"string\",\n            \"utm_source\": \"string\",\n            \"utm_medium\": \"string\",\n            \"utm_campaign\": \"string\",\n            \"utm_content\": \"string\",\n            \"utm_term\": \"string\",\n            \"is_paid\": true\n          },\n          \"partitions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"response_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"max_time\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"description\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read_time\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_compulsory\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_question_seen\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"take_number\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"max_take_number\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_video_answer_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_text_answer_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_question_skipped\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_show\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_start_record\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"language_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"question_video_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"question_video_title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"question_video_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_question_media_seen\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"_embedded\": {\n                \"video_response\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"question_video\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"response_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"max_time\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"description\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read_time\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_compulsory\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_question_seen\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"take_number\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"max_take_number\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_video_answer_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_text_answer_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_question_skipped\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_show\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_start_record\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"language_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"question_video_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"question_video_title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"question_video_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_question_media_seen\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"_embedded\": {\n                \"video_response\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"question_video\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        }\n      },\n      {\n        \"id\": 6710,\n        \"response_id\": 6560,\n        \"is_converted\": true,\n        \"is_finished\": false,\n        \"active\": false,\n        \"description\": \"string\",\n        \"date_start\": \"1986-01-09T06:46:00.426Z\",\n        \"date_last_video_recorded\": \"1956-08-30T08:47:42.603Z\",\n        \"_embedded\": {\n          \"response\": {\n            \"id\": 6642,\n            \"vacancy_id\": 8079,\n            \"candidate_id\": 150,\n            \"response_status_id\": 9736,\n            \"response_source_id\": 5506,\n            \"interview_id\": 7792,\n            \"external_id\": \"string\",\n            \"is_hidden_by_candidate\": false,\n            \"created_at\": \"2000-10-22T20:28:35.160Z\",\n            \"agreed_at\": \"1962-10-24T09:27:17.447Z\",\n            \"date_sent\": \"2024-11-06T15:13:52.345Z\",\n            \"resume_url\": \"string\",\n            \"second_resume_url\": \"string\",\n            \"social_source\": \"string\",\n            \"utm_source\": \"string\",\n            \"utm_medium\": \"string\",\n            \"utm_campaign\": \"string\",\n            \"utm_content\": \"string\",\n            \"utm_term\": \"string\",\n            \"is_paid\": false\n          },\n          \"partitions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"response_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"max_time\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"description\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read_time\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_compulsory\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_question_seen\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"take_number\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"max_take_number\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_video_answer_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_text_answer_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_question_skipped\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_show\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_start_record\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"language_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"question_video_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"question_video_title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"question_video_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_question_media_seen\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"_embedded\": {\n                \"video_response\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"question_video\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"response_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"max_time\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"description\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"read_time\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_compulsory\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_question_seen\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"take_number\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"max_take_number\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_video_answer_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_text_answer_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_question_skipped\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_show\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_start_record\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_blocked\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"language_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"question_video_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"question_video_title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"question_video_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_question_media_seen\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"_embedded\": {\n                \"video_response\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"question_video\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "03081f36-01e0-48c6-ba43-9e7da013d163",
+          "name": "Get response videointerview",
+          "request": {
+            "name": "Get response videointerview",
+            "description": {
+              "content": "Get response videointerview",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "videointerviews",
+                "response",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "id_field",
+                  "value": "<string>",
+                  "description": "(Required) Model to retrieve id from"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "43396525-dee2-4cc5-9e26-56bda49ad0af",
+              "name": "response videointerview",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "videointerviews",
+                    "response",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "id_field",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8927,\n  \"response_id\": 9558,\n  \"is_converted\": false,\n  \"is_finished\": false,\n  \"active\": true,\n  \"description\": \"string\",\n  \"date_start\": \"1950-07-19T17:19:17.593Z\",\n  \"date_last_video_recorded\": \"1946-11-25T15:03:30.461Z\",\n  \"_embedded\": {\n    \"response\": {\n      \"id\": 8491,\n      \"vacancy_id\": 3074,\n      \"candidate_id\": 2457,\n      \"response_status_id\": 6552,\n      \"response_source_id\": 2292,\n      \"interview_id\": 9111,\n      \"external_id\": \"string\",\n      \"is_hidden_by_candidate\": false,\n      \"created_at\": \"1999-03-07T05:54:23.153Z\",\n      \"agreed_at\": \"1986-06-24T22:14:16.154Z\",\n      \"date_sent\": \"1963-07-10T23:03:39.661Z\",\n      \"resume_url\": \"string\",\n      \"second_resume_url\": \"string\",\n      \"social_source\": \"string\",\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_content\": \"string\",\n      \"utm_term\": \"string\",\n      \"is_paid\": true\n    },\n    \"partitions\": [\n      {\n        \"id\": 845,\n        \"response_id\": 5791,\n        \"max_time\": 9299,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort_order\": 3729,\n        \"read_time\": 4505,\n        \"is_compulsory\": true,\n        \"is_question_seen\": true,\n        \"take_number\": 85,\n        \"max_take_number\": 9123,\n        \"is_video_answer_enabled\": false,\n        \"is_text_answer_enabled\": false,\n        \"is_question_skipped\": false,\n        \"date_show\": \"1970-05-30T19:16:43.846Z\",\n        \"date_start_record\": \"1972-02-24T10:03:21.100Z\",\n        \"is_blocked\": true,\n        \"language_code\": \"string\",\n        \"question_video_id\": 2297,\n        \"question_video_title\": \"string\",\n        \"question_video_url\": \"string\",\n        \"is_question_media_seen\": true,\n        \"_embedded\": {\n          \"video_response\": {\n            \"id\": 4364,\n            \"date_modified\": \"1946-12-25T11:48:24.123Z\",\n            \"name\": \"string\",\n            \"video_status_id\": 5701,\n            \"video_response_partition_id\": 2215,\n            \"duration\": 8827,\n            \"original_extension\": \"string\",\n            \"format_list\": \"string\",\n            \"text\": \"string\",\n            \"hostname\": \"string\",\n            \"bucket\": \"string\",\n            \"original_file_size\": 3424,\n            \"token\": \"string\",\n            \"source\": \"string\",\n            \"preview\": \"string\",\n            \"has_image_preview\": \"string\",\n            \"is_visible\": \"string\",\n            \"is_local_files_cleared\": \"string\",\n            \"id_upload_status\": 9399,\n            \"stream_recording_name\": \"string\"\n          },\n          \"question_video\": {\n            \"id\": 3541,\n            \"date_modified\": \"1996-12-21T02:36:27.367Z\",\n            \"name\": \"string\",\n            \"video_status_id\": 3823,\n            \"duration\": 6827,\n            \"original_extension\": \"string\",\n            \"extension\": \"string\",\n            \"hostname\": \"string\",\n            \"bucket\": \"string\",\n            \"size\": 2275,\n            \"original_size\": 2239,\n            \"token\": \"string\",\n            \"has_image_preview\": \"string\",\n            \"source\": \"string\",\n            \"preview\": \"string\"\n          }\n        }\n      },\n      {\n        \"id\": 1805,\n        \"response_id\": 4552,\n        \"max_time\": 238,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"sort_order\": 8205,\n        \"read_time\": 3403,\n        \"is_compulsory\": true,\n        \"is_question_seen\": true,\n        \"take_number\": 6176,\n        \"max_take_number\": 2005,\n        \"is_video_answer_enabled\": true,\n        \"is_text_answer_enabled\": false,\n        \"is_question_skipped\": true,\n        \"date_show\": \"2021-01-04T12:48:19.794Z\",\n        \"date_start_record\": \"1947-08-31T12:13:50.323Z\",\n        \"is_blocked\": false,\n        \"language_code\": \"string\",\n        \"question_video_id\": 6134,\n        \"question_video_title\": \"string\",\n        \"question_video_url\": \"string\",\n        \"is_question_media_seen\": true,\n        \"_embedded\": {\n          \"video_response\": {\n            \"id\": 2379,\n            \"date_modified\": \"1950-06-30T01:36:55.200Z\",\n            \"name\": \"string\",\n            \"video_status_id\": 6988,\n            \"video_response_partition_id\": 8562,\n            \"duration\": 8340,\n            \"original_extension\": \"string\",\n            \"format_list\": \"string\",\n            \"text\": \"string\",\n            \"hostname\": \"string\",\n            \"bucket\": \"string\",\n            \"original_file_size\": 382,\n            \"token\": \"string\",\n            \"source\": \"string\",\n            \"preview\": \"string\",\n            \"has_image_preview\": \"string\",\n            \"is_visible\": \"string\",\n            \"is_local_files_cleared\": \"string\",\n            \"id_upload_status\": 1033,\n            \"stream_recording_name\": \"string\"\n          },\n          \"question_video\": {\n            \"id\": 8469,\n            \"date_modified\": \"2008-04-07T08:12:57.028Z\",\n            \"name\": \"string\",\n            \"video_status_id\": 1289,\n            \"duration\": 4782,\n            \"original_extension\": \"string\",\n            \"extension\": \"string\",\n            \"hostname\": \"string\",\n            \"bucket\": \"string\",\n            \"size\": 3455,\n            \"original_size\": 6286,\n            \"token\": \"string\",\n            \"has_image_preview\": \"string\",\n            \"source\": \"string\",\n            \"preview\": \"string\"\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7f29543-78a1-40bc-9ed4-a23a02e03f26",
+          "name": "Get vacancy videointerviews list",
+          "request": {
+            "name": "Get vacancy videointerviews list",
+            "description": {
+              "content": "Get vacancy videointerviews list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "videointerviews",
+                "vacancy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[vacancy_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[created_at][from]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[created_at][to]",
+                  "value": "<dateTime>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec91dcc6-363c-46ce-93f8-f185e15e40c4",
+              "name": "list of vacancy videointerviews",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "videointerviews",
+                    "vacancy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[vacancy_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[created_at][from]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter[created_at][to]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 6257,\n  \"_page\": 3726,\n  \"_page_count\": 1398,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"https://gxIOnu.xgZHb8vxN,d9E\"\n    },\n    \"next\": {\n      \"href\": \"http://ElDPUDsYNoUqBBpiyCUuPKpV.pcnbkBT\"\n    },\n    \"last\": {\n      \"href\": \"https://jAKKx.rkoezK4.eB1wVtcXlxBQJwGmxjkEXsPVWSnWJWsp5VTyg61Cw22WaQSSkPWY2RX\"\n    }\n  },\n  \"_embedded\": {\n    \"vacancy_videointerviews\": [\n      {\n        \"id\": 8932,\n        \"vacancy_id\": 4462,\n        \"is_video_answer_enabled\": true,\n        \"created_at\": \"1988-01-20T08:40:13.755Z\",\n        \"_embedded\": {\n          \"questions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_videointerview_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"answer_time\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"preparation_time\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"required\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"take_number\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_video_answer_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_text_answer_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"language_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"video_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"video_title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"video_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"_embedded\": {\n                \"video\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_videointerview_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"answer_time\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"preparation_time\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"required\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"take_number\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_video_answer_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_text_answer_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"language_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"video_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"video_title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"video_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"_embedded\": {\n                \"video\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        }\n      },\n      {\n        \"id\": 7599,\n        \"vacancy_id\": 7277,\n        \"is_video_answer_enabled\": false,\n        \"created_at\": \"1996-03-11T06:27:20.129Z\",\n        \"_embedded\": {\n          \"questions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_videointerview_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"answer_time\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"preparation_time\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"required\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"take_number\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_video_answer_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_text_answer_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"language_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"video_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"video_title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"video_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"_embedded\": {\n                \"video\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_videointerview_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"answer_time\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"preparation_time\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"required\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"take_number\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_video_answer_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_text_answer_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"language_code\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"video_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"video_title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"video_url\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"_embedded\": {\n                \"video\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "47971fbd-2fef-4ef0-872c-ee8892e35ce7",
+          "name": "Get vacancy videointerview",
+          "request": {
+            "name": "Get vacancy videointerview",
+            "description": {
+              "content": "Get vacancy videointerview",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "videointerviews",
+                "vacancy",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "803ed4df-0c3f-44ba-9916-3f5ccedab935",
+              "name": "vacancy videointerview",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "videointerviews",
+                    "vacancy",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5450,\n  \"vacancy_id\": 2215,\n  \"is_video_answer_enabled\": false,\n  \"created_at\": \"1984-09-03T03:59:13.338Z\",\n  \"_embedded\": {\n    \"questions\": [\n      {\n        \"id\": 3152,\n        \"date_created\": \"1981-01-28T01:15:26.015Z\",\n        \"vacancy_module_videointerview_id\": 6560,\n        \"title\": \"string\",\n        \"body\": \"string\",\n        \"answer_time\": 3939,\n        \"preparation_time\": 5068,\n        \"required\": true,\n        \"sort_order\": 9969,\n        \"take_number\": 5735,\n        \"is_video_answer_enabled\": false,\n        \"is_text_answer_enabled\": false,\n        \"language_code\": \"string\",\n        \"video_id\": 6645,\n        \"video_title\": \"string\",\n        \"video_url\": \"string\",\n        \"_embedded\": {\n          \"video\": {\n            \"id\": 6303,\n            \"date_modified\": \"2011-06-23T08:53:12.858Z\",\n            \"name\": \"string\",\n            \"video_status_id\": 9710,\n            \"duration\": 9979,\n            \"original_extension\": \"string\",\n            \"extension\": \"string\",\n            \"hostname\": \"string\",\n            \"bucket\": \"string\",\n            \"size\": 9367,\n            \"original_size\": 5248,\n            \"token\": \"string\",\n            \"has_image_preview\": \"string\",\n            \"source\": \"string\",\n            \"preview\": \"string\"\n          }\n        }\n      },\n      {\n        \"id\": 1560,\n        \"date_created\": \"1989-10-14T10:00:27.362Z\",\n        \"vacancy_module_videointerview_id\": 1159,\n        \"title\": \"string\",\n        \"body\": \"string\",\n        \"answer_time\": 5661,\n        \"preparation_time\": 7325,\n        \"required\": true,\n        \"sort_order\": 9344,\n        \"take_number\": 5845,\n        \"is_video_answer_enabled\": false,\n        \"is_text_answer_enabled\": true,\n        \"language_code\": \"string\",\n        \"video_id\": 8009,\n        \"video_title\": \"string\",\n        \"video_url\": \"string\",\n        \"_embedded\": {\n          \"video\": {\n            \"id\": 2973,\n            \"date_modified\": \"2014-04-10T22:12:39.539Z\",\n            \"name\": \"string\",\n            \"video_status_id\": 9466,\n            \"duration\": 221,\n            \"original_extension\": \"string\",\n            \"extension\": \"string\",\n            \"hostname\": \"string\",\n            \"bucket\": \"string\",\n            \"size\": 7680,\n            \"original_size\": 248,\n            \"token\": \"string\",\n            \"has_image_preview\": \"string\",\n            \"source\": \"string\",\n            \"preview\": \"string\"\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "721d8f6e-4ed8-44ea-b2ef-98e61a9598a9",
+          "name": "Update vacancy videointerview detail",
+          "request": {
+            "name": "Update vacancy videointerview detail",
+            "description": {
+              "content": "Update vacancy videointerview detail",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "videointerviews",
+                "vacancy",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"is_video_answer_enabled\": \"<boolean>\",\n  \"questions\": [\n    {\n      \"id\": \"<integer>\",\n      \"body\": \"<string>\",\n      \"answer_time\": \"<integer>\",\n      \"preparation_time\": \"<integer>\",\n      \"required\": \"<boolean>\",\n      \"sort_order\": \"<integer>\",\n      \"take_number\": \"<integer>\",\n      \"is_video_answer_enabled\": \"<boolean>\",\n      \"video_url\": \"<string>\",\n      \"video_title\": \"<string>\",\n      \"video_id\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"body\": \"<string>\",\n      \"answer_time\": \"<integer>\",\n      \"preparation_time\": \"<integer>\",\n      \"required\": \"<boolean>\",\n      \"sort_order\": \"<integer>\",\n      \"take_number\": \"<integer>\",\n      \"is_video_answer_enabled\": \"<boolean>\",\n      \"video_url\": \"<string>\",\n      \"video_title\": \"<string>\",\n      \"video_id\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "59cbbdd7-a213-4c5e-9771-78a7f6ce1532",
+              "name": "Detail vacancy videointerview",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "videointerviews",
+                    "vacancy",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"is_video_answer_enabled\": \"<boolean>\",\n  \"questions\": [\n    {\n      \"id\": \"<integer>\",\n      \"body\": \"<string>\",\n      \"answer_time\": \"<integer>\",\n      \"preparation_time\": \"<integer>\",\n      \"required\": \"<boolean>\",\n      \"sort_order\": \"<integer>\",\n      \"take_number\": \"<integer>\",\n      \"is_video_answer_enabled\": \"<boolean>\",\n      \"video_url\": \"<string>\",\n      \"video_title\": \"<string>\",\n      \"video_id\": \"<integer>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"body\": \"<string>\",\n      \"answer_time\": \"<integer>\",\n      \"preparation_time\": \"<integer>\",\n      \"required\": \"<boolean>\",\n      \"sort_order\": \"<integer>\",\n      \"take_number\": \"<integer>\",\n      \"is_video_answer_enabled\": \"<boolean>\",\n      \"video_url\": \"<string>\",\n      \"video_title\": \"<string>\",\n      \"video_id\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5450,\n  \"vacancy_id\": 2215,\n  \"is_video_answer_enabled\": false,\n  \"created_at\": \"1984-09-03T03:59:13.338Z\",\n  \"_embedded\": {\n    \"questions\": [\n      {\n        \"id\": 3152,\n        \"date_created\": \"1981-01-28T01:15:26.015Z\",\n        \"vacancy_module_videointerview_id\": 6560,\n        \"title\": \"string\",\n        \"body\": \"string\",\n        \"answer_time\": 3939,\n        \"preparation_time\": 5068,\n        \"required\": true,\n        \"sort_order\": 9969,\n        \"take_number\": 5735,\n        \"is_video_answer_enabled\": false,\n        \"is_text_answer_enabled\": false,\n        \"language_code\": \"string\",\n        \"video_id\": 6645,\n        \"video_title\": \"string\",\n        \"video_url\": \"string\",\n        \"_embedded\": {\n          \"video\": {\n            \"id\": 6303,\n            \"date_modified\": \"2011-06-23T08:53:12.858Z\",\n            \"name\": \"string\",\n            \"video_status_id\": 9710,\n            \"duration\": 9979,\n            \"original_extension\": \"string\",\n            \"extension\": \"string\",\n            \"hostname\": \"string\",\n            \"bucket\": \"string\",\n            \"size\": 9367,\n            \"original_size\": 5248,\n            \"token\": \"string\",\n            \"has_image_preview\": \"string\",\n            \"source\": \"string\",\n            \"preview\": \"string\"\n          }\n        }\n      },\n      {\n        \"id\": 1560,\n        \"date_created\": \"1989-10-14T10:00:27.362Z\",\n        \"vacancy_module_videointerview_id\": 1159,\n        \"title\": \"string\",\n        \"body\": \"string\",\n        \"answer_time\": 5661,\n        \"preparation_time\": 7325,\n        \"required\": true,\n        \"sort_order\": 9344,\n        \"take_number\": 5845,\n        \"is_video_answer_enabled\": false,\n        \"is_text_answer_enabled\": true,\n        \"language_code\": \"string\",\n        \"video_id\": 8009,\n        \"video_title\": \"string\",\n        \"video_url\": \"string\",\n        \"_embedded\": {\n          \"video\": {\n            \"id\": 2973,\n            \"date_modified\": \"2014-04-10T22:12:39.539Z\",\n            \"name\": \"string\",\n            \"video_status_id\": 9466,\n            \"duration\": 221,\n            \"original_extension\": \"string\",\n            \"extension\": \"string\",\n            \"hostname\": \"string\",\n            \"bucket\": \"string\",\n            \"size\": 7680,\n            \"original_size\": 248,\n            \"token\": \"string\",\n            \"has_image_preview\": \"string\",\n            \"source\": \"string\",\n            \"preview\": \"string\"\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://my.vcv.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "44fdf548-7d00-4e7c-a6a8-1bd45775db56",
+    "name": "VCV chatbot videointerview API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "open api",
+      "type": "text/plain"
+    }
+  }
+}

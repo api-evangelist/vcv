@@ -1,0 +1,1947 @@
+{
+  "item": [
+    {
+      "id": "1723cfd3-4be6-41ba-b659-4236bd3f9d48",
+      "name": "integration",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "370a9542-b463-4581-aa29-f9ee3ae0afcd",
+          "name": "Get vacancy integration module list",
+          "request": {
+            "name": "Get vacancy integration module list",
+            "description": {
+              "content": "Get vacancy integration module list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "integration",
+                "vacancy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[order]",
+                  "value": "desc",
+                  "description": "sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[vacancy_id]",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d9e09ee-5e2b-4a34-9b44-d35a491d2fe5",
+              "name": "list of vacancy integrations",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "integration",
+                    "vacancy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort[order]",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[vacancy_id]",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 1116,\n  \"_page\": 3420,\n  \"_page_count\": 3790,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"https://EvT.xnvbVLUOJ67PUomTz6KnhBb1MayX7Gea1ifXV-04W-UFRu-Poo7+tWy0i143BrA\"\n    },\n    \"next\": {\n      \"href\": \"http://iESrWpquRjtnbDaiC.dgk6DpR4QMP0Ww,PMKwuCOCRa-wqOD\"\n    },\n    \"last\": {\n      \"href\": \"http://aWAsziELjaKXDFoXK.scauQbTiQA7Y7vnUZOTjcTRHe\"\n    }\n  },\n  \"_embedded\": {\n    \"emails\": [\n      {\n        \"id\": 1663,\n        \"vacancy_id\": 9365,\n        \"url\": [\n          \"string\",\n          \"string\"\n        ],\n        \"created_at\": \"1960-09-01T11:20:10.582Z\",\n        \"updated_at\": \"1980-06-27T06:24:40.856Z\"\n      },\n      {\n        \"id\": 4843,\n        \"vacancy_id\": 2053,\n        \"url\": [\n          \"string\",\n          \"string\"\n        ],\n        \"created_at\": \"2014-12-22T09:36:02.495Z\",\n        \"updated_at\": \"2018-12-29T14:09:56.961Z\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b8f22be6-a1bf-40b1-9d36-4c36040c413e",
+          "name": "Create vacancy integration",
+          "request": {
+            "name": "Create vacancy integration",
+            "description": {
+              "content": "Create vacancy integration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "integration",
+                "vacancy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vacancy_id\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e38ead91-655b-4130-95e9-07e90e002013",
+              "name": "Created integration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "integration",
+                    "vacancy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"vacancy_id\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5306,\n  \"vacancy_id\": 1225,\n  \"url\": [\n    \"string\",\n    \"string\"\n  ],\n  \"created_at\": \"2005-02-03T02:40:03.044Z\",\n  \"updated_at\": \"1982-05-16T21:10:51.471Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7cf0831-08e4-49fe-afac-f858ab095dc9",
+          "name": "Get vacancy integration detail",
+          "request": {
+            "name": "Get vacancy integration detail",
+            "description": {
+              "content": "Get vacancy integration detail",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "integration",
+                "vacancy",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5a2bf511-22cb-46c3-8cbe-53cc03db0f73",
+              "name": "Vacancy integration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "integration",
+                    "vacancy",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5306,\n  \"vacancy_id\": 1225,\n  \"url\": [\n    \"string\",\n    \"string\"\n  ],\n  \"created_at\": \"2005-02-03T02:40:03.044Z\",\n  \"updated_at\": \"1982-05-16T21:10:51.471Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da0071aa-8180-432c-accb-e3faad90356d",
+          "name": "Update vacancy integration",
+          "request": {
+            "name": "Update vacancy integration",
+            "description": {
+              "content": "Update vacancy integration",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "integration",
+                "vacancy",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bdcebf2f-e809-47f9-9018-e7daceef8d64",
+              "name": "Updated vacancy integration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "integration",
+                    "vacancy",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"url\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 5306,\n  \"vacancy_id\": 1225,\n  \"url\": [\n    \"string\",\n    \"string\"\n  ],\n  \"created_at\": \"2005-02-03T02:40:03.044Z\",\n  \"updated_at\": \"1982-05-16T21:10:51.471Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd63a064-8035-4f39-a84f-71e0d6d83efb",
+          "name": "Get response attributes list",
+          "request": {
+            "name": "Get response attributes list",
+            "description": {
+              "content": "Get response attributes list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-attributes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[order]",
+                  "value": "desc",
+                  "description": "sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[by]",
+                  "value": "id",
+                  "description": "sort field"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[code]",
+                  "value": "<string>",
+                  "description": "Attribute code filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[type]",
+                  "value": "<string>",
+                  "description": "Attribute type filter"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c7016fbc-5e17-435f-bc05-54640e231995",
+              "name": "list of response attributes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort[order]",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sort[by]",
+                      "value": "id"
+                    },
+                    {
+                      "key": "filter[code]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[type]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 8536,\n  \"_page\": 1699,\n  \"_page_count\": 7766,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"http://VMLWZWUNNUMyDtgvOJqeryxeSzadjRI.lyqG8beaYJ9OC6xKe,W1OQrfMtr\"\n    },\n    \"next\": {\n      \"href\": \"http://vBRtLbTUtvqhlvCP.srvE3WvHlox2-bXTvLor56,LSXPVokjBFaA0Wf+HiT,Ouf6ayYI8WrJNA6\"\n    },\n    \"last\": {\n      \"href\": \"https://rDxpsi.pvgPgoUcn55TXzrrXtHM+BHqNXGPnnFeeEX58bGF0MsfAiAfigd-X\"\n    }\n  },\n  \"_embedded\": {\n    \"attributes\": [\n      {\n        \"id\": 1444,\n        \"sort_order\": 4695,\n        \"type\": \"numeric\",\n        \"title\": \"string\",\n        \"code\": \"string\",\n        \"created_at\": \"1971-04-11T13:11:30.204Z\",\n        \"updated_at\": \"1985-01-08T16:38:15.232Z\"\n      },\n      {\n        \"id\": 7104,\n        \"sort_order\": 6230,\n        \"type\": \"numeric\",\n        \"title\": \"string\",\n        \"code\": \"string\",\n        \"created_at\": \"2016-10-26T00:55:57.637Z\",\n        \"updated_at\": \"2001-03-30T10:47:23.353Z\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "11f8b961-b747-443b-82d7-f46f8354ca70",
+          "name": "Create response attribute",
+          "request": {
+            "name": "Create response attribute",
+            "description": {
+              "content": "Create response attribute",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-attributes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sort_order\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"title\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4a9257dc-f742-4481-be9f-82192683aa8b",
+              "name": "Created response attribute",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sort_order\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"title\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 9968,\n  \"sort_order\": 4812,\n  \"type\": \"url\",\n  \"title\": \"string\",\n  \"code\": \"string\",\n  \"created_at\": \"2026-06-08T17:17:13.509Z\",\n  \"updated_at\": \"1989-06-28T02:34:22.845Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac39866f-0c68-4c1d-a4d3-673e1f7c1b1d",
+          "name": "Get response attribute detail",
+          "request": {
+            "name": "Get response attribute detail",
+            "description": {
+              "content": "Get response attribute detail",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-attributes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c69a6c7d-921c-4a1b-899b-ca6377f23f90",
+              "name": "Response atrribute",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-attributes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 9968,\n  \"sort_order\": 4812,\n  \"type\": \"url\",\n  \"title\": \"string\",\n  \"code\": \"string\",\n  \"created_at\": \"2026-06-08T17:17:13.509Z\",\n  \"updated_at\": \"1989-06-28T02:34:22.845Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95039339-5854-4107-a5f6-bb7bd16c4388",
+          "name": "Update response attribute",
+          "request": {
+            "name": "Update response attribute",
+            "description": {
+              "content": "Update response attribute",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-attributes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sort_order\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"title\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d337cc89-7f59-4525-9f88-f775abf907d5",
+              "name": "Updated response attribute",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-attributes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sort_order\": \"<integer>\",\n  \"code\": \"<string>\",\n  \"title\": \"<string>\",\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 9968,\n  \"sort_order\": 4812,\n  \"type\": \"url\",\n  \"title\": \"string\",\n  \"code\": \"string\",\n  \"created_at\": \"2026-06-08T17:17:13.509Z\",\n  \"updated_at\": \"1989-06-28T02:34:22.845Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4c8975b2-3ec7-459b-8b5c-c00de4d4e695",
+          "name": "Delete response attribute",
+          "request": {
+            "name": "Delete response attribute",
+            "description": {
+              "content": "Delete response attribute",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-attributes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e9f1a8c3-6ee9-45e4-b7a4-28179466e34a",
+              "name": "Deleted response attribute",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-attributes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 9968,\n  \"sort_order\": 4812,\n  \"type\": \"url\",\n  \"title\": \"string\",\n  \"code\": \"string\",\n  \"created_at\": \"2026-06-08T17:17:13.509Z\",\n  \"updated_at\": \"1989-06-28T02:34:22.845Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d61dca40-96c3-4189-84a9-ab140e29541e",
+          "name": "Get response attribute values list",
+          "request": {
+            "name": "Get response attribute values list",
+            "description": {
+              "content": "Get response attribute values list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "public",
+                "response-attribute-values",
+                ":token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[order]",
+                  "value": "desc",
+                  "description": "sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[by]",
+                  "value": "id",
+                  "description": "sort field"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[response_attribute_id]",
+                  "value": "<integer>",
+                  "description": "Attribute id filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[response_attribute_code]",
+                  "value": "<string>",
+                  "description": "Attribute code filter"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token",
+                  "description": "(Required) token"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8e455e9e-0d7b-4d3f-b986-370f6356cc9d",
+              "name": "list of response attributes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "public",
+                    "response-attribute-values",
+                    ":token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort[order]",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort[by]",
+                      "value": "id"
+                    },
+                    {
+                      "key": "filter[response_attribute_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[response_attribute_code]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 6279,\n  \"_page\": 6201,\n  \"_page_count\": 2777,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"http://WlnZSCQWCurkGWkK.fmuK0R5COqOza9XKz-RHzrD,vRLhGt.6kvGl1ITuTG,SneQF6D0Lep\"\n    },\n    \"next\": {\n      \"href\": \"http://wsprvYG.hjVz7eiyDwK5ZdZwioaVviCk+qEhyneoPOERC2wdtSn,2k9fe-eq\"\n    },\n    \"last\": {\n      \"href\": \"http://s.ghapHdyvdmv1NAwC4g4OleSMMGplQmYfgutEBHFioSnPg3lWIh7J32Ahmrg-l4BuQekYqRzd\"\n    }\n  },\n  \"_embedded\": {\n    \"values\": [\n      {\n        \"id\": 9310,\n        \"response_id\": 2579,\n        \"response_attribute_id\": 982,\n        \"value\": \"string\",\n        \"created_at\": \"1950-08-31T20:17:15.405Z\",\n        \"updated_at\": \"2008-12-10T15:24:08.426Z\",\n        \"_embedded\": {\n          \"attribute\": {\n            \"id\": 4001,\n            \"sort_order\": 7794,\n            \"type\": \"html\",\n            \"title\": \"string\",\n            \"code\": \"string\",\n            \"created_at\": \"2010-12-07T12:09:49.581Z\",\n            \"updated_at\": \"2000-06-26T07:47:28.816Z\"\n          }\n        }\n      },\n      {\n        \"id\": 4794,\n        \"response_id\": 9566,\n        \"response_attribute_id\": 2398,\n        \"value\": \"string\",\n        \"created_at\": \"1990-09-26T00:01:41.833Z\",\n        \"updated_at\": \"1969-06-24T11:36:23.857Z\",\n        \"_embedded\": {\n          \"attribute\": {\n            \"id\": 1408,\n            \"sort_order\": 9511,\n            \"type\": \"html\",\n            \"title\": \"string\",\n            \"code\": \"string\",\n            \"created_at\": \"2026-05-02T05:44:34.283Z\",\n            \"updated_at\": \"1976-03-21T11:21:36.846Z\"\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d84e644d-ef8a-4926-9172-e172c5567772",
+          "name": "Get response attribute values list",
+          "request": {
+            "name": "Get response attribute values list",
+            "description": {
+              "content": "Get response attribute values list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-attribute-values"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[order]",
+                  "value": "desc",
+                  "description": "sort order"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[response_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort[by]",
+                  "value": "id",
+                  "description": "sort field"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[response_attribute_id]",
+                  "value": "<integer>",
+                  "description": "Attribute id filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[response_attribute_code]",
+                  "value": "<string>",
+                  "description": "Attribute code filter"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fcfa7eb5-eff0-4621-8552-6f65b0500c9f",
+              "name": "list of response attributes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-attribute-values"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort[order]",
+                      "value": "desc"
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[response_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort[by]",
+                      "value": "id"
+                    },
+                    {
+                      "key": "filter[response_attribute_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[response_attribute_code]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 6600,\n  \"_page\": 5645,\n  \"_page_count\": 6935,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"http://RaNTJYFDzWdVlnsNEoaGnUjiSxKMxvWj.jowaY6rsFgyxhjsMynMQuqSUJbRn8\"\n    },\n    \"next\": {\n      \"href\": \"http://UkhZxrlpHoQLxdh.ebgeCU8BxRaodu\"\n    },\n    \"last\": {\n      \"href\": \"http://kHdmcBKjRzVkXpUda.lrdE7GmWsi1mLID+FHUyNMGhuJkuCF8Avc0MT.l1f5nQfgDjyjXo9mWm0\"\n    }\n  },\n  \"_embedded\": {\n    \"values\": [\n      {\n        \"id\": 7876,\n        \"response_id\": 5205,\n        \"response_attribute_id\": 4603,\n        \"value\": \"string\",\n        \"created_at\": \"1957-07-04T10:30:19.977Z\",\n        \"updated_at\": \"1993-12-18T09:13:09.870Z\",\n        \"_embedded\": {\n          \"response\": {\n            \"id\": 7150,\n            \"vacancy_id\": 5700,\n            \"candidate_id\": 1442,\n            \"response_status_id\": 2805,\n            \"response_source_id\": 8719,\n            \"interview_id\": 8885,\n            \"external_id\": \"string\",\n            \"is_hidden_by_candidate\": true,\n            \"created_at\": \"1986-09-21T21:49:33.230Z\",\n            \"agreed_at\": \"2018-08-15T10:24:41.590Z\",\n            \"date_sent\": \"1980-09-28T07:46:19.306Z\",\n            \"resume_url\": \"string\",\n            \"second_resume_url\": \"string\",\n            \"social_source\": \"string\",\n            \"utm_source\": \"string\",\n            \"utm_medium\": \"string\",\n            \"utm_campaign\": \"string\",\n            \"utm_content\": \"string\",\n            \"utm_term\": \"string\",\n            \"is_paid\": true\n          },\n          \"attribute\": {\n            \"id\": 97,\n            \"sort_order\": 4788,\n            \"type\": \"text\",\n            \"title\": \"string\",\n            \"code\": \"string\",\n            \"created_at\": \"2015-11-24T07:11:04.147Z\",\n            \"updated_at\": \"1997-01-12T20:25:47.813Z\"\n          }\n        }\n      },\n      {\n        \"id\": 8755,\n        \"response_id\": 5303,\n        \"response_attribute_id\": 5504,\n        \"value\": \"string\",\n        \"created_at\": \"2019-08-17T13:11:45.279Z\",\n        \"updated_at\": \"1994-01-29T23:38:33.340Z\",\n        \"_embedded\": {\n          \"response\": {\n            \"id\": 5769,\n            \"vacancy_id\": 4328,\n            \"candidate_id\": 3928,\n            \"response_status_id\": 7170,\n            \"response_source_id\": 113,\n            \"interview_id\": 8565,\n            \"external_id\": \"string\",\n            \"is_hidden_by_candidate\": true,\n            \"created_at\": \"2014-10-05T19:44:07.608Z\",\n            \"agreed_at\": \"1971-06-02T21:59:58.014Z\",\n            \"date_sent\": \"2000-06-10T13:18:57.339Z\",\n            \"resume_url\": \"string\",\n            \"second_resume_url\": \"string\",\n            \"social_source\": \"string\",\n            \"utm_source\": \"string\",\n            \"utm_medium\": \"string\",\n            \"utm_campaign\": \"string\",\n            \"utm_content\": \"string\",\n            \"utm_term\": \"string\",\n            \"is_paid\": false\n          },\n          \"attribute\": {\n            \"id\": 9628,\n            \"sort_order\": 1674,\n            \"type\": \"numeric\",\n            \"title\": \"string\",\n            \"code\": \"string\",\n            \"created_at\": \"1949-03-31T03:29:08.482Z\",\n            \"updated_at\": \"1974-05-19T06:12:17.348Z\"\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "497053ff-2e7c-4829-b1e5-21c42f782db1",
+          "name": "Create response attribute value",
+          "request": {
+            "name": "Create response attribute value",
+            "description": {
+              "content": "Create response attribute value",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-attribute-values"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"response_id\": \"<integer>\",\n  \"response_attribute_id\": \"<integer>\",\n  \"value\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "18304774-f2fa-41f5-af36-d4464039ca38",
+              "name": "Created response attribute value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-attribute-values"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"response_id\": \"<integer>\",\n  \"response_attribute_id\": \"<integer>\",\n  \"value\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4307,\n  \"response_id\": 1935,\n  \"response_attribute_id\": 7091,\n  \"value\": \"string\",\n  \"created_at\": \"2022-06-30T13:07:32.196Z\",\n  \"updated_at\": \"2023-02-19T08:52:06.000Z\",\n  \"_embedded\": {\n    \"response\": {\n      \"id\": 4834,\n      \"vacancy_id\": 9294,\n      \"candidate_id\": 5048,\n      \"response_status_id\": 6775,\n      \"response_source_id\": 9156,\n      \"interview_id\": 258,\n      \"external_id\": \"string\",\n      \"is_hidden_by_candidate\": true,\n      \"created_at\": \"1983-11-28T12:17:31.409Z\",\n      \"agreed_at\": \"1962-07-26T11:50:32.946Z\",\n      \"date_sent\": \"1986-06-26T00:04:10.444Z\",\n      \"resume_url\": \"string\",\n      \"second_resume_url\": \"string\",\n      \"social_source\": \"string\",\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_content\": \"string\",\n      \"utm_term\": \"string\",\n      \"is_paid\": true\n    },\n    \"attribute\": {\n      \"id\": 7822,\n      \"sort_order\": 9185,\n      \"type\": \"numeric\",\n      \"title\": \"string\",\n      \"code\": \"string\",\n      \"created_at\": \"2003-12-13T11:06:36.301Z\",\n      \"updated_at\": \"1982-07-06T16:56:51.965Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe578c9a-0607-482b-9d1d-e6cb7ff8a192",
+          "name": "Get response attribute value detail",
+          "request": {
+            "name": "Get response attribute value detail",
+            "description": {
+              "content": "Get response attribute value detail",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-attribute-values",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2675e3fe-b883-4c3a-958b-6c2222a20001",
+              "name": "Response atrribute value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-attribute-values",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4307,\n  \"response_id\": 1935,\n  \"response_attribute_id\": 7091,\n  \"value\": \"string\",\n  \"created_at\": \"2022-06-30T13:07:32.196Z\",\n  \"updated_at\": \"2023-02-19T08:52:06.000Z\",\n  \"_embedded\": {\n    \"response\": {\n      \"id\": 4834,\n      \"vacancy_id\": 9294,\n      \"candidate_id\": 5048,\n      \"response_status_id\": 6775,\n      \"response_source_id\": 9156,\n      \"interview_id\": 258,\n      \"external_id\": \"string\",\n      \"is_hidden_by_candidate\": true,\n      \"created_at\": \"1983-11-28T12:17:31.409Z\",\n      \"agreed_at\": \"1962-07-26T11:50:32.946Z\",\n      \"date_sent\": \"1986-06-26T00:04:10.444Z\",\n      \"resume_url\": \"string\",\n      \"second_resume_url\": \"string\",\n      \"social_source\": \"string\",\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_content\": \"string\",\n      \"utm_term\": \"string\",\n      \"is_paid\": true\n    },\n    \"attribute\": {\n      \"id\": 7822,\n      \"sort_order\": 9185,\n      \"type\": \"numeric\",\n      \"title\": \"string\",\n      \"code\": \"string\",\n      \"created_at\": \"2003-12-13T11:06:36.301Z\",\n      \"updated_at\": \"1982-07-06T16:56:51.965Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bad0383f-0b3e-4c48-af44-836ef3e0e7cc",
+          "name": "Update response attribute value",
+          "request": {
+            "name": "Update response attribute value",
+            "description": {
+              "content": "Update response attribute value",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-attribute-values",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cbd903fe-02bd-47e4-b51d-b847fa702c7a",
+              "name": "Updated response attribute value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-attribute-values",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 4307,\n  \"response_id\": 1935,\n  \"response_attribute_id\": 7091,\n  \"value\": \"string\",\n  \"created_at\": \"2022-06-30T13:07:32.196Z\",\n  \"updated_at\": \"2023-02-19T08:52:06.000Z\",\n  \"_embedded\": {\n    \"response\": {\n      \"id\": 4834,\n      \"vacancy_id\": 9294,\n      \"candidate_id\": 5048,\n      \"response_status_id\": 6775,\n      \"response_source_id\": 9156,\n      \"interview_id\": 258,\n      \"external_id\": \"string\",\n      \"is_hidden_by_candidate\": true,\n      \"created_at\": \"1983-11-28T12:17:31.409Z\",\n      \"agreed_at\": \"1962-07-26T11:50:32.946Z\",\n      \"date_sent\": \"1986-06-26T00:04:10.444Z\",\n      \"resume_url\": \"string\",\n      \"second_resume_url\": \"string\",\n      \"social_source\": \"string\",\n      \"utm_source\": \"string\",\n      \"utm_medium\": \"string\",\n      \"utm_campaign\": \"string\",\n      \"utm_content\": \"string\",\n      \"utm_term\": \"string\",\n      \"is_paid\": true\n    },\n    \"attribute\": {\n      \"id\": 7822,\n      \"sort_order\": 9185,\n      \"type\": \"numeric\",\n      \"title\": \"string\",\n      \"code\": \"string\",\n      \"created_at\": \"2003-12-13T11:06:36.301Z\",\n      \"updated_at\": \"1982-07-06T16:56:51.965Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73974e03-e55e-4344-a2b4-3e0ce324e516",
+          "name": "Delete response attribute value",
+          "request": {
+            "name": "Delete response attribute value",
+            "description": {
+              "content": "Delete response attribute value",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "response-attribute-values",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d2146881-d958-4718-be28-ce47548c2147",
+              "name": "Deleted response attribute value",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "response-attribute-values",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6870,\n  \"response_id\": 3872,\n  \"response_attribute_id\": 2275,\n  \"value\": \"string\",\n  \"created_at\": \"1986-07-05T02:23:57.894Z\",\n  \"updated_at\": \"1993-06-14T07:11:17.050Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://my.vcv.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ea9d39f2-43e2-486d-be37-0a84fed18e3e",
+    "name": "VCV chatbot integration API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "open api",
+      "type": "text/plain"
+    }
+  }
+}

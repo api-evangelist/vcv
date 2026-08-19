@@ -1,0 +1,785 @@
+{
+  "item": [
+    {
+      "id": "fe885f97-e545-4a31-a7c0-1f7d5267fbbe",
+      "name": "test",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "867c1b5b-fb9c-4494-a398-7e9213cda20f",
+          "name": "Get vacancy tests list",
+          "request": {
+            "name": "Get vacancy tests list",
+            "description": {
+              "content": "Get vacancy tests list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "tests",
+                "vacancy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[vacancy_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[created_at][from]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[created_at][to]",
+                  "value": "<dateTime>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "842a63e0-3961-4de5-9092-d96352f35ba0",
+              "name": "list of vacancy tests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "tests",
+                    "vacancy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[vacancy_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[created_at][from]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter[created_at][to]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 6579,\n  \"_page\": 538,\n  \"_page_count\": 4483,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"https://TmPqmiIIuxFVOsBhgZ.fhslog-Trx-bM0kz+1JdSxvZpyTsz6dp84R4vNh,eevI6BFLOPHZrgZ9XC\"\n    },\n    \"next\": {\n      \"href\": \"https://mqbpSpkQkwkzSnuovzvTULWM.mkvdeaATEpWYGTPYFoEHRhwDX4-UI3W7ltXiyR,OKnJwBpCWNN6FTcnwhdQs8EKhO\"\n    },\n    \"last\": {\n      \"href\": \"http://KjgoPaqPVgaItoXnxXpB.rvPZuXMMv8+YwfWJTXpb3SpvSvPouzXT\"\n    }\n  },\n  \"_embedded\": {\n    \"vacancy_tests\": [\n      {\n        \"id\": 6185,\n        \"vacancy_id\": 8023,\n        \"date_created\": \"1963-01-25T20:43:12.920Z\",\n        \"time_limit\": 7084,\n        \"question_shuffle\": 5723,\n        \"answer_shuffle\": true,\n        \"question_limit\": 2181,\n        \"question_page_limit\": 2915,\n        \"time_limit_enabled\": 2498,\n        \"required_score\": 7185,\n        \"calculate_test_status\": false,\n        \"is_dropout_enabled\": false,\n        \"is_camera_required\": false,\n        \"_embedded\": {\n          \"questions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rounding_precision\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"time_limit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"time_limit_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"has_valid_answer\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_graph_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_variables_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"_embedded\": {\n                \"answers\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"variables\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"media\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rounding_precision\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"time_limit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"time_limit_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"has_valid_answer\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_graph_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_variables_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"_embedded\": {\n                \"answers\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"variables\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"media\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        }\n      },\n      {\n        \"id\": 452,\n        \"vacancy_id\": 4371,\n        \"date_created\": \"1975-09-21T18:44:11.389Z\",\n        \"time_limit\": 5150,\n        \"question_shuffle\": 325,\n        \"answer_shuffle\": true,\n        \"question_limit\": 3675,\n        \"question_page_limit\": 5281,\n        \"time_limit_enabled\": 5335,\n        \"required_score\": 9995,\n        \"calculate_test_status\": false,\n        \"is_dropout_enabled\": false,\n        \"is_camera_required\": false,\n        \"_embedded\": {\n          \"questions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rounding_precision\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"time_limit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"time_limit_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"has_valid_answer\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_graph_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_variables_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"_embedded\": {\n                \"answers\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"variables\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"media\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rounding_precision\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"time_limit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"time_limit_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"has_valid_answer\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_graph_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_variables_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"_embedded\": {\n                \"answers\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"variables\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"media\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e480f87-4498-4bb3-9e12-d1f19ae10c67",
+          "name": "Get vacancy test detail",
+          "request": {
+            "name": "Get vacancy test detail",
+            "description": {
+              "content": "Get vacancy test detail",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "tests",
+                "vacancy",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aef94819-38c4-47f0-969a-76a9513cea28",
+              "name": "vacancy test",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "tests",
+                    "vacancy",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 7586,\n  \"vacancy_id\": 8877,\n  \"date_created\": \"2017-05-23T21:42:45.181Z\",\n  \"time_limit\": 5591,\n  \"question_shuffle\": 2688,\n  \"answer_shuffle\": false,\n  \"question_limit\": 709,\n  \"question_page_limit\": 649,\n  \"time_limit_enabled\": 1921,\n  \"required_score\": 7364,\n  \"calculate_test_status\": true,\n  \"is_dropout_enabled\": false,\n  \"is_camera_required\": true,\n  \"_embedded\": {\n    \"questions\": [\n      {\n        \"id\": 7603,\n        \"date_created\": \"1948-05-01T06:46:14.353Z\",\n        \"vacancy_module_test_id\": 1572,\n        \"rounding_precision\": 6914,\n        \"title\": \"string\",\n        \"body\": \"string\",\n        \"type\": \"string\",\n        \"time_limit\": 2045,\n        \"time_limit_enabled\": false,\n        \"has_valid_answer\": false,\n        \"is_graph_enabled\": false,\n        \"is_variables_enabled\": false,\n        \"sort_order\": 8345,\n        \"_embedded\": {\n          \"answers\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_question_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_formula\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_question_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_formula\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"variables\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_question_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"formula\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"min\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"max\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"step\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"chart_config\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_question_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"formula\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"min\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"max\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"step\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"chart_config\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"media\": {\n            \"id\": 8545,\n            \"vacancy_module_test_question_id\": 6866,\n            \"url\": \"https://xldrgqkSIJbfpcLsLZwhhGaJAOGI.nsKq1JDExoT0WQxeOWv7+\",\n            \"type\": \"string\",\n            \"title\": \"string\",\n            \"is_separate_page\": true\n          }\n        }\n      },\n      {\n        \"id\": 8238,\n        \"date_created\": \"2000-09-10T14:10:41.772Z\",\n        \"vacancy_module_test_id\": 1793,\n        \"rounding_precision\": 5635,\n        \"title\": \"string\",\n        \"body\": \"string\",\n        \"type\": \"string\",\n        \"time_limit\": 2176,\n        \"time_limit_enabled\": true,\n        \"has_valid_answer\": false,\n        \"is_graph_enabled\": false,\n        \"is_variables_enabled\": false,\n        \"sort_order\": 7491,\n        \"_embedded\": {\n          \"answers\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_question_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_formula\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_question_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_formula\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"variables\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_question_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"formula\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"min\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"max\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"step\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"chart_config\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_question_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"formula\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"min\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"max\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"step\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"chart_config\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"media\": {\n            \"id\": 6428,\n            \"vacancy_module_test_question_id\": 9187,\n            \"url\": \"https://HJHRGkkLeFopTZizlqGLHLOR.oebfj5DaCoPHZ97sKv0Glmiw9UQ\",\n            \"type\": \"string\",\n            \"title\": \"string\",\n            \"is_separate_page\": false\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0924437b-37b3-4a1d-b659-69eeb8e0d3ab",
+          "name": "Update vacancy test",
+          "request": {
+            "name": "Update vacancy test",
+            "description": {
+              "content": "Update vacancy test",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "tests",
+                "vacancy",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"time_limit\": \"<integer>\",\n  \"time_limit_enabled\": \"<boolean>\",\n  \"question_shuffle\": \"<boolean>\",\n  \"answer_shuffle\": \"<boolean>\",\n  \"calculate_test_status\": \"<boolean>\",\n  \"is_dropout_enabled\": \"<boolean>\",\n  \"is_camera_required\": \"<boolean>\",\n  \"required_score\": \"<integer>\",\n  \"question_limit\": \"<integer>\",\n  \"question_page_limit\": \"<integer>\",\n  \"rounding_precision\": \"<integer>\",\n  \"questions\": [\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"body\": \"<string>\",\n      \"time_limit\": \"<integer>\",\n      \"time_limit_enabled\": \"<boolean>\",\n      \"has_valid_answer\": \"<boolean>\",\n      \"is_graph_enabled\": \"<boolean>\",\n      \"is_variables_enabled\": \"<boolean>\",\n      \"sort_order\": \"<integer>\",\n      \"chart_config\": \"<object>\",\n      \"variables\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"formula\": \"<string>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"step\": \"<number>\",\n          \"type\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"formula\": \"<string>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"step\": \"<number>\",\n          \"type\": \"<integer>\"\n        }\n      ],\n      \"answers\": [\n        {\n          \"valid\": \"<boolean>\",\n          \"is_formula\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"body\": \"<string>\",\n          \"sort_order\": \"<integer>\"\n        },\n        {\n          \"valid\": \"<boolean>\",\n          \"is_formula\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"body\": \"<string>\",\n          \"sort_order\": \"<integer>\"\n        }\n      ],\n      \"media\": {\n        \"title\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\",\n        \"is_separate_page\": \"<boolean>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"body\": \"<string>\",\n      \"time_limit\": \"<integer>\",\n      \"time_limit_enabled\": \"<boolean>\",\n      \"has_valid_answer\": \"<boolean>\",\n      \"is_graph_enabled\": \"<boolean>\",\n      \"is_variables_enabled\": \"<boolean>\",\n      \"sort_order\": \"<integer>\",\n      \"chart_config\": \"<object>\",\n      \"variables\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"formula\": \"<string>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"step\": \"<number>\",\n          \"type\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"formula\": \"<string>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"step\": \"<number>\",\n          \"type\": \"<integer>\"\n        }\n      ],\n      \"answers\": [\n        {\n          \"valid\": \"<boolean>\",\n          \"is_formula\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"body\": \"<string>\",\n          \"sort_order\": \"<integer>\"\n        },\n        {\n          \"valid\": \"<boolean>\",\n          \"is_formula\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"body\": \"<string>\",\n          \"sort_order\": \"<integer>\"\n        }\n      ],\n      \"media\": {\n        \"title\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\",\n        \"is_separate_page\": \"<boolean>\"\n      }\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0a4dfbd1-058a-4e83-9379-26a227413af4",
+              "name": "vacancy test",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "tests",
+                    "vacancy",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"time_limit\": \"<integer>\",\n  \"time_limit_enabled\": \"<boolean>\",\n  \"question_shuffle\": \"<boolean>\",\n  \"answer_shuffle\": \"<boolean>\",\n  \"calculate_test_status\": \"<boolean>\",\n  \"is_dropout_enabled\": \"<boolean>\",\n  \"is_camera_required\": \"<boolean>\",\n  \"required_score\": \"<integer>\",\n  \"question_limit\": \"<integer>\",\n  \"question_page_limit\": \"<integer>\",\n  \"rounding_precision\": \"<integer>\",\n  \"questions\": [\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"body\": \"<string>\",\n      \"time_limit\": \"<integer>\",\n      \"time_limit_enabled\": \"<boolean>\",\n      \"has_valid_answer\": \"<boolean>\",\n      \"is_graph_enabled\": \"<boolean>\",\n      \"is_variables_enabled\": \"<boolean>\",\n      \"sort_order\": \"<integer>\",\n      \"chart_config\": \"<object>\",\n      \"variables\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"formula\": \"<string>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"step\": \"<number>\",\n          \"type\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"formula\": \"<string>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"step\": \"<number>\",\n          \"type\": \"<integer>\"\n        }\n      ],\n      \"answers\": [\n        {\n          \"valid\": \"<boolean>\",\n          \"is_formula\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"body\": \"<string>\",\n          \"sort_order\": \"<integer>\"\n        },\n        {\n          \"valid\": \"<boolean>\",\n          \"is_formula\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"body\": \"<string>\",\n          \"sort_order\": \"<integer>\"\n        }\n      ],\n      \"media\": {\n        \"title\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\",\n        \"is_separate_page\": \"<boolean>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"type\": \"<string>\",\n      \"name\": \"<string>\",\n      \"body\": \"<string>\",\n      \"time_limit\": \"<integer>\",\n      \"time_limit_enabled\": \"<boolean>\",\n      \"has_valid_answer\": \"<boolean>\",\n      \"is_graph_enabled\": \"<boolean>\",\n      \"is_variables_enabled\": \"<boolean>\",\n      \"sort_order\": \"<integer>\",\n      \"chart_config\": \"<object>\",\n      \"variables\": [\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"formula\": \"<string>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"step\": \"<number>\",\n          \"type\": \"<integer>\"\n        },\n        {\n          \"id\": \"<integer>\",\n          \"name\": \"<string>\",\n          \"formula\": \"<string>\",\n          \"min\": \"<number>\",\n          \"max\": \"<number>\",\n          \"step\": \"<number>\",\n          \"type\": \"<integer>\"\n        }\n      ],\n      \"answers\": [\n        {\n          \"valid\": \"<boolean>\",\n          \"is_formula\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"body\": \"<string>\",\n          \"sort_order\": \"<integer>\"\n        },\n        {\n          \"valid\": \"<boolean>\",\n          \"is_formula\": \"<boolean>\",\n          \"id\": \"<integer>\",\n          \"body\": \"<string>\",\n          \"sort_order\": \"<integer>\"\n        }\n      ],\n      \"media\": {\n        \"title\": \"<string>\",\n        \"type\": \"<string>\",\n        \"url\": \"<string>\",\n        \"is_separate_page\": \"<boolean>\"\n      }\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 7586,\n  \"vacancy_id\": 8877,\n  \"date_created\": \"2017-05-23T21:42:45.181Z\",\n  \"time_limit\": 5591,\n  \"question_shuffle\": 2688,\n  \"answer_shuffle\": false,\n  \"question_limit\": 709,\n  \"question_page_limit\": 649,\n  \"time_limit_enabled\": 1921,\n  \"required_score\": 7364,\n  \"calculate_test_status\": true,\n  \"is_dropout_enabled\": false,\n  \"is_camera_required\": true,\n  \"_embedded\": {\n    \"questions\": [\n      {\n        \"id\": 7603,\n        \"date_created\": \"1948-05-01T06:46:14.353Z\",\n        \"vacancy_module_test_id\": 1572,\n        \"rounding_precision\": 6914,\n        \"title\": \"string\",\n        \"body\": \"string\",\n        \"type\": \"string\",\n        \"time_limit\": 2045,\n        \"time_limit_enabled\": false,\n        \"has_valid_answer\": false,\n        \"is_graph_enabled\": false,\n        \"is_variables_enabled\": false,\n        \"sort_order\": 8345,\n        \"_embedded\": {\n          \"answers\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_question_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_formula\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_question_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_formula\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"variables\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_question_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"formula\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"min\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"max\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"step\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"chart_config\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_question_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"formula\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"min\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"max\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"step\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"chart_config\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"media\": {\n            \"id\": 8545,\n            \"vacancy_module_test_question_id\": 6866,\n            \"url\": \"https://xldrgqkSIJbfpcLsLZwhhGaJAOGI.nsKq1JDExoT0WQxeOWv7+\",\n            \"type\": \"string\",\n            \"title\": \"string\",\n            \"is_separate_page\": true\n          }\n        }\n      },\n      {\n        \"id\": 8238,\n        \"date_created\": \"2000-09-10T14:10:41.772Z\",\n        \"vacancy_module_test_id\": 1793,\n        \"rounding_precision\": 5635,\n        \"title\": \"string\",\n        \"body\": \"string\",\n        \"type\": \"string\",\n        \"time_limit\": 2176,\n        \"time_limit_enabled\": true,\n        \"has_valid_answer\": false,\n        \"is_graph_enabled\": false,\n        \"is_variables_enabled\": false,\n        \"sort_order\": 7491,\n        \"_embedded\": {\n          \"answers\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_question_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_formula\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_created\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_question_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"valid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_formula\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"variables\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_question_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"formula\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"min\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"max\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"step\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"chart_config\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"vacancy_module_test_question_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"formula\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"min\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"max\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"step\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"chart_config\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"media\": {\n            \"id\": 6428,\n            \"vacancy_module_test_question_id\": 9187,\n            \"url\": \"https://HJHRGkkLeFopTZizlqGLHLOR.oebfj5DaCoPHZ97sKv0Glmiw9UQ\",\n            \"type\": \"string\",\n            \"title\": \"string\",\n            \"is_separate_page\": false\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ca6df2a-a88d-45e3-a432-12c76d4ade16",
+          "name": "Get response tests list",
+          "request": {
+            "name": "Get response tests list",
+            "description": {
+              "content": "Get response tests list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "tests",
+                "response"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "20",
+                  "description": "page size"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[vacancy_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[][0]",
+                  "value": "<string>",
+                  "description": "Fields to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[][1]",
+                  "value": "<string>",
+                  "description": "Fields to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[response_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[created_at][from]",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter[created_at][to]",
+                  "value": "<dateTime>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7d2e730f-fd84-440b-bd14-598a0efea64d",
+              "name": "list of response tests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "tests",
+                    "response"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "20"
+                    },
+                    {
+                      "key": "filter[vacancy_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[][0]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[][1]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter[id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[response_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filter[created_at][from]",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "filter[created_at][to]",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"_total_items\": 6450,\n  \"_page\": 1518,\n  \"_page_count\": 6016,\n  \"_links\": {\n    \"self\": {\n      \"href\": \"http://ySAYafeBtXreeGMrMCe.tdjCxVRpgy\"\n    },\n    \"next\": {\n      \"href\": \"https://QoxANy.ayUyfmn4+2SXChVyDEjqSi8,kZpPIqFt1\"\n    },\n    \"last\": {\n      \"href\": \"http://ebbaHAOJkgpUCgKVlt.yeqdgT9aP6ulplBhffP3Bc3bVuti8BipgyPC5D9fpKbsVOHMtS5xnlStVMUFg4WoTiYpia8dyAGNjTB1\"\n    }\n  },\n  \"_embedded\": {\n    \"vacancy_videointerviews\": [\n      {\n        \"id\": 9241,\n        \"response_id\": 7329,\n        \"active\": false,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"created_at\": \"2016-04-02T08:07:40.666Z\",\n        \"_embedded\": {\n          \"questions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"response_test_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"time_limit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"has_valid_answer\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_graph_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_variables_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"original_sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"_embedded\": {\n                \"answers\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"media\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"response_test_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"time_limit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"has_valid_answer\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_graph_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_variables_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"original_sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"_embedded\": {\n                \"answers\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"media\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        }\n      },\n      {\n        \"id\": 8781,\n        \"response_id\": 6810,\n        \"active\": true,\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"created_at\": \"1981-06-13T22:54:16.592Z\",\n        \"_embedded\": {\n          \"questions\": [\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"response_test_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"time_limit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"has_valid_answer\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_graph_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_variables_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"original_sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"_embedded\": {\n                \"answers\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"media\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            },\n            {\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_start\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"date_end\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"response_test_id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"title\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"body\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"time_limit\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"has_valid_answer\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_graph_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_variables_enabled\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"original_sort_order\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"_embedded\": {\n                \"answers\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                },\n                \"media\": {\n                  \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n                }\n              }\n            }\n          ]\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3417c635-8684-46ca-8006-94625d7e0bc0",
+          "name": "Get response tests list",
+          "request": {
+            "name": "Get response tests list",
+            "description": {
+              "content": "Get response tests list",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "tests",
+                "response",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[][0]",
+                  "value": "<string>",
+                  "description": "Fields to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[][1]",
+                  "value": "<string>",
+                  "description": "Fields to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "249dcc4a-c3a3-4ad9-96dc-8062cb5e4fed",
+              "name": "Response test",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "tests",
+                    "response",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[][0]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[][1]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8153,\n  \"response_id\": 4379,\n  \"active\": true,\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"created_at\": \"1963-02-20T15:42:13.776Z\",\n  \"_embedded\": {\n    \"questions\": [\n      {\n        \"id\": 4822,\n        \"date_start\": \"2023-02-25T19:49:20.876Z\",\n        \"date_end\": \"1950-11-27T15:02:12.337Z\",\n        \"response_test_id\": 472,\n        \"title\": \"string\",\n        \"body\": \"string\",\n        \"type\": \"string\",\n        \"time_limit\": 8044,\n        \"has_valid_answer\": true,\n        \"is_graph_enabled\": false,\n        \"is_variables_enabled\": false,\n        \"sort_order\": 4116,\n        \"original_sort_order\": 7507,\n        \"_embedded\": {\n          \"answers\": [\n            {\n              \"_embedded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"_embedded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"media\": {\n            \"id\": 5664,\n            \"response_test_question_id\": 9993,\n            \"url\": \"https://BJDriHNhgkSX.kqwtRd+IJyAtcS\",\n            \"type\": \"string\",\n            \"title\": \"string\",\n            \"is_separate_page\": true,\n            \"is_seen\": true,\n            \"is_played\": true,\n            \"is_blocked\": false,\n            \"date_seen\": \"1960-06-22T04:39:19.422Z\",\n            \"date_played\": \"2001-04-07T04:08:49.206Z\"\n          }\n        }\n      },\n      {\n        \"id\": 2838,\n        \"date_start\": \"1994-11-22T13:23:22.172Z\",\n        \"date_end\": \"2018-11-23T11:07:50.484Z\",\n        \"response_test_id\": 9583,\n        \"title\": \"string\",\n        \"body\": \"string\",\n        \"type\": \"string\",\n        \"time_limit\": 3856,\n        \"has_valid_answer\": true,\n        \"is_graph_enabled\": true,\n        \"is_variables_enabled\": true,\n        \"sort_order\": 3648,\n        \"original_sort_order\": 7380,\n        \"_embedded\": {\n          \"answers\": [\n            {\n              \"_embedded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"_embedded\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"media\": {\n            \"id\": 4390,\n            \"response_test_question_id\": 1080,\n            \"url\": \"https://nPuynEg.qknxXfSmEEgJIPWMen6I6Za\",\n            \"type\": \"string\",\n            \"title\": \"string\",\n            \"is_separate_page\": false,\n            \"is_seen\": true,\n            \"is_played\": false,\n            \"is_blocked\": false,\n            \"date_seen\": \"1981-11-21T03:31:46.837Z\",\n            \"date_played\": \"2017-08-31T04:45:11.774Z\"\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://my.vcv.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d723eec7-ef74-4aa8-b4b8-f01f7ce34277",
+    "name": "VCV chatbot test API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "open api",
+      "type": "text/plain"
+    }
+  }
+}

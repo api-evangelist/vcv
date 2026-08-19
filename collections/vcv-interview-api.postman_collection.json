@@ -1,0 +1,494 @@
+{
+  "item": [
+    {
+      "id": "f28b2452-62bb-4f14-904b-8ea1cdf7b5dd",
+      "name": "interview",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9a28e3f6-9e22-4f08-8dfb-8d0495952073",
+          "name": "Get public interview",
+          "request": {
+            "name": "Get public interview",
+            "description": {
+              "content": "Get public interview",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "public",
+                "interviews",
+                ":token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                },
+                {
+                  "disabled": false,
+                  "key": "with[]",
+                  "value": "<string>",
+                  "description": "Relations to retrieve"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token",
+                  "description": "(Required) token"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e2b984e-11dd-4a03-938d-abbe94f1ea77",
+              "name": "Interview",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "public",
+                    "interviews",
+                    ":token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "with[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1974,\n  \"date_create\": \"1968-12-23T07:24:12.033Z\",\n  \"token\": \"string\",\n  \"interview_stage_id\": 4205,\n  \"candidate_id\": 196,\n  \"candidate\": {\n    \"id\": 8115,\n    \"date_created\": \"1949-04-04T03:57:37.447Z\",\n    \"email\": \"string\",\n    \"bithdate\": \"string\",\n    \"gender\": \"string\",\n    \"name\": {\n      \"candidate_id\": 5818,\n      \"first_name\": \"string\",\n      \"last_name\": \"string\",\n      \"second_name\": \"string\"\n    },\n    \"phone\": {\n      \"candidate_id\": 9322,\n      \"id\": 9899,\n      \"number\": \"string\"\n    }\n  },\n  \"_embedded\": {\n    \"publicVacancy\": {\n      \"value\": \"reference #/PublicVacancy not found in the OpenAPI spec\"\n    },\n    \"publicResponse\": {\n      \"value\": \"reference #/PublicResponse not found in the OpenAPI spec\"\n    },\n    \"stage\": {\n      \"id\": 7380,\n      \"key\": \"string\",\n      \"title\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "41badae7-c158-43f6-809a-44263d479d02",
+          "name": "Update public interview response state and save first UTM payload",
+          "request": {
+            "name": "Update public interview response state and save first UTM payload",
+            "description": {
+              "content": "Update public interview response state and save first UTM payload",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "public",
+                "interviews",
+                ":token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token",
+                  "description": "(Required) token"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"utm_source\": \"<string>\",\n  \"utm_medium\": \"<string>\",\n  \"utm_campaign\": \"<string>\",\n  \"utm_content\": \"<string>\",\n  \"utm_term\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "89cb05e0-6b27-46ac-b1b7-66c3393907f2",
+              "name": "Public interview response updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "public",
+                    "interviews",
+                    ":token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"utm_source\": \"<string>\",\n  \"utm_medium\": \"<string>\",\n  \"utm_campaign\": \"<string>\",\n  \"utm_content\": \"<string>\",\n  \"utm_term\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response_id\": 1009,\n  \"agreed_at\": \"2019-08-18T17:12:49.536Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "73b7e08b-9499-4975-aafc-ef79945e85dd",
+          "name": "Mark public interview response as agreed",
+          "request": {
+            "name": "Mark public interview response as agreed",
+            "description": {
+              "content": "Mark public interview response as agreed",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "public",
+                "interviews",
+                ":token",
+                "agreed"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token",
+                  "description": "(Required) token"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85ddb420-9257-4416-a375-a93ae5699775",
+              "name": "Response agreement updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "public",
+                    "interviews",
+                    ":token",
+                    "agreed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) token"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"response_id\": 1009,\n  \"agreed_at\": \"2019-08-18T17:12:49.536Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "843365a9-2383-493a-9901-d6d563deaf0e",
+          "name": "Finish interview immediately",
+          "request": {
+            "name": "Finish interview immediately",
+            "description": {
+              "content": "Finish interview immediately",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v3",
+                "responses",
+                ":id",
+                "finish"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) entity id"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6948c3f1-77a1-420a-b79d-fa4d6288d84b",
+              "name": "Finished response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v3",
+                    "responses",
+                    ":id",
+                    "finish"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) entity id"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1160,\n  \"vacancy_id\": 3657,\n  \"candidate_id\": 371,\n  \"response_status_id\": 5618,\n  \"response_source_id\": 6143,\n  \"interview_id\": 4680,\n  \"external_id\": \"string\",\n  \"is_hidden_by_candidate\": false,\n  \"created_at\": \"2018-05-18T00:48:10.043Z\",\n  \"agreed_at\": \"1976-04-22T18:49:46.064Z\",\n  \"date_sent\": \"1959-07-29T17:04:04.820Z\",\n  \"resume_url\": \"string\",\n  \"second_resume_url\": \"string\",\n  \"social_source\": \"string\",\n  \"utm_source\": \"string\",\n  \"utm_medium\": \"string\",\n  \"utm_campaign\": \"string\",\n  \"utm_content\": \"string\",\n  \"utm_term\": \"string\",\n  \"is_paid\": true,\n  \"_embedded\": {\n    \"interview\": {\n      \"id\": 5724,\n      \"date_create\": \"1958-04-14T13:10:47.680Z\",\n      \"token\": \"string\",\n      \"interview_stage_id\": 4288,\n      \"candidate_id\": 1202,\n      \"_embedded\": {\n        \"stage\": {\n          \"id\": 6803,\n          \"key\": \"string\",\n          \"title\": \"string\"\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://my.vcv.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ca47f4c9-cd64-4b75-ac58-35a8f2c1c730",
+    "name": "VCV chatbot interview API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "open api",
+      "type": "text/plain"
+    }
+  }
+}
