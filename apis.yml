@@ -111,7 +111,7 @@ apis:
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
   tags:
-  - integration
+  - Integration
   tags_raw:
   - integration
   properties:
@@ -125,7 +125,7 @@ apis:
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
   tags:
-  - interview
+  - Interview
   tags_raw:
   - interview
   properties:
@@ -179,7 +179,7 @@ apis:
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
   tags:
-  - response
+  - Response
   tags_raw:
   - response
   properties:
@@ -193,7 +193,7 @@ apis:
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
   tags:
-  - survey
+  - Survey
   tags_raw:
   - survey
   properties:
@@ -262,7 +262,7 @@ apis:
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
   tags:
-  - videointerview
+  - Video Interview
   tags_raw:
   - videointerview
   properties:
