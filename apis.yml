@@ -22,15 +22,16 @@ deliveryModel:
   method: derived
 accessModel:
   pricing: unknown
-  onboarding: self-serve
+  onboarding: unknown
   trial: false
   try_now: false
   public: false
-  label: Self-serve signup
-  confidence: medium
+  label: Unknown
+  confidence: low
   source:
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://static.tildacdn.net/tild3164-3465-4133-a335-363938393334/vcv_badge.png
 x-type: company
@@ -334,8 +335,9 @@ common:
   url: asyncapi/vcv-webhooks-asyncapi.yml
 - type: AgentSkill
   url: skills/_index.yml
-- type: MCPServer
+- type: X-MCPServerCandidate
   url: mcp/vcv-mcp.yml
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
 - type: LLMsTxt
   url: llms/vcv-llms.txt
 - type: Overlay
