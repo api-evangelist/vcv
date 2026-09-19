@@ -50,6 +50,14 @@ tags:
 - Video Interviews
 - Talent Acquisition
 - Hiring
+- Assessment
+tags_raw:
+- Company
+- Recruiting
+- Human Resources
+- Video Interviews
+- Talent Acquisition
+- Hiring
 - Assessments
 apis:
 - aid: vcv:vcv-chatbot-api
@@ -194,7 +202,7 @@ apis:
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
   tags:
-  - Survey
+  - Surveys
   tags_raw:
   - survey
   properties:
