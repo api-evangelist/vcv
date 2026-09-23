@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: VCV chatbot limits API
+  title: VCV Limits API
   description: open api
   version: v3
 servers:
@@ -13,13 +13,13 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: limits
+- name: Limits
 paths:
   /api/v3/company-limits:
     get:
       description: Get company limits
       tags:
-      - limits
+      - Limits
       parameters:
       - name: company_id
         in: path
@@ -45,10 +45,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CompanyLimits'
+      summary: Get api company limits
+      x-summary-source: derived
+      operationId: getApiV3CompanyLimits
+      x-operation-id-source: derived
     patch:
       description: Update company limits
       tags:
-      - limits
+      - Limits
       parameters:
       - name: company_id
         in: path
@@ -63,21 +67,26 @@ paths:
             schema:
               properties:
                 vacancy_limit:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                 response_limit:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                 response_balance:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                 paid_from:
-                  nullable: true
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   format: date-time
                 paid_to:
-                  nullable: true
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   format: date-time
                 company_id:
                   type: integer
@@ -106,11 +115,13 @@ paths:
                 extended_test:
                   type: boolean
                 fullhd_response_balance:
-                  nullable: true
-                  type: integer
+                  type:
+                  - integer
+                  - 'null'
                 hd_response_balance:
-                  nullable: true
-                  type: integer
+                  type:
+                  - integer
+                  - 'null'
                 integration:
                   type: boolean
                 extra_response_balance:
@@ -137,6 +148,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CompanyLimits'
+      summary: Update api company limits
+      x-summary-source: derived
+      operationId: patchApiV3CompanyLimits
+      x-operation-id-source: derived
 components:
   schemas:
     CompanyLimits:
@@ -151,29 +166,35 @@ components:
         user_id:
           type: integer
         vacancy_limit:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         response_limit:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         response_balance:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         paid_from:
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
         paid_to:
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
         company_id:
           type: integer
         save_no_paid_responses:
           type: boolean
         paid_at:
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
         sms_balance:
           type: integer
@@ -182,11 +203,13 @@ components:
         is_sms_enabled:
           type: boolean
         userCount:
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         vacancyCount:
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         latestLog:
           type: object
           properties:
@@ -221,11 +244,13 @@ components:
         extended_test:
           type: boolean
         fullhd_response_balance:
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         hd_response_balance:
-          nullable: true
-          type: integer
+          type:
+          - integer
+          - 'null'
         integration:
           type: boolean
         extra_response_balance:

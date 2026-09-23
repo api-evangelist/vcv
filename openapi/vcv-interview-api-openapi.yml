@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: VCV chatbot interview API
+  title: VCV Interview API
   description: open api
   version: v3
 servers:
@@ -13,12 +13,12 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: interview
+- name: Interview
 paths:
   /api/v3/public/interviews/{token}:
     get:
       tags:
-      - interview
+      - Interview
       description: Get public interview
       parameters:
       - $ref: '#/components/parameters/token'
@@ -47,9 +47,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PublicInterview'
+      summary: Get api public interviews by token
+      x-summary-source: derived
+      operationId: getApiV3PublicInterviewsByToken
+      x-operation-id-source: derived
     patch:
       tags:
-      - interview
+      - Interview
       description: Update public interview response state and save first UTM payload
       parameters:
       - $ref: '#/components/parameters/token'
@@ -88,10 +92,14 @@ paths:
                   agreed_at:
                     type: string
                     format: date-time
+      summary: Update api public interviews by token
+      x-summary-source: derived
+      operationId: patchApiV3PublicInterviewsByToken
+      x-operation-id-source: derived
   /api/v3/public/interviews/{token}/agreed:
     post:
       tags:
-      - interview
+      - Interview
       description: Mark public interview response as agreed
       parameters:
       - $ref: '#/components/parameters/token'
@@ -108,11 +116,15 @@ paths:
                   agreed_at:
                     type: string
                     format: date-time
+      summary: Create api public interviews by token agreed
+      x-summary-source: derived
+      operationId: postApiV3PublicInterviewsByTokenAgreed
+      x-operation-id-source: derived
   /api/v3/responses/{id}/finish:
     post:
       description: Finish interview immediately
       tags:
-      - interview
+      - Interview
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
@@ -139,79 +151,12 @@ paths:
                                   stage:
                                     allOf:
                                     - $ref: '#/components/schemas/InterviewStage'
+      summary: Create api responses by id finish
+      x-summary-source: derived
+      operationId: postApiV3ResponsesByIdFinish
+      x-operation-id-source: derived
 components:
   schemas:
-    Response:
-      properties:
-        id:
-          type: integer
-        vacancy_id:
-          type: integer
-        candidate_id:
-          type: integer
-        response_status_id:
-          type: integer
-        response_source_id:
-          type: integer
-        interview_id:
-          type: integer
-        external_id:
-          type: string
-        is_hidden_by_candidate:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-        agreed_at:
-          type: string
-          format: date-time
-          nullable: true
-        date_sent:
-          type: string
-          format: date-time
-          nullable: true
-        resume_url:
-          type: string
-          nullable: true
-        second_resume_url:
-          type: string
-          nullable: true
-        social_source:
-          type: string
-          nullable: true
-        utm_source:
-          type: string
-          nullable: true
-        utm_medium:
-          type: string
-          nullable: true
-        utm_campaign:
-          type: string
-          nullable: true
-        utm_content:
-          type: string
-          nullable: true
-        utm_term:
-          type: string
-          nullable: true
-        is_paid:
-          type: boolean
-          nullable: true
-      type: object
-    Candidate:
-      properties:
-        id:
-          type: integer
-        date_created:
-          type: string
-          format: date-time
-        email:
-          type: string
-        bithdate:
-          type: string
-        gender:
-          type: string
-      type: object
     PublicInterview:
       properties:
         id:
@@ -244,27 +189,6 @@ components:
             stage:
               $ref: '#/components/schemas/InterviewStage'
       type: object
-    CandidateName:
-      properties:
-        candidate_id:
-          type: integer
-        first_name:
-          type: string
-        last_name:
-          type: string
-        second_name:
-          type: string
-          nullable: true
-      type: object
-    InterviewStage:
-      properties:
-        id:
-          type: integer
-        key:
-          type: string
-        title:
-          type: string
-      type: object
     CandidatePhone:
       properties:
         candidate_id:
@@ -273,8 +197,9 @@ components:
           type: integer
         number:
           type: string
-      nullable: true
-      type: object
+      type:
+      - object
+      - 'null'
     Interview:
       properties:
         id:
@@ -288,6 +213,110 @@ components:
           type: integer
         candidate_id:
           type: integer
+      type: object
+    InterviewStage:
+      properties:
+        id:
+          type: integer
+        key:
+          type: string
+        title:
+          type: string
+      type: object
+    CandidateName:
+      properties:
+        candidate_id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        second_name:
+          type:
+          - string
+          - 'null'
+      type: object
+    Candidate:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        email:
+          type: string
+        bithdate:
+          type: string
+        gender:
+          type: string
+      type: object
+    Response:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        candidate_id:
+          type: integer
+        response_status_id:
+          type: integer
+        response_source_id:
+          type: integer
+        interview_id:
+          type: integer
+        external_id:
+          type: string
+        is_hidden_by_candidate:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        agreed_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        date_sent:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        resume_url:
+          type:
+          - string
+          - 'null'
+        second_resume_url:
+          type:
+          - string
+          - 'null'
+        social_source:
+          type:
+          - string
+          - 'null'
+        utm_source:
+          type:
+          - string
+          - 'null'
+        utm_medium:
+          type:
+          - string
+          - 'null'
+        utm_campaign:
+          type:
+          - string
+          - 'null'
+        utm_content:
+          type:
+          - string
+          - 'null'
+        utm_term:
+          type:
+          - string
+          - 'null'
+        is_paid:
+          type:
+          - boolean
+          - 'null'
       type: object
   parameters:
     id:

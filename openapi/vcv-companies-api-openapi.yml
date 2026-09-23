@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: VCV chatbot companies API
+  title: VCV Companies API
   description: open api
   version: v3
 servers:
@@ -13,13 +13,13 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: companies
+- name: Companies
 paths:
   /api/v3/companies/search:
     get:
       description: Get companies list with search and pagination
       tags:
-      - companies
+      - Companies
       parameters:
       - name: page
         in: query
@@ -141,32 +141,41 @@ paths:
                               name:
                                 type: string
                               phone:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               geo_id:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                               language_id:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                               company_source_id:
-                                type: integer
-                                nullable: true
+                                type:
+                                - integer
+                                - 'null'
                               time_format:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               domain_prefix:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               domain_prefix_previous:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               logo_url:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               invite_logo_url:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               is_permanent_response_link:
                                 type: boolean
                               is_test:
@@ -182,9 +191,10 @@ paths:
                               is_unique_password:
                                 type: boolean
                               expired_at:
-                                type: string
+                                type:
+                                - string
+                                - 'null'
                                 format: date-time
-                                nullable: true
                           - type: object
                             properties:
                               limits:
@@ -200,14 +210,17 @@ paths:
                                   user_id:
                                     type: integer
                                   vacancy_limit:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                   response_limit:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                   response_balance:
-                                    type: integer
-                                    nullable: true
+                                    type:
+                                    - integer
+                                    - 'null'
                                   company_id:
                                     type: integer
                               geo:
@@ -242,6 +255,10 @@ paths:
                                     company_id:
                                       type: integer
                 type: object
+      summary: Get api companies search
+      x-summary-source: derived
+      operationId: getApiV3CompaniesSearch
+      x-operation-id-source: derived
 components:
   securitySchemes:
     bearerAuth:

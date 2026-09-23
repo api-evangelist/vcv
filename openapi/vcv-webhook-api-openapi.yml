@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: VCV chatbot webhook API
+  title: VCV Webhook API
   description: open api
   version: v3
 servers:
@@ -13,13 +13,13 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: webhook
+- name: Webhook
 paths:
   /api/v3/company-webhooks:
     get:
       description: Get company webhooks list
       tags:
-      - webhook
+      - Webhook
       parameters:
       - $ref: '#/components/parameters/pagination_page'
       - $ref: '#/components/parameters/pagination_page_size'
@@ -98,6 +98,10 @@ paths:
                                   user:
                                     $ref: '#/components/schemas/User'
                 type: object
+      summary: Get api company webhooks
+      x-summary-source: derived
+      operationId: getApiV3CompanyWebhooks
+      x-operation-id-source: derived
     post:
       description: Create company webhook
       parameters:
@@ -112,7 +116,7 @@ paths:
             enum:
             - user
       tags:
-      - webhook
+      - Webhook
       requestBody:
         required: true
         content:
@@ -124,8 +128,9 @@ paths:
                 url:
                   type: string
                 name:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                 event:
                   type: string
                   enum:
@@ -267,11 +272,15 @@ paths:
                       properties:
                         user:
                           $ref: '#/components/schemas/User'
+      summary: Create api company webhooks
+      x-summary-source: derived
+      operationId: postApiV3CompanyWebhooks
+      x-operation-id-source: derived
   /api/v3/company-webhooks/{id}:
     get:
       description: Get company webhook detail
       tags:
-      - webhook
+      - Webhook
       parameters:
       - $ref: '#/components/parameters/id'
       - name: with[]
@@ -299,10 +308,14 @@ paths:
                       properties:
                         user:
                           $ref: '#/components/schemas/User'
+      summary: Get api company webhooks by id
+      x-summary-source: derived
+      operationId: getApiV3CompanyWebhooksById
+      x-operation-id-source: derived
     delete:
       description: Delete webhook
       tags:
-      - webhook
+      - Webhook
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
@@ -312,6 +325,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Webhook'
+      summary: Delete api company webhooks by id
+      x-summary-source: derived
+      operationId: deleteApiV3CompanyWebhooksById
+      x-operation-id-source: derived
     patch:
       description: Update webhook
       parameters:
@@ -327,7 +344,7 @@ paths:
             enum:
             - user
       tags:
-      - webhook
+      - Webhook
       requestBody:
         required: true
         content:
@@ -339,8 +356,9 @@ paths:
                 url:
                   type: string
                 name:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
                 active:
                   type: boolean
               type: object
@@ -359,8 +377,71 @@ paths:
                       properties:
                         user:
                           $ref: '#/components/schemas/User'
+      summary: Update api company webhooks by id
+      x-summary-source: derived
+      operationId: patchApiV3CompanyWebhooksById
+      x-operation-id-source: derived
 components:
   schemas:
+    ResponseComment:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        message:
+          type: string
+        response_id:
+          type: integer
+        user_id:
+          type: integer
+      type: object
+    Vacancy:
+      properties:
+        id:
+          type: integer
+        token:
+          type: string
+        title:
+          type: string
+        active:
+          type: boolean
+        user_id:
+          type: integer
+        language_id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+      type: object
+    Webhook:
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+        company_id:
+          type: integer
+        active:
+          type: boolean
+        event:
+          type: string
+        secret:
+          type: string
+        url:
+          type: string
+        name:
+          type:
+          - string
+          - 'null'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
     User:
       properties:
         id:
@@ -373,8 +454,9 @@ components:
         position:
           type: string
         logo_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         geo_id:
           type: integer
         lanaguage_id:
@@ -382,8 +464,9 @@ components:
         company_id:
           type: integer
         userName:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           properties:
             user_id:
               type: integer
@@ -418,116 +501,53 @@ components:
           type: string
           format: date-time
         agreed_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         date_sent:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         resume_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         second_resume_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         social_source:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         utm_source:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         utm_medium:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         utm_campaign:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         utm_content:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         utm_term:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         is_paid:
-          type: boolean
-          nullable: true
-      type: object
-    Vacancy:
-      properties:
-        id:
-          type: integer
-        token:
-          type: string
-        title:
-          type: string
-        active:
-          type: boolean
-        user_id:
-          type: integer
-        language_id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-      type: object
-    ResponseComment:
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        message:
-          type: string
-        response_id:
-          type: integer
-        user_id:
-          type: integer
-      type: object
-    Webhook:
-      properties:
-        id:
-          type: integer
-        user_id:
-          type: integer
-        company_id:
-          type: integer
-        active:
-          type: boolean
-        event:
-          type: string
-        secret:
-          type: string
-        url:
-          type: string
-        name:
-          type: string
-          nullable: true
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
+          type:
+          - boolean
+          - 'null'
       type: object
   parameters:
-    filter_id:
-      name: filter[id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_active:
-      name: filter[active]
-      in: query
-      required: false
-      schema:
-        type: boolean
     id:
       name: id
       in: path
@@ -535,6 +555,12 @@ components:
       required: true
       schema:
         type: integer
+    filter_active:
+      name: filter[active]
+      in: query
+      required: false
+      schema:
+        type: boolean
     sort_order:
       name: sort[order]
       in: query
@@ -546,14 +572,6 @@ components:
         enum:
         - asc
         - desc
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
     pagination_page_size:
       name: limit
       in: query
@@ -562,6 +580,24 @@ components:
       schema:
         type: integer
         default: 20
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
   securitySchemes:
     bearerAuth:
       type: http

@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: VCV chatbot vacancy API
+  title: VCV Vacancy API
   description: open api
   version: v3
 servers:
@@ -168,6 +168,10 @@ paths:
                                     items:
                                       $ref: '#/components/schemas/VacancyUrlHistory'
                 type: object
+      summary: Get api vacancies
+      x-summary-source: derived
+      operationId: getApiV3Vacancies
+      x-operation-id-source: derived
     post:
       description: Create vacancy
       tags:
@@ -203,6 +207,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Vacancy'
+      summary: Create api vacancies
+      x-summary-source: derived
+      operationId: postApiV3Vacancies
+      x-operation-id-source: derived
     delete:
       description: Delete vacancies list
       tags:
@@ -228,6 +236,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Vacancy'
+      summary: Delete api vacancies
+      x-summary-source: derived
+      operationId: deleteApiV3Vacancies
+      x-operation-id-source: derived
     patch:
       description: Update vacancies list
       tags:
@@ -255,6 +267,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Vacancy'
+      summary: Update api vacancies
+      x-summary-source: derived
+      operationId: patchApiV3Vacancies
+      x-operation-id-source: derived
   /api/v3/vacancies/{id}:
     get:
       description: Get vacancy
@@ -342,6 +358,10 @@ paths:
                           type: array
                           items:
                             $ref: '#/components/schemas/VacancyUrlHistory'
+      summary: Get api vacancies by id
+      x-summary-source: derived
+      operationId: getApiV3VacanciesById
+      x-operation-id-source: derived
     delete:
       description: Delete vacancy
       tags:
@@ -360,6 +380,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Vacancy'
+      summary: Delete api vacancies by id
+      x-summary-source: derived
+      operationId: deleteApiV3VacanciesById
+      x-operation-id-source: derived
     patch:
       description: Update vacancy
       tags:
@@ -420,6 +444,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Vacancy'
+      summary: Update api vacancies by id
+      x-summary-source: derived
+      operationId: patchApiV3VacanciesById
+      x-operation-id-source: derived
   /api/v3/vacancy-permissions:
     get:
       description: Get vacancy permissions list
@@ -491,6 +519,10 @@ paths:
                         items:
                           $ref: '#/components/schemas/Permission'
                 type: object
+      summary: Get api vacancy permissions
+      x-summary-source: derived
+      operationId: getApiV3VacancyPermissions
+      x-operation-id-source: derived
     post:
       description: Create vacancy permission
       tags:
@@ -532,6 +564,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Permission'
+      summary: Create api vacancy permissions
+      x-summary-source: derived
+      operationId: postApiV3VacancyPermissions
+      x-operation-id-source: derived
   /api/v3/vacancy-permissions/{id}:
     get:
       description: Get vacancy permission
@@ -557,6 +593,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Permission'
+      summary: Get api vacancy permissions by id
+      x-summary-source: derived
+      operationId: getApiV3VacancyPermissionsById
+      x-operation-id-source: derived
     patch:
       description: Update vacancy permission
       parameters:
@@ -595,6 +635,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Permission'
+      summary: Update api vacancy permissions by id
+      x-summary-source: derived
+      operationId: patchApiV3VacancyPermissionsById
+      x-operation-id-source: derived
     delete:
       description: Delete vacancy permission
       tags:
@@ -608,6 +652,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Permission'
+      summary: Delete api vacancy permissions by id
+      x-summary-source: derived
+      operationId: deleteApiV3VacancyPermissionsById
+      x-operation-id-source: derived
   /api/v3/vacancy-competences:
     get:
       description: Get vacancy competences list
@@ -685,6 +733,10 @@ paths:
                                   view:
                                     $ref: '#/components/schemas/CompetenceView'
                 type: object
+      summary: Get api vacancy competences
+      x-summary-source: derived
+      operationId: getApiV3VacancyCompetences
+      x-operation-id-source: derived
     post:
       description: Create vacancy competence
       tags:
@@ -725,8 +777,9 @@ paths:
                 title:
                   type: string
                 hint:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
               type: object
       responses:
         '200':
@@ -747,6 +800,10 @@ paths:
                           $ref: '#/components/schemas/CompetenceLevel'
                         view:
                           $ref: '#/components/schemas/CompetenceView'
+      summary: Create api vacancy competences
+      x-summary-source: derived
+      operationId: postApiV3VacancyCompetences
+      x-operation-id-source: derived
   /api/v3/vacancy-competences/{id}:
     get:
       description: Get vacancy competence
@@ -785,6 +842,10 @@ paths:
                           $ref: '#/components/schemas/CompetenceLevel'
                         view:
                           $ref: '#/components/schemas/CompetenceView'
+      summary: Get api vacancy competences by id
+      x-summary-source: derived
+      operationId: getApiV3VacancyCompetencesById
+      x-operation-id-source: derived
     patch:
       description: Update vacancy competence
       parameters:
@@ -824,8 +885,9 @@ paths:
                 title:
                   type: string
                 hint:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
               type: object
       responses:
         '200':
@@ -846,6 +908,10 @@ paths:
                           $ref: '#/components/schemas/CompetenceLevel'
                         view:
                           $ref: '#/components/schemas/CompetenceView'
+      summary: Update api vacancy competences by id
+      x-summary-source: derived
+      operationId: patchApiV3VacancyCompetencesById
+      x-operation-id-source: derived
     delete:
       description: Delete vacancy competence
       tags:
@@ -859,6 +925,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VacancyCompetence'
+      summary: Delete api vacancy competences by id
+      x-summary-source: derived
+      operationId: deleteApiV3VacancyCompetencesById
+      x-operation-id-source: derived
   /api/v3/competence-views:
     get:
       description: Get competence views
@@ -911,6 +981,10 @@ paths:
                         items:
                           $ref: '#/components/schemas/CompetenceView'
                 type: object
+      summary: Get api competence views
+      x-summary-source: derived
+      operationId: getApiV3CompetenceViews
+      x-operation-id-source: derived
   /api/v3/competence-views/{id}:
     get:
       description: Get competence view
@@ -925,6 +999,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CompetenceView'
+      summary: Get api competence views by id
+      x-summary-source: derived
+      operationId: getApiV3CompetenceViewsById
+      x-operation-id-source: derived
   /api/v3/competence-levels:
     get:
       description: Get competence levels
@@ -977,6 +1055,10 @@ paths:
                         items:
                           $ref: '#/components/schemas/CompetenceLevel'
                 type: object
+      summary: Get api competence levels
+      x-summary-source: derived
+      operationId: getApiV3CompetenceLevels
+      x-operation-id-source: derived
   /api/v3/competence-levels/{id}:
     get:
       description: Get competence level
@@ -991,6 +1073,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CompetenceLevel'
+      summary: Get api competence levels by id
+      x-summary-source: derived
+      operationId: getApiV3CompetenceLevelsById
+      x-operation-id-source: derived
   /api/v3/vacancy-modules:
     get:
       description: Get vacancy modules list
@@ -1060,6 +1146,10 @@ paths:
                         items:
                           $ref: '#/components/schemas/VacancyModule'
                 type: object
+      summary: Get api vacancy modules
+      x-summary-source: derived
+      operationId: getApiV3VacancyModules
+      x-operation-id-source: derived
   /api/v3/vacancy-modules/{id_module}/{vacancy_id}:
     get:
       description: Get vacancy module detail
@@ -1096,6 +1186,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VacancyModule'
+      summary: Get api vacancy modules by id module by vacancy id
+      x-summary-source: derived
+      operationId: getApiV3VacancyModulesByIdModuleByVacancyId
+      x-operation-id-source: derived
     patch:
       description: Update vacancy module
       tags:
@@ -1129,6 +1223,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VacancyModule'
+      summary: Update api vacancy modules by id module by vacancy id
+      x-summary-source: derived
+      operationId: patchApiV3VacancyModulesByIdModuleByVacancyId
+      x-operation-id-source: derived
   /api/v3/vacancy-stages:
     get:
       description: Get vacancy module stages list
@@ -1197,6 +1295,10 @@ paths:
                         items:
                           $ref: '#/components/schemas/VacancyModuleStage'
                 type: object
+      summary: Get api vacancy stages
+      x-summary-source: derived
+      operationId: getApiV3VacancyStages
+      x-operation-id-source: derived
   /api/v3/vacancy-stages/{id_module}/{vacancy_id}:
     get:
       description: Get vacancy module stage detail
@@ -1232,6 +1334,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VacancyModuleStage'
+      summary: Get api vacancy stages by id module by vacancy id
+      x-summary-source: derived
+      operationId: getApiV3VacancyStagesByIdModuleByVacancyId
+      x-operation-id-source: derived
     patch:
       description: Update vacancy module stage
       tags:
@@ -1256,11 +1362,13 @@ paths:
             schema:
               properties:
                 name:
-                  nullable: true
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                 description:
-                  nullable: true
-                  type: string
+                  type:
+                  - string
+                  - 'null'
               type: object
       responses:
         '200':
@@ -1269,6 +1377,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VacancyModuleStage'
+      summary: Update api vacancy stages by id module by vacancy id
+      x-summary-source: derived
+      operationId: patchApiV3VacancyStagesByIdModuleByVacancyId
+      x-operation-id-source: derived
   /api/v3/vacancies/{vacancy_id}/logo:
     post:
       description: Update vacancy logo
@@ -1300,6 +1412,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Vacancy'
+      summary: Create api vacancies by vacancy id logo
+      x-summary-source: derived
+      operationId: postApiV3VacanciesByVacancyIdLogo
+      x-operation-id-source: derived
     delete:
       description: Delete vacancy logo
       tags:
@@ -1318,6 +1434,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Vacancy'
+      summary: Delete api vacancies by vacancy id logo
+      x-summary-source: derived
+      operationId: deleteApiV3VacanciesByVacancyIdLogo
+      x-operation-id-source: derived
   /api/v3/vacancy-landing-url-history:
     get:
       description: Get vacancy landing url history
@@ -1387,6 +1507,10 @@ paths:
                         items:
                           $ref: '#/components/schemas/VacancyUrlHistory'
                 type: object
+      summary: Get api vacancy landing url history
+      x-summary-source: derived
+      operationId: getApiV3VacancyLandingUrlHistory
+      x-operation-id-source: derived
   /api/v3/vacancy-landing-url-history/validate:
     post:
       description: Validate landing url history
@@ -1410,6 +1534,10 @@ paths:
             application/json:
               schema:
                 type: object
+      summary: Create api vacancy landing url history validate
+      x-summary-source: derived
+      operationId: postApiV3VacancyLandingUrlHistoryValidate
+      x-operation-id-source: derived
   /api/v3/vacancy-landing-url-history/{id}:
     get:
       description: Get history item
@@ -1424,6 +1552,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VacancyUrlHistory'
+      summary: Get api vacancy landing url history by id
+      x-summary-source: derived
+      operationId: getApiV3VacancyLandingUrlHistoryById
+      x-operation-id-source: derived
     delete:
       description: Delete vacancy url path
       parameters:
@@ -1437,6 +1569,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VacancyUrlHistory'
+      summary: Delete api vacancy landing url history by id
+      x-summary-source: derived
+      operationId: deleteApiV3VacancyLandingUrlHistoryById
+      x-operation-id-source: derived
   /api/v3/response-status-email-templates:
     get:
       description: Get response status email templates list
@@ -1513,6 +1649,10 @@ paths:
                                   status:
                                     $ref: '#/components/schemas/ResponseStatus'
                 type: object
+      summary: Get api response status email templates
+      x-summary-source: derived
+      operationId: getApiV3ResponseStatusEmailTemplates
+      x-operation-id-source: derived
     post:
       description: Create response status email template
       parameters:
@@ -1567,6 +1707,10 @@ paths:
                           $ref: '#/components/schemas/Vacancy'
                         status:
                           $ref: '#/components/schemas/ResponseStatus'
+      summary: Create api response status email templates
+      x-summary-source: derived
+      operationId: postApiV3ResponseStatusEmailTemplates
+      x-operation-id-source: derived
   /api/v3/response-status-email-templates/{id}:
     get:
       description: Get response status email template detail
@@ -1602,6 +1746,10 @@ paths:
                           $ref: '#/components/schemas/Vacancy'
                         status:
                           $ref: '#/components/schemas/ResponseStatus'
+      summary: Get api response status email templates by id
+      x-summary-source: derived
+      operationId: getApiV3ResponseStatusEmailTemplatesById
+      x-operation-id-source: derived
     delete:
       description: Delete response status email template
       tags:
@@ -1615,6 +1763,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseStatusEmailTemplate'
+      summary: Delete api response status email templates by id
+      x-summary-source: derived
+      operationId: deleteApiV3ResponseStatusEmailTemplatesById
+      x-operation-id-source: derived
     patch:
       description: Update response status email template
       parameters:
@@ -1666,6 +1818,10 @@ paths:
                           $ref: '#/components/schemas/Vacancy'
                         status:
                           $ref: '#/components/schemas/ResponseStatus'
+      summary: Update api response status email templates by id
+      x-summary-source: derived
+      operationId: patchApiV3ResponseStatusEmailTemplatesById
+      x-operation-id-source: derived
   /api/v3/response-status-email-templates/{id}/recovery:
     post:
       description: Recovery response status email template from company settings
@@ -1701,6 +1857,10 @@ paths:
                           $ref: '#/components/schemas/Vacancy'
                         status:
                           $ref: '#/components/schemas/ResponseStatus'
+      summary: Create api response status email templates by id recovery
+      x-summary-source: derived
+      operationId: postApiV3ResponseStatusEmailTemplatesByIdRecovery
+      x-operation-id-source: derived
   /api/v3/vacancy-email-template-remind:
     get:
       description: Get remind templates list
@@ -1754,6 +1914,10 @@ paths:
                         items:
                           $ref: '#/components/schemas/RemindEmail'
                 type: object
+      summary: Get api vacancy email template remind
+      x-summary-source: derived
+      operationId: getApiV3VacancyEmailTemplateRemind
+      x-operation-id-source: derived
     post:
       description: Create remind email
       tags:
@@ -1789,6 +1953,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemindEmail'
+      summary: Create api vacancy email template remind
+      x-summary-source: derived
+      operationId: postApiV3VacancyEmailTemplateRemind
+      x-operation-id-source: derived
   /api/v3/vacancy-email-template-remind/{id}:
     get:
       description: Get remind email detail
@@ -1803,6 +1971,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemindEmail'
+      summary: Get api vacancy email template remind by id
+      x-summary-source: derived
+      operationId: getApiV3VacancyEmailTemplateRemindById
+      x-operation-id-source: derived
     patch:
       description: Update remind email
       parameters:
@@ -1829,68 +2001,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/RemindEmail'
+      summary: Update api vacancy email template remind by id
+      x-summary-source: derived
+      operationId: patchApiV3VacancyEmailTemplateRemindById
+      x-operation-id-source: derived
 components:
   schemas:
-    VacancyCompetence:
+    Language:
       properties:
         id:
           type: integer
-        title:
-          type: string
-        hint:
-          type: string
-          nullable: true
-        competence_view_id:
-          type: integer
-          description: 'See [/api/v3/competence-views](#/vacancy/get_api_v3_competence_levels)
-
-            '
-        competence_level_id:
-          type: integer
-          description: 'See [/api/v3/competence-levels](#/vacancy/get_api_v3_competence_views)
-
-            '
-        vacancy_id:
-          type: integer
-        sort_order:
-          type: integer
-      type: object
-    VacancyModuleStage:
-      properties:
-        id:
-          type: integer
-        id_module:
+        code:
           type: string
         name:
           type: string
-          nullable: true
-        description:
-          type: string
-          nullable: true
-        minutes:
-          type: integer
-          nullable: true
-        vacancy_id:
-          type: integer
-      type: object
-    VacancyModule:
-      properties:
-        id:
-          type: integer
-        id_module:
-          type: string
-        is_active:
-          type: boolean
-        vacancy_id:
-          type: integer
-      type: object
-    VacancyUrlHistory:
-      properties:
-        id:
-          type: integer
-        vacancy_id:
-          type: string
-        landing_url_path:
+        bcp47_tag:
           type: string
       type: object
     Permission:
@@ -1906,17 +2031,6 @@ components:
         date_created:
           type: string
           format: date-time
-      type: object
-    Country:
-      properties:
-        id:
-          type: integer
-        code:
-          type: string
-        title_en:
-          type: string
-        title_ru:
-          type: string
       type: object
     Vacancy:
       properties:
@@ -1936,36 +2050,14 @@ components:
           type: string
           format: date-time
       type: object
-    ResponseStatus:
+    VacancyUrlHistory:
       properties:
         id:
           type: integer
-        title:
+        vacancy_id:
           type: string
-        active:
-          type: boolean
-        on_top:
-          type: boolean
-        sort_order:
-          type: integer
-        company_id:
-          type: integer
-          nullable: true
-        parent_id:
-          type: integer
-          nullable: true
-        id_compatibility:
-          type: integer
-        color:
+        landing_url_path:
           type: string
-        is_base:
-          type: boolean
-        is_hidden:
-          type: boolean
-        is_system:
-          type: boolean
-        is_stage:
-          type: boolean
       type: object
     User:
       properties:
@@ -1979,8 +2071,9 @@ components:
         position:
           type: string
         logo_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         geo_id:
           type: integer
         lanaguage_id:
@@ -1988,8 +2081,9 @@ components:
         company_id:
           type: integer
         userName:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           properties:
             user_id:
               type: integer
@@ -2002,41 +2096,15 @@ components:
             id:
               type: integer
       type: object
-    ResponseStatusEmailTemplate:
-      properties:
-        id:
-          type: integer
-        vacancy_id:
-          type: integer
-        template_header:
-          type: string
-        template_text:
-          type: string
-        title:
-          type: string
-        active:
-          type: boolean
-        manual:
-          type: boolean
-        response_status_id:
-          type: integer
-      type: object
-    CompetenceView:
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-      type: object
-    Language:
+    Country:
       properties:
         id:
           type: integer
         code:
           type: string
-        name:
+        title_en:
           type: string
-        bcp47_tag:
+        title_ru:
           type: string
       type: object
     CompetenceLevel:
@@ -2076,61 +2144,125 @@ components:
           type: string
           format: date-time
       type: object
+    ResponseStatusEmailTemplate:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        template_header:
+          type: string
+        template_text:
+          type: string
+        title:
+          type: string
+        active:
+          type: boolean
+        manual:
+          type: boolean
+        response_status_id:
+          type: integer
+      type: object
+    CompetenceView:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+      type: object
+    VacancyModule:
+      properties:
+        id:
+          type: integer
+        id_module:
+          type: string
+        is_active:
+          type: boolean
+        vacancy_id:
+          type: integer
+      type: object
+    ResponseStatus:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        active:
+          type: boolean
+        on_top:
+          type: boolean
+        sort_order:
+          type: integer
+        company_id:
+          type:
+          - integer
+          - 'null'
+        parent_id:
+          type:
+          - integer
+          - 'null'
+        id_compatibility:
+          type: integer
+        color:
+          type: string
+        is_base:
+          type: boolean
+        is_hidden:
+          type: boolean
+        is_system:
+          type: boolean
+        is_stage:
+          type: boolean
+      type: object
+    VacancyCompetence:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        hint:
+          type:
+          - string
+          - 'null'
+        competence_view_id:
+          type: integer
+          description: 'See [/api/v3/competence-views](#/vacancy/get_api_v3_competence_levels)
+
+            '
+        competence_level_id:
+          type: integer
+          description: 'See [/api/v3/competence-levels](#/vacancy/get_api_v3_competence_views)
+
+            '
+        vacancy_id:
+          type: integer
+        sort_order:
+          type: integer
+      type: object
+    VacancyModuleStage:
+      properties:
+        id:
+          type: integer
+        id_module:
+          type: string
+        name:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        minutes:
+          type:
+          - integer
+          - 'null'
+        vacancy_id:
+          type: integer
+      type: object
   parameters:
-    filter_active:
-      name: filter[active]
-      in: query
-      required: false
-      schema:
-        type: boolean
     filter_user_id:
       name: filter[user_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
-    filter_vacancy_id:
-      name: filter[vacancy_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    pagination_page_size:
-      name: limit
-      in: query
-      description: page size
-      required: false
-      schema:
-        type: integer
-        default: 20
-    filter_id:
-      name: filter[id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_response_status_id:
-      name: filter[response_status_id]
       in: query
       required: false
       schema:
@@ -2150,20 +2282,14 @@ components:
         enum:
         - asc
         - desc
-    filter_created_at_to:
-      name: filter[created_at][to]
+    pagination_page:
+      name: page
       in: query
+      description: page number
       required: false
       schema:
-        type: string
-        format: date-time
-    filter_created_at_from:
-      name: filter[created_at][from]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
+        type: integer
+        default: 1
     id:
       name: id
       in: path
@@ -2171,6 +2297,64 @@ components:
       required: true
       schema:
         type: integer
+    filter_created_at_from:
+      name: filter[created_at][from]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_vacancy_id:
+      name: filter[vacancy_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_created_at_to:
+      name: filter[created_at][to]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_active:
+      name: filter[active]
+      in: query
+      required: false
+      schema:
+        type: boolean
+    filter_response_status_id:
+      name: filter[response_status_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
   securitySchemes:
     bearerAuth:
       type: http

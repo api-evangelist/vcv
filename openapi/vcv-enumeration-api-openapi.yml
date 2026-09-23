@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: VCV chatbot enumeration API
+  title: VCV Enumeration API
   description: open api
   version: v3
 servers:
@@ -13,13 +13,13 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: enumeration
+- name: Enumeration
 paths:
   /api/v3/enumerations/:
     get:
       description: Get enumerations list
       tags:
-      - enumeration
+      - Enumeration
       parameters:
       - $ref: '#/components/parameters/pagination_page'
       - $ref: '#/components/parameters/pagination_page_size'
@@ -78,11 +78,15 @@ paths:
                                     items:
                                     - $ref: '#/components/schemas/Enumeration'
                           - type: object
+      summary: Get api enumerations
+      x-summary-source: derived
+      operationId: getApiV3Enumerations
+      x-operation-id-source: derived
   /api/v3/enumerations/{id}:
     get:
       description: Get enumeration details
       tags:
-      - enumeration
+      - Enumeration
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
@@ -93,10 +97,14 @@ paths:
               schema:
                 allOf:
                 - $ref: '#/components/schemas/Enumeration'
+      summary: Get api enumerations by id
+      x-summary-source: derived
+      operationId: getApiV3EnumerationsById
+      x-operation-id-source: derived
     patch:
       description: Update enumeration
       tags:
-      - enumeration
+      - Enumeration
       parameters:
       - $ref: '#/components/parameters/id'
       requestBody:
@@ -116,11 +124,15 @@ paths:
               schema:
                 allOf:
                 - $ref: '#/components/schemas/Enumeration'
+      summary: Update api enumerations by id
+      x-summary-source: derived
+      operationId: patchApiV3EnumerationsById
+      x-operation-id-source: derived
   /api/v3/enumerations/{id}/items:
     get:
       description: Get enumerations list
       tags:
-      - enumeration
+      - Enumeration
       parameters:
       - $ref: '#/components/parameters/pagination_page'
       - $ref: '#/components/parameters/pagination_page_size'
@@ -170,26 +182,12 @@ paths:
                         type: array
                         items:
                         - $ref: '#/components/schemas/EnumerationItem'
+      summary: Get api enumerations by id items
+      x-summary-source: derived
+      operationId: getApiV3EnumerationsByIdItems
+      x-operation-id-source: derived
 components:
   schemas:
-    EnumerationItem:
-      properties:
-        id:
-          type: integer
-        enumeration_id:
-          type: integer
-        value:
-          type: string
-        sort_order:
-          type: integer
-          nullable: true
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-      type: object
     PaginationProperties:
       type: object
       properties:
@@ -235,6 +233,25 @@ components:
           type: string
           format: date-time
       type: object
+    EnumerationItem:
+      properties:
+        id:
+          type: integer
+        enumeration_id:
+          type: integer
+        value:
+          type: string
+        sort_order:
+          type:
+          - integer
+          - 'null'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
   parameters:
     id:
       name: id
@@ -254,14 +271,6 @@ components:
         enum:
         - asc
         - desc
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
     pagination_page_size:
       name: limit
       in: query
@@ -270,6 +279,14 @@ components:
       schema:
         type: integer
         default: 20
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
   securitySchemes:
     bearerAuth:
       type: http

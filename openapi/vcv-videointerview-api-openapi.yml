@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: VCV chatbot videointerview API
+  title: VCV Videointerview API
   description: open api
   version: v3
 servers:
@@ -115,6 +115,10 @@ paths:
                                               question_video:
                                                 $ref: '#/components/schemas/Video'
                 type: object
+      summary: Get api videointerviews response
+      x-summary-source: derived
+      operationId: getApiV3VideointerviewsResponse
+      x-operation-id-source: derived
   /api/v3/videointerviews/response/{id}:
     get:
       tags:
@@ -178,6 +182,10 @@ paths:
                                       $ref: '#/components/schemas/VideoResponse'
                                     question_video:
                                       $ref: '#/components/schemas/Video'
+      summary: Get api videointerviews response by id
+      x-summary-source: derived
+      operationId: getApiV3VideointerviewsResponseById
+      x-operation-id-source: derived
   /api/v3/videointerviews/vacancy:
     get:
       description: Get vacancy videointerviews list
@@ -261,6 +269,10 @@ paths:
                                               video:
                                                 $ref: '#/components/schemas/Video'
                 type: object
+      summary: Get api videointerviews vacancy
+      x-summary-source: derived
+      operationId: getApiV3VideointerviewsVacancy
+      x-operation-id-source: derived
   /api/v3/videointerviews/vacancy/{id}:
     get:
       description: Get vacancy videointerview
@@ -309,6 +321,10 @@ paths:
                                   properties:
                                     video:
                                       $ref: '#/components/schemas/Video'
+      summary: Get api videointerviews vacancy by id
+      x-summary-source: derived
+      operationId: getApiV3VideointerviewsVacancyById
+      x-operation-id-source: derived
     patch:
       description: Update vacancy videointerview detail
       tags:
@@ -334,8 +350,9 @@ paths:
                     type: object
                     properties:
                       id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                       body:
                         type: string
                       answer_time:
@@ -355,8 +372,9 @@ paths:
                       video_title:
                         type: string
                       video_id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
               type: object
       responses:
         '200':
@@ -383,125 +401,23 @@ paths:
                                   properties:
                                     video:
                                       $ref: '#/components/schemas/Video'
+      summary: Update api videointerviews vacancy by id
+      x-summary-source: derived
+      operationId: patchApiV3VideointerviewsVacancyById
+      x-operation-id-source: derived
 components:
-  parameters:
-    filter_id:
-      name: filter[id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_created_at_to:
-      name: filter[created_at][to]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
-    filter_created_at_from:
-      name: filter[created_at][from]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-    filter_response_id:
-      name: filter[response_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_vacancy_id:
-      name: filter[vacancy_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    pagination_page_size:
-      name: limit
-      in: query
-      description: page size
-      required: false
-      schema:
-        type: integer
-        default: 20
   schemas:
-    Response:
+    VacancyVideointerview:
       properties:
         id:
           type: integer
         vacancy_id:
           type: integer
-        candidate_id:
-          type: integer
-        response_status_id:
-          type: integer
-        response_source_id:
-          type: integer
-        interview_id:
-          type: integer
-        external_id:
-          type: string
-        is_hidden_by_candidate:
+        is_video_answer_enabled:
           type: boolean
         created_at:
           type: string
           format: date-time
-        agreed_at:
-          type: string
-          format: date-time
-          nullable: true
-        date_sent:
-          type: string
-          format: date-time
-          nullable: true
-        resume_url:
-          type: string
-          nullable: true
-        second_resume_url:
-          type: string
-          nullable: true
-        social_source:
-          type: string
-          nullable: true
-        utm_source:
-          type: string
-          nullable: true
-        utm_medium:
-          type: string
-          nullable: true
-        utm_campaign:
-          type: string
-          nullable: true
-        utm_content:
-          type: string
-          nullable: true
-        utm_term:
-          type: string
-          nullable: true
-        is_paid:
-          type: boolean
-          nullable: true
       type: object
     ResponseVideointerview:
       properties:
@@ -516,17 +432,78 @@ components:
         active:
           type: boolean
         description:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         date_start:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         date_last_video_recorded:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      type: object
+    VideoResponse:
+      properties:
+        id:
+          type: integer
+        date_modified:
           type: string
           format: date-time
-          nullable: true
-      type: object
+        name:
+          type: string
+        video_status_id:
+          type: integer
+        video_response_partition_id:
+          type: integer
+        duration:
+          type:
+          - integer
+          - 'null'
+        original_extension:
+          type:
+          - string
+          - 'null'
+        format_list:
+          type:
+          - string
+          - 'null'
+        text:
+          type:
+          - string
+          - 'null'
+        hostname:
+          type: string
+        bucket:
+          type: string
+        original_file_size:
+          type:
+          - integer
+          - 'null'
+        token:
+          type: string
+        source:
+          type: string
+        preview:
+          type: string
+        has_image_preview:
+          type: string
+        is_visible:
+          type: string
+        is_local_files_cleared:
+          type: string
+        id_upload_status:
+          type: integer
+        stream_recording_name:
+          type:
+          - string
+          - 'null'
+      type:
+      - object
+      - 'null'
     Partition:
       properties:
         id:
@@ -558,18 +535,21 @@ components:
         is_question_skipped:
           type: boolean
         date_show:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         date_start_record:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         is_blocked:
           type: boolean
         language_code:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         question_video_id:
           type: integer
         question_video_title:
@@ -579,20 +559,7 @@ components:
         is_question_media_seen:
           type: boolean
       type: object
-    VacancyVideointerview:
-      properties:
-        id:
-          type: integer
-        vacancy_id:
-          type: integer
-        is_video_answer_enabled:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-      type: object
     Video:
-      nullable: true
       properties:
         id:
           type: integer
@@ -604,24 +571,29 @@ components:
         video_status_id:
           type: integer
         duration:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         original_extension:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         extension:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         hostname:
           type: string
         bucket:
           type: string
         size:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         original_size:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         token:
           type: string
         has_image_preview:
@@ -630,7 +602,9 @@ components:
           type: string
         preview:
           type: string
-      type: object
+      type:
+      - object
+      - 'null'
     VideointerviewQuestion:
       properties:
         id:
@@ -659,8 +633,9 @@ components:
         is_text_answer_enabled:
           type: boolean
         language_code:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         video_id:
           type: integer
         video_title:
@@ -668,57 +643,135 @@ components:
         video_url:
           type: string
       type: object
-    VideoResponse:
-      nullable: true
+    Response:
       properties:
         id:
           type: integer
-        date_modified:
+        vacancy_id:
+          type: integer
+        candidate_id:
+          type: integer
+        response_status_id:
+          type: integer
+        response_source_id:
+          type: integer
+        interview_id:
+          type: integer
+        external_id:
+          type: string
+        is_hidden_by_candidate:
+          type: boolean
+        created_at:
           type: string
           format: date-time
-        name:
-          type: string
-        video_status_id:
-          type: integer
-        video_response_partition_id:
-          type: integer
-        duration:
-          type: integer
-          nullable: true
-        original_extension:
-          type: string
-          nullable: true
-        format_list:
-          type: string
-          nullable: true
-        text:
-          type: string
-          nullable: true
-        hostname:
-          type: string
-        bucket:
-          type: string
-        original_file_size:
-          type: integer
-          nullable: true
-        token:
-          type: string
-        source:
-          type: string
-        preview:
-          type: string
-        has_image_preview:
-          type: string
-        is_visible:
-          type: string
-        is_local_files_cleared:
-          type: string
-        id_upload_status:
-          type: integer
-        stream_recording_name:
-          type: string
-          nullable: true
+        agreed_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        date_sent:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        resume_url:
+          type:
+          - string
+          - 'null'
+        second_resume_url:
+          type:
+          - string
+          - 'null'
+        social_source:
+          type:
+          - string
+          - 'null'
+        utm_source:
+          type:
+          - string
+          - 'null'
+        utm_medium:
+          type:
+          - string
+          - 'null'
+        utm_campaign:
+          type:
+          - string
+          - 'null'
+        utm_content:
+          type:
+          - string
+          - 'null'
+        utm_term:
+          type:
+          - string
+          - 'null'
+        is_paid:
+          type:
+          - boolean
+          - 'null'
       type: object
+  parameters:
+    filter_created_at_from:
+      name: filter[created_at][from]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_vacancy_id:
+      name: filter[vacancy_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+    filter_created_at_to:
+      name: filter[created_at][to]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_response_id:
+      name: filter[response_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
   securitySchemes:
     bearerAuth:
       type: http

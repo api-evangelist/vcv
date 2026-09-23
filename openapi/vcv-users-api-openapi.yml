@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: VCV chatbot users API
+  title: VCV Users API
   description: open api
   version: v3
 servers:
@@ -13,13 +13,13 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: users
+- name: Users
 paths:
   /api/v3/users:
     get:
       description: Get users list
       tags:
-      - users
+      - Users
       parameters:
       - $ref: '#/components/parameters/pagination_page'
       - $ref: '#/components/parameters/pagination_page_size'
@@ -98,11 +98,15 @@ paths:
                                 items:
                                   $ref: '#/components/schemas/Role'
                 type: object
+      summary: Get api users
+      x-summary-source: derived
+      operationId: getApiV3Users
+      x-operation-id-source: derived
   /api/v3/users/{id}:
     get:
       description: Get user detail
       tags:
-      - users
+      - Users
       parameters:
       - $ref: '#/components/parameters/id'
       - name: with[]
@@ -133,8 +137,32 @@ paths:
                       type: array
                       items:
                         $ref: '#/components/schemas/Role'
+      summary: Get api users by id
+      x-summary-source: derived
+      operationId: getApiV3UsersById
+      x-operation-id-source: derived
 components:
   schemas:
+    Language:
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+        bcp47_tag:
+          type: string
+      type: object
+    Role:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        role:
+          type: string
+      type: object
     User:
       properties:
         id:
@@ -147,8 +175,9 @@ components:
         position:
           type: string
         logo_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         geo_id:
           type: integer
         lanaguage_id:
@@ -156,8 +185,9 @@ components:
         company_id:
           type: integer
         userName:
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
           properties:
             user_id:
               type: integer
@@ -170,26 +200,6 @@ components:
             id:
               type: integer
       type: object
-    Role:
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        role:
-          type: string
-      type: object
-    Language:
-      properties:
-        id:
-          type: integer
-        code:
-          type: string
-        name:
-          type: string
-        bcp47_tag:
-          type: string
-      type: object
   parameters:
     id:
       name: id
@@ -198,14 +208,6 @@ components:
       required: true
       schema:
         type: integer
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
     pagination_page_size:
       name: limit
       in: query
@@ -214,6 +216,14 @@ components:
       schema:
         type: integer
         default: 20
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
   securitySchemes:
     bearerAuth:
       type: http

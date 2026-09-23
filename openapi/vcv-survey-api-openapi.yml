@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: VCV chatbot survey API
+  title: VCV Survey API
   description: open api
   version: v3
 servers:
@@ -13,13 +13,13 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: survey
+- name: Survey
 paths:
   /api/v3/surveys/templates:
     get:
       description: Get survey templates list
       tags:
-      - survey
+      - Survey
       parameters:
       - $ref: '#/components/parameters/pagination_page'
       - $ref: '#/components/parameters/pagination_page_size'
@@ -100,11 +100,15 @@ paths:
                                                 items:
                                                   $ref: '#/components/schemas/SurveyTemplateAnswer'
                 type: object
+      summary: Get api surveys templates
+      x-summary-source: derived
+      operationId: getApiV3SurveysTemplates
+      x-operation-id-source: derived
   /api/v3/surveys/templates/{id}:
     get:
       description: Get survey template detail
       tags:
-      - survey
+      - Survey
       parameters:
       - name: id
         in: path
@@ -150,10 +154,14 @@ paths:
                                       type: array
                                       items:
                                         $ref: '#/components/schemas/SurveyTemplateAnswer'
+      summary: Get api surveys templates by id
+      x-summary-source: derived
+      operationId: getApiV3SurveysTemplatesById
+      x-operation-id-source: derived
     patch:
       description: Update survey template detail
       tags:
-      - survey
+      - Survey
       parameters:
       - name: id
         in: path
@@ -177,8 +185,9 @@ paths:
                     type: object
                     properties:
                       id:
-                        type: integer
-                        nullable: true
+                        type:
+                        - integer
+                        - 'null'
                       type:
                         type: string
                       sort_order:
@@ -188,21 +197,24 @@ paths:
                       is_required:
                         type: boolean
                       dropout_date_max:
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                         format: date-time
-                        nullable: true
                       dropout_date_min:
-                        type: string
+                        type:
+                        - string
+                        - 'null'
                         format: date-time
-                        nullable: true
                       answers:
                         type: array
                         items:
                           type: object
                           properties:
                             id:
-                              type: integer
-                              nullable: true
+                              type:
+                              - integer
+                              - 'null'
                             type:
                               type: string
                             content:
@@ -219,11 +231,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SurveyTemplate'
+      summary: Update api surveys templates by id
+      x-summary-source: derived
+      operationId: patchApiV3SurveysTemplatesById
+      x-operation-id-source: derived
   /api/v3/surveys:
     get:
       description: Get response surveys list
       tags:
-      - survey
+      - Survey
       parameters:
       - $ref: '#/components/parameters/pagination_page'
       - $ref: '#/components/parameters/pagination_page_size'
@@ -308,11 +324,15 @@ paths:
                                                 items:
                                                   $ref: '#/components/schemas/SurveyAnswer'
                 type: object
+      summary: Get api surveys
+      x-summary-source: derived
+      operationId: getApiV3Surveys
+      x-operation-id-source: derived
   /api/v3/surveys/{id}:
     get:
       description: Get response survey detail
       tags:
-      - survey
+      - Survey
       parameters:
       - name: id
         in: path
@@ -361,70 +381,13 @@ paths:
                                       type: array
                                       items:
                                         $ref: '#/components/schemas/SurveyAnswer'
+      summary: Get api surveys by id
+      x-summary-source: derived
+      operationId: getApiV3SurveysById
+      x-operation-id-source: derived
 components:
-  parameters:
-    filter_id:
-      name: filter[id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_created_at_to:
-      name: filter[created_at][to]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
-    filter_created_at_from:
-      name: filter[created_at][from]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-    filter_response_id:
-      name: filter[response_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_vacancy_id:
-      name: filter[vacancy_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    pagination_page_size:
-      name: limit
-      in: query
-      description: page size
-      required: false
-      schema:
-        type: integer
-        default: 20
   schemas:
-    SurveyQuestion:
+    SurveyRecord:
       properties:
         id:
           type: integer
@@ -433,29 +396,20 @@ components:
           format: date-time
         survey_id:
           type: integer
-        name:
-          type: string
+        question_id:
+          type: integer
         type:
           type: string
-        font_style:
-          type: string
-          nullable: true
-        description:
+        content:
           type: string
         sort_order:
           type: integer
-        is_indicated_dates:
+        is_dropped:
           type: boolean
-        is_required:
-          type: boolean
-        dropout_date_min:
-          type: string
-          format: date-time
-          nullable: true
-        dropout_date_max:
-          type: string
-          format: date-time
-          nullable: true
+        answer_ids:
+          type:
+          - string
+          - 'null'
       type: object
     SurveyTemplateAnswer:
       properties:
@@ -474,6 +428,52 @@ components:
           type: integer
         is_dropout:
           type: boolean
+      type: object
+    SurveyQuestion:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        survey_id:
+          type: integer
+        name:
+          type: string
+        type:
+          type: string
+        font_style:
+          type:
+          - string
+          - 'null'
+        description:
+          type: string
+        sort_order:
+          type: integer
+        is_indicated_dates:
+          type: boolean
+        is_required:
+          type: boolean
+        dropout_date_min:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        dropout_date_max:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      type: object
+    SurveyTemplate:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        vacancy_id:
+          type: integer
       type: object
     Survey:
       properties:
@@ -511,16 +511,6 @@ components:
         is_dropout:
           type: boolean
       type: object
-    SurveyTemplate:
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        vacancy_id:
-          type: integer
-      type: object
     SurveyTemplateQuestion:
       properties:
         id:
@@ -535,8 +525,9 @@ components:
         type:
           type: string
         font_style:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         description:
           type: string
         sort_order:
@@ -546,37 +537,77 @@ components:
         is_required:
           type: boolean
         dropout_date_min:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         dropout_date_max:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
       type: object
-    SurveyRecord:
-      properties:
-        id:
-          type: integer
-        date_created:
-          type: string
-          format: date-time
-        survey_id:
-          type: integer
-        question_id:
-          type: integer
-        type:
-          type: string
-        content:
-          type: string
-        sort_order:
-          type: integer
-        is_dropped:
-          type: boolean
-        answer_ids:
-          type: string
-          nullable: true
-      type: object
+  parameters:
+    filter_vacancy_id:
+      name: filter[vacancy_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_created_at_from:
+      name: filter[created_at][from]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+    filter_created_at_to:
+      name: filter[created_at][to]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_response_id:
+      name: filter[response_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
   securitySchemes:
     bearerAuth:
       type: http

@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: VCV chatbot integration API
+  title: VCV Integration API
   description: open api
   version: v3
 servers:
@@ -13,13 +13,13 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: integration
+- name: Integration
 paths:
   /api/v3/integration/vacancy:
     get:
       description: Get vacancy integration module list
       tags:
-      - integration
+      - Integration
       parameters:
       - $ref: '#/components/parameters/pagination_page'
       - $ref: '#/components/parameters/pagination_page_size'
@@ -68,10 +68,14 @@ paths:
                         items:
                           $ref: '#/components/schemas/VacancyIntegration'
                 type: object
+      summary: Get api integration vacancy
+      x-summary-source: derived
+      operationId: getApiV3IntegrationVacancy
+      x-operation-id-source: derived
     post:
       description: Create vacancy integration
       tags:
-      - integration
+      - Integration
       requestBody:
         required: true
         content:
@@ -93,11 +97,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VacancyIntegration'
+      summary: Create api integration vacancy
+      x-summary-source: derived
+      operationId: postApiV3IntegrationVacancy
+      x-operation-id-source: derived
   /api/v3/integration/vacancy/{id}:
     get:
       description: Get vacancy integration detail
       tags:
-      - integration
+      - Integration
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
@@ -107,10 +115,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VacancyIntegration'
+      summary: Get api integration vacancy by id
+      x-summary-source: derived
+      operationId: getApiV3IntegrationVacancyById
+      x-operation-id-source: derived
     patch:
       description: Update vacancy integration
       tags:
-      - integration
+      - Integration
       parameters:
       - $ref: '#/components/parameters/id'
       requestBody:
@@ -132,11 +144,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/VacancyIntegration'
+      summary: Update api integration vacancy by id
+      x-summary-source: derived
+      operationId: patchApiV3IntegrationVacancyById
+      x-operation-id-source: derived
   /api/v3/response-attributes:
     get:
       description: Get response attributes list
       tags:
-      - integration
+      - Integration
       parameters:
       - $ref: '#/components/parameters/pagination_page'
       - $ref: '#/components/parameters/pagination_page_size'
@@ -207,10 +223,14 @@ paths:
                         items:
                           $ref: '#/components/schemas/ResponseAttribute'
                 type: object
+      summary: Get api response attributes
+      x-summary-source: derived
+      operationId: getApiV3ResponseAttributes
+      x-operation-id-source: derived
     post:
       description: Create response attribute
       tags:
-      - integration
+      - Integration
       requestBody:
         required: true
         content:
@@ -238,11 +258,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseAttribute'
+      summary: Create api response attributes
+      x-summary-source: derived
+      operationId: postApiV3ResponseAttributes
+      x-operation-id-source: derived
   /api/v3/response-attributes/{id}:
     get:
       description: Get response attribute detail
       tags:
-      - integration
+      - Integration
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
@@ -252,10 +276,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseAttribute'
+      summary: Get api response attributes by id
+      x-summary-source: derived
+      operationId: getApiV3ResponseAttributesById
+      x-operation-id-source: derived
     patch:
       description: Update response attribute
       tags:
-      - integration
+      - Integration
       parameters:
       - $ref: '#/components/parameters/id'
       requestBody:
@@ -285,10 +313,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseAttribute'
+      summary: Update api response attributes by id
+      x-summary-source: derived
+      operationId: patchApiV3ResponseAttributesById
+      x-operation-id-source: derived
     delete:
       description: Delete response attribute
       tags:
-      - integration
+      - Integration
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
@@ -298,11 +330,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseAttribute'
+      summary: Delete api response attributes by id
+      x-summary-source: derived
+      operationId: deleteApiV3ResponseAttributesById
+      x-operation-id-source: derived
   /api/v3/public/response-attribute-values/{token}:
     get:
       description: Get response attribute values list
       tags:
-      - integration
+      - Integration
       parameters:
       - $ref: '#/components/parameters/token'
       - $ref: '#/components/parameters/pagination_page'
@@ -392,11 +428,15 @@ paths:
                                   attribute:
                                     $ref: '#/components/schemas/ResponseAttribute'
                 type: object
+      summary: Get api public response attribute values by token
+      x-summary-source: derived
+      operationId: getApiV3PublicResponseAttributeValuesByToken
+      x-operation-id-source: derived
   /api/v3/response-attribute-values:
     get:
       description: Get response attribute values list
       tags:
-      - integration
+      - Integration
       parameters:
       - $ref: '#/components/parameters/pagination_page'
       - $ref: '#/components/parameters/pagination_page_size'
@@ -490,10 +530,14 @@ paths:
                                   attribute:
                                     $ref: '#/components/schemas/ResponseAttribute'
                 type: object
+      summary: Get api response attribute values
+      x-summary-source: derived
+      operationId: getApiV3ResponseAttributeValues
+      x-operation-id-source: derived
     post:
       description: Create response attribute value
       tags:
-      - integration
+      - Integration
       parameters:
       - name: with[]
         in: query
@@ -537,11 +581,15 @@ paths:
                           $ref: '#/components/schemas/Response'
                         attribute:
                           $ref: '#/components/schemas/ResponseAttribute'
+      summary: Create api response attribute values
+      x-summary-source: derived
+      operationId: postApiV3ResponseAttributeValues
+      x-operation-id-source: derived
   /api/v3/response-attribute-values/{id}:
     get:
       description: Get response attribute value detail
       tags:
-      - integration
+      - Integration
       parameters:
       - $ref: '#/components/parameters/id'
       - name: with[]
@@ -572,10 +620,14 @@ paths:
                           $ref: '#/components/schemas/Response'
                         attribute:
                           $ref: '#/components/schemas/ResponseAttribute'
+      summary: Get api response attribute values by id
+      x-summary-source: derived
+      operationId: getApiV3ResponseAttributeValuesById
+      x-operation-id-source: derived
     patch:
       description: Update response attribute value
       tags:
-      - integration
+      - Integration
       parameters:
       - $ref: '#/components/parameters/id'
       - name: with[]
@@ -616,10 +668,14 @@ paths:
                           $ref: '#/components/schemas/Response'
                         attribute:
                           $ref: '#/components/schemas/ResponseAttribute'
+      summary: Update api response attribute values by id
+      x-summary-source: derived
+      operationId: patchApiV3ResponseAttributeValuesById
+      x-operation-id-source: derived
     delete:
       description: Delete response attribute value
       tags:
-      - integration
+      - Integration
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
@@ -629,10 +685,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseAttributeValue'
+      summary: Delete api response attribute values by id
+      x-summary-source: derived
+      operationId: deleteApiV3ResponseAttributeValuesById
+      x-operation-id-source: derived
 components:
   parameters:
-    filter_id:
-      name: filter[id]
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
+    filter_vacancy_id:
+      name: filter[vacancy_id]
       in: query
       required: false
       schema:
@@ -641,13 +708,6 @@ components:
         - type: array
           items:
             type: integer
-    id:
-      name: id
-      in: path
-      description: entity id
-      required: true
-      schema:
-        type: integer
     sort_order:
       name: sort[order]
       in: query
@@ -659,14 +719,14 @@ components:
         enum:
         - asc
         - desc
-    pagination_page:
-      name: page
+    pagination_page_size:
+      name: limit
       in: query
-      description: page number
+      description: page size
       required: false
       schema:
         type: integer
-        default: 1
+        default: 20
     token:
       name: token
       in: path
@@ -684,8 +744,16 @@ components:
         - type: array
           items:
             type: integer
-    filter_vacancy_id:
-      name: filter[vacancy_id]
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    filter_id:
+      name: filter[id]
       in: query
       required: false
       schema:
@@ -694,72 +762,7 @@ components:
         - type: array
           items:
             type: integer
-    pagination_page_size:
-      name: limit
-      in: query
-      description: page size
-      required: false
-      schema:
-        type: integer
-        default: 20
   schemas:
-    Response:
-      properties:
-        id:
-          type: integer
-        vacancy_id:
-          type: integer
-        candidate_id:
-          type: integer
-        response_status_id:
-          type: integer
-        response_source_id:
-          type: integer
-        interview_id:
-          type: integer
-        external_id:
-          type: string
-        is_hidden_by_candidate:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-        agreed_at:
-          type: string
-          format: date-time
-          nullable: true
-        date_sent:
-          type: string
-          format: date-time
-          nullable: true
-        resume_url:
-          type: string
-          nullable: true
-        second_resume_url:
-          type: string
-          nullable: true
-        social_source:
-          type: string
-          nullable: true
-        utm_source:
-          type: string
-          nullable: true
-        utm_medium:
-          type: string
-          nullable: true
-        utm_campaign:
-          type: string
-          nullable: true
-        utm_content:
-          type: string
-          nullable: true
-        utm_term:
-          type: string
-          nullable: true
-        is_paid:
-          type: boolean
-          nullable: true
-      type: object
     ResponseAttribute:
       properties:
         id:
@@ -817,6 +820,74 @@ components:
         updated_at:
           type: string
           format: date-time
+      type: object
+    Response:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        candidate_id:
+          type: integer
+        response_status_id:
+          type: integer
+        response_source_id:
+          type: integer
+        interview_id:
+          type: integer
+        external_id:
+          type: string
+        is_hidden_by_candidate:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        agreed_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        date_sent:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        resume_url:
+          type:
+          - string
+          - 'null'
+        second_resume_url:
+          type:
+          - string
+          - 'null'
+        social_source:
+          type:
+          - string
+          - 'null'
+        utm_source:
+          type:
+          - string
+          - 'null'
+        utm_medium:
+          type:
+          - string
+          - 'null'
+        utm_campaign:
+          type:
+          - string
+          - 'null'
+        utm_content:
+          type:
+          - string
+          - 'null'
+        utm_term:
+          type:
+          - string
+          - 'null'
+        is_paid:
+          type:
+          - boolean
+          - 'null'
       type: object
   securitySchemes:
     bearerAuth:

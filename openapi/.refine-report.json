@@ -1,25 +1,11 @@
 {
   "provider": "vcv",
   "sources": [
-    "vcv-chatbot-api-openapi.yml",
-    "vcv-companies-api-openapi.yml",
-    "vcv-countries-api-openapi.yml",
-    "vcv-enumeration-api-openapi.yml",
-    "vcv-integration-api-openapi.yml",
-    "vcv-interview-api-openapi.yml",
-    "vcv-invite-api-openapi.yml",
-    "vcv-languages-api-openapi.yml",
-    "vcv-limits-api-openapi.yml",
-    "vcv-response-api-openapi.yml",
-    "vcv-survey-api-openapi.yml",
-    "vcv-tags-api-openapi.yml",
-    "vcv-test-api-openapi.yml",
-    "vcv-users-api-openapi.yml",
-    "vcv-vacancy-api-openapi.yml",
-    "vcv-videointerview-api-openapi.yml",
-    "vcv-webhook-api-openapi.yml"
+    "_original/vcv-openapi-original.yml",
+    "_original/vcv-openapi.yml"
   ],
   "outputs": [
+    "vcv-languages-api-openapi.yml",
     "vcv-chatbot-api-openapi.yml",
     "vcv-companies-api-openapi.yml",
     "vcv-countries-api-openapi.yml",
@@ -27,7 +13,6 @@
     "vcv-integration-api-openapi.yml",
     "vcv-interview-api-openapi.yml",
     "vcv-invite-api-openapi.yml",
-    "vcv-languages-api-openapi.yml",
     "vcv-limits-api-openapi.yml",
     "vcv-response-api-openapi.yml",
     "vcv-survey-api-openapi.yml",
@@ -40,10 +25,51 @@
   ],
   "archived": [],
   "errors": [
-    "vcv-interview-api-openapi.yml: dangling $ref: #/PublicResponse",
-    "vcv-interview-api-openapi.yml: dangling $ref: #/PublicVacancy"
+    "vcv-openapi.yml: dangling $ref: #/PublicResponse",
+    "vcv-openapi.yml: dangling $ref: #/PublicVacancy"
   ],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "vcv-openapi-original.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "vcv-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "vcv-openapi.yml: tagged paths GET /api/v3/languages -> Languages",
+    "vcv-openapi.yml: declared missing tag: Languages",
+    "vcv-openapi.yml: declared missing tag: chatbot",
+    "vcv-openapi.yml: declared missing tag: companies",
+    "vcv-openapi.yml: declared missing tag: countries",
+    "vcv-openapi.yml: declared missing tag: enumeration",
+    "vcv-openapi.yml: declared missing tag: integration",
+    "vcv-openapi.yml: declared missing tag: interview",
+    "vcv-openapi.yml: declared missing tag: invite",
+    "vcv-openapi.yml: declared missing tag: limits",
+    "vcv-openapi.yml: declared missing tag: response",
+    "vcv-openapi.yml: declared missing tag: survey",
+    "vcv-openapi.yml: declared missing tag: tags",
+    "vcv-openapi.yml: declared missing tag: test",
+    "vcv-openapi.yml: declared missing tag: users",
+    "vcv-openapi.yml: declared missing tag: vacancy",
+    "vcv-openapi.yml: declared missing tag: videointerview",
+    "vcv-openapi.yml: declared missing tag: webhook",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "vcv-chatbot-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vcv-companies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vcv-countries-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vcv-enumeration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vcv-integration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vcv-interview-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vcv-invite-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vcv-languages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vcv-limits-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vcv-response-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vcv-survey-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vcv-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vcv-test-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vcv-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vcv-vacancy-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vcv-videointerview-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "vcv-webhook-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

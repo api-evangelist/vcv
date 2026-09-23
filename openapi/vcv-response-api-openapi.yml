@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: VCV chatbot response API
+  title: VCV Response API
   description: open api
   version: v3
 servers:
@@ -13,13 +13,13 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: response
+- name: Response
 paths:
   /api/v3/responses:
     get:
       description: Get responses list
       tags:
-      - response
+      - Response
       parameters:
       - $ref: '#/components/parameters/pagination_page'
       - $ref: '#/components/parameters/pagination_page_size'
@@ -240,11 +240,15 @@ paths:
                                   interview:
                                     $ref: '#/components/schemas/Interview'
                 type: object
+      summary: Get api responses
+      x-summary-source: derived
+      operationId: getApiV3Responses
+      x-operation-id-source: derived
   /api/v3/responses/{id}:
     get:
       description: Get response detail
       tags:
-      - response
+      - Response
       parameters:
       - $ref: '#/components/parameters/id'
       - name: with[]
@@ -331,10 +335,14 @@ paths:
                           $ref: '#/components/schemas/Interview'
                         invite:
                           $ref: '#/components/schemas/Invite'
+      summary: Get api responses by id
+      x-summary-source: derived
+      operationId: getApiV3ResponsesById
+      x-operation-id-source: derived
     patch:
       description: Update response
       tags:
-      - response
+      - Response
       parameters:
       - $ref: '#/components/parameters/id'
       requestBody:
@@ -353,11 +361,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Response'
+      summary: Update api responses by id
+      x-summary-source: derived
+      operationId: patchApiV3ResponsesById
+      x-operation-id-source: derived
   /api/v3/response-comments:
     get:
       description: Get response comments list
       tags:
-      - response
+      - Response
       parameters:
       - $ref: '#/components/parameters/pagination_page'
       - $ref: '#/components/parameters/pagination_page_size'
@@ -434,10 +446,14 @@ paths:
                                   response:
                                     $ref: '#/components/schemas/Response'
                 type: object
+      summary: Get api response comments
+      x-summary-source: derived
+      operationId: getApiV3ResponseComments
+      x-operation-id-source: derived
     post:
       description: Create response comment
       tags:
-      - response
+      - Response
       parameters:
       - name: with[]
         in: query
@@ -478,11 +494,15 @@ paths:
                           $ref: '#/components/schemas/User'
                         response:
                           $ref: '#/components/schemas/Response'
+      summary: Create api response comments
+      x-summary-source: derived
+      operationId: postApiV3ResponseComments
+      x-operation-id-source: derived
   /api/v3/response-comments/{id}:
     get:
       description: Get comment
       tags:
-      - response
+      - Response
       parameters:
       - $ref: '#/components/parameters/id'
       - name: with[]
@@ -513,6 +533,10 @@ paths:
                           $ref: '#/components/schemas/User'
                         response:
                           $ref: '#/components/schemas/Response'
+      summary: Get api response comments by id
+      x-summary-source: derived
+      operationId: getApiV3ResponseCommentsById
+      x-operation-id-source: derived
     patch:
       description: Update comment
       parameters:
@@ -529,7 +553,7 @@ paths:
             - user
             - response
       tags:
-      - response
+      - Response
       requestBody:
         required: true
         content:
@@ -556,10 +580,14 @@ paths:
                           $ref: '#/components/schemas/User'
                         response:
                           $ref: '#/components/schemas/Response'
+      summary: Update api response comments by id
+      x-summary-source: derived
+      operationId: patchApiV3ResponseCommentsById
+      x-operation-id-source: derived
     delete:
       description: Delete comment
       tags:
-      - response
+      - Response
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
@@ -569,11 +597,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseComment'
+      summary: Delete api response comments by id
+      x-summary-source: derived
+      operationId: deleteApiV3ResponseCommentsById
+      x-operation-id-source: derived
   /api/v3/response-statuses:
     get:
       description: Get response status list
       tags:
-      - response
+      - Response
       parameters:
       - $ref: '#/components/parameters/pagination_page'
       - $ref: '#/components/parameters/pagination_page_size'
@@ -649,9 +681,13 @@ paths:
                                   parent:
                                     $ref: '#/components/schemas/ResponseStatus'
                 type: object
+      summary: Get api response statuses
+      x-summary-source: derived
+      operationId: getApiV3ResponseStatuses
+      x-operation-id-source: derived
     post:
       tags:
-      - response
+      - Response
       description: Create response statuses
       parameters:
       - name: with[]
@@ -676,13 +712,15 @@ paths:
                 title:
                   type: string
                 sort_order:
-                  type: integer
-                  nullable: true
+                  type:
+                  - integer
+                  - 'null'
                 color:
                   type: string
                 on_top:
-                  type: boolean
-                  nullable: true
+                  type:
+                  - boolean
+                  - 'null'
               type: object
       responses:
         '200':
@@ -702,11 +740,15 @@ paths:
                             href:
                               type: string
                               format: uri
+      summary: Create api response statuses
+      x-summary-source: derived
+      operationId: postApiV3ResponseStatuses
+      x-operation-id-source: derived
   /api/v3/response-statuses/{id}:
     get:
       description: Get response status detail
       tags:
-      - response
+      - Response
       parameters:
       - $ref: '#/components/parameters/id'
       - name: with[]
@@ -734,10 +776,14 @@ paths:
                       properties:
                         parent:
                           $ref: '#/components/schemas/ResponseStatus'
+      summary: Get api response statuses by id
+      x-summary-source: derived
+      operationId: getApiV3ResponseStatusesById
+      x-operation-id-source: derived
     patch:
       description: Update response status
       tags:
-      - response
+      - Response
       parameters:
       - $ref: '#/components/parameters/id'
       - name: with[]
@@ -787,10 +833,14 @@ paths:
                       properties:
                         parent:
                           $ref: '#/components/schemas/ResponseStatus'
+      summary: Update api response statuses by id
+      x-summary-source: derived
+      operationId: patchApiV3ResponseStatusesById
+      x-operation-id-source: derived
     delete:
       description: Delete response status
       tags:
-      - response
+      - Response
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
@@ -800,11 +850,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseStatus'
+      summary: Delete api response statuses by id
+      x-summary-source: derived
+      operationId: deleteApiV3ResponseStatusesById
+      x-operation-id-source: derived
   /api/v3/responses/{responseId}/resumes/{resumeId}/download:
     get:
       description: Download response resume file
       tags:
-      - response
+      - Response
       parameters:
       - in: path
         name: responseId
@@ -849,11 +903,15 @@ paths:
           description: Forbidden
         '404':
           description: Response or resume not found, or invalid URL
+      summary: Get api responses by response id resumes by resume id download
+      x-summary-source: derived
+      operationId: getApiV3ResponsesByResponseIdResumesByResumeIdDownload
+      x-operation-id-source: derived
   /api/v3/response-resumes:
     get:
       description: Get list of resumes attached to responses
       tags:
-      - response
+      - Response
       parameters:
       - $ref: '#/components/parameters/pagination_page'
       - $ref: '#/components/parameters/pagination_page_size'
@@ -925,16 +983,22 @@ paths:
                                 type: string
                                 format: date-time
                               responseResumeUrl:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
                               responseSecondResumeUrl:
-                                type: string
-                                nullable: true
+                                type:
+                                - string
+                                - 'null'
+      summary: Get api response resumes
+      x-summary-source: derived
+      operationId: getApiV3ResponseResumes
+      x-operation-id-source: derived
   /api/v3/response-resume/{id}:
     get:
       description: Get response resume by id
       tags:
-      - response
+      - Response
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
@@ -955,11 +1019,15 @@ paths:
                       format: date-time
         '404':
           description: Resume not found
+      summary: Get api response resume by id
+      x-summary-source: derived
+      operationId: getApiV3ResponseResumeById
+      x-operation-id-source: derived
   /api/v3/public/vacancy/{vacancyToken}/response-resume/{responseToken}:
     post:
       description: Upload response resume
       tags:
-      - response
+      - Response
       parameters:
       - in: path
         name: vacancyToken
@@ -1005,11 +1073,15 @@ paths:
                         $ref: '#/components/schemas/ResponseResume'
                       response:
                         $ref: '#/components/schemas/Response'
+      summary: Create api public vacancy by vacancy token response resume by response token
+      x-summary-source: derived
+      operationId: postApiV3PublicVacancyByVacancyTokenResponseResumeByResponseToken
+      x-operation-id-source: derived
   /api/v3/response-events:
     get:
       description: Get response events list
       tags:
-      - response
+      - Response
       parameters:
       - $ref: '#/components/parameters/pagination_page'
       - $ref: '#/components/parameters/pagination_page_size'
@@ -1092,11 +1164,15 @@ paths:
                                   vacancy:
                                     $ref: '#/components/schemas/Vacancy'
                 type: object
+      summary: Get api response events
+      x-summary-source: derived
+      operationId: getApiV3ResponseEvents
+      x-operation-id-source: derived
   /api/v3/response-events/{id}:
     get:
       description: Get response event detail
       tags:
-      - response
+      - Response
       parameters:
       - $ref: '#/components/parameters/id'
       - name: with[]
@@ -1119,8 +1195,162 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseEvent'
+      summary: Get api response events by id
+      x-summary-source: derived
+      operationId: getApiV3ResponseEventsById
+      x-operation-id-source: derived
 components:
   schemas:
+    Interview:
+      properties:
+        id:
+          type: integer
+        date_create:
+          type: string
+          format: date-time
+        token:
+          type: string
+        interview_stage_id:
+          type: integer
+        candidate_id:
+          type: integer
+      type: object
+    Vacancy:
+      properties:
+        id:
+          type: integer
+        token:
+          type: string
+        title:
+          type: string
+        active:
+          type: boolean
+        user_id:
+          type: integer
+        language_id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+      type: object
+    User:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        email:
+          type: string
+        position:
+          type: string
+        logo_url:
+          type:
+          - string
+          - 'null'
+        geo_id:
+          type: integer
+        lanaguage_id:
+          type: integer
+        company_id:
+          type: integer
+        userName:
+          type:
+          - object
+          - 'null'
+          properties:
+            user_id:
+              type: integer
+            first_name:
+              type: string
+            last_name:
+              type: string
+            language_id:
+              type: integer
+            id:
+              type: integer
+      type: object
+    CandidatePhone:
+      properties:
+        candidate_id:
+          type: integer
+        id:
+          type: integer
+        number:
+          type: string
+      type:
+      - object
+      - 'null'
+    Invite:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        candidate_id:
+          type: integer
+        invite_status_id:
+          type: integer
+        interview_refusal_id:
+          type: integer
+        interview_id:
+          type: integer
+        is_hidden_by_candidate:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      type: object
+    CandidateName:
+      properties:
+        candidate_id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        second_name:
+          type:
+          - string
+          - 'null'
+      type: object
+    Candidate:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        email:
+          type: string
+        bithdate:
+          type: string
+        gender:
+          type: string
+      type: object
+    ResponseResume:
+      properties:
+        id:
+          type: integer
+        response_id:
+          type: integer
+        filename:
+          type: string
+        resume_url:
+          type: string
+      type: object
+    ResponseSource:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+      type: object
     Response:
       properties:
         id:
@@ -1143,54 +1373,51 @@ components:
           type: string
           format: date-time
         agreed_at:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         date_sent:
-          type: string
+          type:
+          - string
+          - 'null'
           format: date-time
-          nullable: true
         resume_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         second_resume_url:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         social_source:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         utm_source:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         utm_medium:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         utm_campaign:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         utm_content:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         utm_term:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         is_paid:
-          type: boolean
-          nullable: true
-      type: object
-    Candidate:
-      properties:
-        id:
-          type: integer
-        date_created:
-          type: string
-          format: date-time
-        email:
-          type: string
-        bithdate:
-          type: string
-        gender:
-          type: string
+          type:
+          - boolean
+          - 'null'
       type: object
     ResponseEvent:
       properties:
@@ -1205,48 +1432,21 @@ components:
           - 2
           description: "Type ids:\n  * `1` - Response Status Changed\n  * `2` - Email sent\n  * `3` - Agreement signed\n  * `4` - Interview stage started\n  * `5` - Interview stage finished\n"
         vacancy_id:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         response_id:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         company_id:
           type: integer
         user_id:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         meta:
           type: object
-        created_at:
-          type: string
-          format: date-time
-      type: object
-    CandidateName:
-      properties:
-        candidate_id:
-          type: integer
-        first_name:
-          type: string
-        last_name:
-          type: string
-        second_name:
-          type: string
-          nullable: true
-      type: object
-    Vacancy:
-      properties:
-        id:
-          type: integer
-        token:
-          type: string
-        title:
-          type: string
-        active:
-          type: boolean
-        user_id:
-          type: integer
-        language_id:
-          type: integer
         created_at:
           type: string
           format: date-time
@@ -1264,11 +1464,13 @@ components:
         sort_order:
           type: integer
         company_id:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         parent_id:
-          type: integer
-          nullable: true
+          type:
+          - integer
+          - 'null'
         id_compatibility:
           type: integer
         color:
@@ -1296,173 +1498,9 @@ components:
         user_id:
           type: integer
       type: object
-    Invite:
-      properties:
-        id:
-          type: integer
-        vacancy_id:
-          type: integer
-        candidate_id:
-          type: integer
-        invite_status_id:
-          type: integer
-        interview_refusal_id:
-          type: integer
-        interview_id:
-          type: integer
-        is_hidden_by_candidate:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-          nullable: true
-      type: object
-    ResponseResume:
-      properties:
-        id:
-          type: integer
-        response_id:
-          type: integer
-        filename:
-          type: string
-        resume_url:
-          type: string
-      type: object
-    CandidatePhone:
-      properties:
-        candidate_id:
-          type: integer
-        id:
-          type: integer
-        number:
-          type: string
-      nullable: true
-      type: object
-    Interview:
-      properties:
-        id:
-          type: integer
-        date_create:
-          type: string
-          format: date-time
-        token:
-          type: string
-        interview_stage_id:
-          type: integer
-        candidate_id:
-          type: integer
-      type: object
-    User:
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        email:
-          type: string
-        position:
-          type: string
-        logo_url:
-          type: string
-          nullable: true
-        geo_id:
-          type: integer
-        lanaguage_id:
-          type: integer
-        company_id:
-          type: integer
-        userName:
-          type: object
-          nullable: true
-          properties:
-            user_id:
-              type: integer
-            first_name:
-              type: string
-            last_name:
-              type: string
-            language_id:
-              type: integer
-            id:
-              type: integer
-      type: object
-    ResponseSource:
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-      type: object
   parameters:
     filter_user_id:
       name: filter[user_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
-    filter_response_id:
-      name: filter[response_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_vacancy_id:
-      name: filter[vacancy_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    pagination_page_size:
-      name: limit
-      in: query
-      description: page size
-      required: false
-      schema:
-        type: integer
-        default: 20
-    filter_id:
-      name: filter[id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_is_file:
-      name: filter[is_file]
-      in: query
-      description: Filter by resumes uploaded as files
-      required: false
-      schema:
-        type: boolean
-    filter_response_status_id:
-      name: filter[response_status_id]
       in: query
       required: false
       schema:
@@ -1482,13 +1520,38 @@ components:
         enum:
         - asc
         - desc
-    filter_created_at_to:
-      name: filter[created_at][to]
+    filter_response_id:
+      name: filter[response_id]
       in: query
       required: false
       schema:
-        type: string
-        format: date-time
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_is_file:
+      name: filter[is_file]
+      in: query
+      description: Filter by resumes uploaded as files
+      required: false
+      schema:
+        type: boolean
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
     filter_created_at_from:
       name: filter[created_at][from]
       in: query
@@ -1496,6 +1559,16 @@ components:
       schema:
         type: string
         format: date-time
+    filter_vacancy_id:
+      name: filter[vacancy_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
     filter_vacancy_user_id:
       name: filter[vacancy][user_id]
       in: query
@@ -1506,13 +1579,41 @@ components:
         - type: array
           items:
             type: integer
-    id:
-      name: id
-      in: path
-      description: entity id
-      required: true
+    filter_created_at_to:
+      name: filter[created_at][to]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
       schema:
         type: integer
+        default: 20
+    filter_response_status_id:
+      name: filter[response_status_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
   securitySchemes:
     bearerAuth:
       type: http

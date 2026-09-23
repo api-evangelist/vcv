@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: VCV chatbot tags API
+  title: VCV Tags API
   description: open api
   version: v3
 servers:
@@ -13,13 +13,13 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: tags
+- name: Tags
 paths:
   /api/v3/tags:
     get:
       description: Get tags list
       tags:
-      - tags
+      - Tags
       parameters:
       - $ref: '#/components/parameters/pagination_page'
       - $ref: '#/components/parameters/pagination_page_size'
@@ -92,10 +92,14 @@ paths:
                                   user:
                                     $ref: '#/components/schemas/User'
                 type: object
+      summary: Get api tags
+      x-summary-source: derived
+      operationId: getApiV3Tags
+      x-operation-id-source: derived
     post:
       description: Create tag
       tags:
-      - tags
+      - Tags
       parameters:
       - name: with[]
         in: query
@@ -118,8 +122,9 @@ paths:
                 sort_order:
                   type: integer
                 color:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
               type: object
       responses:
         '200':
@@ -136,11 +141,15 @@ paths:
                       properties:
                         user:
                           $ref: '#/components/schemas/User'
+      summary: Create api tags
+      x-summary-source: derived
+      operationId: postApiV3Tags
+      x-operation-id-source: derived
   /api/v3/tags/{id}:
     get:
       description: Get tag
       tags:
-      - tags
+      - Tags
       parameters:
       - $ref: '#/components/parameters/id'
       - name: with[]
@@ -168,6 +177,10 @@ paths:
                     properties:
                       user:
                         $ref: '#/components/schemas/User'
+      summary: Get api tags by id
+      x-summary-source: derived
+      operationId: getApiV3TagsById
+      x-operation-id-source: derived
     patch:
       description: Update tag
       parameters:
@@ -183,7 +196,7 @@ paths:
             enum:
             - user
       tags:
-      - tags
+      - Tags
       requestBody:
         required: true
         content:
@@ -195,8 +208,9 @@ paths:
                 sort_order:
                   type: integer
                 color:
-                  type: string
-                  nullable: true
+                  type:
+                  - string
+                  - 'null'
               type: object
       responses:
         '200':
@@ -213,10 +227,14 @@ paths:
                       properties:
                         user:
                           $ref: '#/components/schemas/User'
+      summary: Update api tags by id
+      x-summary-source: derived
+      operationId: patchApiV3TagsById
+      x-operation-id-source: derived
     delete:
       description: Delete tag
       tags:
-      - tags
+      - Tags
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
@@ -226,11 +244,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Tag'
+      summary: Delete api tags by id
+      x-summary-source: derived
+      operationId: deleteApiV3TagsById
+      x-operation-id-source: derived
   /api/v3/response-tags:
     get:
       description: Get response tags list
       tags:
-      - tags
+      - Tags
       parameters:
       - $ref: '#/components/parameters/pagination_page'
       - $ref: '#/components/parameters/pagination_page_size'
@@ -310,10 +332,14 @@ paths:
                                   response:
                                     $ref: '#/components/schemas/Response'
                 type: object
+      summary: Get api response tags
+      x-summary-source: derived
+      operationId: getApiV3ResponseTags
+      x-operation-id-source: derived
     post:
       description: Create response tag
       tags:
-      - tags
+      - Tags
       parameters:
       - name: with[]
         in: query
@@ -357,11 +383,15 @@ paths:
                           $ref: '#/components/schemas/Tag'
                         response:
                           $ref: '#/components/schemas/Response'
+      summary: Create api response tags
+      x-summary-source: derived
+      operationId: postApiV3ResponseTags
+      x-operation-id-source: derived
   /api/v3/response-tags/{id}:
     get:
       description: Get response tag
       tags:
-      - tags
+      - Tags
       parameters:
       - $ref: '#/components/parameters/id'
       - name: with[]
@@ -395,10 +425,14 @@ paths:
                           $ref: '#/components/schemas/Tag'
                         response:
                           $ref: '#/components/schemas/Response'
+      summary: Get api response tags by id
+      x-summary-source: derived
+      operationId: getApiV3ResponseTagsById
+      x-operation-id-source: derived
     delete:
       description: Delete response tag
       tags:
-      - tags
+      - Tags
       parameters:
       - $ref: '#/components/parameters/id'
       responses:
@@ -408,100 +442,77 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseTag'
+      summary: Delete api response tags by id
+      x-summary-source: derived
+      operationId: deleteApiV3ResponseTagsById
+      x-operation-id-source: derived
 components:
+  parameters:
+    filter_user_id:
+      name: filter[user_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
+    sort_order:
+      name: sort[order]
+      in: query
+      description: sort order
+      required: false
+      schema:
+        type: string
+        default: desc
+        enum:
+        - asc
+        - desc
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+    filter_response_id:
+      name: filter[response_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
   schemas:
-    User:
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        email:
-          type: string
-        position:
-          type: string
-        logo_url:
-          type: string
-          nullable: true
-        geo_id:
-          type: integer
-        lanaguage_id:
-          type: integer
-        company_id:
-          type: integer
-        userName:
-          type: object
-          nullable: true
-          properties:
-            user_id:
-              type: integer
-            first_name:
-              type: string
-            last_name:
-              type: string
-            language_id:
-              type: integer
-            id:
-              type: integer
-      type: object
-    Response:
-      properties:
-        id:
-          type: integer
-        vacancy_id:
-          type: integer
-        candidate_id:
-          type: integer
-        response_status_id:
-          type: integer
-        response_source_id:
-          type: integer
-        interview_id:
-          type: integer
-        external_id:
-          type: string
-        is_hidden_by_candidate:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-        agreed_at:
-          type: string
-          format: date-time
-          nullable: true
-        date_sent:
-          type: string
-          format: date-time
-          nullable: true
-        resume_url:
-          type: string
-          nullable: true
-        second_resume_url:
-          type: string
-          nullable: true
-        social_source:
-          type: string
-          nullable: true
-        utm_source:
-          type: string
-          nullable: true
-        utm_medium:
-          type: string
-          nullable: true
-        utm_campaign:
-          type: string
-          nullable: true
-        utm_content:
-          type: string
-          nullable: true
-        utm_term:
-          type: string
-          nullable: true
-        is_paid:
-          type: boolean
-          nullable: true
-      type: object
     ResponseTag:
       properties:
         id:
@@ -536,71 +547,111 @@ components:
                   type: string
                   format: uri
       type: object
-  parameters:
-    filter_id:
-      name: filter[id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    id:
-      name: id
-      in: path
-      description: entity id
-      required: true
-      schema:
-        type: integer
-    sort_order:
-      name: sort[order]
-      in: query
-      description: sort order
-      required: false
-      schema:
-        type: string
-        default: desc
-        enum:
-        - asc
-        - desc
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
-    filter_user_id:
-      name: filter[user_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_response_id:
-      name: filter[response_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    pagination_page_size:
-      name: limit
-      in: query
-      description: page size
-      required: false
-      schema:
-        type: integer
-        default: 20
+    User:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        email:
+          type: string
+        position:
+          type: string
+        logo_url:
+          type:
+          - string
+          - 'null'
+        geo_id:
+          type: integer
+        lanaguage_id:
+          type: integer
+        company_id:
+          type: integer
+        userName:
+          type:
+          - object
+          - 'null'
+          properties:
+            user_id:
+              type: integer
+            first_name:
+              type: string
+            last_name:
+              type: string
+            language_id:
+              type: integer
+            id:
+              type: integer
+      type: object
+    Response:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        candidate_id:
+          type: integer
+        response_status_id:
+          type: integer
+        response_source_id:
+          type: integer
+        interview_id:
+          type: integer
+        external_id:
+          type: string
+        is_hidden_by_candidate:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        agreed_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        date_sent:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        resume_url:
+          type:
+          - string
+          - 'null'
+        second_resume_url:
+          type:
+          - string
+          - 'null'
+        social_source:
+          type:
+          - string
+          - 'null'
+        utm_source:
+          type:
+          - string
+          - 'null'
+        utm_medium:
+          type:
+          - string
+          - 'null'
+        utm_campaign:
+          type:
+          - string
+          - 'null'
+        utm_content:
+          type:
+          - string
+          - 'null'
+        utm_term:
+          type:
+          - string
+          - 'null'
+        is_paid:
+          type:
+          - boolean
+          - 'null'
+      type: object
   securitySchemes:
     bearerAuth:
       type: http

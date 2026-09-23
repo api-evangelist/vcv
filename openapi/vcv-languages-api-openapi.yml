@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: VCV chatbot Languages API
+  title: VCV Languages API
   description: open api
   version: v3
 servers:
@@ -29,6 +29,10 @@ paths:
                   $ref: '#/components/schemas/Language'
       tags:
       - Languages
+      summary: Get api languages
+      x-summary-source: derived
+      operationId: getApiV3Languages
+      x-operation-id-source: derived
 components:
   schemas:
     Language:
