@@ -61,7 +61,7 @@ tags_raw:
 - Assessments
 apis:
 - aid: vcv:vcv-chatbot-api
-  name: VCV chatbot API
+  name: VCV Chatbot API
   description: The chatbot API from VCV — 2 operation(s) for chatbot.
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
@@ -75,7 +75,7 @@ apis:
   - type: Documentation
     url: https://developer.vcv.ru/
 - aid: vcv:vcv-companies-api
-  name: VCV companies API
+  name: VCV Companies API
   description: The companies API from VCV — 1 operation(s) for companies.
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
@@ -89,7 +89,7 @@ apis:
   - type: Documentation
     url: https://developer.vcv.ru/
 - aid: vcv:vcv-countries-api
-  name: VCV countries API
+  name: VCV Countries API
   description: The countries API from VCV — 2 operation(s) for countries.
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
@@ -103,7 +103,7 @@ apis:
   - type: Documentation
     url: https://developer.vcv.ru/
 - aid: vcv:vcv-enumeration-api
-  name: VCV enumeration API
+  name: VCV Enumeration API
   description: The enumeration API from VCV — 3 operation(s) for enumeration.
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
@@ -115,7 +115,7 @@ apis:
   - type: Documentation
     url: https://developer.vcv.ru/
 - aid: vcv:vcv-integration-api
-  name: VCV integration API
+  name: VCV Integration API
   description: The integration API from VCV — 7 operation(s) for integration.
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
@@ -129,7 +129,7 @@ apis:
   - type: Documentation
     url: https://developer.vcv.ru/
 - aid: vcv:vcv-interview-api
-  name: VCV interview API
+  name: VCV Interview API
   description: The interview API from VCV — 3 operation(s) for interview.
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
@@ -143,7 +143,7 @@ apis:
   - type: Documentation
     url: https://developer.vcv.ru/
 - aid: vcv:vcv-invite-api
-  name: VCV invite API
+  name: VCV Invite API
   description: The invite API from VCV — 2 operation(s) for invite.
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
@@ -169,7 +169,7 @@ apis:
   - type: Documentation
     url: https://developer.vcv.ru/
 - aid: vcv:vcv-limits-api
-  name: VCV limits API
+  name: VCV Limits API
   description: The limits API from VCV — 1 operation(s) for limits.
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
@@ -183,7 +183,7 @@ apis:
   - type: Documentation
     url: https://developer.vcv.ru/
 - aid: vcv:vcv-response-api
-  name: VCV response API
+  name: VCV Response API
   description: The response API from VCV — 12 operation(s) for response.
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
@@ -197,7 +197,7 @@ apis:
   - type: Documentation
     url: https://developer.vcv.ru/
 - aid: vcv:vcv-survey-api
-  name: VCV survey API
+  name: VCV Survey API
   description: The survey API from VCV — 4 operation(s) for survey.
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
@@ -211,7 +211,7 @@ apis:
   - type: Documentation
     url: https://developer.vcv.ru/
 - aid: vcv:vcv-tags-api
-  name: VCV tags API
+  name: VCV Tags API
   description: The tags API from VCV — 4 operation(s) for tags.
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
@@ -225,7 +225,7 @@ apis:
   - type: Documentation
     url: https://developer.vcv.ru/
 - aid: vcv:vcv-test-api
-  name: VCV test API
+  name: VCV Test API
   description: The test API from VCV — 4 operation(s) for test.
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
@@ -238,7 +238,7 @@ apis:
   - type: Documentation
     url: https://developer.vcv.ru/
 - aid: vcv:vcv-users-api
-  name: VCV users API
+  name: VCV Users API
   description: The users API from VCV — 2 operation(s) for users.
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
@@ -252,7 +252,7 @@ apis:
   - type: Documentation
     url: https://developer.vcv.ru/
 - aid: vcv:vcv-vacancy-api
-  name: VCV vacancy API
+  name: VCV Vacancy API
   description: The vacancy API from VCV — 23 operation(s) for vacancy.
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
@@ -266,7 +266,7 @@ apis:
   - type: Documentation
     url: https://developer.vcv.ru/
 - aid: vcv:vcv-videointerview-api
-  name: VCV videointerview API
+  name: VCV Videointerview API
   description: The videointerview API from VCV — 4 operation(s) for videointerview.
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai
@@ -280,7 +280,7 @@ apis:
   - type: Documentation
     url: https://developer.vcv.ru/
 - aid: vcv:vcv-webhook-api
-  name: VCV webhook API
+  name: VCV Webhook API
   description: The webhook API from VCV — 2 operation(s) for webhook.
   humanURL: https://developer.vcv.ru
   baseURL: https://my.vcv.ai

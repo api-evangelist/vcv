@@ -447,71 +447,6 @@ paths:
       operationId: deleteApiV3ResponseTagsById
       x-operation-id-source: derived
 components:
-  parameters:
-    filter_user_id:
-      name: filter[user_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    id:
-      name: id
-      in: path
-      description: entity id
-      required: true
-      schema:
-        type: integer
-    sort_order:
-      name: sort[order]
-      in: query
-      description: sort order
-      required: false
-      schema:
-        type: string
-        default: desc
-        enum:
-        - asc
-        - desc
-    pagination_page_size:
-      name: limit
-      in: query
-      description: page size
-      required: false
-      schema:
-        type: integer
-        default: 20
-    filter_response_id:
-      name: filter[response_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
-    filter_id:
-      name: filter[id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
   schemas:
     ResponseTag:
       properties:
@@ -523,66 +458,6 @@ components:
           type: integer
         response_id:
           type: integer
-      type: object
-    Tag:
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        user_id:
-          type: integer
-        sort_order:
-          type: integer
-        color:
-          type: string
-        company_id:
-          type: integer
-        _links:
-          properties:
-            self:
-              type: object
-              properties:
-                href:
-                  type: string
-                  format: uri
-      type: object
-    User:
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        email:
-          type: string
-        position:
-          type: string
-        logo_url:
-          type:
-          - string
-          - 'null'
-        geo_id:
-          type: integer
-        lanaguage_id:
-          type: integer
-        company_id:
-          type: integer
-        userName:
-          type:
-          - object
-          - 'null'
-          properties:
-            user_id:
-              type: integer
-            first_name:
-              type: string
-            last_name:
-              type: string
-            language_id:
-              type: integer
-            id:
-              type: integer
       type: object
     Response:
       properties:
@@ -652,6 +527,131 @@ components:
           - boolean
           - 'null'
       type: object
+    User:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        email:
+          type: string
+        position:
+          type: string
+        logo_url:
+          type:
+          - string
+          - 'null'
+        geo_id:
+          type: integer
+        lanaguage_id:
+          type: integer
+        company_id:
+          type: integer
+        userName:
+          type:
+          - object
+          - 'null'
+          properties:
+            user_id:
+              type: integer
+            first_name:
+              type: string
+            last_name:
+              type: string
+            language_id:
+              type: integer
+            id:
+              type: integer
+      type: object
+    Tag:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        user_id:
+          type: integer
+        sort_order:
+          type: integer
+        color:
+          type: string
+        company_id:
+          type: integer
+        _links:
+          properties:
+            self:
+              type: object
+              properties:
+                href:
+                  type: string
+                  format: uri
+      type: object
+  parameters:
+    filter_user_id:
+      name: filter[user_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
+    filter_response_id:
+      name: filter[response_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    sort_order:
+      name: sort[order]
+      in: query
+      description: sort order
+      required: false
+      schema:
+        type: string
+        default: desc
+        enum:
+        - asc
+        - desc
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
   securitySchemes:
     bearerAuth:
       type: http

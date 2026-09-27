@@ -154,15 +154,6 @@ components:
         bcp47_tag:
           type: string
       type: object
-    Role:
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        role:
-          type: string
-      type: object
     User:
       properties:
         id:
@@ -199,6 +190,15 @@ components:
               type: integer
             id:
               type: integer
+      type: object
+    Role:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        role:
+          type: string
       type: object
   parameters:
     id:

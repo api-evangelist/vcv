@@ -2018,6 +2018,121 @@ components:
         bcp47_tag:
           type: string
       type: object
+    Country:
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        title_en:
+          type: string
+        title_ru:
+          type: string
+      type: object
+    CompetenceView:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+      type: object
+    VacancyCompetence:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        hint:
+          type:
+          - string
+          - 'null'
+        competence_view_id:
+          type: integer
+          description: 'See [/api/v3/competence-views](#/vacancy/get_api_v3_competence_levels)
+
+            '
+        competence_level_id:
+          type: integer
+          description: 'See [/api/v3/competence-levels](#/vacancy/get_api_v3_competence_views)
+
+            '
+        vacancy_id:
+          type: integer
+        sort_order:
+          type: integer
+      type: object
+    ResponseStatus:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        active:
+          type: boolean
+        on_top:
+          type: boolean
+        sort_order:
+          type: integer
+        company_id:
+          type:
+          - integer
+          - 'null'
+        parent_id:
+          type:
+          - integer
+          - 'null'
+        id_compatibility:
+          type: integer
+        color:
+          type: string
+        is_base:
+          type: boolean
+        is_hidden:
+          type: boolean
+        is_system:
+          type: boolean
+        is_stage:
+          type: boolean
+      type: object
+    VacancyModule:
+      properties:
+        id:
+          type: integer
+        id_module:
+          type: string
+        is_active:
+          type: boolean
+        vacancy_id:
+          type: integer
+      type: object
+    ResponseStatusEmailTemplate:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        template_header:
+          type: string
+        template_text:
+          type: string
+        title:
+          type: string
+        active:
+          type: boolean
+        manual:
+          type: boolean
+        response_status_id:
+          type: integer
+      type: object
+    VacancyUrlHistory:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: string
+        landing_url_path:
+          type: string
+      type: object
     Permission:
       properties:
         id:
@@ -2029,6 +2144,32 @@ components:
         vacancy_id:
           type: integer
         date_created:
+          type: string
+          format: date-time
+      type: object
+    RemindEmail:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        text:
+          type: string
+        header:
+          type: string
+        active:
+          type: boolean
+        type_id:
+          type: integer
+          enum:
+          - 1
+          - 2
+          - 3
+          description: "Type ids:\n  * `1` - Interview remind (3 day reminder)\n  * `2` - Videointerview remind (2 hour reminder)\n  * `3` - Interview completed notification (Application confirmation)\n"
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
           type: string
           format: date-time
       type: object
@@ -2050,13 +2191,15 @@ components:
           type: string
           format: date-time
       type: object
-    VacancyUrlHistory:
+    CompetenceLevel:
       properties:
         id:
           type: integer
-        vacancy_id:
-          type: string
-        landing_url_path:
+        min_value:
+          type: integer
+        max_value:
+          type: integer
+        title:
           type: string
       type: object
     User:
@@ -2096,149 +2239,6 @@ components:
             id:
               type: integer
       type: object
-    Country:
-      properties:
-        id:
-          type: integer
-        code:
-          type: string
-        title_en:
-          type: string
-        title_ru:
-          type: string
-      type: object
-    CompetenceLevel:
-      properties:
-        id:
-          type: integer
-        min_value:
-          type: integer
-        max_value:
-          type: integer
-        title:
-          type: string
-      type: object
-    RemindEmail:
-      properties:
-        id:
-          type: integer
-        vacancy_id:
-          type: integer
-        text:
-          type: string
-        header:
-          type: string
-        active:
-          type: boolean
-        type_id:
-          type: integer
-          enum:
-          - 1
-          - 2
-          - 3
-          description: "Type ids:\n  * `1` - Interview remind (3 day reminder)\n  * `2` - Videointerview remind (2 hour reminder)\n  * `3` - Interview completed notification (Application confirmation)\n"
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-      type: object
-    ResponseStatusEmailTemplate:
-      properties:
-        id:
-          type: integer
-        vacancy_id:
-          type: integer
-        template_header:
-          type: string
-        template_text:
-          type: string
-        title:
-          type: string
-        active:
-          type: boolean
-        manual:
-          type: boolean
-        response_status_id:
-          type: integer
-      type: object
-    CompetenceView:
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-      type: object
-    VacancyModule:
-      properties:
-        id:
-          type: integer
-        id_module:
-          type: string
-        is_active:
-          type: boolean
-        vacancy_id:
-          type: integer
-      type: object
-    ResponseStatus:
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        active:
-          type: boolean
-        on_top:
-          type: boolean
-        sort_order:
-          type: integer
-        company_id:
-          type:
-          - integer
-          - 'null'
-        parent_id:
-          type:
-          - integer
-          - 'null'
-        id_compatibility:
-          type: integer
-        color:
-          type: string
-        is_base:
-          type: boolean
-        is_hidden:
-          type: boolean
-        is_system:
-          type: boolean
-        is_stage:
-          type: boolean
-      type: object
-    VacancyCompetence:
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        hint:
-          type:
-          - string
-          - 'null'
-        competence_view_id:
-          type: integer
-          description: 'See [/api/v3/competence-views](#/vacancy/get_api_v3_competence_levels)
-
-            '
-        competence_level_id:
-          type: integer
-          description: 'See [/api/v3/competence-levels](#/vacancy/get_api_v3_competence_views)
-
-            '
-        vacancy_id:
-          type: integer
-        sort_order:
-          type: integer
-      type: object
     VacancyModuleStage:
       properties:
         id:
@@ -2261,8 +2261,22 @@ components:
           type: integer
       type: object
   parameters:
-    filter_user_id:
-      name: filter[user_id]
+    filter_active:
+      name: filter[active]
+      in: query
+      required: false
+      schema:
+        type: boolean
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    filter_vacancy_id:
+      name: filter[vacancy_id]
       in: query
       required: false
       schema:
@@ -2271,6 +2285,20 @@ components:
         - type: array
           items:
             type: integer
+    filter_created_at_from:
+      name: filter[created_at][from]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_created_at_to:
+      name: filter[created_at][to]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
     sort_order:
       name: sort[order]
       in: query
@@ -2282,45 +2310,6 @@ components:
         enum:
         - asc
         - desc
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
-    id:
-      name: id
-      in: path
-      description: entity id
-      required: true
-      schema:
-        type: integer
-    filter_created_at_from:
-      name: filter[created_at][from]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-    filter_vacancy_id:
-      name: filter[vacancy_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_created_at_to:
-      name: filter[created_at][to]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
     filter_id:
       name: filter[id]
       in: query
@@ -2331,12 +2320,6 @@ components:
         - type: array
           items:
             type: integer
-    filter_active:
-      name: filter[active]
-      in: query
-      required: false
-      schema:
-        type: boolean
     filter_response_status_id:
       name: filter[response_status_id]
       in: query
@@ -2347,6 +2330,23 @@ components:
         - type: array
           items:
             type: integer
+    filter_user_id:
+      name: filter[user_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
     pagination_page_size:
       name: limit
       in: query

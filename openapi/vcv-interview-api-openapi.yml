@@ -157,6 +157,17 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    CandidatePhone:
+      properties:
+        candidate_id:
+          type: integer
+        id:
+          type: integer
+        number:
+          type: string
+      type:
+      - object
+      - 'null'
     PublicInterview:
       properties:
         id:
@@ -188,67 +199,6 @@ components:
               $ref: '#/PublicResponse'
             stage:
               $ref: '#/components/schemas/InterviewStage'
-      type: object
-    CandidatePhone:
-      properties:
-        candidate_id:
-          type: integer
-        id:
-          type: integer
-        number:
-          type: string
-      type:
-      - object
-      - 'null'
-    Interview:
-      properties:
-        id:
-          type: integer
-        date_create:
-          type: string
-          format: date-time
-        token:
-          type: string
-        interview_stage_id:
-          type: integer
-        candidate_id:
-          type: integer
-      type: object
-    InterviewStage:
-      properties:
-        id:
-          type: integer
-        key:
-          type: string
-        title:
-          type: string
-      type: object
-    CandidateName:
-      properties:
-        candidate_id:
-          type: integer
-        first_name:
-          type: string
-        last_name:
-          type: string
-        second_name:
-          type:
-          - string
-          - 'null'
-      type: object
-    Candidate:
-      properties:
-        id:
-          type: integer
-        date_created:
-          type: string
-          format: date-time
-        email:
-          type: string
-        bithdate:
-          type: string
-        gender:
-          type: string
       type: object
     Response:
       properties:
@@ -316,6 +266,56 @@ components:
         is_paid:
           type:
           - boolean
+          - 'null'
+      type: object
+    Candidate:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        email:
+          type: string
+        bithdate:
+          type: string
+        gender:
+          type: string
+      type: object
+    InterviewStage:
+      properties:
+        id:
+          type: integer
+        key:
+          type: string
+        title:
+          type: string
+      type: object
+    Interview:
+      properties:
+        id:
+          type: integer
+        date_create:
+          type: string
+          format: date-time
+        token:
+          type: string
+        interview_stage_id:
+          type: integer
+        candidate_id:
+          type: integer
+      type: object
+    CandidateName:
+      properties:
+        candidate_id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        second_name:
+          type:
+          - string
           - 'null'
       type: object
   parameters:

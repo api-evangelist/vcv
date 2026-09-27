@@ -383,38 +383,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ResponseComment:
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        message:
-          type: string
-        response_id:
-          type: integer
-        user_id:
-          type: integer
-      type: object
-    Vacancy:
-      properties:
-        id:
-          type: integer
-        token:
-          type: string
-        title:
-          type: string
-        active:
-          type: boolean
-        user_id:
-          type: integer
-        language_id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-      type: object
     Webhook:
       properties:
         id:
@@ -441,43 +409,6 @@ components:
         updated_at:
           type: string
           format: date-time
-      type: object
-    User:
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        email:
-          type: string
-        position:
-          type: string
-        logo_url:
-          type:
-          - string
-          - 'null'
-        geo_id:
-          type: integer
-        lanaguage_id:
-          type: integer
-        company_id:
-          type: integer
-        userName:
-          type:
-          - object
-          - 'null'
-          properties:
-            user_id:
-              type: integer
-            first_name:
-              type: string
-            last_name:
-              type: string
-            language_id:
-              type: integer
-            id:
-              type: integer
       type: object
     Response:
       properties:
@@ -547,6 +478,75 @@ components:
           - boolean
           - 'null'
       type: object
+    Vacancy:
+      properties:
+        id:
+          type: integer
+        token:
+          type: string
+        title:
+          type: string
+        active:
+          type: boolean
+        user_id:
+          type: integer
+        language_id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+      type: object
+    ResponseComment:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        message:
+          type: string
+        response_id:
+          type: integer
+        user_id:
+          type: integer
+      type: object
+    User:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        email:
+          type: string
+        position:
+          type: string
+        logo_url:
+          type:
+          - string
+          - 'null'
+        geo_id:
+          type: integer
+        lanaguage_id:
+          type: integer
+        company_id:
+          type: integer
+        userName:
+          type:
+          - object
+          - 'null'
+          properties:
+            user_id:
+              type: integer
+            first_name:
+              type: string
+            last_name:
+              type: string
+            language_id:
+              type: integer
+            id:
+              type: integer
+      type: object
   parameters:
     id:
       name: id
@@ -561,17 +561,6 @@ components:
       required: false
       schema:
         type: boolean
-    sort_order:
-      name: sort[order]
-      in: query
-      description: sort order
-      required: false
-      schema:
-        type: string
-        default: desc
-        enum:
-        - asc
-        - desc
     pagination_page_size:
       name: limit
       in: query
@@ -588,6 +577,17 @@ components:
       schema:
         type: integer
         default: 1
+    sort_order:
+      name: sort[order]
+      in: query
+      description: sort order
+      required: false
+      schema:
+        type: string
+        default: desc
+        enum:
+        - asc
+        - desc
     filter_id:
       name: filter[id]
       in: query

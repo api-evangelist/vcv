@@ -188,6 +188,21 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Enumeration:
+      properties:
+        id:
+          type: integer
+        company_id:
+          type: integer
+        title:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
     PaginationProperties:
       type: object
       properties:
@@ -218,21 +233,6 @@ components:
                   type: string
                   format: uri
           type: object
-    Enumeration:
-      properties:
-        id:
-          type: integer
-        company_id:
-          type: integer
-        title:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-      type: object
     EnumerationItem:
       properties:
         id:
@@ -260,17 +260,6 @@ components:
       required: true
       schema:
         type: integer
-    sort_order:
-      name: sort[order]
-      in: query
-      description: sort order
-      required: false
-      schema:
-        type: string
-        default: desc
-        enum:
-        - asc
-        - desc
     pagination_page_size:
       name: limit
       in: query
@@ -287,6 +276,17 @@ components:
       schema:
         type: integer
         default: 1
+    sort_order:
+      name: sort[order]
+      in: query
+      description: sort order
+      required: false
+      schema:
+        type: string
+        default: desc
+        enum:
+        - asc
+        - desc
   securitySchemes:
     bearerAuth:
       type: http

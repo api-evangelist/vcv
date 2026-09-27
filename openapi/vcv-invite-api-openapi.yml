@@ -360,82 +360,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    InviteStatus:
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-      type: object
-    Interview:
-      properties:
-        id:
-          type: integer
-        date_create:
-          type: string
-          format: date-time
-        token:
-          type: string
-        interview_stage_id:
-          type: integer
-        candidate_id:
-          type: integer
-      type: object
-    Vacancy:
-      properties:
-        id:
-          type: integer
-        token:
-          type: string
-        title:
-          type: string
-        active:
-          type: boolean
-        user_id:
-          type: integer
-        language_id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-      type: object
-    User:
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        email:
-          type: string
-        position:
-          type: string
-        logo_url:
-          type:
-          - string
-          - 'null'
-        geo_id:
-          type: integer
-        lanaguage_id:
-          type: integer
-        company_id:
-          type: integer
-        userName:
-          type:
-          - object
-          - 'null'
-          properties:
-            user_id:
-              type: integer
-            first_name:
-              type: string
-            last_name:
-              type: string
-            language_id:
-              type: integer
-            id:
-              type: integer
-      type: object
     CandidatePhone:
       properties:
         candidate_id:
@@ -447,44 +371,6 @@ components:
       type:
       - object
       - 'null'
-    Invite:
-      properties:
-        id:
-          type: integer
-        vacancy_id:
-          type: integer
-        candidate_id:
-          type: integer
-        invite_status_id:
-          type: integer
-        interview_refusal_id:
-          type: integer
-        interview_id:
-          type: integer
-        is_hidden_by_candidate:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      type: object
-    CandidateName:
-      properties:
-        candidate_id:
-          type: integer
-        first_name:
-          type: string
-        last_name:
-          type: string
-        second_name:
-          type:
-          - string
-          - 'null'
-      type: object
     Candidate:
       properties:
         id:
@@ -497,6 +383,57 @@ components:
         bithdate:
           type: string
         gender:
+          type: string
+      type: object
+    InterviewRefusal:
+      properties:
+        id:
+          type: integer
+        description:
+          type: string
+        reason:
+          type: integer
+        interview_id:
+          type: integer
+      type: object
+    ResponseStatus:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        active:
+          type: boolean
+        on_top:
+          type: boolean
+        sort_order:
+          type: integer
+        company_id:
+          type:
+          - integer
+          - 'null'
+        parent_id:
+          type:
+          - integer
+          - 'null'
+        id_compatibility:
+          type: integer
+        color:
+          type: string
+        is_base:
+          type: boolean
+        is_hidden:
+          type: boolean
+        is_system:
+          type: boolean
+        is_stage:
+          type: boolean
+      type: object
+    InviteStatus:
+      properties:
+        id:
+          type: integer
+        title:
           type: string
       type: object
     Response:
@@ -567,72 +504,114 @@ components:
           - boolean
           - 'null'
       type: object
-    ResponseStatus:
+    Invite:
       properties:
         id:
           type: integer
+        vacancy_id:
+          type: integer
+        candidate_id:
+          type: integer
+        invite_status_id:
+          type: integer
+        interview_refusal_id:
+          type: integer
+        interview_id:
+          type: integer
+        is_hidden_by_candidate:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      type: object
+    CandidateName:
+      properties:
+        candidate_id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        second_name:
+          type:
+          - string
+          - 'null'
+      type: object
+    Vacancy:
+      properties:
+        id:
+          type: integer
+        token:
+          type: string
         title:
           type: string
         active:
           type: boolean
-        on_top:
-          type: boolean
-        sort_order:
+        user_id:
           type: integer
-        company_id:
-          type:
-          - integer
-          - 'null'
-        parent_id:
-          type:
-          - integer
-          - 'null'
-        id_compatibility:
+        language_id:
           type: integer
-        color:
+        created_at:
           type: string
-        is_base:
-          type: boolean
-        is_hidden:
-          type: boolean
-        is_system:
-          type: boolean
-        is_stage:
-          type: boolean
+          format: date-time
       type: object
-    InterviewRefusal:
+    Interview:
       properties:
         id:
           type: integer
-        description:
+        date_create:
           type: string
-        reason:
+          format: date-time
+        token:
+          type: string
+        interview_stage_id:
           type: integer
-        interview_id:
+        candidate_id:
           type: integer
       type: object
+    User:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        email:
+          type: string
+        position:
+          type: string
+        logo_url:
+          type:
+          - string
+          - 'null'
+        geo_id:
+          type: integer
+        lanaguage_id:
+          type: integer
+        company_id:
+          type: integer
+        userName:
+          type:
+          - object
+          - 'null'
+          properties:
+            user_id:
+              type: integer
+            first_name:
+              type: string
+            last_name:
+              type: string
+            language_id:
+              type: integer
+            id:
+              type: integer
+      type: object
   parameters:
-    filter_user_id:
-      name: filter[user_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    sort_order:
-      name: sort[order]
-      in: query
-      description: sort order
-      required: false
-      schema:
-        type: string
-        default: desc
-        enum:
-        - asc
-        - desc
     pagination_page:
       name: page
       in: query
@@ -665,8 +644,39 @@ components:
       schema:
         type: string
         format: date-time
+    sort_order:
+      name: sort[order]
+      in: query
+      description: sort order
+      required: false
+      schema:
+        type: string
+        default: desc
+        enum:
+        - asc
+        - desc
     filter_id:
       name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_response_status_id:
+      name: filter[response_status_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_user_id:
+      name: filter[user_id]
       in: query
       required: false
       schema:
@@ -683,16 +693,6 @@ components:
       schema:
         type: integer
         default: 20
-    filter_response_status_id:
-      name: filter[response_status_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
   securitySchemes:
     bearerAuth:
       type: http

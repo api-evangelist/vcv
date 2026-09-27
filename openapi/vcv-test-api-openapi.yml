@@ -578,22 +578,80 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    VacancyTestAnswer:
+    Test:
       properties:
         id:
           type: integer
-        date_created:
+        response_id:
+          type: integer
+        active:
+          type: boolean
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        created_at:
           type: string
           format: date-time
+      type: object
+    VacancyTestQuestionMedia:
+      properties:
+        id:
+          type: integer
         vacancy_module_test_question_id:
+          type: integer
+        url:
+          type: string
+          format: uri
+        type:
+          type: string
+        title:
+          type: string
+        is_separate_page:
+          type: boolean
+      type: object
+    VacancyTestQuestionVariable:
+      properties:
+        id:
+          type: integer
+        vacancy_module_test_question_id:
+          type: integer
+        name:
+          type: string
+        formula:
+          type: string
+        min:
+          type: number
+        max:
+          type: number
+        step:
+          type: number
+        chart_config:
+          type: object
+        type:
+          type: integer
+          enum:
+          - 1
+          - 2
+          description: '1 - Integer
+
+            2 - Float
+
+            '
+      type: object
+    TestAnswer:
+      properties:
+        id:
+          type: integer
+        response_test_question_id:
           type: integer
         body:
           type: string
         sort_order:
           type: integer
         valid:
-          type: boolean
-        is_formula:
           type: boolean
       type: object
     TestQuestion:
@@ -631,32 +689,35 @@ components:
         original_sort_order:
           type: integer
       type: object
-    TestAnswer:
+    VacancyTest:
       properties:
         id:
           type: integer
-        response_test_question_id:
+        vacancy_id:
           type: integer
-        body:
-          type: string
-        sort_order:
-          type: integer
-        valid:
-          type: boolean
-      type: object
-    TestCandidateAnswer:
-      properties:
-        id:
-          type: integer
-        response_test_answer_id:
-          type: integer
-        body:
-          type: string
         date_created:
-          type:
-          - string
-          - 'null'
+          type: string
           format: date-time
+        time_limit:
+          type: integer
+        question_shuffle:
+          type: integer
+        answer_shuffle:
+          type: boolean
+        question_limit:
+          type: integer
+        question_page_limit:
+          type: integer
+        time_limit_enabled:
+          type: integer
+        required_score:
+          type: integer
+        calculate_test_status:
+          type: boolean
+        is_dropout_enabled:
+          type: boolean
+        is_camera_required:
+          type: boolean
       type: object
     TestQuestionMedia:
       properties:
@@ -690,70 +751,6 @@ components:
           - 'null'
           format: date-time
       type: object
-    VacancyTest:
-      properties:
-        id:
-          type: integer
-        vacancy_id:
-          type: integer
-        date_created:
-          type: string
-          format: date-time
-        time_limit:
-          type: integer
-        question_shuffle:
-          type: integer
-        answer_shuffle:
-          type: boolean
-        question_limit:
-          type: integer
-        question_page_limit:
-          type: integer
-        time_limit_enabled:
-          type: integer
-        required_score:
-          type: integer
-        calculate_test_status:
-          type: boolean
-        is_dropout_enabled:
-          type: boolean
-        is_camera_required:
-          type: boolean
-      type: object
-    VacancyTestQuestionMedia:
-      properties:
-        id:
-          type: integer
-        vacancy_module_test_question_id:
-          type: integer
-        url:
-          type: string
-          format: uri
-        type:
-          type: string
-        title:
-          type: string
-        is_separate_page:
-          type: boolean
-      type: object
-    Test:
-      properties:
-        id:
-          type: integer
-        response_id:
-          type: integer
-        active:
-          type: boolean
-        name:
-          type: string
-        description:
-          type:
-          - string
-          - 'null'
-        created_at:
-          type: string
-          format: date-time
-      type: object
     VacancyTestQuestion:
       properties:
         id:
@@ -784,68 +781,39 @@ components:
         sort_order:
           type: integer
       type: object
-    VacancyTestQuestionVariable:
+    TestCandidateAnswer:
       properties:
         id:
           type: integer
+        response_test_answer_id:
+          type: integer
+        body:
+          type: string
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      type: object
+    VacancyTestAnswer:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
         vacancy_module_test_question_id:
           type: integer
-        name:
+        body:
           type: string
-        formula:
-          type: string
-        min:
-          type: number
-        max:
-          type: number
-        step:
-          type: number
-        chart_config:
-          type: object
-        type:
+        sort_order:
           type: integer
-          enum:
-          - 1
-          - 2
-          description: '1 - Integer
-
-            2 - Float
-
-            '
+        valid:
+          type: boolean
+        is_formula:
+          type: boolean
       type: object
   parameters:
-    filter_vacancy_id:
-      name: filter[vacancy_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_created_at_from:
-      name: filter[created_at][from]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-    filter_created_at_to:
-      name: filter[created_at][to]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-    pagination_page_size:
-      name: limit
-      in: query
-      description: page size
-      required: false
-      schema:
-        type: integer
-        default: 20
     filter_response_id:
       name: filter[response_id]
       in: query
@@ -856,6 +824,28 @@ components:
         - type: array
           items:
             type: integer
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+    filter_created_at_to:
+      name: filter[created_at][to]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_created_at_from:
+      name: filter[created_at][from]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
     pagination_page:
       name: page
       in: query
@@ -864,6 +854,16 @@ components:
       schema:
         type: integer
         default: 1
+    filter_vacancy_id:
+      name: filter[vacancy_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
     filter_id:
       name: filter[id]
       in: query
