@@ -157,17 +157,15 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    CandidatePhone:
+    InterviewStage:
       properties:
-        candidate_id:
-          type: integer
         id:
           type: integer
-        number:
+        key:
           type: string
-      type:
-      - object
-      - 'null'
+        title:
+          type: string
+      type: object
     PublicInterview:
       properties:
         id:
@@ -199,6 +197,33 @@ components:
               $ref: '#/PublicResponse'
             stage:
               $ref: '#/components/schemas/InterviewStage'
+      type: object
+    CandidateName:
+      properties:
+        candidate_id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        second_name:
+          type:
+          - string
+          - 'null'
+      type: object
+    Interview:
+      properties:
+        id:
+          type: integer
+        date_create:
+          type: string
+          format: date-time
+        token:
+          type: string
+        interview_stage_id:
+          type: integer
+        candidate_id:
+          type: integer
       type: object
     Response:
       properties:
@@ -282,42 +307,17 @@ components:
         gender:
           type: string
       type: object
-    InterviewStage:
-      properties:
-        id:
-          type: integer
-        key:
-          type: string
-        title:
-          type: string
-      type: object
-    Interview:
-      properties:
-        id:
-          type: integer
-        date_create:
-          type: string
-          format: date-time
-        token:
-          type: string
-        interview_stage_id:
-          type: integer
-        candidate_id:
-          type: integer
-      type: object
-    CandidateName:
+    CandidatePhone:
       properties:
         candidate_id:
           type: integer
-        first_name:
+        id:
+          type: integer
+        number:
           type: string
-        last_name:
-          type: string
-        second_name:
-          type:
-          - string
-          - 'null'
-      type: object
+      type:
+      - object
+      - 'null'
   parameters:
     id:
       name: id

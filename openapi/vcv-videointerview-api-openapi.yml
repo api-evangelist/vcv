@@ -407,6 +407,33 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    ResponseVideointerview:
+      properties:
+        id:
+          type: integer
+        response_id:
+          type: integer
+        is_converted:
+          type: boolean
+        is_finished:
+          type: boolean
+        active:
+          type: boolean
+        description:
+          type:
+          - string
+          - 'null'
+        date_start:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        date_last_video_recorded:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      type: object
     Partition:
       properties:
         id:
@@ -462,6 +489,102 @@ components:
         is_question_media_seen:
           type: boolean
       type: object
+    VacancyVideointerview:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        is_video_answer_enabled:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+      type: object
+    VideointerviewQuestion:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        vacancy_module_videointerview_id:
+          type: integer
+        title:
+          type: string
+        body:
+          type: string
+        answer_time:
+          type: integer
+        preparation_time:
+          type: integer
+        required:
+          type: boolean
+        sort_order:
+          type: integer
+        take_number:
+          type: integer
+        is_video_answer_enabled:
+          type: boolean
+        is_text_answer_enabled:
+          type: boolean
+        language_code:
+          type:
+          - string
+          - 'null'
+        video_id:
+          type: integer
+        video_title:
+          type: string
+        video_url:
+          type: string
+      type: object
+    Video:
+      properties:
+        id:
+          type: integer
+        date_modified:
+          type: string
+          format: date-time
+        name:
+          type: string
+        video_status_id:
+          type: integer
+        duration:
+          type:
+          - integer
+          - 'null'
+        original_extension:
+          type:
+          - string
+          - 'null'
+        extension:
+          type:
+          - string
+          - 'null'
+        hostname:
+          type: string
+        bucket:
+          type: string
+        size:
+          type:
+          - integer
+          - 'null'
+        original_size:
+          type:
+          - integer
+          - 'null'
+        token:
+          type: string
+        has_image_preview:
+          type: string
+        source:
+          type: string
+        preview:
+          type: string
+      type:
+      - object
+      - 'null'
     Response:
       properties:
         id:
@@ -530,90 +653,6 @@ components:
           - boolean
           - 'null'
       type: object
-    Video:
-      properties:
-        id:
-          type: integer
-        date_modified:
-          type: string
-          format: date-time
-        name:
-          type: string
-        video_status_id:
-          type: integer
-        duration:
-          type:
-          - integer
-          - 'null'
-        original_extension:
-          type:
-          - string
-          - 'null'
-        extension:
-          type:
-          - string
-          - 'null'
-        hostname:
-          type: string
-        bucket:
-          type: string
-        size:
-          type:
-          - integer
-          - 'null'
-        original_size:
-          type:
-          - integer
-          - 'null'
-        token:
-          type: string
-        has_image_preview:
-          type: string
-        source:
-          type: string
-        preview:
-          type: string
-      type:
-      - object
-      - 'null'
-    VideointerviewQuestion:
-      properties:
-        id:
-          type: integer
-        date_created:
-          type: string
-          format: date-time
-        vacancy_module_videointerview_id:
-          type: integer
-        title:
-          type: string
-        body:
-          type: string
-        answer_time:
-          type: integer
-        preparation_time:
-          type: integer
-        required:
-          type: boolean
-        sort_order:
-          type: integer
-        take_number:
-          type: integer
-        is_video_answer_enabled:
-          type: boolean
-        is_text_answer_enabled:
-          type: boolean
-        language_code:
-          type:
-          - string
-          - 'null'
-        video_id:
-          type: integer
-        video_title:
-          type: string
-        video_url:
-          type: string
-      type: object
     VideoResponse:
       properties:
         id:
@@ -672,53 +711,7 @@ components:
       type:
       - object
       - 'null'
-    VacancyVideointerview:
-      properties:
-        id:
-          type: integer
-        vacancy_id:
-          type: integer
-        is_video_answer_enabled:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-      type: object
-    ResponseVideointerview:
-      properties:
-        id:
-          type: integer
-        response_id:
-          type: integer
-        is_converted:
-          type: boolean
-        is_finished:
-          type: boolean
-        active:
-          type: boolean
-        description:
-          type:
-          - string
-          - 'null'
-        date_start:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        date_last_video_recorded:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      type: object
   parameters:
-    filter_created_at_from:
-      name: filter[created_at][from]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
     pagination_page_size:
       name: limit
       in: query
@@ -727,31 +720,6 @@ components:
       schema:
         type: integer
         default: 20
-    filter_created_at_to:
-      name: filter[created_at][to]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-    filter_response_id:
-      name: filter[response_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
     filter_vacancy_id:
       name: filter[vacancy_id]
       in: query
@@ -762,8 +730,40 @@ components:
         - type: array
           items:
             type: integer
+    filter_created_at_from:
+      name: filter[created_at][from]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
     filter_id:
       name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_created_at_to:
+      name: filter[created_at][to]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    filter_response_id:
+      name: filter[response_id]
       in: query
       required: false
       schema:

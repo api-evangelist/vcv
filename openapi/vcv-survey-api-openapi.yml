@@ -386,35 +386,68 @@ paths:
       operationId: getApiV3SurveysById
       x-operation-id-source: derived
 components:
+  parameters:
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+    filter_vacancy_id:
+      name: filter[vacancy_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_created_at_from:
+      name: filter[created_at][from]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    filter_created_at_to:
+      name: filter[created_at][to]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_response_id:
+      name: filter[response_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
   schemas:
-    SurveyTemplateAnswer:
-      properties:
-        id:
-          type: integer
-        date_created:
-          type: string
-          format: date-time
-        question_id:
-          type: integer
-        type:
-          type: string
-        content:
-          type: string
-        sort_order:
-          type: integer
-        is_dropout:
-          type: boolean
-      type: object
-    SurveyTemplate:
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        vacancy_id:
-          type: integer
-      type: object
     SurveyTemplateQuestion:
       properties:
         id:
@@ -450,48 +483,6 @@ components:
           - string
           - 'null'
           format: date-time
-      type: object
-    Survey:
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        response_id:
-          type: integer
-        name:
-          type: string
-        description:
-          type: string
-        is_finished:
-          type: boolean
-        is_active:
-          type: boolean
-      type: object
-    SurveyRecord:
-      properties:
-        id:
-          type: integer
-        date_created:
-          type: string
-          format: date-time
-        survey_id:
-          type: integer
-        question_id:
-          type: integer
-        type:
-          type: string
-        content:
-          type: string
-        sort_order:
-          type: integer
-        is_dropped:
-          type: boolean
-        answer_ids:
-          type:
-          - string
-          - 'null'
       type: object
     SurveyAnswer:
       properties:
@@ -547,67 +538,76 @@ components:
           - 'null'
           format: date-time
       type: object
-  parameters:
-    filter_response_id:
-      name: filter[response_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_created_at_to:
-      name: filter[created_at][to]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-    pagination_page_size:
-      name: limit
-      in: query
-      description: page size
-      required: false
-      schema:
-        type: integer
-        default: 20
-    filter_created_at_from:
-      name: filter[created_at][from]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
-    filter_vacancy_id:
-      name: filter[vacancy_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_id:
-      name: filter[id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
+    SurveyRecord:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        survey_id:
+          type: integer
+        question_id:
+          type: integer
+        type:
+          type: string
+        content:
+          type: string
+        sort_order:
+          type: integer
+        is_dropped:
+          type: boolean
+        answer_ids:
+          type:
+          - string
+          - 'null'
+      type: object
+    Survey:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        response_id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        is_finished:
+          type: boolean
+        is_active:
+          type: boolean
+      type: object
+    SurveyTemplateAnswer:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        question_id:
+          type: integer
+        type:
+          type: string
+        content:
+          type: string
+        sort_order:
+          type: integer
+        is_dropout:
+          type: boolean
+      type: object
+    SurveyTemplate:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        vacancy_id:
+          type: integer
+      type: object
   securitySchemes:
     bearerAuth:
       type: http

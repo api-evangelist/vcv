@@ -1200,6 +1200,122 @@ paths:
       operationId: getApiV3ResponseEventsById
       x-operation-id-source: derived
 components:
+  parameters:
+    filter_created_at_from:
+      name: filter[created_at][from]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
+    filter_vacancy_user_id:
+      name: filter[vacancy][user_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    sort_order:
+      name: sort[order]
+      in: query
+      description: sort order
+      required: false
+      schema:
+        type: string
+        default: desc
+        enum:
+        - asc
+        - desc
+    filter_user_id:
+      name: filter[user_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_is_file:
+      name: filter[is_file]
+      in: query
+      description: Filter by resumes uploaded as files
+      required: false
+      schema:
+        type: boolean
+    filter_created_at_to:
+      name: filter[created_at][to]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_response_status_id:
+      name: filter[response_status_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_response_id:
+      name: filter[response_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_vacancy_id:
+      name: filter[vacancy_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
   schemas:
     CandidatePhone:
       properties:
@@ -1212,19 +1328,37 @@ components:
       type:
       - object
       - 'null'
-    Candidate:
+    ResponseSource:
       properties:
         id:
           type: integer
-        date_created:
+        title:
+          type: string
+      type: object
+    Invite:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        candidate_id:
+          type: integer
+        invite_status_id:
+          type: integer
+        interview_refusal_id:
+          type: integer
+        interview_id:
+          type: integer
+        is_hidden_by_candidate:
+          type: boolean
+        created_at:
           type: string
           format: date-time
-        email:
-          type: string
-        bithdate:
-          type: string
-        gender:
-          type: string
+        updated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
       type: object
     ResponseStatus:
       properties:
@@ -1258,6 +1392,90 @@ components:
           type: boolean
         is_stage:
           type: boolean
+      type: object
+    ResponseResume:
+      properties:
+        id:
+          type: integer
+        response_id:
+          type: integer
+        filename:
+          type: string
+        resume_url:
+          type: string
+      type: object
+    Interview:
+      properties:
+        id:
+          type: integer
+        date_create:
+          type: string
+          format: date-time
+        token:
+          type: string
+        interview_stage_id:
+          type: integer
+        candidate_id:
+          type: integer
+      type: object
+    CandidateName:
+      properties:
+        candidate_id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        second_name:
+          type:
+          - string
+          - 'null'
+      type: object
+    ResponseEvent:
+      properties:
+        id:
+          type: integer
+        sort_order:
+          type: integer
+        type:
+          type: integer
+          enum:
+          - 1
+          - 2
+          description: "Type ids:\n  * `1` - Response Status Changed\n  * `2` - Email sent\n  * `3` - Agreement signed\n  * `4` - Interview stage started\n  * `5` - Interview stage finished\n"
+        vacancy_id:
+          type:
+          - integer
+          - 'null'
+        response_id:
+          type:
+          - integer
+          - 'null'
+        company_id:
+          type: integer
+        user_id:
+          type:
+          - integer
+          - 'null'
+        meta:
+          type: object
+        created_at:
+          type: string
+          format: date-time
+      type: object
+    ResponseComment:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        message:
+          type: string
+        response_id:
+          type: integer
+        user_id:
+          type: integer
       type: object
     Response:
       properties:
@@ -1327,61 +1545,19 @@ components:
           - boolean
           - 'null'
       type: object
-    ResponseResume:
+    Candidate:
       properties:
         id:
           type: integer
-        response_id:
-          type: integer
-        filename:
-          type: string
-        resume_url:
-          type: string
-      type: object
-    Invite:
-      properties:
-        id:
-          type: integer
-        vacancy_id:
-          type: integer
-        candidate_id:
-          type: integer
-        invite_status_id:
-          type: integer
-        interview_refusal_id:
-          type: integer
-        interview_id:
-          type: integer
-        is_hidden_by_candidate:
-          type: boolean
-        created_at:
+        date_created:
           type: string
           format: date-time
-        updated_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      type: object
-    ResponseSource:
-      properties:
-        id:
-          type: integer
-        title:
+        email:
           type: string
-      type: object
-    CandidateName:
-      properties:
-        candidate_id:
-          type: integer
-        first_name:
+        bithdate:
           type: string
-        last_name:
+        gender:
           type: string
-        second_name:
-          type:
-          - string
-          - 'null'
       type: object
     Vacancy:
       properties:
@@ -1400,34 +1576,6 @@ components:
         created_at:
           type: string
           format: date-time
-      type: object
-    ResponseComment:
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        message:
-          type: string
-        response_id:
-          type: integer
-        user_id:
-          type: integer
-      type: object
-    Interview:
-      properties:
-        id:
-          type: integer
-        date_create:
-          type: string
-          format: date-time
-        token:
-          type: string
-        interview_stage_id:
-          type: integer
-        candidate_id:
-          type: integer
       type: object
     User:
       properties:
@@ -1466,154 +1614,6 @@ components:
             id:
               type: integer
       type: object
-    ResponseEvent:
-      properties:
-        id:
-          type: integer
-        sort_order:
-          type: integer
-        type:
-          type: integer
-          enum:
-          - 1
-          - 2
-          description: "Type ids:\n  * `1` - Response Status Changed\n  * `2` - Email sent\n  * `3` - Agreement signed\n  * `4` - Interview stage started\n  * `5` - Interview stage finished\n"
-        vacancy_id:
-          type:
-          - integer
-          - 'null'
-        response_id:
-          type:
-          - integer
-          - 'null'
-        company_id:
-          type: integer
-        user_id:
-          type:
-          - integer
-          - 'null'
-        meta:
-          type: object
-        created_at:
-          type: string
-          format: date-time
-      type: object
-  parameters:
-    filter_response_id:
-      name: filter[response_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
-    filter_vacancy_id:
-      name: filter[vacancy_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_is_file:
-      name: filter[is_file]
-      in: query
-      description: Filter by resumes uploaded as files
-      required: false
-      schema:
-        type: boolean
-    filter_created_at_from:
-      name: filter[created_at][from]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-    filter_vacancy_user_id:
-      name: filter[vacancy][user_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_created_at_to:
-      name: filter[created_at][to]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-    sort_order:
-      name: sort[order]
-      in: query
-      description: sort order
-      required: false
-      schema:
-        type: string
-        default: desc
-        enum:
-        - asc
-        - desc
-    filter_id:
-      name: filter[id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_response_status_id:
-      name: filter[response_status_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_user_id:
-      name: filter[user_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    id:
-      name: id
-      in: path
-      description: entity id
-      required: true
-      schema:
-        type: integer
-    pagination_page_size:
-      name: limit
-      in: query
-      description: page size
-      required: false
-      schema:
-        type: integer
-        default: 20
   securitySchemes:
     bearerAuth:
       type: http

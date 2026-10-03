@@ -690,7 +690,120 @@ paths:
       operationId: deleteApiV3ResponseAttributeValuesById
       x-operation-id-source: derived
 components:
+  parameters:
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+    filter_vacancy_id:
+      name: filter[vacancy_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    token:
+      name: token
+      in: path
+      description: token
+      required: true
+      schema:
+        type: string
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    sort_order:
+      name: sort[order]
+      in: query
+      description: sort order
+      required: false
+      schema:
+        type: string
+        default: desc
+        enum:
+        - asc
+        - desc
+    filter_response_id:
+      name: filter[response_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
   schemas:
+    ResponseAttribute:
+      properties:
+        id:
+          type: integer
+        sort_order:
+          type: integer
+        type:
+          type: string
+          enum:
+          - text
+          - url
+          - html
+          - numeric
+        title:
+          type: string
+        code:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
+    ResponseAttributeValue:
+      properties:
+        id:
+          type: integer
+        response_id:
+          type: integer
+        response_attribute_id:
+          type: integer
+        value:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
     Response:
       properties:
         id:
@@ -776,119 +889,6 @@ components:
           type: string
           format: date-time
       type: object
-    ResponseAttributeValue:
-      properties:
-        id:
-          type: integer
-        response_id:
-          type: integer
-        response_attribute_id:
-          type: integer
-        value:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-      type: object
-    ResponseAttribute:
-      properties:
-        id:
-          type: integer
-        sort_order:
-          type: integer
-        type:
-          type: string
-          enum:
-          - text
-          - url
-          - html
-          - numeric
-        title:
-          type: string
-        code:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-      type: object
-  parameters:
-    id:
-      name: id
-      in: path
-      description: entity id
-      required: true
-      schema:
-        type: integer
-    token:
-      name: token
-      in: path
-      description: token
-      required: true
-      schema:
-        type: string
-    filter_response_id:
-      name: filter[response_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    pagination_page_size:
-      name: limit
-      in: query
-      description: page size
-      required: false
-      schema:
-        type: integer
-        default: 20
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
-    sort_order:
-      name: sort[order]
-      in: query
-      description: sort order
-      required: false
-      schema:
-        type: string
-        default: desc
-        enum:
-        - asc
-        - desc
-    filter_vacancy_id:
-      name: filter[vacancy_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_id:
-      name: filter[id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
   securitySchemes:
     bearerAuth:
       type: http
