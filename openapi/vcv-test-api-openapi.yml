@@ -578,41 +578,6 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    pagination_page_size:
-      name: limit
-      in: query
-      description: page size
-      required: false
-      schema:
-        type: integer
-        default: 20
-    filter_vacancy_id:
-      name: filter[vacancy_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_created_at_from:
-      name: filter[created_at][from]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-    filter_id:
-      name: filter[id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
     filter_created_at_to:
       name: filter[created_at][to]
       in: query
@@ -620,14 +585,13 @@ components:
       schema:
         type: string
         format: date-time
-    pagination_page:
-      name: page
+    filter_created_at_from:
+      name: filter[created_at][from]
       in: query
-      description: page number
       required: false
       schema:
-        type: integer
-        default: 1
+        type: string
+        format: date-time
     filter_response_id:
       name: filter[response_id]
       in: query
@@ -638,7 +602,135 @@ components:
         - type: array
           items:
             type: integer
+    filter_vacancy_id:
+      name: filter[vacancy_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
   schemas:
+    Test:
+      properties:
+        id:
+          type: integer
+        response_id:
+          type: integer
+        active:
+          type: boolean
+        name:
+          type: string
+        description:
+          type:
+          - string
+          - 'null'
+        created_at:
+          type: string
+          format: date-time
+      type: object
+    VacancyTestQuestion:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        vacancy_module_test_id:
+          type: integer
+        rounding_precision:
+          type: integer
+        title:
+          type: string
+        body:
+          type: string
+        type:
+          type: string
+        time_limit:
+          type: integer
+        time_limit_enabled:
+          type: boolean
+        has_valid_answer:
+          type: boolean
+        is_graph_enabled:
+          type: boolean
+        is_variables_enabled:
+          type: boolean
+        sort_order:
+          type: integer
+      type: object
+    VacancyTest:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        time_limit:
+          type: integer
+        question_shuffle:
+          type: integer
+        answer_shuffle:
+          type: boolean
+        question_limit:
+          type: integer
+        question_page_limit:
+          type: integer
+        time_limit_enabled:
+          type: integer
+        required_score:
+          type: integer
+        calculate_test_status:
+          type: boolean
+        is_dropout_enabled:
+          type: boolean
+        is_camera_required:
+          type: boolean
+      type: object
+    TestCandidateAnswer:
+      properties:
+        id:
+          type: integer
+        response_test_answer_id:
+          type: integer
+        body:
+          type: string
+        date_created:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      type: object
     TestQuestion:
       properties:
         id:
@@ -674,35 +766,6 @@ components:
         original_sort_order:
           type: integer
       type: object
-    VacancyTestQuestionVariable:
-      properties:
-        id:
-          type: integer
-        vacancy_module_test_question_id:
-          type: integer
-        name:
-          type: string
-        formula:
-          type: string
-        min:
-          type: number
-        max:
-          type: number
-        step:
-          type: number
-        chart_config:
-          type: object
-        type:
-          type: integer
-          enum:
-          - 1
-          - 2
-          description: '1 - Integer
-
-            2 - Float
-
-            '
-      type: object
     TestQuestionMedia:
       properties:
         id:
@@ -735,37 +798,63 @@ components:
           - 'null'
           format: date-time
       type: object
-    Test:
+    VacancyTestQuestionMedia:
       properties:
         id:
           type: integer
-        response_id:
+        vacancy_module_test_question_id:
           type: integer
-        active:
+        url:
+          type: string
+          format: uri
+        type:
+          type: string
+        title:
+          type: string
+        is_separate_page:
           type: boolean
+      type: object
+    VacancyTestQuestionVariable:
+      properties:
+        id:
+          type: integer
+        vacancy_module_test_question_id:
+          type: integer
         name:
           type: string
-        description:
-          type:
-          - string
-          - 'null'
-        created_at:
+        formula:
           type: string
-          format: date-time
+        min:
+          type: number
+        max:
+          type: number
+        step:
+          type: number
+        chart_config:
+          type: object
+        type:
+          type: integer
+          enum:
+          - 1
+          - 2
+          description: '1 - Integer
+
+            2 - Float
+
+            '
       type: object
-    TestCandidateAnswer:
+    TestAnswer:
       properties:
         id:
           type: integer
-        response_test_answer_id:
+        response_test_question_id:
           type: integer
         body:
           type: string
-        date_created:
-          type:
-          - string
-          - 'null'
-          format: date-time
+        sort_order:
+          type: integer
+        valid:
+          type: boolean
       type: object
     VacancyTestAnswer:
       properties:
@@ -784,95 +873,6 @@ components:
           type: boolean
         is_formula:
           type: boolean
-      type: object
-    VacancyTestQuestionMedia:
-      properties:
-        id:
-          type: integer
-        vacancy_module_test_question_id:
-          type: integer
-        url:
-          type: string
-          format: uri
-        type:
-          type: string
-        title:
-          type: string
-        is_separate_page:
-          type: boolean
-      type: object
-    VacancyTest:
-      properties:
-        id:
-          type: integer
-        vacancy_id:
-          type: integer
-        date_created:
-          type: string
-          format: date-time
-        time_limit:
-          type: integer
-        question_shuffle:
-          type: integer
-        answer_shuffle:
-          type: boolean
-        question_limit:
-          type: integer
-        question_page_limit:
-          type: integer
-        time_limit_enabled:
-          type: integer
-        required_score:
-          type: integer
-        calculate_test_status:
-          type: boolean
-        is_dropout_enabled:
-          type: boolean
-        is_camera_required:
-          type: boolean
-      type: object
-    TestAnswer:
-      properties:
-        id:
-          type: integer
-        response_test_question_id:
-          type: integer
-        body:
-          type: string
-        sort_order:
-          type: integer
-        valid:
-          type: boolean
-      type: object
-    VacancyTestQuestion:
-      properties:
-        id:
-          type: integer
-        date_created:
-          type: string
-          format: date-time
-        vacancy_module_test_id:
-          type: integer
-        rounding_precision:
-          type: integer
-        title:
-          type: string
-        body:
-          type: string
-        type:
-          type: string
-        time_limit:
-          type: integer
-        time_limit_enabled:
-          type: boolean
-        has_valid_answer:
-          type: boolean
-        is_graph_enabled:
-          type: boolean
-        is_variables_enabled:
-          type: boolean
-        sort_order:
-          type: integer
       type: object
   securitySchemes:
     bearerAuth:

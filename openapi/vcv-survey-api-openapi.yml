@@ -387,26 +387,15 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    pagination_page_size:
-      name: limit
-      in: query
-      description: page size
-      required: false
-      schema:
-        type: integer
-        default: 20
-    filter_vacancy_id:
-      name: filter[vacancy_id]
+    filter_created_at_to:
+      name: filter[created_at][to]
       in: query
       required: false
       schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_id:
-      name: filter[id]
+        type: string
+        format: date-time
+    filter_response_id:
+      name: filter[response_id]
       in: query
       required: false
       schema:
@@ -430,15 +419,26 @@ components:
       schema:
         type: integer
         default: 1
-    filter_created_at_to:
-      name: filter[created_at][to]
+    filter_vacancy_id:
+      name: filter[vacancy_id]
       in: query
       required: false
       schema:
-        type: string
-        format: date-time
-    filter_response_id:
-      name: filter[response_id]
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+    filter_id:
+      name: filter[id]
       in: query
       required: false
       schema:
@@ -448,41 +448,47 @@ components:
           items:
             type: integer
   schemas:
-    SurveyTemplateQuestion:
+    SurveyTemplateAnswer:
       properties:
         id:
           type: integer
         date_created:
           type: string
           format: date-time
-        template_id:
+        question_id:
           type: integer
-        name:
-          type: string
         type:
           type: string
-        font_style:
-          type:
-          - string
-          - 'null'
-        description:
+        content:
           type: string
         sort_order:
           type: integer
-        is_indicated_dates:
+        is_dropout:
           type: boolean
-        is_required:
+      type: object
+    SurveyRecord:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        survey_id:
+          type: integer
+        question_id:
+          type: integer
+        type:
+          type: string
+        content:
+          type: string
+        sort_order:
+          type: integer
+        is_dropped:
           type: boolean
-        dropout_date_min:
+        answer_ids:
           type:
           - string
           - 'null'
-          format: date-time
-        dropout_date_max:
-          type:
-          - string
-          - 'null'
-          format: date-time
       type: object
     SurveyAnswer:
       properties:
@@ -501,6 +507,16 @@ components:
           type: integer
         is_dropout:
           type: boolean
+      type: object
+    SurveyTemplate:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        vacancy_id:
+          type: integer
       type: object
     SurveyQuestion:
       properties:
@@ -538,29 +554,41 @@ components:
           - 'null'
           format: date-time
       type: object
-    SurveyRecord:
+    SurveyTemplateQuestion:
       properties:
         id:
           type: integer
         date_created:
           type: string
           format: date-time
-        survey_id:
+        template_id:
           type: integer
-        question_id:
-          type: integer
+        name:
+          type: string
         type:
           type: string
-        content:
-          type: string
-        sort_order:
-          type: integer
-        is_dropped:
-          type: boolean
-        answer_ids:
+        font_style:
           type:
           - string
           - 'null'
+        description:
+          type: string
+        sort_order:
+          type: integer
+        is_indicated_dates:
+          type: boolean
+        is_required:
+          type: boolean
+        dropout_date_min:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        dropout_date_max:
+          type:
+          - string
+          - 'null'
+          format: date-time
       type: object
     Survey:
       properties:
@@ -579,34 +607,6 @@ components:
           type: boolean
         is_active:
           type: boolean
-      type: object
-    SurveyTemplateAnswer:
-      properties:
-        id:
-          type: integer
-        date_created:
-          type: string
-          format: date-time
-        question_id:
-          type: integer
-        type:
-          type: string
-        content:
-          type: string
-        sort_order:
-          type: integer
-        is_dropout:
-          type: boolean
-      type: object
-    SurveyTemplate:
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        vacancy_id:
-          type: integer
       type: object
   securitySchemes:
     bearerAuth:

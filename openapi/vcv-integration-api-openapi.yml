@@ -699,8 +699,15 @@ components:
       schema:
         type: integer
         default: 20
-    filter_vacancy_id:
-      name: filter[vacancy_id]
+    token:
+      name: token
+      in: path
+      description: token
+      required: true
+      schema:
+        type: string
+    filter_response_id:
+      name: filter[response_id]
       in: query
       required: false
       schema:
@@ -709,15 +716,27 @@ components:
         - type: array
           items:
             type: integer
-    token:
-      name: token
-      in: path
-      description: token
-      required: true
+    sort_order:
+      name: sort[order]
+      in: query
+      description: sort order
+      required: false
       schema:
         type: string
-    filter_id:
-      name: filter[id]
+        default: desc
+        enum:
+        - asc
+        - desc
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    filter_vacancy_id:
+      name: filter[vacancy_id]
       in: query
       required: false
       schema:
@@ -733,27 +752,8 @@ components:
       required: true
       schema:
         type: integer
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
-    sort_order:
-      name: sort[order]
-      in: query
-      description: sort order
-      required: false
-      schema:
-        type: string
-        default: desc
-        enum:
-        - asc
-        - desc
-    filter_response_id:
-      name: filter[response_id]
+    filter_id:
+      name: filter[id]
       in: query
       required: false
       schema:
@@ -763,6 +763,23 @@ components:
           items:
             type: integer
   schemas:
+    ResponseAttributeValue:
+      properties:
+        id:
+          type: integer
+        response_id:
+          type: integer
+        response_attribute_id:
+          type: integer
+        value:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
     ResponseAttribute:
       properties:
         id:
@@ -779,23 +796,6 @@ components:
         title:
           type: string
         code:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-      type: object
-    ResponseAttributeValue:
-      properties:
-        id:
-          type: integer
-        response_id:
-          type: integer
-        response_attribute_id:
-          type: integer
-        value:
           type: string
         created_at:
           type: string

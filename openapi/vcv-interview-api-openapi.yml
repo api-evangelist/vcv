@@ -157,6 +157,34 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    Candidate:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        email:
+          type: string
+        bithdate:
+          type: string
+        gender:
+          type: string
+      type: object
+    Interview:
+      properties:
+        id:
+          type: integer
+        date_create:
+          type: string
+          format: date-time
+        token:
+          type: string
+        interview_stage_id:
+          type: integer
+        candidate_id:
+          type: integer
+      type: object
     InterviewStage:
       properties:
         id:
@@ -197,33 +225,6 @@ components:
               $ref: '#/PublicResponse'
             stage:
               $ref: '#/components/schemas/InterviewStage'
-      type: object
-    CandidateName:
-      properties:
-        candidate_id:
-          type: integer
-        first_name:
-          type: string
-        last_name:
-          type: string
-        second_name:
-          type:
-          - string
-          - 'null'
-      type: object
-    Interview:
-      properties:
-        id:
-          type: integer
-        date_create:
-          type: string
-          format: date-time
-        token:
-          type: string
-        interview_stage_id:
-          type: integer
-        candidate_id:
-          type: integer
       type: object
     Response:
       properties:
@@ -293,20 +294,6 @@ components:
           - boolean
           - 'null'
       type: object
-    Candidate:
-      properties:
-        id:
-          type: integer
-        date_created:
-          type: string
-          format: date-time
-        email:
-          type: string
-        bithdate:
-          type: string
-        gender:
-          type: string
-      type: object
     CandidatePhone:
       properties:
         candidate_id:
@@ -318,14 +305,20 @@ components:
       type:
       - object
       - 'null'
+    CandidateName:
+      properties:
+        candidate_id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        second_name:
+          type:
+          - string
+          - 'null'
+      type: object
   parameters:
-    id:
-      name: id
-      in: path
-      description: entity id
-      required: true
-      schema:
-        type: integer
     token:
       name: token
       in: path
@@ -333,6 +326,13 @@ components:
       required: true
       schema:
         type: string
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
   securitySchemes:
     bearerAuth:
       type: http

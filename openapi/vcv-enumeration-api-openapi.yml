@@ -196,6 +196,17 @@ components:
       schema:
         type: integer
         default: 20
+    sort_order:
+      name: sort[order]
+      in: query
+      description: sort order
+      required: false
+      schema:
+        type: string
+        default: desc
+        enum:
+        - asc
+        - desc
     pagination_page:
       name: page
       in: query
@@ -211,52 +222,7 @@ components:
       required: true
       schema:
         type: integer
-    sort_order:
-      name: sort[order]
-      in: query
-      description: sort order
-      required: false
-      schema:
-        type: string
-        default: desc
-        enum:
-        - asc
-        - desc
   schemas:
-    EnumerationItem:
-      properties:
-        id:
-          type: integer
-        enumeration_id:
-          type: integer
-        value:
-          type: string
-        sort_order:
-          type:
-          - integer
-          - 'null'
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-      type: object
-    Enumeration:
-      properties:
-        id:
-          type: integer
-        company_id:
-          type: integer
-        title:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-      type: object
     PaginationProperties:
       type: object
       properties:
@@ -287,6 +253,40 @@ components:
                   type: string
                   format: uri
           type: object
+    Enumeration:
+      properties:
+        id:
+          type: integer
+        company_id:
+          type: integer
+        title:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
+    EnumerationItem:
+      properties:
+        id:
+          type: integer
+        enumeration_id:
+          type: integer
+        value:
+          type: string
+        sort_order:
+          type:
+          - integer
+          - 'null'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+      type: object
   securitySchemes:
     bearerAuth:
       type: http

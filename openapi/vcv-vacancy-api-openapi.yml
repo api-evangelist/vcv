@@ -2007,27 +2007,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    VacancyModuleStage:
-      properties:
-        id:
-          type: integer
-        id_module:
-          type: string
-        name:
-          type:
-          - string
-          - 'null'
-        description:
-          type:
-          - string
-          - 'null'
-        minutes:
-          type:
-          - integer
-          - 'null'
-        vacancy_id:
-          type: integer
-      type: object
     VacancyCompetence:
       properties:
         id:
@@ -2053,6 +2032,15 @@ components:
         sort_order:
           type: integer
       type: object
+    VacancyUrlHistory:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: string
+        landing_url_path:
+          type: string
+      type: object
     Language:
       properties:
         id:
@@ -2064,82 +2052,23 @@ components:
         bcp47_tag:
           type: string
       type: object
-    VacancyModule:
+    Vacancy:
       properties:
         id:
           type: integer
-        id_module:
-          type: string
-        is_active:
-          type: boolean
-        vacancy_id:
-          type: integer
-      type: object
-    ResponseStatusEmailTemplate:
-      properties:
-        id:
-          type: integer
-        vacancy_id:
-          type: integer
-        template_header:
-          type: string
-        template_text:
+        token:
           type: string
         title:
           type: string
         active:
           type: boolean
-        manual:
-          type: boolean
-        response_status_id:
-          type: integer
-      type: object
-    Permission:
-      properties:
-        id:
-          type: integer
-        permission:
-          type: string
         user_id:
           type: integer
-        vacancy_id:
+        language_id:
           type: integer
-        date_created:
+        created_at:
           type: string
           format: date-time
-      type: object
-    ResponseStatus:
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-        active:
-          type: boolean
-        on_top:
-          type: boolean
-        sort_order:
-          type: integer
-        company_id:
-          type:
-          - integer
-          - 'null'
-        parent_id:
-          type:
-          - integer
-          - 'null'
-        id_compatibility:
-          type: integer
-        color:
-          type: string
-        is_base:
-          type: boolean
-        is_hidden:
-          type: boolean
-        is_system:
-          type: boolean
-        is_stage:
-          type: boolean
       type: object
     RemindEmail:
       properties:
@@ -2167,22 +2096,6 @@ components:
           type: string
           format: date-time
       type: object
-    CompetenceView:
-      properties:
-        id:
-          type: integer
-        title:
-          type: string
-      type: object
-    VacancyUrlHistory:
-      properties:
-        id:
-          type: integer
-        vacancy_id:
-          type: string
-        landing_url_path:
-          type: string
-      type: object
     Country:
       properties:
         id:
@@ -2194,32 +2107,57 @@ components:
         title_ru:
           type: string
       type: object
-    CompetenceLevel:
+    ResponseStatusEmailTemplate:
       properties:
         id:
           type: integer
-        min_value:
+        vacancy_id:
           type: integer
-        max_value:
-          type: integer
-        title:
+        template_header:
           type: string
-      type: object
-    Vacancy:
-      properties:
-        id:
-          type: integer
-        token:
+        template_text:
           type: string
         title:
           type: string
         active:
           type: boolean
+        manual:
+          type: boolean
+        response_status_id:
+          type: integer
+      type: object
+    VacancyModuleStage:
+      properties:
+        id:
+          type: integer
+        id_module:
+          type: string
+        name:
+          type:
+          - string
+          - 'null'
+        description:
+          type:
+          - string
+          - 'null'
+        minutes:
+          type:
+          - integer
+          - 'null'
+        vacancy_id:
+          type: integer
+      type: object
+    Permission:
+      properties:
+        id:
+          type: integer
+        permission:
+          type: string
         user_id:
           type: integer
-        language_id:
+        vacancy_id:
           type: integer
-        created_at:
+        date_created:
           type: string
           format: date-time
       type: object
@@ -2260,14 +2198,69 @@ components:
             id:
               type: integer
       type: object
+    VacancyModule:
+      properties:
+        id:
+          type: integer
+        id_module:
+          type: string
+        is_active:
+          type: boolean
+        vacancy_id:
+          type: integer
+      type: object
+    CompetenceLevel:
+      properties:
+        id:
+          type: integer
+        min_value:
+          type: integer
+        max_value:
+          type: integer
+        title:
+          type: string
+      type: object
+    ResponseStatus:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        active:
+          type: boolean
+        on_top:
+          type: boolean
+        sort_order:
+          type: integer
+        company_id:
+          type:
+          - integer
+          - 'null'
+        parent_id:
+          type:
+          - integer
+          - 'null'
+        id_compatibility:
+          type: integer
+        color:
+          type: string
+        is_base:
+          type: boolean
+        is_hidden:
+          type: boolean
+        is_system:
+          type: boolean
+        is_stage:
+          type: boolean
+      type: object
+    CompetenceView:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+      type: object
   parameters:
-    filter_created_at_from:
-      name: filter[created_at][from]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
     id:
       name: id
       in: path
@@ -2275,14 +2268,6 @@ components:
       required: true
       schema:
         type: integer
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
     sort_order:
       name: sort[order]
       in: query
@@ -2294,8 +2279,18 @@ components:
         enum:
         - asc
         - desc
-    filter_user_id:
-      name: filter[user_id]
+    filter_response_status_id:
+      name: filter[response_status_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_id:
+      name: filter[id]
       in: query
       required: false
       schema:
@@ -2311,8 +2306,8 @@ components:
       schema:
         type: string
         format: date-time
-    filter_response_status_id:
-      name: filter[response_status_id]
+    filter_user_id:
+      name: filter[user_id]
       in: query
       required: false
       schema:
@@ -2329,22 +2324,27 @@ components:
       schema:
         type: integer
         default: 20
-    filter_id:
-      name: filter[id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
     filter_active:
       name: filter[active]
       in: query
       required: false
       schema:
         type: boolean
+    filter_created_at_from:
+      name: filter[created_at][from]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
     filter_vacancy_id:
       name: filter[vacancy_id]
       in: query
