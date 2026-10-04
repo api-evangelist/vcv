@@ -1,0 +1,96 @@
+slug: vcv
+provider: VCV
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 8
+edges:
+- tag: vacancy
+  spec_file: vcv-vacancy-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.88
+  evidence: 'POST /api/v3/vacancies; schemas: VacancyCompetence, VacancyModuleStage, ResponseStatusEmailTemplate,
+    CompetenceLevel, Vacancy'
+  reason: Job vacancy (requisition) lifecycle with hiring stages, competences and candidate status email
+    templates — directly realises sourcing/recruiting within talent acquisition.
+- tag: Interview
+  spec_file: vcv-interview-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.85
+  evidence: '''Get api public interviews by token'', ''Create api public interviews by token agreed'',
+    ''Create api responses by id finish''; schemas ''Interview'', ''Candidate'', ''InterviewStage'', ''Response'''
+  reason: Operations run candidate video interviews and record candidate responses in a recruitment platform
+    — core hiring/screening activity under Talent Acquisition Management.
+- tag: Invite
+  spec_file: vcv-invite-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.85
+  evidence: '''Create api invites'' with schemas ''Invite'', ''InviteStatus'', ''Candidate'', ''Vacancy'',
+    ''Interview'', ''InterviewRefusal'''
+  reason: Invites are candidate invitations to interviews against a vacancy, including refusal tracking
+    — recruiting workflow, i.e. Talent Acquisition Management.
+- tag: Response
+  spec_file: vcv-response-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.85
+  evidence: 'schemas: CandidatePhone, ResponseSource, Invite, ResponseStatus, ResponseResume, Interview,
+    ... Candidate, Vacancy'
+  reason: '''Response'' here is a candidate''s application to a vacancy, with resume, interview, status
+    pipeline and recruiter comments — core recruiting/candidate-pipeline management within talent acquisition.'
+- tag: videointerview
+  spec_file: vcv-videointerview-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.85
+  evidence: 'GET /api/v3/videointerviews/vacancy; schemas: ResponseVideointerview, VacancyVideointerview,
+    VideointerviewQuestion, VideoResponse'
+  reason: Configuration of video interview questions per vacancy and retrieval of candidate video responses
+    — interviewing step of the recruiting process.
+- tag: Test
+  spec_file: vcv-test-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.82
+  evidence: 'GET /api/v3/tests/vacancy; schemas: VacancyTestQuestion, TestCandidateAnswer, VacancyTestAnswer'
+  reason: Candidate assessment tests attached to vacancies with candidate answers — screening/assessment
+    step of recruiting, i.e. talent acquisition, not software testing.
+- tag: Chatbot
+  spec_file: vcv-chatbot-api-openapi.yml
+  capability_id: BC-300.10
+  capability_id_l1: BC-300
+  capability_name: Talent Acquisition Management
+  confidence: 0.72
+  evidence: POST /api/v3/chatbot/interviews/{interview_id}, POST /api/v3/chatbot/trigger/{interview_id},
+    schema 'Dialog'; vendor offers 'chatbot pre-screening for high-volume, graduate, and professional
+    hiring'
+  reason: Chatbot operations are bound to interview objects in a recruitment-automation platform, i.e.
+    candidate pre-screening within hiring — Talent Acquisition Management. Thin operation set hence moderate
+    confidence.
+- tag: Webhook
+  spec_file: vcv-webhook-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.7
+  evidence: 'POST /api/v3/company-webhooks  Create api company webhooks; schemas: Webhook'
+  reason: CRUD lifecycle of outbound event subscriptions a customer registers against the platform, matching
+    webhook & event subscription management on the developer-platform side; low-information surface so
+    moderate confidence.

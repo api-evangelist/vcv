@@ -299,6 +299,9 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: CapabilityMap
+  url: capabilities/vcv-capability-edges.yml
+  name: VCV Business Capability Map
 - type: Website
   url: https://vcv.ai
 - type: Documentation
