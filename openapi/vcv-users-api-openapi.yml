@@ -167,15 +167,6 @@ components:
       schema:
         type: integer
   schemas:
-    Role:
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        role:
-          type: string
-      type: object
     Language:
       properties:
         id:
@@ -185,6 +176,15 @@ components:
         name:
           type: string
         bcp47_tag:
+          type: string
+      type: object
+    Role:
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        role:
           type: string
       type: object
     User:

@@ -1201,6 +1201,46 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    ResponseSource:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+      type: object
+    ResponseStatus:
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        active:
+          type: boolean
+        on_top:
+          type: boolean
+        sort_order:
+          type: integer
+        company_id:
+          type:
+          - integer
+          - 'null'
+        parent_id:
+          type:
+          - integer
+          - 'null'
+        id_compatibility:
+          type: integer
+        color:
+          type: string
+        is_base:
+          type: boolean
+        is_hidden:
+          type: boolean
+        is_system:
+          type: boolean
+        is_stage:
+          type: boolean
+      type: object
     ResponseComment:
       properties:
         id:
@@ -1283,20 +1323,6 @@ components:
           - boolean
           - 'null'
       type: object
-    Interview:
-      properties:
-        id:
-          type: integer
-        date_create:
-          type: string
-          format: date-time
-        token:
-          type: string
-        interview_stage_id:
-          type: integer
-        candidate_id:
-          type: integer
-      type: object
     Vacancy:
       properties:
         id:
@@ -1314,52 +1340,6 @@ components:
         created_at:
           type: string
           format: date-time
-      type: object
-    ResponseEvent:
-      properties:
-        id:
-          type: integer
-        sort_order:
-          type: integer
-        type:
-          type: integer
-          enum:
-          - 1
-          - 2
-          description: "Type ids:\n  * `1` - Response Status Changed\n  * `2` - Email sent\n  * `3` - Agreement signed\n  * `4` - Interview stage started\n  * `5` - Interview stage finished\n"
-        vacancy_id:
-          type:
-          - integer
-          - 'null'
-        response_id:
-          type:
-          - integer
-          - 'null'
-        company_id:
-          type: integer
-        user_id:
-          type:
-          - integer
-          - 'null'
-        meta:
-          type: object
-        created_at:
-          type: string
-          format: date-time
-      type: object
-    Candidate:
-      properties:
-        id:
-          type: integer
-        date_created:
-          type: string
-          format: date-time
-        email:
-          type: string
-        bithdate:
-          type: string
-        gender:
-          type: string
       type: object
     Invite:
       properties:
@@ -1386,12 +1366,32 @@ components:
           - 'null'
           format: date-time
       type: object
-    ResponseSource:
+    Candidate:
       properties:
         id:
           type: integer
-        title:
+        date_created:
           type: string
+          format: date-time
+        email:
+          type: string
+        bithdate:
+          type: string
+        gender:
+          type: string
+      type: object
+    CandidateName:
+      properties:
+        candidate_id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        second_name:
+          type:
+          - string
+          - 'null'
       type: object
     User:
       properties:
@@ -1430,49 +1430,51 @@ components:
             id:
               type: integer
       type: object
-    CandidatePhone:
-      properties:
-        candidate_id:
-          type: integer
-        id:
-          type: integer
-        number:
-          type: string
-      type:
-      - object
-      - 'null'
-    ResponseStatus:
+    ResponseEvent:
       properties:
         id:
           type: integer
-        title:
-          type: string
-        active:
-          type: boolean
-        on_top:
-          type: boolean
         sort_order:
           type: integer
-        company_id:
-          type:
-          - integer
-          - 'null'
-        parent_id:
-          type:
-          - integer
-          - 'null'
-        id_compatibility:
+        type:
           type: integer
-        color:
+          enum:
+          - 1
+          - 2
+          description: "Type ids:\n  * `1` - Response Status Changed\n  * `2` - Email sent\n  * `3` - Agreement signed\n  * `4` - Interview stage started\n  * `5` - Interview stage finished\n"
+        vacancy_id:
+          type:
+          - integer
+          - 'null'
+        response_id:
+          type:
+          - integer
+          - 'null'
+        company_id:
+          type: integer
+        user_id:
+          type:
+          - integer
+          - 'null'
+        meta:
+          type: object
+        created_at:
           type: string
-        is_base:
-          type: boolean
-        is_hidden:
-          type: boolean
-        is_system:
-          type: boolean
-        is_stage:
-          type: boolean
+          format: date-time
+      type: object
+    Interview:
+      properties:
+        id:
+          type: integer
+        date_create:
+          type: string
+          format: date-time
+        token:
+          type: string
+        interview_stage_id:
+          type: integer
+        candidate_id:
+          type: integer
       type: object
     ResponseResume:
       properties:
@@ -1485,29 +1487,20 @@ components:
         resume_url:
           type: string
       type: object
-    CandidateName:
+    CandidatePhone:
       properties:
         candidate_id:
           type: integer
-        first_name:
+        id:
+          type: integer
+        number:
           type: string
-        last_name:
-          type: string
-        second_name:
-          type:
-          - string
-          - 'null'
-      type: object
+      type:
+      - object
+      - 'null'
   parameters:
-    id:
-      name: id
-      in: path
-      description: entity id
-      required: true
-      schema:
-        type: integer
-    filter_vacancy_user_id:
-      name: filter[vacancy][user_id]
+    filter_response_status_id:
+      name: filter[response_status_id]
       in: query
       required: false
       schema:
@@ -1523,16 +1516,6 @@ components:
       required: false
       schema:
         type: boolean
-    filter_response_status_id:
-      name: filter[response_status_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
     sort_order:
       name: sort[order]
       in: query
@@ -1544,8 +1527,8 @@ components:
         enum:
         - asc
         - desc
-    filter_id:
-      name: filter[id]
+    filter_vacancy_user_id:
+      name: filter[vacancy][user_id]
       in: query
       required: false
       schema:
@@ -1554,8 +1537,8 @@ components:
         - type: array
           items:
             type: integer
-    filter_user_id:
-      name: filter[user_id]
+    filter_response_id:
+      name: filter[response_id]
       in: query
       required: false
       schema:
@@ -1579,8 +1562,8 @@ components:
       schema:
         type: integer
         default: 20
-    filter_response_id:
-      name: filter[response_id]
+    filter_id:
+      name: filter[id]
       in: query
       required: false
       schema:
@@ -1589,13 +1572,6 @@ components:
         - type: array
           items:
             type: integer
-    filter_created_at_from:
-      name: filter[created_at][from]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
     pagination_page:
       name: page
       in: query
@@ -1604,6 +1580,30 @@ components:
       schema:
         type: integer
         default: 1
+    filter_created_at_from:
+      name: filter[created_at][from]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_user_id:
+      name: filter[user_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
     filter_vacancy_id:
       name: filter[vacancy_id]
       in: query

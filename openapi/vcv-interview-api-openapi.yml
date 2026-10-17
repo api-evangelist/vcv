@@ -156,7 +156,42 @@ paths:
       operationId: postApiV3ResponsesByIdFinish
       x-operation-id-source: derived
 components:
+  parameters:
+    token:
+      name: token
+      in: path
+      description: token
+      required: true
+      schema:
+        type: string
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
   schemas:
+    InterviewStage:
+      properties:
+        id:
+          type: integer
+        key:
+          type: string
+        title:
+          type: string
+      type: object
+    CandidatePhone:
+      properties:
+        candidate_id:
+          type: integer
+        id:
+          type: integer
+        number:
+          type: string
+      type:
+      - object
+      - 'null'
     Candidate:
       properties:
         id:
@@ -171,6 +206,19 @@ components:
         gender:
           type: string
       type: object
+    CandidateName:
+      properties:
+        candidate_id:
+          type: integer
+        first_name:
+          type: string
+        last_name:
+          type: string
+        second_name:
+          type:
+          - string
+          - 'null'
+      type: object
     Interview:
       properties:
         id:
@@ -184,15 +232,6 @@ components:
           type: integer
         candidate_id:
           type: integer
-      type: object
-    InterviewStage:
-      properties:
-        id:
-          type: integer
-        key:
-          type: string
-        title:
-          type: string
       type: object
     PublicInterview:
       properties:
@@ -294,45 +333,6 @@ components:
           - boolean
           - 'null'
       type: object
-    CandidatePhone:
-      properties:
-        candidate_id:
-          type: integer
-        id:
-          type: integer
-        number:
-          type: string
-      type:
-      - object
-      - 'null'
-    CandidateName:
-      properties:
-        candidate_id:
-          type: integer
-        first_name:
-          type: string
-        last_name:
-          type: string
-        second_name:
-          type:
-          - string
-          - 'null'
-      type: object
-  parameters:
-    token:
-      name: token
-      in: path
-      description: token
-      required: true
-      schema:
-        type: string
-    id:
-      name: id
-      in: path
-      description: entity id
-      required: true
-      schema:
-        type: integer
   securitySchemes:
     bearerAuth:
       type: http

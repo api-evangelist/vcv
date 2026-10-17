@@ -383,38 +383,6 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    filter_active:
-      name: filter[active]
-      in: query
-      required: false
-      schema:
-        type: boolean
-    sort_order:
-      name: sort[order]
-      in: query
-      description: sort order
-      required: false
-      schema:
-        type: string
-        default: desc
-        enum:
-        - asc
-        - desc
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
-    id:
-      name: id
-      in: path
-      description: entity id
-      required: true
-      schema:
-        type: integer
     pagination_page_size:
       name: limit
       in: query
@@ -433,6 +401,38 @@ components:
         - type: array
           items:
             type: integer
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    filter_active:
+      name: filter[active]
+      in: query
+      required: false
+      schema:
+        type: boolean
+    id:
+      name: id
+      in: path
+      description: entity id
+      required: true
+      schema:
+        type: integer
+    sort_order:
+      name: sort[order]
+      in: query
+      description: sort order
+      required: false
+      schema:
+        type: string
+        default: desc
+        enum:
+        - asc
+        - desc
   schemas:
     Vacancy:
       properties:
@@ -449,6 +449,33 @@ components:
         language_id:
           type: integer
         created_at:
+          type: string
+          format: date-time
+      type: object
+    Webhook:
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+        company_id:
+          type: integer
+        active:
+          type: boolean
+        event:
+          type: string
+        secret:
+          type: string
+        url:
+          type: string
+        name:
+          type:
+          - string
+          - 'null'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
           type: string
           format: date-time
       type: object
@@ -502,33 +529,6 @@ components:
           type: integer
         user_id:
           type: integer
-      type: object
-    Webhook:
-      properties:
-        id:
-          type: integer
-        user_id:
-          type: integer
-        company_id:
-          type: integer
-        active:
-          type: boolean
-        event:
-          type: string
-        secret:
-          type: string
-        url:
-          type: string
-        name:
-          type:
-          - string
-          - 'null'
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
       type: object
     Response:
       properties:

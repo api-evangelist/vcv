@@ -407,48 +407,6 @@ paths:
       x-operation-id-source: derived
 components:
   parameters:
-    filter_created_at_to:
-      name: filter[created_at][to]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-    filter_created_at_from:
-      name: filter[created_at][from]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-    filter_response_id:
-      name: filter[response_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
-    filter_vacancy_id:
-      name: filter[vacancy_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
     pagination_page_size:
       name: limit
       in: query
@@ -457,6 +415,21 @@ components:
       schema:
         type: integer
         default: 20
+    filter_created_at_from:
+      name: filter[created_at][from]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
     filter_id:
       name: filter[id]
       in: query
@@ -467,108 +440,34 @@ components:
         - type: array
           items:
             type: integer
+    filter_response_id:
+      name: filter[response_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_created_at_to:
+      name: filter[created_at][to]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_vacancy_id:
+      name: filter[vacancy_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
   schemas:
-    Video:
-      properties:
-        id:
-          type: integer
-        date_modified:
-          type: string
-          format: date-time
-        name:
-          type: string
-        video_status_id:
-          type: integer
-        duration:
-          type:
-          - integer
-          - 'null'
-        original_extension:
-          type:
-          - string
-          - 'null'
-        extension:
-          type:
-          - string
-          - 'null'
-        hostname:
-          type: string
-        bucket:
-          type: string
-        size:
-          type:
-          - integer
-          - 'null'
-        original_size:
-          type:
-          - integer
-          - 'null'
-        token:
-          type: string
-        has_image_preview:
-          type: string
-        source:
-          type: string
-        preview:
-          type: string
-      type:
-      - object
-      - 'null'
-    Partition:
-      properties:
-        id:
-          type: integer
-        response_id:
-          type: integer
-        max_time:
-          type: integer
-        name:
-          type: string
-        description:
-          type: string
-        sort_order:
-          type: integer
-        read_time:
-          type: integer
-        is_compulsory:
-          type: boolean
-        is_question_seen:
-          type: boolean
-        take_number:
-          type: integer
-        max_take_number:
-          type: integer
-        is_video_answer_enabled:
-          type: boolean
-        is_text_answer_enabled:
-          type: boolean
-        is_question_skipped:
-          type: boolean
-        date_show:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        date_start_record:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        is_blocked:
-          type: boolean
-        language_code:
-          type:
-          - string
-          - 'null'
-        question_video_id:
-          type: integer
-        question_video_title:
-          type: string
-        question_video_url:
-          type: string
-        is_question_media_seen:
-          type: boolean
-      type: object
     VacancyVideointerview:
       properties:
         id:
@@ -579,101 +478,6 @@ components:
           type: boolean
         created_at:
           type: string
-          format: date-time
-      type: object
-    Response:
-      properties:
-        id:
-          type: integer
-        vacancy_id:
-          type: integer
-        candidate_id:
-          type: integer
-        response_status_id:
-          type: integer
-        response_source_id:
-          type: integer
-        interview_id:
-          type: integer
-        external_id:
-          type: string
-        is_hidden_by_candidate:
-          type: boolean
-        created_at:
-          type: string
-          format: date-time
-        agreed_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        date_sent:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        resume_url:
-          type:
-          - string
-          - 'null'
-        second_resume_url:
-          type:
-          - string
-          - 'null'
-        social_source:
-          type:
-          - string
-          - 'null'
-        utm_source:
-          type:
-          - string
-          - 'null'
-        utm_medium:
-          type:
-          - string
-          - 'null'
-        utm_campaign:
-          type:
-          - string
-          - 'null'
-        utm_content:
-          type:
-          - string
-          - 'null'
-        utm_term:
-          type:
-          - string
-          - 'null'
-        is_paid:
-          type:
-          - boolean
-          - 'null'
-      type: object
-    ResponseVideointerview:
-      properties:
-        id:
-          type: integer
-        response_id:
-          type: integer
-        is_converted:
-          type: boolean
-        is_finished:
-          type: boolean
-        active:
-          type: boolean
-        description:
-          type:
-          - string
-          - 'null'
-        date_start:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        date_last_video_recorded:
-          type:
-          - string
-          - 'null'
           format: date-time
       type: object
     VideointerviewQuestion:
@@ -772,6 +576,202 @@ components:
       type:
       - object
       - 'null'
+    Partition:
+      properties:
+        id:
+          type: integer
+        response_id:
+          type: integer
+        max_time:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        sort_order:
+          type: integer
+        read_time:
+          type: integer
+        is_compulsory:
+          type: boolean
+        is_question_seen:
+          type: boolean
+        take_number:
+          type: integer
+        max_take_number:
+          type: integer
+        is_video_answer_enabled:
+          type: boolean
+        is_text_answer_enabled:
+          type: boolean
+        is_question_skipped:
+          type: boolean
+        date_show:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        date_start_record:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        is_blocked:
+          type: boolean
+        language_code:
+          type:
+          - string
+          - 'null'
+        question_video_id:
+          type: integer
+        question_video_title:
+          type: string
+        question_video_url:
+          type: string
+        is_question_media_seen:
+          type: boolean
+      type: object
+    ResponseVideointerview:
+      properties:
+        id:
+          type: integer
+        response_id:
+          type: integer
+        is_converted:
+          type: boolean
+        is_finished:
+          type: boolean
+        active:
+          type: boolean
+        description:
+          type:
+          - string
+          - 'null'
+        date_start:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        date_last_video_recorded:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      type: object
+    Video:
+      properties:
+        id:
+          type: integer
+        date_modified:
+          type: string
+          format: date-time
+        name:
+          type: string
+        video_status_id:
+          type: integer
+        duration:
+          type:
+          - integer
+          - 'null'
+        original_extension:
+          type:
+          - string
+          - 'null'
+        extension:
+          type:
+          - string
+          - 'null'
+        hostname:
+          type: string
+        bucket:
+          type: string
+        size:
+          type:
+          - integer
+          - 'null'
+        original_size:
+          type:
+          - integer
+          - 'null'
+        token:
+          type: string
+        has_image_preview:
+          type: string
+        source:
+          type: string
+        preview:
+          type: string
+      type:
+      - object
+      - 'null'
+    Response:
+      properties:
+        id:
+          type: integer
+        vacancy_id:
+          type: integer
+        candidate_id:
+          type: integer
+        response_status_id:
+          type: integer
+        response_source_id:
+          type: integer
+        interview_id:
+          type: integer
+        external_id:
+          type: string
+        is_hidden_by_candidate:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+        agreed_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        date_sent:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        resume_url:
+          type:
+          - string
+          - 'null'
+        second_resume_url:
+          type:
+          - string
+          - 'null'
+        social_source:
+          type:
+          - string
+          - 'null'
+        utm_source:
+          type:
+          - string
+          - 'null'
+        utm_medium:
+          type:
+          - string
+          - 'null'
+        utm_campaign:
+          type:
+          - string
+          - 'null'
+        utm_content:
+          type:
+          - string
+          - 'null'
+        utm_term:
+          type:
+          - string
+          - 'null'
+        is_paid:
+          type:
+          - boolean
+          - 'null'
+      type: object
   securitySchemes:
     bearerAuth:
       type: http

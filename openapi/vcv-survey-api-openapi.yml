@@ -386,86 +386,7 @@ paths:
       operationId: getApiV3SurveysById
       x-operation-id-source: derived
 components:
-  parameters:
-    filter_created_at_to:
-      name: filter[created_at][to]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-    filter_response_id:
-      name: filter[response_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    filter_created_at_from:
-      name: filter[created_at][from]
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-    pagination_page:
-      name: page
-      in: query
-      description: page number
-      required: false
-      schema:
-        type: integer
-        default: 1
-    filter_vacancy_id:
-      name: filter[vacancy_id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
-    pagination_page_size:
-      name: limit
-      in: query
-      description: page size
-      required: false
-      schema:
-        type: integer
-        default: 20
-    filter_id:
-      name: filter[id]
-      in: query
-      required: false
-      schema:
-        oneOf:
-        - type: integer
-        - type: array
-          items:
-            type: integer
   schemas:
-    SurveyTemplateAnswer:
-      properties:
-        id:
-          type: integer
-        date_created:
-          type: string
-          format: date-time
-        question_id:
-          type: integer
-        type:
-          type: string
-        content:
-          type: string
-        sort_order:
-          type: integer
-        is_dropout:
-          type: boolean
-      type: object
     SurveyRecord:
       properties:
         id:
@@ -490,7 +411,43 @@ components:
           - string
           - 'null'
       type: object
-    SurveyAnswer:
+    SurveyTemplateQuestion:
+      properties:
+        id:
+          type: integer
+        date_created:
+          type: string
+          format: date-time
+        template_id:
+          type: integer
+        name:
+          type: string
+        type:
+          type: string
+        font_style:
+          type:
+          - string
+          - 'null'
+        description:
+          type: string
+        sort_order:
+          type: integer
+        is_indicated_dates:
+          type: boolean
+        is_required:
+          type: boolean
+        dropout_date_min:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        dropout_date_max:
+          type:
+          - string
+          - 'null'
+          format: date-time
+      type: object
+    SurveyTemplateAnswer:
       properties:
         id:
           type: integer
@@ -506,6 +463,24 @@ components:
         sort_order:
           type: integer
         is_dropout:
+          type: boolean
+      type: object
+    Survey:
+      properties:
+        id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        response_id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        is_finished:
+          type: boolean
+        is_active:
           type: boolean
       type: object
     SurveyTemplate:
@@ -554,60 +529,85 @@ components:
           - 'null'
           format: date-time
       type: object
-    SurveyTemplateQuestion:
+    SurveyAnswer:
       properties:
         id:
           type: integer
         date_created:
           type: string
           format: date-time
-        template_id:
+        question_id:
           type: integer
-        name:
-          type: string
         type:
           type: string
-        font_style:
-          type:
-          - string
-          - 'null'
-        description:
+        content:
           type: string
         sort_order:
           type: integer
-        is_indicated_dates:
-          type: boolean
-        is_required:
-          type: boolean
-        dropout_date_min:
-          type:
-          - string
-          - 'null'
-          format: date-time
-        dropout_date_max:
-          type:
-          - string
-          - 'null'
-          format: date-time
-      type: object
-    Survey:
-      properties:
-        id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        response_id:
-          type: integer
-        name:
-          type: string
-        description:
-          type: string
-        is_finished:
-          type: boolean
-        is_active:
+        is_dropout:
           type: boolean
       type: object
+  parameters:
+    pagination_page_size:
+      name: limit
+      in: query
+      description: page size
+      required: false
+      schema:
+        type: integer
+        default: 20
+    filter_id:
+      name: filter[id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    pagination_page:
+      name: page
+      in: query
+      description: page number
+      required: false
+      schema:
+        type: integer
+        default: 1
+    filter_created_at_from:
+      name: filter[created_at][from]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_response_id:
+      name: filter[response_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
+    filter_created_at_to:
+      name: filter[created_at][to]
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+    filter_vacancy_id:
+      name: filter[vacancy_id]
+      in: query
+      required: false
+      schema:
+        oneOf:
+        - type: integer
+        - type: array
+          items:
+            type: integer
   securitySchemes:
     bearerAuth:
       type: http
